@@ -1,4 +1,4 @@
-#about {
+#about__container {
   animation: fadeInAnimation ease 1.2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -6,7 +6,7 @@
   color: white;
 }
 
-#jumbo {
+#about__jumbotron {
   position: relative;
   text-align: center;
   color: white;
@@ -14,21 +14,17 @@
   padding: 0%;
 }
 
-#about-header {
+#about__jumboimg {
+  background-image: url('../../images/horse-blur2.jpg');
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#about__heading {
   text-align: center;
 }
 
 #about-first-row {
   margin-top: 10vh;
-}
-.crop {
-  height: 50%;
-  width: 50%;
-  overflow: hidden;
-}
-
-.crop {
-  height: 50%;
-  width: 50%;
-  margin: -400px 0 0 -400px;
 }
