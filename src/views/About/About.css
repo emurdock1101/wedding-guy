@@ -1,0 +1,34 @@
+#about {
+  animation: fadeInAnimation ease 1.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  background-color: var(--background-black);
+  color: white;
+}
+
+#jumbo {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0%;
+}
+
+#about-header {
+  text-align: center;
+}
+
+#about-first-row {
+  margin-top: 10vh;
+}
+.crop {
+  height: 50%;
+  width: 50%;
+  overflow: hidden;
+}
+
+.crop {
+  height: 50%;
+  width: 50%;
+  margin: -400px 0 0 -400px;
+}

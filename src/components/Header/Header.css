@@ -1,0 +1,19 @@
+#nav {
+  font-size: 18px;
+  position: absolute;
+  width: 100%;
+}
+
+.header-links {
+  color: white;
+  padding: 1.5vw;
+}
+
+#nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.current-link {
+  color: var(--accent);
+}

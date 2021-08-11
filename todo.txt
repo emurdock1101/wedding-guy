@@ -1,0 +1,6 @@
+1. fix header on small screens - possibly hamburger. Is too small otherwise
+2. fix buttton on small screens
+3. make images zoom in on small screens
+4. add grid layout to each page
+5. Make sure home page header matches about page header
+6. better fonts
