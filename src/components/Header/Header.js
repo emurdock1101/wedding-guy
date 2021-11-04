@@ -1,50 +1,50 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import './Header.css';
+import { AppBar, Toolbar, CssBaseline, Typography, makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-class Header extends React.Component {
-  state = {
-    nearTop: true,
-  };
+const useStyles = makeStyles((theme) => ({
+  navlinks: {
+    marginLeft: theme.spacing(10),
+    display: 'flex',
+  },
+  logo: {
+    flexGrow: '1',
+    cursor: 'pointer',
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+    fontSize: '20px',
+    marginLeft: theme.spacing(20),
+    '&:hover': {
+      textDecoration: 'underline'
+    },
+  },
+}));
 
-  componentDidMount() {
-    document.addEventListener('scroll', () => {
-      const nearTop = window.scrollY < 130;
-      if (nearTop !== this.state.nearTop) {
-        this.setState({ nearTop });
-        console.log('scroll is ' + window.scrollY);
-        console.log('near top: ' + nearTop);
-      }
-    });
-  }
+function Header() {
+  const classes = useStyles();
 
-  render() {
-    return (
-      <div>
-        <Navbar
-          // fixed="top"
-          id="nav"
-          className={this.state.nearTop ? 'nav-background-top' : 'nav-background-scroll'}
-        >
-          <Nav>
-            <NavLink exact to="/" activeClassName="current-link" className="header-links">
-              HOME
-            </NavLink>
-            <NavLink exact to="/about" activeClassName="current-link" className="header-links">
-              ABOUT
-            </NavLink>
-            <NavLink exact to="/projects" activeClassName="current-link" className="header-links">
-              PROJECTS
-            </NavLink>
-            <NavLink exact to="/contact" activeClassName="current-link" className="header-links">
-              CONTACT
-            </NavLink>
-          </Nav>
-        </Navbar>
-      </div>
-    );
-  }
+  return (
+    <AppBar position="static">
+      <CssBaseline />
+      <Toolbar>
+        <Typography variant="h4" className={classes.logo}>
+          Navbar
+        </Typography>
+        <div className={classes.navlinks}>
+          <Link to="/" className={classes.link}>
+            Home
+          </Link>
+          <Link to="/about" className={classes.link}>
+            About
+          </Link>
+          <Link to="/projects" className={classes.link}>
+            Projects
+          </Link>
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
 }
-
 export default Header;

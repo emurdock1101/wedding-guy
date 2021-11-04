@@ -15,7 +15,6 @@
 html,
 body {
   overflow-x: hidden;
-  background-color: var(--background-black);
   height: 100%;
 }
 body {
