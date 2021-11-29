@@ -6,11 +6,14 @@
     opacity: 1;
   }
 }
-
+/* 
 :root {
-  --accent: #e54646;
-  --background-black: #222222;
-}
+  --p1-1: #177e89;
+  --p1-2: #084c61;
+  --p1-3: #DB3A34;
+  --p1-4: #FFC857;
+  --p1-5: #323031;
+} */
 
 html,
 body {
