@@ -1,12 +1,13 @@
-import React from "react";
 import {
   AppBar,
-  Toolbar,
   CssBaseline,
+  Toolbar,
   Typography,
   makeStyles,
 } from "@material-ui/core";
+
 import { Link } from "react-router-dom";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   navlinks: {
@@ -56,9 +57,9 @@ function Header() {
           <Link to="/" className={classes.link}>
             Home
           </Link>
-          <Link to="/about" className={classes.link}>
+          {/* <Link to="/about" className={classes.link}>
             About
-          </Link>
+          </Link> */}
           <Link to="/projects" className={classes.link}>
             Projects
           </Link>
