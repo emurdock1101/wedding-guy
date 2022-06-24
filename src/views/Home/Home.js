@@ -89,7 +89,7 @@ export const useStyles = makeStyles((theme) => ({
     paddingRight: "100px",
     paddingBottom: "120px",
     paddingTop: "60px",
-    fontSize: "20px"
+    fontSize: "20px",
   },
   imgBox: {
     backgroundColor: theme.palette.lime,
