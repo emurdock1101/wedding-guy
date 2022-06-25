@@ -1,17 +1,11 @@
 import {
   Box,
   Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardHeader,
-  CardMedia,
   Grid,
   Typography,
   makeStyles,
 } from "@material-ui/core";
 
-import React from "react";
 import eyeOpen from "../../images/eyeopen.mp4";
 import glowface from "../../images/glowface.png";
 

@@ -4,7 +4,7 @@ export const questionData: Question[] = [
   {
     uid: "q0",
     question: "Do not like poetry",
-    reverse: true,
+    reverse: false,
     aspect: Aspect.Openness,
     ocean: Ocean.OpennessToExperience,
   },
@@ -18,7 +18,7 @@ export const questionData: Question[] = [
   {
     uid: "q2",
     question: "Avoid philosophical discussions",
-    reverse: true,
+    reverse: false,
     aspect: Aspect.Intellect,
     ocean: Ocean.OpennessToExperience,
   },

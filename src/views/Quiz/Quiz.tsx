@@ -1,26 +1,42 @@
-import { Button, Grid } from "@material-ui/core";
-
-import { Aspect } from "../../constants/schema";
-import QuestionComp from "../../components/QuestionComp/QuestionComp";
+import QuestionPack from "../../components/QuestionPack.tsx/QuestionPack";
 import { questionData } from "../../constants/questionData";
+import { useState } from "react";
 
-function Quiz() {
-  const foo = () => {
-    alert();
+const Quiz: React.FC = () => {
+  const [step, setStep] = useState(0);
+
+  const nextStep = () => {
+    if (step !== slices - 1) {
+      setStep(step + 1);
+    }
   };
+
+  const prevStep = () => {
+    if (step !== 0) {
+      setStep(step - 1);
+    }
+  };
+
+  // Change this value to divide the array into a different number of chunks.
+  const slices = 4;
+  const chunks = [];
+  const chunkSize = Math.ceil(questionData.length / slices);
+
+  for (let i = 0; i < questionData.length; i += chunkSize) {
+    chunks.push(questionData.slice(i, i + chunkSize));
+  }
 
   return (
     <div>
-      <Grid container justify="center" alignItems="center">
-        <Grid item xs={12}>
-          <div>
-            <QuestionComp reverse={true} question="Do you like bees?" uid="00"></QuestionComp>
-            <Button onClick={foo}>hey</Button>
-          </div>
-        </Grid>
-      </Grid>
+      {chunks.map((chunk, index) => {
+        return (
+          step === index && (
+            <QuestionPack questions={chunk} prevStep={prevStep} nextStep={nextStep} />
+          )
+        );
+      })}
     </div>
   );
-}
+};
 
 export default Quiz;

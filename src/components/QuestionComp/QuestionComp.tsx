@@ -1,14 +1,5 @@
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  makeStyles,
-} from "@material-ui/core";
-
-import { Aspect } from "../../constants/schema";
-import { useState } from "react";
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@material-ui/core";
+import { useEffect, useState } from "react";
 
 interface QuestionProps {
   uid: string;
@@ -16,30 +7,25 @@ interface QuestionProps {
   reverse: boolean;
 }
 
-function QuestionComp(props: QuestionProps) {
-  const [selected, setSelected] = useState(99);
+const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
+  const [selected, setSelected] = useState(() => {
+    const selected = sessionStorage.getItem(props.uid);
+    return selected !== null ? parseInt(selected) : 99;
+  });
   const radio1: number = props.reverse ? 5 : 1;
   const radio2: number = props.reverse ? 4 : 2;
   const radio3: number = 3;
   const radio4: number = props.reverse ? 2 : 4;
   const radio5: number = props.reverse ? 1 : 5;
 
-  const handleClick = (value: number) => {
-    setSelected(value);
-    
-  }
+  useEffect(() => {
+    sessionStorage.setItem(props.uid, "" + selected);
+  });
 
   return (
     <FormControl>
-      <FormLabel id="questionFormLabel">{props.question}</FormLabel>
-      <RadioGroup
-        row={true}
-        aria-labelledby="questionFormLabel"
-        value={selected}
-        onChange={() => {
-          alert(selected);
-        }}
-      >
+      <FormLabel>{props.question}</FormLabel>
+      <RadioGroup row={true} value={selected}>
         <FormControlLabel
           value={radio1}
           control={
@@ -98,5 +84,5 @@ function QuestionComp(props: QuestionProps) {
       </RadioGroup>
     </FormControl>
   );
-}
+};
 export default QuestionComp;
