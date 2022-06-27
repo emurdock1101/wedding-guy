@@ -1,4 +1,5 @@
 import QuestionPack from "../../components/QuestionPack.tsx/QuestionPack";
+import Submit from "../Submit/Submit";
 import { questionData } from "../../constants/questionData";
 import { useState } from "react";
 
@@ -6,9 +7,7 @@ const Quiz: React.FC = () => {
   const [step, setStep] = useState(0);
 
   const nextStep = () => {
-    if (step !== slices - 1) {
-      setStep(step + 1);
-    }
+    setStep(step + 1);
   };
 
   const prevStep = () => {
@@ -40,6 +39,8 @@ const Quiz: React.FC = () => {
           )
         );
       })}
+      {step === chunks.length && <Submit prevStep={prevStep} nextStep={nextStep}/>}
+      {/* {step === chunks.length + 1 && <Submit prevStep={prevStep}/>} */}
     </div>
   );
 };

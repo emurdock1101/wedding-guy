@@ -8,9 +8,6 @@ export const useStyles = makeStyles((theme) => ({
   questionPack: {
     padding: "60px",
   },
-  pageButton: {
-    margin: "100px",
-  },
 }));
 interface QuestionPackProps {
   questions: Question[];
@@ -31,7 +28,13 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
 
   return (
     <div>
-      <Grid container justify="center" alignItems="center" className={styles.questionPack}>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={styles.questionPack}
+        spacing={4}
+      >
         {props.questions.map((question) => {
           return (
             <Grid item xs={12}>
@@ -44,24 +47,29 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
             </Grid>
           );
         })}
-        <Button
-          color="default"
-          variant="outlined"
-          onClick={props.prevStep}
-          className={styles.pageButton}
-        >
-          Previous
-        </Button>
-        <p>Page {props.page} of 10</p>
-        <Button
-          disabled={answeredQuestions.length !== props.questions.length}
-          color="default"
-          variant="outlined"
-          onClick={props.nextStep}
-          className={styles.pageButton}
-        >
-          Next
-        </Button>
+          <Grid item>
+            <Button
+              disabled={props.page === 1}
+              color="default"
+              variant="outlined"
+              onClick={props.prevStep}
+            >
+              PREV
+            </Button>
+          </Grid>
+          <Grid item>
+            <p>Page {props.page} of 10</p>
+          </Grid>
+          <Grid item>
+            <Button
+              disabled={answeredQuestions.length !== props.questions.length}
+              color="default"
+              variant="outlined"
+              onClick={props.nextStep}
+            >
+              NEXT
+            </Button>
+          </Grid>
       </Grid>
     </div>
   );
