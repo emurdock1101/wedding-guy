@@ -5,6 +5,7 @@ interface QuestionProps {
   uid: string;
   question: string;
   reverse: boolean;
+  countAnswer: (uid: string) => void;
 }
 
 const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
@@ -20,6 +21,9 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
 
   useEffect(() => {
     sessionStorage.setItem(props.uid, "" + selected);
+    if (selected !== 99) {
+      props.countAnswer(props.uid);
+    }
   });
 
   return (
