@@ -1,4 +1,5 @@
 import QuestionPack from "../../components/QuestionPack.tsx/QuestionPack";
+import Results from "../Results/Results";
 import Submit from "../Submit/Submit";
 import { questionData } from "../../constants/questionData";
 import { useState } from "react";
@@ -17,7 +18,7 @@ const Quiz: React.FC = () => {
   };
 
   // Change this value to divide the array into a different number of chunks.
-  const slices = 2;
+  const slices = 4;
   const chunks = [];
   const chunkSize = Math.ceil(questionData.length / slices);
 
@@ -39,8 +40,8 @@ const Quiz: React.FC = () => {
           )
         );
       })}
-      {step === chunks.length && <Submit prevStep={prevStep} nextStep={nextStep}/>}
-      {/* {step === chunks.length + 1 && <Submit prevStep={prevStep}/>} */}
+      {step === chunks.length && <Submit prevStep={prevStep} nextStep={nextStep} />}
+      {step === chunks.length + 1 && <Results />}
     </div>
   );
 };

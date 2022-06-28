@@ -47,29 +47,29 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
             </Grid>
           );
         })}
-          <Grid item>
-            <Button
-              disabled={props.page === 1}
-              color="default"
-              variant="outlined"
-              onClick={props.prevStep}
-            >
-              PREV
-            </Button>
-          </Grid>
-          <Grid item>
-            <p>Page {props.page} of 10</p>
-          </Grid>
-          <Grid item>
-            <Button
-              disabled={answeredQuestions.length !== props.questions.length}
-              color="default"
-              variant="outlined"
-              onClick={props.nextStep}
-            >
-              NEXT
-            </Button>
-          </Grid>
+        <Grid item>
+          <Button
+            style={{ visibility: props.page === 1 ? "hidden" : "visible" }}
+            color="default"
+            variant="outlined"
+            onClick={props.prevStep}
+          >
+            PREV
+          </Button>
+        </Grid>
+        <Grid item>
+          <p>Page {props.page} of 10</p>
+        </Grid>
+        <Grid item>
+          <Button
+            disabled={answeredQuestions.length !== props.questions.length}
+            color="default"
+            variant="outlined"
+            onClick={props.nextStep}
+          >
+            NEXT
+          </Button>
+        </Grid>
       </Grid>
     </div>
   );
