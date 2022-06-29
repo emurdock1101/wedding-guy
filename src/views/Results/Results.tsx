@@ -1,6 +1,7 @@
 import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
+import { aspectsOptions, aspectsSeries } from "../../constants/chartSpecs";
 
-import BarChart from "../../components/BarChart/BarChart";
+import ReactApexChart from "react-apexcharts";
 
 export const useStyles = makeStyles((theme) => ({
   info: {
@@ -20,8 +21,21 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         <Grid item xs={12}>
           <Typography variant="h4">Big 5 Aspects Results</Typography>
         </Grid>
-        <Grid item xs={12}>
-          <BarChart />
+        <Grid item xs={6}>
+          <ReactApexChart
+            options={aspectsOptions}
+            series={aspectsSeries}
+            type="bar"
+            height={400}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <ReactApexChart
+            options={aspectsOptions}
+            series={aspectsSeries}
+            type="bar"
+            height={400}
+          />
         </Grid>
       </Grid>
     </div>
