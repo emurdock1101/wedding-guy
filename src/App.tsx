@@ -12,12 +12,12 @@ function App() {
   return (
     // add 404 page here
     <div>
-      {/* <ThemeProvider theme={theme}> */}
+      <ThemeProvider theme={theme}>
       <Switch>
         <Route path="/" component={Results} exact />
         <Route path="/quiz" component={Quiz} exact />
       </Switch>
-      {/* </ThemeProvider> */}
+      </ThemeProvider>
     </div>
   );
 }

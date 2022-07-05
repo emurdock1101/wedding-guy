@@ -19,10 +19,18 @@ export enum Ocean {
   Neuroticism,
 }
 
+export type Big5Data = {
+  category: string;
+  categoryAbbr: string;
+  categoryWithAbbr: string;
+  aspectsAbbr: string[];
+  aspects: string[];
+};
+
 export type Question = {
   uid: string;
   question: string;
   reverse: boolean;
   aspect: Aspect;
-  ocean: Ocean
+  ocean: Ocean;
 };

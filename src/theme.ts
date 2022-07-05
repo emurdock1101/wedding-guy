@@ -7,15 +7,27 @@ interface PaletteColor {
   contrastText?: string;
 }
 
-export const theme = createTheme({
+export let theme = createTheme({
   palette: {
     primary: {
-      //lime
-      main: "#DFFFBF",
+      main: "#00C9B7",
     },
     secondary: {
-      //cream
-      main: "#FFF6EE",
+      main: "#344B47",
     },
+
+    error: {
+      main: "#ED5362",
+    },
+
+    warning: {
+      main: "#9A338E",
+    },
+    info: {
+      main: "#96B1AC",
+    },
+    success: {
+      main: "#3A81CD"
+    }
   },
 });
