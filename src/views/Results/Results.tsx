@@ -1,12 +1,10 @@
-import { Box, Grid, Typography, makeStyles } from "@material-ui/core";
+import { Grid, Typography, makeStyles } from "@material-ui/core";
 import { aspectOptions, aspectSeries } from "../../constants/aspectSpecs";
 import { oceanOptions, oceanSeries } from "../../constants/oceanSpecs";
 
-import CategoryScore from "../../components/CategoryScore/CategoryScore";
 import Explanation from "../../components/Explanation/Explanation";
 import ReactApexChart from "react-apexcharts";
 import ResultTable from "../../components/ResultTable/ResultTable";
-import { categoryData } from "../../constants/categoryData";
 
 export const useStyles = makeStyles((theme) => ({
   info: {
@@ -19,7 +17,11 @@ export const useStyles = makeStyles((theme) => ({
   subheading: {
     paddingTop: "10px",
     paddingBottom: "10px",
+    textAlign: "center",
   },
+  chart: {
+    marginTop: "1vw"
+  }
 }));
 
 interface ResultsProps {}
@@ -31,30 +33,20 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     <div>
       <Grid container spacing={6} className={styles.info} justify="center" alignItems="flex-start">
         <Grid item xs={12}>
-          <Typography variant="h2" className={styles.title}>
-            Big 5 Results
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
           <Typography variant="h3" className={styles.subheading}>
             Results and explanation
           </Typography>
         </Grid>
-        <Grid item sm={12} lg={5}>
+        <Grid item sm={10} lg={5}>
           <Explanation  />
         </Grid>
-        <Grid item sm={12} lg={5}>
+        <Grid item sm={10} lg={5}>
           <ResultTable />
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h3" className={styles.subheading}>
-            Graphical representation
-          </Typography>
-        </Grid>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={5}  className={styles.chart}>
           <ReactApexChart options={oceanOptions} series={oceanSeries} type="bar" height={550} />
         </Grid>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={5} className={styles.chart}>
           <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
         </Grid>
         <Grid item xs={12}>

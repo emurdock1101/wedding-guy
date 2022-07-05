@@ -1,14 +1,19 @@
 import {Typography, makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
+  container: {
+    padding: "10px"
+  },
   info: {
     marginBottom: "15px",
+    fontSize: 20
   },
   info2: {
     marginBottom: "23px",
+    fontSize: 20
   },
   category: {
-    marginBottom: "121px",
+    marginBottom: "4vw",
     color: theme.palette.common.white,
     borderRadius: "10px",
     padding: "5px",
@@ -37,7 +42,7 @@ const Explanation: React.FC<ExplanationProps> = (props: ExplanationProps) => {
   const styles = useStyles();
 
   return (
-    <div>
+    <div className={styles.container}>
       <Typography variant="subtitle1" className={styles.info}>
         Your results are shown in the table and in the bar charts below.{" "}
       </Typography>
@@ -45,9 +50,9 @@ const Explanation: React.FC<ExplanationProps> = (props: ExplanationProps) => {
       <Typography variant="subtitle1" className={styles.info2}>
         The Big 5 traits are Openness, Conscientiousness, Extraversion, Agreeableness, and
         Compassion. Each of the Big 5 traits is composed of two subcategories known as the 10
-        Aspects. For each of Big 5 trait, and for each of the 10 Aspects, your score is shown as a
-        percentile of the population. For example, a score of 22% means that you are higher in this
-        trait than 22% of people.
+        Aspects. Each score is shown as a
+        percentile of the population. This means a score of 60% shows that you are higher in this
+        trait than 60% of people. The meaning of each trait can be different from the trait name's common use, so please be sure to read the interpretation section below.
       </Typography>
 
       <Typography variant="subtitle1" className={`${styles.category}  ${styles.c1}`}>
