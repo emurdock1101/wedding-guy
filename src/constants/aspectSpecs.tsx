@@ -2,16 +2,6 @@ import { theme as thm } from "../theme";
 type MyEnum = "center";
 const centerTitle: MyEnum = "center";
 
-// data for aspects chart
-export const aspectSeries = [
-  {
-    data: [1, 44, 55, 11, 77],
-  },
-  {
-    data: [33, 55, 66, 22, 88],
-  },
-];
-
 // options for aspects chart
 export const aspectOptions = {
   chart: {

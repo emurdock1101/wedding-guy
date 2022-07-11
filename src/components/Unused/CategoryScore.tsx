@@ -23,7 +23,7 @@ const CategoryScore: React.FC<CategoryScoreProps> = (props: CategoryScoreProps) 
 
   return (
     <div>
-      <Typography variant="h4" className={styles.category}>
+      {/* <Typography variant="h4" className={styles.category}>
         {props.big5Data.category} ({props.big5Data.categoryAbbr}): <strong>22%</strong>
       </Typography>
       <Typography variant="h6" className={styles.aspect}>
@@ -31,7 +31,7 @@ const CategoryScore: React.FC<CategoryScoreProps> = (props: CategoryScoreProps) 
       </Typography>
       <Typography variant="h6" className={styles.aspect}>
         {props.big5Data.aspects[1]} ({props.big5Data.aspectsAbbr[1]}): <strong>22%</strong>
-      </Typography>
+      </Typography> */}
     </div>
   );
 };

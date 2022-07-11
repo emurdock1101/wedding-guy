@@ -3,8 +3,8 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 
 import Home from "./views/Home";
-import Quiz from "./views/Quiz/Quiz";
-import Results from "./views/Results/Results";
+import Quiz from "./views/Quiz";
+import Results from "./views/Results";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme";
 

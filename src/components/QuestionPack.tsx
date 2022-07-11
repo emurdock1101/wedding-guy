@@ -1,7 +1,7 @@
 import { Button, Grid, makeStyles } from "@material-ui/core";
 
-import { Question } from "../../constants/schema";
-import QuestionComp from "../../components/QuestionComp/QuestionComp";
+import { Question } from "../constants/schema";
+import QuestionComp from "./QuestionComp";
 import { useState } from "react";
 
 export const useStyles = makeStyles((theme) => ({
@@ -38,12 +38,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         {props.questions.map((question) => {
           return (
             <Grid item xs={12}>
-              <QuestionComp
-                uid={question.uid}
-                reverse={question.reverse}
-                question={question.question}
-                countAnswer={countAnswer}
-              />
+              <QuestionComp question={question} countAnswer={countAnswer} />
             </Grid>
           );
         })}

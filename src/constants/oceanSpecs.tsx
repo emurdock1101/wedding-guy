@@ -3,17 +3,6 @@ import { theme as thm } from "../theme";
 type MyEnum = "center";
 const centerTitle: MyEnum = "center";
 
-// data for ocean chart
-export const oceanSeries = [
-  {
-    data: [22, 33, 55, 66, 99],
-  },
-];
-
-function get10(): number {
-  return -20;
-}
-
 // options for ocean chart
 export const oceanOptions = {
   chart: {
@@ -23,13 +12,7 @@ export const oceanOptions = {
     },
   },
   xaxis: {
-    categories: [
-      "Opn.",
-      "Con.",
-      "Ext.",
-      "Agr.",
-      "Neu.",
-    ],
+    categories: ["Opn.", "Con.", "Ext.", "Agr.", "Neu."],
     title: {
       text: "Percentile",
     },
@@ -65,7 +48,7 @@ export const oceanOptions = {
   },
   dataLabels: {
     enabled: true,
-    offsetX: get10(),
+    offsetX: -10,
     style: {
       fontSize: "12px",
       colors: ["#fff"],

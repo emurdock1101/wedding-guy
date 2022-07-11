@@ -19,15 +19,14 @@ export let theme = createTheme({
     error: {
       main: "#ED5362",
     },
-
     warning: {
       main: "#9A338E",
     },
     info: {
-      main: "#96B1AC",
+      main: "#D8EDE9",
     },
     success: {
-      main: "#3A81CD"
-    }
+      main: "#3A81CD",
+    },
   },
 });

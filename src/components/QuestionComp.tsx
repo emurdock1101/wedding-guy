@@ -1,34 +1,33 @@
+import { Aspect, Ocean, Question } from "../constants/schema";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@material-ui/core";
 import { useEffect, useState } from "react";
-
 interface QuestionProps {
-  uid: string;
-  question: string;
-  reverse: boolean;
+  question: Question;
   countAnswer: (uid: string) => void;
 }
 
 const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
   const [selected, setSelected] = useState(() => {
-    const selected = sessionStorage.getItem(props.uid);
+    const selected = sessionStorage.getItem(JSON.stringify(props.question));
     return selected !== null ? parseInt(selected) : 99;
   });
-  const radio1: number = props.reverse ? 5 : 1;
-  const radio2: number = props.reverse ? 4 : 2;
+
+  const radio1: number = props.question.reverse ? 5 : 1;
+  const radio2: number = props.question.reverse ? 4 : 2;
   const radio3: number = 3;
-  const radio4: number = props.reverse ? 2 : 4;
-  const radio5: number = props.reverse ? 1 : 5;
+  const radio4: number = props.question.reverse ? 2 : 4;
+  const radio5: number = props.question.reverse ? 1 : 5;
 
   useEffect(() => {
-    sessionStorage.setItem(props.uid, "" + selected);
+    sessionStorage.setItem(JSON.stringify(props.question), "" + selected);
     if (selected !== 99) {
-      props.countAnswer(props.uid);
+      props.countAnswer(props.question.uid);
     }
   });
 
   return (
     <FormControl>
-      <FormLabel>{props.question}</FormLabel>
+      <FormLabel>{props.question.text}</FormLabel>
       <RadioGroup row={true} value={selected}>
         <FormControlLabel
           value={radio1}

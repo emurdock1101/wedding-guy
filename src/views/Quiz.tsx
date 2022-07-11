@@ -1,7 +1,7 @@
-import QuestionPack from "../../components/QuestionPack.tsx/QuestionPack";
-import Results from "../Results/Results";
-import Submit from "../Submit/Submit";
-import { questionData } from "../../constants/questionData";
+import QuestionPack from "../components/QuestionPack";
+import Results from "./Results";
+import Submit from "./Submit";
+import { questionData } from "../constants/questionData";
 import { useState } from "react";
 
 const Quiz: React.FC = () => {

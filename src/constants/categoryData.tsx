@@ -1,39 +1,92 @@
 import { Big5Data } from "./schema";
 
+/**
+ * Master Order
+ *
+ * 1. Open 2. Opn 3. Int
+ *
+ * 4. Con 5. Ind 6. Ord
+ *
+ * 7. Ext 8. Ent. 9. Asr
+ *
+ * 10. Agr. 11. Com. 12. Pol.
+ *
+ * 13. Neu 14. Wit. 15. Vol.
+ */
 export const categoryData: Big5Data[] = [
   {
     category: "Openness",
     categoryAbbr: "Opn.",
-    categoryWithAbbr: "Openness (Opn.)",
-    aspectsAbbr: ["Opn.", "Int."],
-    aspects: ["Openness", "Intellect"],
+    isOcean: true,
+  },
+  {
+    category: "Openness",
+    categoryAbbr: "Opn.",
+    isOcean: false,
+  },
+  {
+    category: "Intellect",
+    categoryAbbr: "Int.",
+    isOcean: false,
   },
   {
     category: "Conscientiousness",
     categoryAbbr: "Con.",
-    categoryWithAbbr: "Conscientiousness (Con.)",
-    aspectsAbbr: ["Ind.", "Ord."],
-    aspects: ["Industriousness", "Orderliness"],
+    isOcean: true,
+  },
+  {
+    category: "Industriousness",
+    categoryAbbr: "Ind.",
+    isOcean: false,
+  },
+  {
+    category: "Orderliness",
+    categoryAbbr: "Ord.",
+    isOcean: false,
   },
   {
     category: "Extraversion",
     categoryAbbr: "Ext.",
-    categoryWithAbbr: "Extraversion (Ext.)",
-    aspectsAbbr: ["Ent.", "Asr."],
-    aspects: ["Enthusiasm", "Assertiveness"],
+    isOcean: true,
+  },
+  {
+    category: "Enthusiasm",
+    categoryAbbr: "Ent.",
+    isOcean: false,
+  },
+  {
+    category: "Assertiveness",
+    categoryAbbr: "Asr.",
+    isOcean: false,
   },
   {
     category: "Agreeableness",
     categoryAbbr: "Agr.",
-    categoryWithAbbr: "Agreeableness (Agr.)",
-    aspectsAbbr: ["Com.", "Pol."],
-    aspects: ["Politeness", "Compassion"],
+    isOcean: true,
+  },
+  {
+    category: "Compassion",
+    categoryAbbr: "Com.",
+    isOcean: false,
+  },
+  {
+    category: "Politeness",
+    categoryAbbr: "Pol.",
+    isOcean: false,
   },
   {
     category: "Neuroticism",
     categoryAbbr: "Neu.",
-    categoryWithAbbr: "Neuroticism (Neu.)",
-    aspectsAbbr: ["Wit.", "Vol."],
-    aspects: ["Withdrawal", "Volatility"],
+    isOcean: true,
+  },
+  {
+    category: "Withdrawal",
+    categoryAbbr: "Wit.",
+    isOcean: false,
+  },
+  {
+    category: "Volatility",
+    categoryAbbr: "Vol.",
+    isOcean: false,
   },
 ];

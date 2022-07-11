@@ -1,36 +1,45 @@
 export enum Aspect {
-  Withdrawal,
-  Volatility,
-  Politeness,
-  Compassion,
-  Industriousness,
-  Orderliness,
-  Enthusiasm,
-  Assertiveness,
-  Openness,
-  Intellect,
+  Withdrawal = "Withdrawal",
+  Volatility = "Volatility",
+  Politeness = "Politeness",
+  Compassion = "Compassion",
+  Industriousness = "Industriousness",
+  Orderliness = "Orderliness",
+  Enthusiasm = "Enthusiasm",
+  Assertiveness = "Assertiveness",
+  Openness = "Openness",
+  Intellect = "Intellect",
 }
 
 export enum Ocean {
-  OpennessToExperience,
-  Conscientiousness,
-  Extraversion,
-  Agreeableness,
-  Neuroticism,
+  OpennessToExperience = "OpennessToExperience",
+  Conscientiousness = "Conscientiousness",
+  Extraversion = "Extraversion",
+  Agreeableness = "Agreeableness",
+  Neuroticism = "Neuroticism",
 }
 
 export type Big5Data = {
   category: string;
   categoryAbbr: string;
-  categoryWithAbbr: string;
-  aspectsAbbr: string[];
-  aspects: string[];
+  isOcean: boolean;
 };
 
 export type Question = {
   uid: string;
-  question: string;
+  text: string;
   reverse: boolean;
   aspect: Aspect;
   ocean: Ocean;
+};
+
+export type Answer = {
+  percentile: number;
+  aspect: Aspect;
+  ocean: Ocean;
+};
+
+export type EscsData = {
+  mean: number;
+  stdDev: number;
 };
