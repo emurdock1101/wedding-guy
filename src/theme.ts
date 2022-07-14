@@ -22,7 +22,7 @@ export let theme = createTheme({
       main: "#9A338E",
     },
     info: {
-      main: "#D8EDE9",
+      main: "#1b1d21",
     },
     success: {
       main: "#3A81CD",

@@ -39,7 +39,7 @@ const Explanation: React.FC<ExplanationProps> = (props: ExplanationProps) => {
       </Typography>
 
       <Typography variant="subtitle1" className={`${styles.category}  ${styles.c2}`}>
-        &#160;&#160;Conscientious is composed of Industriousness and Orderliness.
+        &#160;&#160;Conscientiousness is composed of Industriousness and Orderliness.
       </Typography>
 
       <Typography variant="subtitle1" className={`${styles.category}  ${styles.c3}`}>
