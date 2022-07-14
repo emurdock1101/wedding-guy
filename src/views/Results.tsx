@@ -27,7 +27,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   explanation: {
     padding: "15px",
-    marginBottom: "70px",
+    marginBottom: "60px",
   },
   accordion: {
     marginBottom: "25px",
@@ -69,14 +69,14 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   return (
     <div>
       <Grid container spacing={6} justify="center" alignItems="flex-start">
-        <Grid item xs={12} md={10}>
+        <Grid item xs={12} sm={11} md={10}>
           <Paper elevation={2}>
             <Typography variant="h3" className={styles.subheading}>
               Results and explanation
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3} lg={5}>
+        <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation}>
             <Typography variant="subtitle1" className={styles.info}>
               Your results are shown in the table and in the bar charts below.{" "}
@@ -97,20 +97,20 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
             <OceanAccordion />
           </div>
         </Grid>
-        <Grid item xs={12} sm={5} lg={5}>
+        <Grid item xs={12} sm={11} lg={5}>
           <ResultTable />
         </Grid>
-        <Grid item xs={12} sm={10} lg={5} className={styles.chart}>
+        <Grid item xs={12} sm={11} lg={5} className={styles.chart}>
           <Paper elevation={2}>
             <ReactApexChart options={oceanOptions} series={oceanSeries} type="bar" height={550} />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={10} lg={5} className={styles.chart}>
+        <Grid item xs={12} sm={11} lg={5} className={styles.chart}>
           <Paper elevation={2}>
             <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={10}>
+        <Grid item xs={12} sm={11} md={11}>
           <Paper elevation={2}>
             <Typography variant="h3" className={styles.subheading}>
               Interpretation of results
