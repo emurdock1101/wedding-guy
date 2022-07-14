@@ -1,6 +1,7 @@
 import { Aspect, Ocean, Question } from "../constants/schema";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@material-ui/core";
 import { useEffect, useState } from "react";
+
 interface QuestionProps {
   question: Question;
   countAnswer: (uid: string) => void;
@@ -12,6 +13,17 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
     return selected !== null ? parseInt(selected) : 99;
   });
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 700) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
   const radio1: number = props.question.reverse ? 5 : 1;
   const radio2: number = props.question.reverse ? 4 : 2;
   const radio3: number = 3;
@@ -19,6 +31,7 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
   const radio5: number = props.question.reverse ? 1 : 5;
 
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
     sessionStorage.setItem(JSON.stringify(props.question), "" + selected);
     if (selected !== 99) {
       props.countAnswer(props.question.uid);
@@ -28,7 +41,7 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
   return (
     <FormControl>
       <FormLabel>{props.question.text}</FormLabel>
-      <RadioGroup row={true} value={selected}>
+      <RadioGroup row={!isMobile} value={selected}>
         <FormControlLabel
           value={radio1}
           control={

@@ -17,10 +17,9 @@ const Quiz: React.FC = () => {
     }
   };
 
-  // Change this value to divide the array into a different number of chunks.
-  const slices = 4;
+  const slices = 4; // number of pages
   const chunks = [];
-  const chunkSize = Math.ceil(questionData.length / slices);
+  const chunkSize = Math.ceil(questionData.length / slices); // number of questions on each page
 
   for (let i = 0; i < questionData.length; i += chunkSize) {
     chunks.push(questionData.slice(i, i + chunkSize));
@@ -32,6 +31,7 @@ const Quiz: React.FC = () => {
         return (
           step === index && (
             <QuestionPack
+              totalQuestions={questionData.length}
               questions={chunk}
               prevStep={prevStep}
               nextStep={nextStep}

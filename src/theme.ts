@@ -15,7 +15,6 @@ export let theme = createTheme({
     secondary: {
       main: "#344B47",
     },
-
     error: {
       main: "#ED5362",
     },

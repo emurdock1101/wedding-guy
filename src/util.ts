@@ -10,7 +10,7 @@ import { questionData } from "./constants/questionData";
  */
 export const getPercentiles = (): Map<string, number> => {
   if (sessionStorage.length !== questionData.length) {
-    throw new Error(
+    console.log(
       "Answer list isn't correct length. storageLength: " +
         sessionStorage.length +
         ", questionDataLength: " +
