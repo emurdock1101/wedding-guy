@@ -111,3 +111,30 @@ export const getPercentilesFromAverages = (
 
   return percentileMap;
 };
+
+/**
+ * Returns the right adjective to describe how high/low a score is.
+ *
+ * @param score a percentile
+ * @returns
+ */
+export const scoreAdjective = (score: number): string => {
+  const veryHigh: number = 90;
+  const high: number = 70;
+  const moderate: number = 30;
+  const low: number = 10;
+
+  if (score > 90) {
+    return "very high";
+  } else if (score > high && score < veryHigh) {
+    return "very high";
+  } else if (score > moderate && score < high) {
+    return "moderate";
+  } else if (score > low && score < moderate) {
+    return "low";
+  } else if (score < low) {
+    return "very low";
+  }
+
+  return "error";
+};

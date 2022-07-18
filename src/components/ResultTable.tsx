@@ -2,22 +2,21 @@ import * as React from "react";
 
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableHead, { tableHeadClasses } from "@mui/material/TableHead";
-import TableRow, { tableRowClasses } from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
 import { categoryData } from "../constants/categoryData";
-import { getPercentiles } from "../util";
 import { makeStyles } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
 import { theme as thm } from "../theme";
 
 const StyledTableHead = styled(TableHead)(({ theme }) => ({
   [`&.${tableHeadClasses.root}`]: {
-    borderLeft: `6px solid ${thm.palette.info.main}`,
+    borderLeft: `6px solid #111840`,
   },
 }));
 
@@ -39,8 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(): any[] {
-  const percentiles: Map<string, number> = getPercentiles();
+function createData(percentiles: Map<string, number>): any[] {
   const tableData: any[] = [];
 
   for (const data of categoryData) {
@@ -64,10 +62,11 @@ function createData(): any[] {
   return tableData;
 }
 
-const rows = createData();
+interface ResultTableProps {
+  percentiles: Map<string, number>
+}
 
-interface ResultTableProps {}
-const ResultTable: React.FC<ResultTableProps> = () => {
+const ResultTable: React.FC<ResultTableProps> = (props: ResultTableProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
 
   // choose the screen size
@@ -85,7 +84,7 @@ const ResultTable: React.FC<ResultTableProps> = () => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#1b1d21",
+      backgroundColor: "#111840",
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -94,6 +93,8 @@ const ResultTable: React.FC<ResultTableProps> = () => {
       padding: isMobile ? 8 : 9,
     },
   }));
+
+  const rows = createData(props.percentiles);
 
   return (
     <TableContainer component={Paper}>

@@ -1,0 +1,94 @@
+import { Grid, Typography, makeStyles } from "@material-ui/core";
+
+import Percent from "../components/Percent";
+import { content } from "../constants/content";
+import { scoreAdjective } from "../util";
+
+export const useStyles = makeStyles((theme) => ({
+  oceanScoreRow: {
+    minHeight: "120px",
+    display: "flex",
+    alignItems: "center",
+  },
+  aspectScoreRow: {
+    minHeight: "80px",
+    display: "flex",
+    alignItems: "center",
+    // border: "red 1px solid"
+  },
+  aspects: {
+    paddingLeft: "30px",
+  },
+  gridContainer: {
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    paddingBottom: "20px",
+  },
+  percent: {
+
+  },
+}));
+
+interface InterpretationsProps {
+  oceanScore: number;
+  oceanName: string;
+  aspect1Score: number;
+  aspect1Name: string;
+  aspect2Score: number;
+  aspect2Name: string;
+  hex: string;
+}
+
+const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsProps) => {
+  const contentKey = props.oceanName === "Openness" ? "OpennessToExperience" : props.oceanName;
+  const styles = useStyles();
+
+  return (
+    <div>
+      <Grid container className={styles.gridContainer}>
+        <Grid item xs={9} sm={10} className={styles.oceanScoreRow}>
+          <Typography variant="h5">{props.oceanName}</Typography>
+        </Grid>
+        <Grid item xs={3} sm={2} className={styles.oceanScoreRow}>
+          <Percent progress={props.oceanScore} hex={props.hex} size={90} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1">
+            <strong>
+              Your {props.oceanName} score is {scoreAdjective(props.oceanScore)}.
+            </strong>{" "}
+            {content["interpretations"][contentKey]}
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
+          <Typography variant="h6" className={styles.aspects}>
+            {props.aspect1Name}
+          </Typography>
+        </Grid>
+        <Grid item xs={3} sm={2} className={styles.aspectScoreRow}>
+          <Percent progress={props.aspect1Score} hex={props.hex} size={60} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1" className={styles.aspects}>
+            {content["interpretations"][props.aspect1Name]}
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
+          <Typography variant="h6" className={styles.aspects}>
+            {props.aspect2Name}
+          </Typography>
+        </Grid>
+        <Grid item xs={3} sm={2} className={styles.aspectScoreRow}>
+          <Percent progress={props.aspect2Score} hex={props.hex} size={60} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1" className={styles.aspects}>
+            {content["interpretations"][props.aspect2Name]}
+          </Typography>
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
+
+export default Interpretations;

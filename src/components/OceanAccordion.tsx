@@ -12,7 +12,7 @@ export default function OceanAccordion() {
     <div>
       <Accordion style={{ borderLeft: `6px solid ${thm.palette.error.main}` }}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography sx={{ width: "40%", fontSize: 18 }}>Openness</Typography>
+          <Typography sx={{ width: "40%", fontSize: 18}}>Openness</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

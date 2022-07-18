@@ -1,7 +1,7 @@
 import { Aspect, Ocean } from "../constants/schema";
 import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 
-import Explanation from "../components/Explanation";
+import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
 import ReactApexChart from "react-apexcharts";
 import RecipeReviewCard from "../components/OceanCard";
@@ -9,28 +9,44 @@ import ResultTable from "../components/ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
 import { getPercentiles } from "../util";
 import { oceanOptions } from "../constants/oceanSpecs";
+import { theme } from "../theme";
+import { white } from "material-ui/styles/colors";
 
 export const useStyles = makeStyles((theme) => ({
+  top: {
+    marginTop: "10px",
+  },
   subheading: {
     textAlign: "center",
-    color: theme.palette.info.main,
+    color: "white",
     padding: "10px",
-    marginBottom: "25px",
-    marginTop: "25px",
-  },
-  chart: {
-    // marginTop: "1vw",
+    marginBottom: "10px",
+    marginTop: "20px",
+    fontSize: "80px",
   },
   info: {
     marginBottom: "20px",
     fontSize: 18,
   },
   explanation: {
-    padding: "15px",
-    marginBottom: "60px",
+    padding: "20px",
+    marginBottom: "50px", //this needs change if anything changes - should line up with table
   },
   accordion: {
-    marginBottom: "25px",
+    marginBottom: "20px",
+  },
+  interpretations: {
+    marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
+  },
+  titlePaper: {
+    backgroundColor: "#111840",
+  },
+  pdf: {
+    width: "100%",
+    height: "50px",
+  },
+  pdfPaper: {
+    marginBottom: "10px",
   },
 }));
 
@@ -41,39 +57,57 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   const percentiles: Map<string, number> = getPercentiles();
 
-  const OpennessToExperience: number =
-    percentiles.get(Ocean.OpennessToExperience.toString()) ?? 101;
-  const Openness: number = percentiles.get(Aspect.Openness.toString()) ?? 101;
-  const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 101;
-  const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 101;
-  const Intellect: number = percentiles.get(Aspect.Intellect.toString()) ?? 101;
-  const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 101;
+  const OpennessToExperience: number = percentiles.get(Ocean.OpennessToExperience.toString()) ?? 99;
+  const Openness: number = percentiles.get(Aspect.Openness.toString()) ?? 99;
+  const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 99;
+
+  const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 99;
+  const Intellect: number = percentiles.get(Aspect.Intellect.toString()) ?? 99;
+  const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 99;
+
+  // fake data
+  const Extraversion: number = percentiles.get(Ocean.Extraversion.toString()) ?? 55;
+  const Enthusiasm: number = percentiles.get(Aspect.Enthusiasm.toString()) ?? 44;
+  const Assertiveness: number = percentiles.get(Aspect.Assertiveness.toString()) ?? 33;
+
+  const Agreeableness: number = percentiles.get(Ocean.Agreeableness.toString()) ?? 66;
+  const Compassion: number = percentiles.get(Aspect.Compassion.toString()) ?? 22;
+  const Politeness: number = percentiles.get(Aspect.Politeness.toString()) ?? 88;
+
+  const Neuroticism: number = percentiles.get(Ocean.Neuroticism.toString()) ?? 77;
+  const Withdrawal: number = percentiles.get(Aspect.Withdrawal.toString()) ?? 99;
+  const Volatility: number = percentiles.get(Aspect.Volatility.toString()) ?? 11;
 
   // data for aspects chart
   const aspectSeries = [
     {
-      data: [Openness, Industriousness, 33, 11, 77],
+      data: [Openness, Industriousness, Enthusiasm, Compassion, Withdrawal],
     },
     {
-      data: [Intellect, Orderliness, 66, 22, 88],
+      data: [Intellect, Orderliness, Assertiveness, Politeness, Volatility],
     },
   ];
 
   // data for ocean chart
   const oceanSeries = [
     {
-      data: [OpennessToExperience, Conscientiousness, 55, 66, 99],
+      data: [OpennessToExperience, Conscientiousness, Extraversion, Agreeableness, Neuroticism],
     },
   ];
 
   return (
-    <div>
-      <Grid container spacing={6} justify="center" alignItems="flex-start">
-        <Grid item xs={12} sm={11} md={10}>
-          <Paper elevation={2}>
+    <div id="resultsPdf">
+      <Grid container spacing={6} justify="center" alignItems="flex-start" className={styles.top}>
+        <Grid item xs={12} sm={11} lg={10}>
+          <Paper elevation={2} className={styles.titlePaper}>
             <Typography variant="h3" className={styles.subheading}>
-              Results and explanation
+              Results and Explanation
             </Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={11} lg={10}>
+          <Paper elevation={2} className={styles.pdfPaper}>
+            <Button className={styles.pdf}>Click to download a PDF of this page</Button>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
@@ -98,27 +132,83 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           </div>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <ResultTable />
+          <ResultTable percentiles={percentiles} />
         </Grid>
-        <Grid item xs={12} sm={11} lg={5} className={styles.chart}>
+        <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2}>
             <ReactApexChart options={oceanOptions} series={oceanSeries} type="bar" height={550} />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={11} lg={5} className={styles.chart}>
+        <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2}>
             <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={11} md={11}>
-          <Paper elevation={2}>
+        <Grid item xs={12} sm={11} lg={10}>
+          <Paper elevation={2} className={styles.titlePaper}>
             <Typography variant="h3" className={styles.subheading}>
-              Interpretation of results
+              Interpretation of Results
             </Typography>
           </Paper>
         </Grid>
+        <Grid item xs={12} sm={11} lg={10}>
+          <Paper elevation={2} className={styles.interpretations}>
+            <Interpretations
+              oceanName={"Openness"}
+              oceanScore={OpennessToExperience}
+              aspect1Name={"Openness"}
+              aspect1Score={Openness}
+              aspect2Name={"Intellect"}
+              aspect2Score={Intellect}
+              hex={theme.palette.error.main}
+            />
+          </Paper>
+          <Paper elevation={2} className={styles.interpretations}>
+            <Interpretations
+              oceanName={"Conscientiousness"}
+              oceanScore={Conscientiousness}
+              aspect1Name={"Industriousness"}
+              aspect1Score={Industriousness}
+              aspect2Name={"Orderliness"}
+              aspect2Score={Orderliness}
+              hex={theme.palette.warning.main}
+            />
+          </Paper>
+          <Paper elevation={2} className={styles.interpretations}>
+            <Interpretations
+              oceanName={"Extraversion"}
+              oceanScore={Extraversion}
+              aspect1Name={"Enthusiasm"}
+              aspect1Score={Enthusiasm}
+              aspect2Name={"Assertiveness"}
+              aspect2Score={Assertiveness}
+              hex={theme.palette.success.main}
+            />
+          </Paper>
+          <Paper elevation={2} className={styles.interpretations}>
+            <Interpretations
+              oceanName={"Agreeableness"}
+              oceanScore={Agreeableness}
+              aspect1Name={"Compassion"}
+              aspect1Score={Compassion}
+              aspect2Name={"Politeness"}
+              aspect2Score={Politeness}
+              hex={theme.palette.primary.main}
+            />
+          </Paper>
+          <Paper elevation={2}>
+            <Interpretations
+              oceanName={"Neuroticism"}
+              oceanScore={Neuroticism}
+              aspect1Name={"Withdrawal"}
+              aspect1Score={Withdrawal}
+              aspect2Name={"Volatility"}
+              aspect2Score={Volatility}
+              hex={theme.palette.secondary.main}
+            />
+          </Paper>
+        </Grid>
       </Grid>
-      <Button onClick={getPercentiles}>hey</Button>
     </div>
   );
 };
