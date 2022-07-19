@@ -14,10 +14,11 @@ export const useStyles = makeStyles((theme) => ({
     minHeight: "80px",
     display: "flex",
     alignItems: "center",
-    // border: "red 1px solid"
+    // border: "blue 1px solid",
   },
   aspects: {
     paddingLeft: "30px",
+    // border: "red 1px solid"
   },
   gridContainer: {
     paddingLeft: "20px",
@@ -25,7 +26,7 @@ export const useStyles = makeStyles((theme) => ({
     paddingBottom: "20px",
   },
   percent: {
-
+    paddingLeft: "15px",
   },
 }));
 
@@ -66,7 +67,9 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           </Typography>
         </Grid>
         <Grid item xs={3} sm={2} className={styles.aspectScoreRow}>
-          <Percent progress={props.aspect1Score} hex={props.hex} size={60} />
+          <div className={styles.percent}>
+            <Percent progress={props.aspect1Score} hex={props.hex} size={60} />
+          </div>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="subtitle1" className={styles.aspects}>
@@ -79,7 +82,9 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           </Typography>
         </Grid>
         <Grid item xs={3} sm={2} className={styles.aspectScoreRow}>
+          <div className={styles.percent}>
           <Percent progress={props.aspect2Score} hex={props.hex} size={60} />
+          </div>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="subtitle1" className={styles.aspects}>

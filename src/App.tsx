@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Home from "./views/Home";
 import Quiz from "./views/Quiz";
@@ -13,10 +13,10 @@ function App() {
     // add 404 page here
     <div>
       <ThemeProvider theme={theme}>
-      <Switch>
-        <Route path="/" component={Results} exact />
-        <Route path="/quiz" component={Quiz} exact />
-      </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/quiz" element={<Quiz />} />
+        </Routes>
       </ThemeProvider>
     </div>
   );

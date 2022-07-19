@@ -1,5 +1,6 @@
-import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 
+import { Link } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import { Question } from "../constants/schema";
 import QuestionComp from "./QuestionComp";
@@ -13,12 +14,23 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "60px",
     textAlign: "center",
   },
-  heading: {
+  homeLink: {
     textAlign: "center",
+    marginTop: 60,
+  },
+  linkText: {
+    color: theme.palette.success.main,
+     "&:hover": {
+      color: theme.palette.success.dark,
+    },
+    textDecoration: "underline",
+    fontSize: 18
   },
   question: {
     padding: "20px",
-  },
+  }, link: {
+    textDecoration: "none"
+  }
 }));
 interface QuestionPackProps {
   totalQuestions: number;
@@ -30,6 +42,7 @@ interface QuestionPackProps {
 
 const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => {
   const styles = useStyles();
+  const numberOfPages = props.totalQuestions / props.questions.length;
   const [answeredQuestions, setAnsweredQuestions] = useState<string[]>([]);
 
   const countAnswer = (uid: string) => {
@@ -68,7 +81,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
           </Button>
         </Grid>
         <Grid item xs={6} sm={4} md={2} className={styles.page}>
-          <p>Page {props.page} of 10</p>
+          <p>Page {props.page} of {numberOfPages}</p>
         </Grid>
         <Grid item xs={3} sm={2} md={1} className={styles.page}>
           <Button
@@ -79,6 +92,13 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
           >
             NEXT
           </Button>
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <div className={styles.homeLink}>
+            <Link to="/" className={styles.link}>
+              <p className={styles.linkText}>Back to home</p>
+            </Link>
+          </div>
         </Grid>
       </Grid>
     </div>

@@ -17,7 +17,7 @@ const Quiz: React.FC = () => {
     }
   };
 
-  const slices = 4; // number of pages
+  const slices = 5; // number of pages
   const chunks = [];
   const chunkSize = Math.ceil(questionData.length / slices); // number of questions on each page
 

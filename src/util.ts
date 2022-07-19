@@ -119,10 +119,10 @@ export const getPercentilesFromAverages = (
  * @returns
  */
 export const scoreAdjective = (score: number): string => {
-  const veryHigh: number = 90;
-  const high: number = 70;
-  const moderate: number = 30;
-  const low: number = 10;
+  const veryHigh: number = 80;
+  const high: number = 60;
+  const moderate: number = 40;
+  const low: number = 20;
 
   if (score > 90) {
     return "very high";

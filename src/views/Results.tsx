@@ -1,10 +1,10 @@
 import { Aspect, Ocean } from "../constants/schema";
 import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import { useEffect, useState } from "react";
 
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
 import ReactApexChart from "react-apexcharts";
-import RecipeReviewCard from "../components/OceanCard";
 import ResultTable from "../components/ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
 import { getPercentiles } from "../util";
@@ -12,48 +12,63 @@ import { oceanOptions } from "../constants/oceanSpecs";
 import { theme } from "../theme";
 import { white } from "material-ui/styles/colors";
 
-export const useStyles = makeStyles((theme) => ({
-  top: {
-    marginTop: "10px",
-  },
-  subheading: {
-    textAlign: "center",
-    color: "white",
-    padding: "10px",
-    marginBottom: "10px",
-    marginTop: "20px",
-    fontSize: "80px",
-  },
-  info: {
-    marginBottom: "20px",
-    fontSize: 18,
-  },
-  explanation: {
-    padding: "20px",
-    marginBottom: "50px", //this needs change if anything changes - should line up with table
-  },
-  accordion: {
-    marginBottom: "20px",
-  },
-  interpretations: {
-    marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
-  },
-  titlePaper: {
-    backgroundColor: "#111840",
-  },
-  pdf: {
-    width: "100%",
-    height: "50px",
-  },
-  pdfPaper: {
-    marginBottom: "10px",
-  },
-}));
-
 interface ResultsProps {}
 
 const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
+  const useStyles = makeStyles((theme) => ({
+    top: {
+      marginTop: "10px",
+    },
+    subheading: {
+      textAlign: "center",
+      color: "white",
+      padding: "10px",
+      marginBottom: "10px",
+      marginTop: "20px",
+      fontSize: isMobile ? 60 : 80,
+    },
+    info: {
+      marginBottom: "20px",
+      fontSize: 18,
+    },
+    explanation: {
+      padding: "20px",
+      marginBottom: "50px", //this needs change if anything changes - should line up with table
+    },
+    accordion: {
+      marginBottom: "20px",
+    },
+    interpretations: {
+      marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
+    },
+    titlePaper: {
+      backgroundColor: "#111840",
+    },
+    pdf: {
+      width: "100%",
+      height: "50px",
+    },
+    pdfPaper: {
+      marginBottom: "10px",
+    },
+  }));
+
   const styles = useStyles();
+
+
+  // choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 750) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
 
   const percentiles: Map<string, number> = getPercentiles();
 
