@@ -43,7 +43,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
     },
     titlePaper: {
-      backgroundColor: "#111840",
+      backgroundColor: "#111840", // navy blue
     },
     pdf: {
       width: "100%",
@@ -55,7 +55,6 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   }));
 
   const styles = useStyles();
-
 
   // choose the screen size
   const handleResize = () => {
@@ -72,8 +71,8 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   const percentiles: Map<string, number> = getPercentiles();
 
-  const OpennessToExperience: number = percentiles.get(Ocean.OpennessToExperience.toString()) ?? 99;
-  const Openness: number = percentiles.get(Aspect.Openness.toString()) ?? 99;
+  const Openness: number = percentiles.get(Ocean.Openness.toString()) ?? 99;
+  const AestheticOpenness: number = percentiles.get(Aspect.AestheticOpenness.toString()) ?? 99;
   const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 99;
 
   const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 99;
@@ -81,22 +80,22 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 99;
 
   // fake data
-  const Extraversion: number = percentiles.get(Ocean.Extraversion.toString()) ?? 55;
-  const Enthusiasm: number = percentiles.get(Aspect.Enthusiasm.toString()) ?? 44;
-  const Assertiveness: number = percentiles.get(Aspect.Assertiveness.toString()) ?? 33;
+  const Extraversion: number = percentiles.get(Ocean.Extraversion.toString()) ?? 99;
+  const Enthusiasm: number = percentiles.get(Aspect.Enthusiasm.toString()) ?? 99;
+  const Assertiveness: number = percentiles.get(Aspect.Assertiveness.toString()) ?? 99;
 
-  const Agreeableness: number = percentiles.get(Ocean.Agreeableness.toString()) ?? 66;
-  const Compassion: number = percentiles.get(Aspect.Compassion.toString()) ?? 22;
-  const Politeness: number = percentiles.get(Aspect.Politeness.toString()) ?? 88;
+  const Agreeableness: number = percentiles.get(Ocean.Agreeableness.toString()) ?? 99;
+  const Compassion: number = percentiles.get(Aspect.Compassion.toString()) ?? 99;
+  const Politeness: number = percentiles.get(Aspect.Politeness.toString()) ?? 99;
 
-  const Neuroticism: number = percentiles.get(Ocean.Neuroticism.toString()) ?? 77;
+  const Neuroticism: number = percentiles.get(Ocean.Neuroticism.toString()) ?? 99;
   const Withdrawal: number = percentiles.get(Aspect.Withdrawal.toString()) ?? 99;
-  const Volatility: number = percentiles.get(Aspect.Volatility.toString()) ?? 11;
+  const Volatility: number = percentiles.get(Aspect.Volatility.toString()) ?? 99;
 
   // data for aspects chart
   const aspectSeries = [
     {
-      data: [Openness, Industriousness, Enthusiasm, Compassion, Withdrawal],
+      data: [AestheticOpenness, Industriousness, Enthusiasm, Compassion, Withdrawal],
     },
     {
       data: [Intellect, Orderliness, Assertiveness, Politeness, Volatility],
@@ -106,7 +105,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   // data for ocean chart
   const oceanSeries = [
     {
-      data: [OpennessToExperience, Conscientiousness, Extraversion, Agreeableness, Neuroticism],
+      data: [Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism],
     },
   ];
 
@@ -170,9 +169,9 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
               oceanName={"Openness"}
-              oceanScore={OpennessToExperience}
+              oceanScore={Openness}
               aspect1Name={"Openness"}
-              aspect1Score={Openness}
+              aspect1Score={AestheticOpenness}
               aspect2Name={"Intellect"}
               aspect2Score={Intellect}
               hex={theme.palette.error.main}

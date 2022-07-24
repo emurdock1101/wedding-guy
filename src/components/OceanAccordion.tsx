@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Aspect, Ocean } from "../constants/schema";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -12,12 +12,12 @@ export default function OceanAccordion() {
     <div>
       <Accordion style={{ borderLeft: `6px solid ${thm.palette.error.main}` }}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography sx={{ width: "40%", fontSize: 18}}>Openness</Typography>
+          <Typography sx={{ width: "40%", fontSize: 18}}>{Ocean.Openness.toString()}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Openness (also referred to as "Openness to Experience") is comprised of{" "}
-            <strong>Openness</strong> and <strong>Intellect</strong>.
+          {Ocean.Openness.toString()} is comprised of{" "}
+            <strong>{Aspect.AestheticOpenness.toString()}</strong> and <strong>{Aspect.Intellect.toString()}</strong>.
           </Typography>
           <br></br>
           <Typography>

@@ -41,7 +41,6 @@ interface InterpretationsProps {
 }
 
 const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsProps) => {
-  const contentKey = props.oceanName === "Openness" ? "OpennessToExperience" : props.oceanName;
   const styles = useStyles();
 
   return (
@@ -58,7 +57,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
             <strong>
               Your {props.oceanName} score is {scoreAdjective(props.oceanScore)}.
             </strong>{" "}
-            {content["interpretations"][contentKey]}
+            {content["interpretations"][props.oceanName]}
           </Typography>
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>

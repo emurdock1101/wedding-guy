@@ -7,12 +7,12 @@ export enum Aspect {
   Orderliness = "Orderliness",
   Enthusiasm = "Enthusiasm",
   Assertiveness = "Assertiveness",
-  Openness = "Openness",
+  AestheticOpenness = "Aesthetic Openness",
   Intellect = "Intellect",
 }
 
 export enum Ocean {
-  OpennessToExperience = "OpennessToExperience",
+  Openness = "Openness",
   Conscientiousness = "Conscientiousness",
   Extraversion = "Extraversion",
   Agreeableness = "Agreeableness",

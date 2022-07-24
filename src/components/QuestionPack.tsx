@@ -20,17 +20,18 @@ export const useStyles = makeStyles((theme) => ({
   },
   linkText: {
     color: theme.palette.success.main,
-     "&:hover": {
+    "&:hover": {
       color: theme.palette.success.dark,
     },
     textDecoration: "underline",
-    fontSize: 18
+    fontSize: 18,
   },
   question: {
     padding: "20px",
-  }, link: {
-    textDecoration: "none"
-  }
+  },
+  link: {
+    textDecoration: "none",
+  },
 }));
 interface QuestionPackProps {
   totalQuestions: number;
@@ -81,7 +82,9 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
           </Button>
         </Grid>
         <Grid item xs={6} sm={4} md={2} className={styles.page}>
-          <p>Page {props.page} of {numberOfPages}</p>
+          <p>
+            Page {props.page} of {numberOfPages}
+          </p>
         </Grid>
         <Grid item xs={3} sm={2} md={1} className={styles.page}>
           <Button

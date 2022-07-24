@@ -4,7 +4,7 @@ export const ESCS_SAMPLE_SIZE = 480;
 
 export const escsMap: Map<string, EscsData> = new Map([
   [
-    Ocean.OpennessToExperience.toString(),
+    Ocean.Openness.toString(),
     {
       mean: 3.72,
       stdDev: 0.53,
@@ -12,7 +12,7 @@ export const escsMap: Map<string, EscsData> = new Map([
   ],
 
   [
-    Aspect.Openness.toString(),
+    Aspect.AestheticOpenness.toString(),
     {
       mean: 3.74,
       stdDev: 0.61,

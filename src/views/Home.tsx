@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 
+import HeaderDrawer from "../components/Header";
 import eyeOpen from "../images/eyeopen.mp4";
 import glowface from "../images/glowface.png";
 import { useNavigate } from "react-router-dom";
@@ -95,6 +96,9 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 
   return (
     <Grid container justify="center" alignItems="center" className={styles.container}>
+      <Grid item xs={12}>
+        <HeaderDrawer />
+      </Grid>
       <Grid item xs={12} className={styles.jumbotron}>
         <div className={styles.centered}>
           <Typography variant="h4" className={styles.smallTitle}>
