@@ -2,26 +2,30 @@ import { Aspect, Ocean } from "../constants/schema";
 import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
-import HeaderDrawer from "../components/HeaderDrawer";
-import Interpretations from "../components/Interpretations";
-import OceanAccordion from "../components/OceanAccordion";
+import Interpretations from "./Interpretations";
+import OceanAccordion from "./OceanAccordion";
 import ReactApexChart from "react-apexcharts";
-import ResultTable from "../components/ResultTable";
+import ResultTable from "./ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
 import { getPercentiles } from "../util";
 import { oceanOptions } from "../constants/oceanSpecs";
 import { theme } from "../theme";
+import { white } from "material-ui/styles/colors";
 
-interface ResultsProps {}
-
-const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
+interface PageShellProps {}
+ 
+const PageShell: React.FC<PageShellProps> = (props: PageShellProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const useStyles = makeStyles((theme) => ({
+    top: {
+      marginTop: "10px",
+    },
     subheading: {
       textAlign: "center",
       color: "white",
       padding: "10px",
       marginBottom: "10px",
+      marginTop: "20px",
       fontSize: isMobile ? 60 : 80,
     },
     info: {
@@ -43,14 +47,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     },
     pdf: {
       width: "100%",
-      height: "50px"
+      height: "50px",
     },
     pdfPaper: {
       marginBottom: "10px",
     },
-    interpretationTitle: {
-      marginTop: 80
-    }
   }));
 
   const styles = useStyles();
@@ -110,10 +111,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   return (
     <div id="resultsPdf">
-      <Grid container spacing={6} justify="center" alignItems="flex-start">
-        <Grid item xs={12}>
-          <HeaderDrawer />
-        </Grid>
+      <Grid container spacing={6} justify="center" alignItems="flex-start" className={styles.top}>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.titlePaper}>
             <Typography variant="h3" className={styles.subheading}>
@@ -162,7 +160,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.titlePaper}>
-            <Typography variant="h3" className={`${styles.subheading} ${styles.interpretationTitle}`}>
+            <Typography variant="h3" className={styles.subheading}>
               Interpretation of Results
             </Typography>
           </Paper>
@@ -170,55 +168,55 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
-              oceanName={Ocean.Openness}
+              oceanName={"Openness"}
               oceanScore={Openness}
-              aspect1Name={Aspect.AestheticOpenness}
+              aspect1Name={"Openness"}
               aspect1Score={AestheticOpenness}
-              aspect2Name={Aspect.Intellect}
+              aspect2Name={"Intellect"}
               aspect2Score={Intellect}
               hex={theme.palette.error.main}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
-              oceanName={Ocean.Conscientiousness}
+              oceanName={"Conscientiousness"}
               oceanScore={Conscientiousness}
-              aspect1Name={Aspect.Industriousness}
+              aspect1Name={"Industriousness"}
               aspect1Score={Industriousness}
-              aspect2Name={Aspect.Orderliness}
+              aspect2Name={"Orderliness"}
               aspect2Score={Orderliness}
               hex={theme.palette.warning.main}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
-              oceanName={Ocean.Extraversion}
+              oceanName={"Extraversion"}
               oceanScore={Extraversion}
-              aspect1Name={Aspect.Enthusiasm}
+              aspect1Name={"Enthusiasm"}
               aspect1Score={Enthusiasm}
-              aspect2Name={Aspect.Assertiveness}
+              aspect2Name={"Assertiveness"}
               aspect2Score={Assertiveness}
               hex={theme.palette.success.main}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
-              oceanName={Ocean.Agreeableness}
+              oceanName={"Agreeableness"}
               oceanScore={Agreeableness}
-              aspect1Name={Aspect.Compassion}
+              aspect1Name={"Compassion"}
               aspect1Score={Compassion}
-              aspect2Name={Aspect.Politeness}
+              aspect2Name={"Politeness"}
               aspect2Score={Politeness}
               hex={theme.palette.primary.main}
             />
           </Paper>
           <Paper elevation={2}>
             <Interpretations
-              oceanName={Ocean.Neuroticism}
+              oceanName={"Neuroticism"}
               oceanScore={Neuroticism}
-              aspect1Name={Aspect.Withdrawal}
+              aspect1Name={"Withdrawal"}
               aspect1Score={Withdrawal}
-              aspect2Name={Aspect.Volatility}
+              aspect2Name={"Volatility"}
               aspect2Score={Volatility}
               hex={theme.palette.secondary.main}
             />
@@ -229,4 +227,4 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   );
 };
 
-export default Results;
+export default PageShell;

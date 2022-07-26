@@ -1,17 +1,14 @@
-import { Button, Grid, makeStyles } from "@material-ui/core";
+import { Button, Grid, Paper, makeStyles } from "@material-ui/core";
 
-import { Link } from "react-router-dom";
+import HeaderDrawer from "../components/HeaderDrawer";
 import ProgressBar from "../components/ProgressBar";
 import { Question } from "../constants/schema";
 import QuestionComp from "./QuestionComp";
 import { useState } from "react";
 
 export const useStyles = makeStyles((theme) => ({
-  questionPack: {
-    padding: "10px",
-  },
-  page: {
-    marginTop: "60px",
+  pageNav: {
+    marginTop: 60,
     textAlign: "center",
   },
   homeLink: {
@@ -26,11 +23,19 @@ export const useStyles = makeStyles((theme) => ({
     textDecoration: "underline",
     fontSize: 18,
   },
-  question: {
-    padding: "20px",
+  row: {
+    marginTop: 10,
+    marginBottom: 10,
+    padding: 10,
+  },
+  paper: {
+    padding: 15,
   },
   link: {
     textDecoration: "none",
+  },
+  container: {
+    padding: 15,
   },
 }));
 interface QuestionPackProps {
@@ -54,26 +59,34 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
 
   return (
     <div>
-      <Grid container justify="center" alignItems="center" className={styles.questionPack}>
-        <Grid item xs={12} className={styles.question}>
-          <ProgressBar
-            progress={
-              (((props.page - 1) * props.questions.length + answeredQuestions.length) /
-                props.totalQuestions) *
-              100
-            }
-          />
+      <Grid container justify="center" alignItems="center" className={styles.container}>
+        <Grid item xs={12}>
+          <HeaderDrawer />
         </Grid>
+        <Grid item xs={12} className={styles.row}>
+          <Paper elevation={2} className={styles.paper}>
+            <ProgressBar
+              progress={
+                (((props.page - 1) * props.questions.length + answeredQuestions.length) /
+                  props.totalQuestions) *
+                100
+              }
+            />
+          </Paper>
+        </Grid>
+
         {props.questions.map((question) => {
           return (
-            <Grid item xs={12} className={styles.question}>
-              <QuestionComp question={question} countAnswer={countAnswer} />
+            <Grid item xs={12} className={styles.row}>
+              <Paper elevation={2} className={styles.paper}>
+                <QuestionComp question={question} countAnswer={countAnswer} />
+              </Paper>
             </Grid>
           );
         })}
-        <Grid item xs={3} sm={2} md={1} className={styles.page}>
+        <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
-            style={{ visibility: props.page === 1 ? "hidden" : "visible" }}
+            disabled={props.page === 1}
             color="default"
             variant="outlined"
             onClick={props.prevStep}
@@ -81,12 +94,12 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
             PREV
           </Button>
         </Grid>
-        <Grid item xs={6} sm={4} md={2} className={styles.page}>
+        <Grid item xs={6} sm={4} md={2} className={styles.pageNav}>
           <p>
             Page {props.page} of {numberOfPages}
           </p>
         </Grid>
-        <Grid item xs={3} sm={2} md={1} className={styles.page}>
+        <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
             disabled={answeredQuestions.length !== props.questions.length}
             color="default"
@@ -95,13 +108,6 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
           >
             NEXT
           </Button>
-        </Grid>
-        <Grid item xs={12} md={12}>
-          <div className={styles.homeLink}>
-            <Link to="/" className={styles.link}>
-              <p className={styles.linkText}>Back to home</p>
-            </Link>
-          </div>
         </Grid>
       </Grid>
     </div>

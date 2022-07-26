@@ -1,3 +1,5 @@
+import { Aspect, Ocean } from "./schema";
+
 import { Big5Data } from "./schema";
 
 /**
@@ -15,77 +17,77 @@ import { Big5Data } from "./schema";
  */
 export const categoryData: Big5Data[] = [
   {
-    category: "Openness",
+    category: Ocean.Openness,
     categoryAbbr: "Opn.",
     isOcean: true,
   },
   {
-    category: "Openness",
-    categoryAbbr: "Opn.",
+    category: Aspect.AestheticOpenness,
+    categoryAbbr: "Aes.",
     isOcean: false,
   },
   {
-    category: "Intellect",
+    category: Aspect.Intellect,
     categoryAbbr: "Int.",
     isOcean: false,
   },
   {
-    category: "Conscientiousness",
+    category: Ocean.Conscientiousness,
     categoryAbbr: "Con.",
     isOcean: true,
   },
   {
-    category: "Industriousness",
+    category: Aspect.Industriousness,
     categoryAbbr: "Ind.",
     isOcean: false,
   },
   {
-    category: "Orderliness",
+    category: Aspect.Industriousness,
     categoryAbbr: "Ord.",
     isOcean: false,
   },
   {
-    category: "Extraversion",
+    category: Ocean.Extraversion,
     categoryAbbr: "Ext.",
     isOcean: true,
   },
   {
-    category: "Enthusiasm",
+    category: Aspect.Enthusiasm,
     categoryAbbr: "Ent.",
     isOcean: false,
   },
   {
-    category: "Assertiveness",
+    category: Aspect.Assertiveness,
     categoryAbbr: "Asr.",
     isOcean: false,
   },
   {
-    category: "Agreeableness",
+    category: Ocean.Agreeableness,
     categoryAbbr: "Agr.",
     isOcean: true,
   },
   {
-    category: "Compassion",
+    category: Aspect.Compassion,
     categoryAbbr: "Com.",
     isOcean: false,
   },
   {
-    category: "Politeness",
+    category: Aspect.Politeness,
     categoryAbbr: "Pol.",
     isOcean: false,
   },
   {
-    category: "Neuroticism",
+    category: Ocean.Neuroticism,
     categoryAbbr: "Neu.",
     isOcean: true,
   },
   {
-    category: "Withdrawal",
+    category: Aspect.Withdrawal,
     categoryAbbr: "Wit.",
     isOcean: false,
   },
   {
-    category: "Volatility",
+    category: Aspect.Volatility,
     categoryAbbr: "Vol.",
     isOcean: false,
   },

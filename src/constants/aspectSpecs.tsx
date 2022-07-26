@@ -12,7 +12,7 @@ export const aspectOptions = {
   },
   xaxis: {
     categories: [
-      "O - Opn.",
+      "O - Aes.",
       "O - Int.",
       "C - Ind.",
       "C - Ord.",
@@ -87,7 +87,7 @@ export const aspectOptions = {
     thm.palette.secondary.main,
   ],
   title: {
-    text: "10 Aspects",
+    text: "Your 10 Aspect Scores",
     align: centerTitle,
     margin: 5,
     offsetX: 0,

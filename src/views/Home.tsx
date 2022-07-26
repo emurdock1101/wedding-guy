@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 
-import HeaderDrawer from "../components/Header";
+import HeaderDrawer from "../components/HeaderDrawer";
 import eyeOpen from "../images/eyeopen.mp4";
 import glowface from "../images/glowface.png";
 import { useNavigate } from "react-router-dom";
@@ -133,7 +133,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 
           <Button
             variant="contained"
-            color="secondary"
             onClick={startQuiz}
             className={styles.buyNowButton}
           >

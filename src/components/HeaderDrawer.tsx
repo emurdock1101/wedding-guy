@@ -1,31 +1,24 @@
-import * as React from "react";
-
+import { Button, makeStyles } from "@material-ui/core";
+import { Facebook, Group, Instagram, Phone, Twitter } from "@material-ui/icons";
+import { HelpCenter, PrivacyTip } from "@mui/icons-material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { styled, useTheme } from "@mui/material/styles";
+import React, { useEffect, useRef } from "react";
 
 import Box from "@mui/material/Box";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import { Facebook } from "@material-ui/icons";
-import { Group } from "@mui/icons-material";
-import { HelpCenter } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import { Instagram } from "@material-ui/icons";
-import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Phone } from "@material-ui/icons";
 import Toolbar from "@mui/material/Toolbar";
-import { Twitter } from "@material-ui/icons";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@material-ui/core";
+import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 260;
@@ -95,35 +88,68 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
   },
+  home: {
+    flexGrow: 1,
+  },
+  homeButton: {
+    border: "white 1px solid",
+    color: "white",
+    "&:hover": {
+      border: `${theme.palette.primary.main} 1px solid`,
+      color: theme.palette.primary.main,
+    },
+  },
 }));
 
 /**
  * HeaderDrawer component
  */
-export default function HeaderDrawer() {
+const HeaderDrawer = () => {
   const navigate = useNavigate();
-
-  const handleOnClick = (path: string) => {
-    navigate(path);
-  };
-
   const [open, setOpen] = React.useState(false);
+
+  const ref = useRef<any>();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const handleNav = (path: string) => {
+    navigate(path, { replace: true });
+  };
   const styles = useStyles();
+
+  useEffect(() => {
+    const checkIfClickedOutside = (event: any) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+
+      if (open && ref.current && !ref.current.contains(event.target)) {
+        handleDrawerClose();
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [open]);
 
   return (
     <Box sx={{ display: "flex" }} className={styles.container}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-            Personality +
-          </Typography>
+          <div className={styles.home}>
+            <Button className={styles.homeButton} variant="outlined" onClick={() => handleNav("/")}>
+              {" "}
+              Personality +
+            </Button>
+          </div>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -149,6 +175,7 @@ export default function HeaderDrawer() {
         variant="persistent"
         anchor="right"
         open={open}
+        ref={ref}
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -159,7 +186,7 @@ export default function HeaderDrawer() {
         <List>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => handleNav("/about")}>
                 <ListItemIcon>
                   <Group />
                 </ListItemIcon>
@@ -169,7 +196,7 @@ export default function HeaderDrawer() {
           </div>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => handleNav("/faqs")}>
                 <ListItemIcon>
                   <HelpCenter />
                 </ListItemIcon>
@@ -179,7 +206,7 @@ export default function HeaderDrawer() {
           </div>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => handleNav("/contact")}>
                 <ListItemIcon>
                   <Phone />
                 </ListItemIcon>
@@ -187,8 +214,17 @@ export default function HeaderDrawer() {
               </ListItemButton>
             </ListItem>
           </div>
+          <div style={{ color: "#1b1d21", textDecoration: "none" }}>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleNav("/privacy")}>
+                <ListItemIcon>
+                  <PrivacyTip />
+                </ListItemIcon>
+                <ListItemText primary={"Privacy"} />
+              </ListItemButton>
+            </ListItem>
+          </div>
         </List>
-
         <Divider />
         <List>
           <a
@@ -240,4 +276,6 @@ export default function HeaderDrawer() {
       </Drawer>
     </Box>
   );
-}
+};
+
+export default HeaderDrawer;

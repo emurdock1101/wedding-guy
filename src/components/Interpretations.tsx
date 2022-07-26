@@ -72,7 +72,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
         </Grid>
         <Grid item xs={12}>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {content["interpretations"][props.aspect1Name]}
+            {content["interpretations"][props.aspect1Name === "Aesthetic Openness" ? "AestheticOpenness" : props.aspect1Name]}
           </Typography>
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>

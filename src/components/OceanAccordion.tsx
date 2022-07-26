@@ -21,7 +21,7 @@ export default function OceanAccordion() {
           </Typography>
           <br></br>
           <Typography>
-            Openness is one's willingness to try new things and consider new ideas.
+            Aesthetic Openness is one's willingness to try new things and consider new ideas.
           </Typography>
           <br></br>
           <Typography>Intellect is one's capacity to understand complex ideas.</Typography>
