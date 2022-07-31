@@ -64,15 +64,13 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
           <HeaderDrawer />
         </Grid>
         <Grid item xs={12} className={styles.row}>
-          <Paper elevation={2} className={styles.paper}>
-            <ProgressBar
-              progress={
-                (((props.page - 1) * props.questions.length + answeredQuestions.length) /
-                  props.totalQuestions) *
-                100
-              }
-            />
-          </Paper>
+          <ProgressBar
+            progress={
+              (((props.page - 1) * props.questions.length + answeredQuestions.length) /
+                props.totalQuestions) *
+              100
+            }
+          />
         </Grid>
 
         {props.questions.map((question) => {
