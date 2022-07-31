@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import HeaderDrawer from "../components/HeaderDrawer";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
+import PageShell from "../components/PageShell"
 import ReactApexChart from "react-apexcharts";
 import ResultTable from "../components/ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
@@ -46,7 +47,8 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       height: "50px"
     },
     pdfPaper: {
-      marginBottom: "10px",
+      marginTop: 10,
+      marginBottom: 5,
     },
     interpretationTitle: {
       marginTop: 80
@@ -110,17 +112,8 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   return (
     <div id="resultsPdf">
+       <PageShell pageTitle="Results and Explanation" />
       <Grid container spacing={6} justify="center" alignItems="flex-start">
-        <Grid item xs={12}>
-          <HeaderDrawer />
-        </Grid>
-        <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.titlePaper}>
-            <Typography variant="h3" className={styles.subheading}>
-              Results and Explanation
-            </Typography>
-          </Paper>
-        </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.pdfPaper}>
             <Button className={styles.pdf}>Click to download a PDF of this page</Button>

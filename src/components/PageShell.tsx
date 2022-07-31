@@ -14,8 +14,6 @@ const PageShell: React.FC<PageShellProps> = (props: PageShellProps) => {
       textAlign: "center",
       color: "white",
       padding: "10px",
-      marginBottom: "10px",
-      marginTop: "40px",
       fontSize: isMobile ? 60 : 80,
     },
     info: {
@@ -43,7 +41,7 @@ const PageShell: React.FC<PageShellProps> = (props: PageShellProps) => {
   });
 
   return (
-    <Grid container justify="center" alignItems="flex-start">
+    <Grid container spacing={6} justify="center" alignItems="flex-start">
       <Grid item xs={12}>
         <HeaderDrawer />
       </Grid>

@@ -1,3 +1,4 @@
+import PreTest from "./PreTest";
 import QuestionPack from "../components/QuestionPack";
 import Results from "./Results";
 import Submit from "./Submit";
@@ -27,9 +28,10 @@ const Quiz: React.FC = () => {
 
   return (
     <div>
+      {step === 0 && <PreTest nextStep={nextStep} />}
       {chunks.map((chunk, index) => {
         return (
-          step === index && (
+          step === index + 1 && (
             <QuestionPack
               totalQuestions={questionData.length}
               questions={chunk}
@@ -40,8 +42,8 @@ const Quiz: React.FC = () => {
           )
         );
       })}
-      {step === chunks.length && <Submit prevStep={prevStep} nextStep={nextStep} />}
-      {step === chunks.length + 1 && <Results />}
+      {step === chunks.length + 1 && <Submit prevStep={prevStep} nextStep={nextStep} />}
+      {step === chunks.length + 2 && <Results />}
     </div>
   );
 };

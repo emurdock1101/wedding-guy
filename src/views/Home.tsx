@@ -90,7 +90,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const navigate = useNavigate();
 
   const startQuiz = () => {
-    // 👇️ navigate to /
     navigate("/quiz");
   };
 
@@ -136,7 +135,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             onClick={startQuiz}
             className={styles.buyNowButton}
           >
-            BEGIN ASSESSMENT
+            TAKE QUIZ
           </Button>
         </div>
       </Grid>

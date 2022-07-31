@@ -1,7 +1,7 @@
 import { Grid, Typography, makeStyles } from "@material-ui/core";
 
 import Percent from "../components/Percent";
-import { content } from "../constants/content";
+import content from "../constants/content";
 import { scoreAdjective } from "../util";
 
 export const useStyles = makeStyles((theme) => ({

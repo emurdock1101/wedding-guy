@@ -1,4 +1,4 @@
-export const content: any = {
+const content: any = {
   interpretations: {
     Openness:
       "Openness is the primary dimension of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model. This factor measures interest in novelty, art, literature, abstract thinking, philosophy as well as sensitivity to aesthetic emotions and beauty. People with moderately low levels of openness to experience tend to be more conventional, conservative people. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
@@ -31,4 +31,43 @@ export const content: any = {
     Volatility:
       "Politeness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
   },
+  faqs: [
+    {
+      title: "Which Big 5 trait is the best?",
+      part1:
+        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+      part2:
+        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+    },
+    {
+      title: "Can I change my personality?",
+      part1:
+        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+      part2:
+        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+    },
+    {
+      title: "What is the price for a single session?",
+      part1:
+        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+      part2:
+        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+    },
+    {
+      title: "What is psychological counseling?",
+      part1:
+        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+      part2:
+        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+    },
+    {
+      title: "How is my score calculated?",
+      part1:
+        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+      part2:
+        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+    },
+  ],
 };
+
+export default content;
