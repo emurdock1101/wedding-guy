@@ -1,6 +1,7 @@
 import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
+import About from "./views/About";
 
 import Contact from "./views/Contact";
 import FAQs from "./views/Faqs";
@@ -18,6 +19,8 @@ import { theme } from "./theme";
 function App() {
   return (
     // add 404 page here
+
+    // pretest, results, submit, 404 are temporary
     <div>
       <ThemeProvider theme={theme}>
         <Routes>
@@ -30,6 +33,7 @@ function App() {
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/submit" element={<Submit prevStep={() => {}} nextStep={() => {}} />} />
           <Route path="/pretest" element={<PreTest nextStep={() => {}} />} />
+          <Route path="/about" element={<About />} />
           <Route path="/404" element={<Fourohfour />} />
         </Routes>
       </ThemeProvider>

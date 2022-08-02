@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: 60,
   },
   paper: {
-    padding: 20,
+    padding: 40,
     color: theme.palette.info.main,
   },
 }));

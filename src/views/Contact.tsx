@@ -28,7 +28,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       },
       color: theme.palette.info.main,
       justifyItems: "middle",
-      width: 350,
+      width: 310,
     },
     reachOut: {
       marginTop: 20,
@@ -45,7 +45,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       marginTop: 60,
     },
     paper: {
-      padding: 20,
+      padding: 40,
       color: theme.palette.info.main,
     },
   }));
@@ -73,8 +73,8 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           <Paper elevation={2} className={styles.paper}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>
-              Ask about the Personality + Big 5 test or our data-driven psychological counseling
-              services.{" "}
+              Ask about the Personality+ Big 5 10 Aspects test or our data-driven psychological
+              counseling services.{" "}
             </Typography>
             <a href="tel:15409999898" className={styles.phoneLink}>
               <Phone className={styles.phone} />
@@ -90,13 +90,13 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               </Typography>
             </a>
             <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com">
+              <a href="https://www.facebook.com" target="_blank">
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://www.instagram.com">
+              <a href="https://www.instagram.com" target="_blank">
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://www.twitter.com">
+              <a href="https://www.twitter.com" target="_blank">
                 <Twitter className={styles.facebook} />
               </a>
             </div>

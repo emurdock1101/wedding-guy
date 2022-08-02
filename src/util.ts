@@ -61,6 +61,10 @@ export const getPercentiles = (): Map<string, number> => {
     }
   }
 
+  if (sessionStorage.length > 0) {
+    sessionStorage.clear();
+  }
+
   return getPercentilesFromAverages(averages);
 };
 

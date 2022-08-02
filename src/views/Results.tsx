@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import HeaderDrawer from "../components/HeaderDrawer";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
-import PageShell from "../components/PageShell"
+import PageShell from "../components/PageShell";
 import ReactApexChart from "react-apexcharts";
 import ResultTable from "../components/ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
@@ -42,17 +42,12 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     titlePaper: {
       backgroundColor: "#111840", // navy blue
     },
-    pdf: {
-      width: "100%",
-      height: "50px"
-    },
-    pdfPaper: {
-      marginTop: 10,
-      marginBottom: 5,
-    },
     interpretationTitle: {
-      marginTop: 80
-    }
+      marginTop: 80,
+    },
+    pageShell: {
+      marginTop: 20,
+    },
   }));
 
   const styles = useStyles();
@@ -111,14 +106,15 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   ];
 
   return (
-    <div id="resultsPdf">
-       <PageShell pageTitle="Results and Explanation" />
-      <Grid container spacing={6} justify="center" alignItems="flex-start">
-        <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.pdfPaper}>
-            <Button className={styles.pdf}>Click to download a PDF of this page</Button>
-          </Paper>
-        </Grid>
+    <div>
+      <PageShell pageTitle="Results and Explanation" />
+      <Grid
+        container
+        spacing={6}
+        justify="center"
+        alignItems="flex-start"
+        className={styles.pageShell}
+      >
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation}>
             <Typography variant="subtitle1" className={styles.info}>
@@ -155,7 +151,10 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.titlePaper}>
-            <Typography variant="h3" className={`${styles.subheading} ${styles.interpretationTitle}`}>
+            <Typography
+              variant="h3"
+              className={`${styles.subheading} ${styles.interpretationTitle}`}
+            >
               Interpretation of Results
             </Typography>
           </Paper>

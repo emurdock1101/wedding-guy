@@ -117,6 +117,9 @@ const HeaderDrawer = () => {
     setOpen(false);
   };
   const handleNav = (path: string) => {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    }
     navigate(path, { replace: true });
   };
   const styles = useStyles();

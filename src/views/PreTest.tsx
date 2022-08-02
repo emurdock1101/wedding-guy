@@ -23,6 +23,9 @@ interface PreTestProps {
 const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
   const navigate = useNavigate();
   const nav = (path: string) => {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    }
     navigate(path);
   };
   const styles = useStyles();

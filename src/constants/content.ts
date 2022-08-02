@@ -68,6 +68,20 @@ const content: any = {
         "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
     },
   ],
+  about: {
+    elliot: {
+      part1:
+        "Elliot Murdock is a software engineer who received his bachelors in Computer Science from the University of Virginia. He likes to dance and eat carrots.",
+      part2:
+        "This screen is visible only in development. It will not appear if the app crashes in production. Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.",
+    },
+    patrick: {
+      part1:
+        "Patrick Knicely is a man who received his masters in Psych from the University of Radford. He likes to dance and eat beans all the time.",
+      part2:
+        "This screen is visible only in development. It will not appear if the app crashes in production. Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.",
+    },
+  },
 };
 
 export default content;
