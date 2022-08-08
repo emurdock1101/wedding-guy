@@ -42,7 +42,7 @@ export const categoryData: Big5Data[] = [
     isOcean: false,
   },
   {
-    category: Aspect.Industriousness,
+    category: Aspect.Orderliness,
     categoryAbbr: "Ord.",
     isOcean: false,
   },

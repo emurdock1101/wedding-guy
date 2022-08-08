@@ -1,7 +1,7 @@
 import { Grid, Typography, makeStyles } from "@material-ui/core";
 
 import Percent from "../components/Percent";
-import content from "../constants/content";
+import interpretations from "../constants/interpretations";
 import { scoreAdjective } from "../util";
 
 export const useStyles = makeStyles((theme) => ({
@@ -38,6 +38,7 @@ interface InterpretationsProps {
   aspect2Score: number;
   aspect2Name: string;
   hex: string;
+  index: number;
 }
 
 const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsProps) => {
@@ -52,12 +53,23 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
         <Grid item xs={3} sm={2} className={styles.oceanScoreRow}>
           <Percent progress={props.oceanScore} hex={props.hex} size={90} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={10}>
           <Typography variant="subtitle1">
             <strong>
-              Your {props.oceanName} score is {scoreAdjective(props.oceanScore)}.
-            </strong>{" "}
-            {content["interpretations"][props.oceanName]}
+              {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part1"]}
+            </strong>
+          </Typography>
+          <br></br>
+          <Typography variant="subtitle1">
+            {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part2"]}
+          </Typography>
+          <br></br>
+          <Typography variant="subtitle1">
+            {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part3"]}
+          </Typography>
+          <br></br>
+          <Typography variant="subtitle1">
+            {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part4"]}
           </Typography>
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
@@ -72,7 +84,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
         </Grid>
         <Grid item xs={12}>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {content["interpretations"][props.aspect1Name === "Aesthetic Openness" ? "AestheticOpenness" : props.aspect1Name]}
+            {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part1"]}
           </Typography>
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
@@ -82,12 +94,12 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
         </Grid>
         <Grid item xs={3} sm={2} className={styles.aspectScoreRow}>
           <div className={styles.percent}>
-          <Percent progress={props.aspect2Score} hex={props.hex} size={60} />
+            <Percent progress={props.aspect2Score} hex={props.hex} size={60} />
           </div>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {content["interpretations"][props.aspect2Name]}
+            {interpretations[props.index]["part1"]}
           </Typography>
         </Grid>
       </Grid>

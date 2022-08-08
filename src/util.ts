@@ -10,12 +10,12 @@ import { questionData } from "./constants/questionData";
  */
 export const getPercentiles = (): Map<string, number> => {
   if (sessionStorage.length !== questionData.length) {
-    console.log(
-      "Answer list isn't correct length. storageLength: " +
-        sessionStorage.length +
-        ", questionDataLength: " +
-        questionData.length
-    );
+    // console.log(
+    //   "Answer list isn't correct length. storageLength: " +
+    //     sessionStorage.length +
+    //     ", questionDataLength: " +
+    //     questionData.length
+    // );
   }
 
   const averages: Map<string, [number, number]> = new Map();
@@ -87,7 +87,7 @@ export const getPercentilesFromAverages = (
     currStdDev = escsMap.get(key)?.stdDev;
 
     if (currMean && currStdDev) {
-      console.log(cumulativeStdNormalProbability(zScore(value[1], currMean, currStdDev)));
+      //console.log(cumulativeStdNormalProbability(zScore(value[1], currMean, currStdDev)));
 
       currFormattedPerc = Math.round(
         cumulativeStdNormalProbability(zScore(value[1], currMean, currStdDev)) * 100
@@ -96,14 +96,14 @@ export const getPercentilesFromAverages = (
       if (currFormattedPerc <= 0) currFormattedPerc = 1;
       else if (currFormattedPerc >= 100) currFormattedPerc = 99;
 
-      console.log("\n");
-      console.log(key);
-      console.log("population mean: " + currMean);
-      console.log("population std dev: " + currStdDev);
-      console.log("averaged answer score: " + value[1]);
-      console.log("answer count: " + value[0]);
-      console.log("z score" + zScore(value[1], currMean, currStdDev));
-      console.log("formatted percentage: " + currFormattedPerc);
+      // console.log("\n");
+      // console.log(key);
+      // console.log("population mean: " + currMean);
+      // console.log("population std dev: " + currStdDev);
+      // console.log("averaged answer score: " + value[1]);
+      // console.log("answer count: " + value[0]);
+      // console.log("z score" + zScore(value[1], currMean, currStdDev));
+      // console.log("formatted percentage: " + currFormattedPerc);
 
       percentileMap.set(key, currFormattedPerc);
     } else {
@@ -123,21 +123,20 @@ export const getPercentilesFromAverages = (
  * @returns
  */
 export const scoreAdjective = (score: number): string => {
-  const veryHigh: number = 80;
-  const high: number = 60;
-  const moderate: number = 40;
-  const low: number = 20;
-
-  if (score > 90) {
-    return "very high";
-  } else if (score > high && score < veryHigh) {
-    return "very high";
-  } else if (score > moderate && score < high) {
-    return "moderate";
-  } else if (score > low && score < moderate) {
+  if (score >= 90) {
+    return "veryHigh";
+  } else if (score >= 75 && score < 90) {
+    return "high";
+  } else if (score >= 60 && score < 75) {
+    return "modHigh";
+  } else if (score >= 40 && score < 60) {
+    return "average";
+  } else if (score >= 25 && score < 40) {
+    return "modLow";
+  } else if (score >= 10 && score < 25) {
     return "low";
-  } else if (score < low) {
-    return "very low";
+  } else if (score < 10) {
+    return "veryLow";
   }
 
   return "error";

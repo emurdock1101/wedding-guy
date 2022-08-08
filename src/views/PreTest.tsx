@@ -51,7 +51,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
               </Typography>
               <br></br>
               <Typography variant="h6">
-                5. Locate to a quiet area with no other people around.
+                4. Locate to a quiet area with no other people around.
               </Typography>
               <br></br>
               <br></br>

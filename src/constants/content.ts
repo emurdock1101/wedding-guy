@@ -1,36 +1,63 @@
+import { Aspect, Ocean } from "./schema";
 const content: any = {
-  interpretations: {
-    Openness:
-      "Openness is the primary dimension of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model. This factor measures interest in novelty, art, literature, abstract thinking, philosophy as well as sensitivity to aesthetic emotions and beauty. People with moderately low levels of openness to experience tend to be more conventional, conservative people. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
-    AestheticOpenness:
-      "Aesthetic Openness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Intellect:
-      "Intellect is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Conscientiousness:
-      "Conscientiousness is the primary dimension of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model. This factor measures interest in novelty, art, literature, abstract thinking, philosophy as well as sensitivity to aesthetic emotions and beauty. People with moderately low levels of openness to experience tend to be more conventional, conservative people. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
-    Industriousness:
-      "Industriousness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Orderliness:
-      "Orderliness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Extraversion:
-      "Extraversion is the primary dimension of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model. This factor measures interest in novelty, art, literature, abstract thinking, philosophy as well as sensitivity to aesthetic emotions and beauty. People with moderately low levels of openness to experience tend to be more conventional, conservative people. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
-    Enthusiasm:
-      "Enthusiasm is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Assertiveness:
-      "Assertiveness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Agreeableness:
-      "Agreeableness is the primary dimension of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model. This factor measures interest in novelty, art, literature, abstract thinking, philosophy as well as sensitivity to aesthetic emotions and beauty. People with moderately low levels of openness to experience tend to be more conventional, conservative people. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
-    Compassion:
-      "Compassion is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Politeness:
-      "Politeness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Neuroticism:
-      "Agreeableness is the primary dimension of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model. This factor measures interest in novelty, art, literature, abstract thinking, philosophy as well as sensitivity to aesthetic emotions and beauty. People with moderately low levels of openness to experience tend to be more conventional, conservative people. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
-    Withdrawal:
-      "Compassion is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-    Volatility:
-      "Politeness is the primary aspect of creativity, artistic interest and intelligence (particularly verbal intelligence) in the Big Five personality trait scientific model.",
-  },
+  resultsAccordion: [
+    {
+      category: Ocean.Openness,
+      part1: "",
+      part2: "",
+      part3: "",
+      part4: "",
+      part5: "",
+      part6: "",
+      color: "#ED5362",
+    },
+    {
+      category: Ocean.Conscientiousness,
+      part1: "",
+      part2: "",
+      part3: "",
+      part4: "",
+      part5: "",
+      part6: "",
+      color: "#9A338E",
+    },
+    {
+      category: Ocean.Extraversion,
+      part1: "",
+      part2: "",
+      part3: "",
+      part4: "",
+      part5: "",
+      part6: "",
+      color: "#3A81CD",
+    },
+    {
+      category: Ocean.Agreeableness,
+      part1:
+        "Agreeableness is the dimension of personality that highlights interpersonal interaction or the tendency to help and cooperate with others. It can be viewed as the trait that helps balance individual interest against the interest of other people.",
+      part2:
+        "Agreeable people desire connection and want to be liked by others, and they will be more likely to inhibit hostile or aggressive impulses. Women on average are higher in agreeableness than men.",
+      part3:
+        "Example descriptors of agreeableness: considerate, selfless, generous, compliant, gentle, kind, trusting, and protective of others. Note: The higher the agreeableness, the more likely conflict will be avoided, specifically when agreeable people fail to express what they are feeling or thinking for the benefit of the other person’s feelings.",
+      part4:
+        "Example descriptors for disagreeableness: critical, blunt, cynical, stubborn, aggressive, rude, push limits, or competitive or even manipulative. Note: The lower the agreeableness, the more likely conflict will be initiated so that what is being felt or thought can be expressed for the benefit of the individual’s feelings.",
+      part5:
+        "Professionally, agreeable people are more likely to enter helping careers (doctors, nurse, teacher, etc.), while disagreeable people are more interested in objects with a focus on technology, engineering, or trade careers.",
+      part6:
+        "Agreeableness has 2 aspects: compassion (focus on others’ needs and problems) and politeness (respect for authority and social norms).",
+      color: "#00C9B7",
+    },
+    {
+      category: Ocean.Neuroticism,
+      part1: "",
+      part2: "",
+      part3: "",
+      part4: "",
+      part5: "",
+      part6: "",
+      color: "#344B47",
+    },
+  ],
   faqs: [
     {
       title: "Which Big 5 trait is the best?",

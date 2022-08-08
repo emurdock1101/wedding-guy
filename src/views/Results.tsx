@@ -169,6 +169,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect2Name={Aspect.Intellect}
               aspect2Score={Intellect}
               hex={theme.palette.error.main}
+              index={0}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations}>
@@ -180,6 +181,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect2Name={Aspect.Orderliness}
               aspect2Score={Orderliness}
               hex={theme.palette.warning.main}
+              index={1}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations}>
@@ -191,6 +193,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect2Name={Aspect.Assertiveness}
               aspect2Score={Assertiveness}
               hex={theme.palette.success.main}
+              index={2}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations}>
@@ -202,6 +205,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect2Name={Aspect.Politeness}
               aspect2Score={Politeness}
               hex={theme.palette.primary.main}
+              index={3}
             />
           </Paper>
           <Paper elevation={2}>
@@ -213,6 +217,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect2Name={Aspect.Volatility}
               aspect2Score={Volatility}
               hex={theme.palette.secondary.main}
+              index={4}
             />
           </Paper>
         </Grid>
