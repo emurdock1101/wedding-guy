@@ -116,7 +116,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         className={styles.pageShell}
       >
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2} className={styles.explanation}>
+          <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.info}>
               Your results are shown in the table and in the bar charts below.{" "}
             </Typography>
@@ -140,17 +140,17 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           <ResultTable percentiles={percentiles} />
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2}>
+          <Paper elevation={2} style={{ borderRadius: "10px" }}>
             <ReactApexChart options={oceanOptions} series={oceanSeries} type="bar" height={550} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2}>
+          <Paper elevation={2} style={{ borderRadius: "10px" }}>
             <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.titlePaper}>
+          <Paper elevation={2} className={styles.titlePaper} style={{ borderRadius: "10px" }}>
             <Typography
               variant="h3"
               className={`${styles.subheading} ${styles.interpretationTitle}`}
@@ -160,7 +160,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Openness}
               oceanScore={Openness}
@@ -172,7 +172,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={0}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Conscientiousness}
               oceanScore={Conscientiousness}
@@ -184,7 +184,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={1}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Extraversion}
               oceanScore={Extraversion}
@@ -196,7 +196,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={2}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Agreeableness}
               oceanScore={Agreeableness}
@@ -208,7 +208,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={3}
             />
           </Paper>
-          <Paper elevation={2}>
+          <Paper elevation={2} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Neuroticism}
               oceanScore={Neuroticism}

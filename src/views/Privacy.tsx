@@ -28,7 +28,7 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
       <PageShell pageTitle="Privacy" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={11} lg={10} className={styles.pageShell}>
-          <Paper elevation={2} className={styles.paper}>
+          <Paper elevation={2} className={styles.paper} style={{borderRadius:"10px"}}>
             <Typography variant="subtitle1" className={styles.top}>
               Part of the information you share on our website is stored and used. We collect test
               results, gender, and time of test submission. Your browser info, IP address, and

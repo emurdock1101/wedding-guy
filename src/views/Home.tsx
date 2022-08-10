@@ -3,6 +3,7 @@ import { Box, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 import HeaderDrawer from "../components/HeaderDrawer";
 import eyeOpen from "../images/eyeopen.mp4";
 import glowface from "../images/glowface.png";
+import rubix from "../images/rubix.jpeg";
 import { useNavigate } from "react-router-dom";
 
 export const useStyles = makeStyles((theme) => ({
@@ -24,21 +25,23 @@ export const useStyles = makeStyles((theme) => ({
   plus: {
     color: theme.palette.primary.main,
   },
-  centered: {
+  rightSide: {
     position: "absolute",
     top: "30%",
-    left: "50%",
+    left: "80%",
     transform: "translate(-50%, -50%)",
-    textAlign: "center",
+    textAlign: "right",
+    // border: "white solid 1px",
+    minWidth: 600
   },
-  smallTitle: {
+  mainTitle: {
     color: theme.palette.common.white,
-    fontSize: "50px",
     marginBottom: "30px",
+    fontSize: "3vw"
   },
-  vidText: {
+  secondTitle: {
     color: theme.palette.common.white,
-    fontSize: "100px",
+    marginBottom: "30px",
   },
   video: {
     height: "700px",
@@ -54,6 +57,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "320px",
     height: "60px",
     borderRadius: "30px",
+    marginTop: "30px"
   },
   p: {
     textAlign: "center",
@@ -99,18 +103,22 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
         <HeaderDrawer />
       </Grid>
       <Grid item xs={12} className={styles.jumbotron}>
-        <div className={styles.centered}>
-          <Typography variant="h4" className={styles.smallTitle}>
+        <div className={styles.rightSide}>
+          <Typography variant="h1" className={styles.mainTitle}>
             Personality <span className={styles.plus}>+</span>
           </Typography>
-          <Typography variant="h1" className={styles.vidText}>
-            Discover Yourself for a better You
+          <Typography variant="h3" className={styles.secondTitle}>
+            Personality Assessment
           </Typography>
+          <Button variant="contained" onClick={startQuiz} className={styles.buyNowButton}>
+            BUY NOW
+          </Button>
         </div>
-        <video loop autoPlay muted className={styles.video}>
+        {/* <video loop autoPlay muted className={styles.video}>
           <source src={eyeOpen} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
+        <img src={rubix} className={styles.video}></img>
       </Grid>
       <Grid item xs={12} md={4} lg={4}>
         <div>
@@ -130,13 +138,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             </Typography>
           </div>
 
-          <Button
-            variant="contained"
-            onClick={startQuiz}
-            className={styles.buyNowButton}
-          >
-            TAKE QUIZ
-          </Button>
+          
         </div>
       </Grid>
     </Grid>

@@ -76,7 +76,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         {props.questions.map((question) => {
           return (
             <Grid item xs={12} className={styles.row}>
-              <Paper elevation={2} className={styles.paper}>
+              <Paper elevation={2} className={styles.paper} style={{borderRadius:"10px"}}>
                 <QuestionComp question={question} countAnswer={countAnswer} />
               </Paper>
             </Grid>

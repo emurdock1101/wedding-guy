@@ -46,7 +46,7 @@ const PageShell: React.FC<PageShellProps> = (props: PageShellProps) => {
         <HeaderDrawer />
       </Grid>
       <Grid item xs={12} sm={11} lg={10}>
-        <Paper elevation={2} className={styles.titlePaper}>
+        <Paper elevation={2} className={styles.titlePaper} style={{borderRadius:"10px"}}>
           <Typography variant="h3" className={styles.subheading}>
             {props.pageTitle}
           </Typography>
