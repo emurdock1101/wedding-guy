@@ -9,7 +9,7 @@ interface ContactProps {}
 const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
-      fontSize: isMobile ? 60 : 100,
+      fontSize: isMobile ? 60 : 80,
       border: "1x solid red",
       "&:hover": {
         color: theme.palette.primary.main,
@@ -47,6 +47,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     paper: {
       padding: 40,
       color: theme.palette.info.main,
+      borderLeft: `6px solid ${theme.palette.primary.main}`,
     },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
@@ -70,7 +71,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       <PageShell pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={11} lg={10} className={styles.pageShell}>
-          <Paper elevation={2} className={styles.paper} style={{borderRadius:"10px"}}>
+          <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>
               Ask about the Personality+ Big 5 10 Aspects test or our data-driven psychological

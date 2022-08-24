@@ -7,14 +7,9 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import ChevronRightRounded from "@material-ui/icons/ChevronRightRounded";
 import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ShareIcon from "@mui/icons-material/Share";
 import Typography from "@mui/material/Typography";
 import content from "../constants/content";
 import elliot from "../images/elliot.jpeg";
@@ -64,12 +59,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: -10,
     marginTop: 60,
   },
-  paper: {
-    padding: 20,
-    color: theme.palette.info.main,
-  },
   aboutCard: {
-    // border: "1px solid green",
     margin: 60,
   },
   part1: {
@@ -158,7 +148,7 @@ const AboutCard = (props: AboutCardProps) => {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon fontSize="large" className={styles.icon}/>
+          <ExpandMoreIcon fontSize="large" className={styles.icon} />
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

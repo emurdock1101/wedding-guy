@@ -16,6 +16,7 @@ export const useStyles = makeStyles((theme) => ({
   paper: {
     padding: 40,
     color: theme.palette.info.main,
+    borderLeft: `6px solid ${theme.palette.primary.main}`
   },
 }));
 
