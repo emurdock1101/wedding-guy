@@ -4,11 +4,7 @@ import PageShell from "../components/PageShell";
 import { useNavigate } from "react-router-dom";
 
 export const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: 15,
-  },
   info: {
-    marginTop: 80,
     padding: 15,
     textAlign: "center",
   },
@@ -27,7 +23,7 @@ const Error: React.FC<ErrorProps> = (props: ErrorProps) => {
   };
   return (
     <div>
-      <Grid container justify="center" alignItems="center" className={styles.container}>
+      <Grid container justify="center" alignItems="center">
         <PageShell pageTitle="404 Error" />
 
         <Grid item xs={10} sm={8} className={styles.info}>

@@ -1,12 +1,13 @@
 import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
-import About from "./views/About";
 
+import About from "./views/About";
 import Contact from "./views/Contact";
 import FAQs from "./views/Faqs";
 import Fourohfour from "./views/Error";
 import Home from "./views/Home";
+import Loading from "./components/Loading";
 import PageShell from "./components/PageShell";
 import PreTest from "./views/PreTest";
 import Privacy from "./views/Privacy";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/pretest" element={<PreTest nextStep={() => {}} />} />
           <Route path="/about" element={<About />} />
           <Route path="/404" element={<Fourohfour />} />
+          <Route path="/loading" element={<Loading />} />
         </Routes>
       </ThemeProvider>
     </div>

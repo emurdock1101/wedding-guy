@@ -9,16 +9,13 @@ interface ContactProps {}
 const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
-      fontSize: isMobile ? 60 : 100,
+      fontSize: isMobile ? 60 : 80,
       border: "1x solid red",
       "&:hover": {
         color: theme.palette.primary.main,
       },
       marginRight: isMobile ? 30 : 60,
       color: theme.palette.info.main,
-    },
-    pageShell: {
-      marginTop: 60,
     },
     phoneLink: {
       marginTop: 40,
@@ -47,6 +44,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     paper: {
       padding: 40,
       color: theme.palette.info.main,
+      borderLeft: `6px solid #111840`,
     },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
@@ -69,8 +67,8 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     <div>
       <PageShell pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} className={styles.pageShell}>
-          <Paper elevation={2} className={styles.paper}>
+        <Grid item xs={12} sm={11} lg={10}>
+          <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>
               Ask about the Personality+ Big 5 10 Aspects test or our data-driven psychological

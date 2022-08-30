@@ -11,7 +11,7 @@ export default function FaqsAccordion() {
     <div>
       {content.faqs.map((question: any) => {
         return (
-          <Accordion style={{ borderLeft: `6px solid ${thm.palette.primary.main}` }}>
+          <Accordion style={{ borderLeft: `6px solid #111840` }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography sx={{ width: "80%", fontSize: 18 }}>{question.title}</Typography>
             </AccordionSummary>

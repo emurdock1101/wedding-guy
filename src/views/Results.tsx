@@ -2,6 +2,7 @@ import { Aspect, Ocean } from "../constants/schema";
 import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
+import Banner from "../components/Banner";
 import HeaderDrawer from "../components/HeaderDrawer";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
@@ -41,12 +42,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     },
     titlePaper: {
       backgroundColor: "#111840", // navy blue
+      minHeight: 200,
     },
     interpretationTitle: {
       marginTop: 80,
-    },
-    pageShell: {
-      marginTop: 20,
+      marginBottom: 80,
     },
   }));
 
@@ -108,17 +108,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   return (
     <div>
       <PageShell pageTitle="Results and Explanation" />
-      <Grid
-        container
-        spacing={6}
-        justify="center"
-        alignItems="flex-start"
-        className={styles.pageShell}
-      >
+      <Grid container spacing={6} justify="center" alignItems="flex-start">
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2} className={styles.explanation}>
+          <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.info}>
-              Your results are shown in the table and in the bar charts below.{" "}
+              Your results are shown in the table and in the bar charts below.
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               The Big 5 traits are Openness, Conscientiousness, Extraversion, Agreeableness, and
@@ -140,27 +134,20 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           <ResultTable percentiles={percentiles} />
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2}>
+          <Paper elevation={2} style={{ borderRadius: "10px" }}>
             <ReactApexChart options={oceanOptions} series={oceanSeries} type="bar" height={550} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2}>
+          <Paper elevation={2} style={{ borderRadius: "10px" }}>
             <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.titlePaper}>
-            <Typography
-              variant="h3"
-              className={`${styles.subheading} ${styles.interpretationTitle}`}
-            >
-              Interpretation of Results
-            </Typography>
-          </Paper>
+        <Grid item xs={12} className={styles.interpretationTitle}>
+          <Banner pageTitle="Interpretation of Results" />
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Openness}
               oceanScore={Openness}
@@ -172,7 +159,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={0}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Conscientiousness}
               oceanScore={Conscientiousness}
@@ -184,7 +171,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={1}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Extraversion}
               oceanScore={Extraversion}
@@ -196,7 +183,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={2}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations}>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Agreeableness}
               oceanScore={Agreeableness}
@@ -208,7 +195,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={3}
             />
           </Paper>
-          <Paper elevation={2}>
+          <Paper elevation={2} style={{ borderRadius: "10px" }}>
             <Interpretations
               oceanName={Ocean.Neuroticism}
               oceanScore={Neuroticism}
