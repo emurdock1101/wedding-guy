@@ -48,9 +48,6 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       marginTop: 80,
       marginBottom: 80,
     },
-    container: {
-      padding:0
-    }
   }));
 
   const styles = useStyles();
@@ -111,11 +108,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   return (
     <div>
       <PageShell pageTitle="Results and Explanation" />
-      <Grid container spacing={6} justify="center" alignItems="flex-start" className={styles.container}>
+      <Grid container spacing={6} justify="center" alignItems="flex-start">
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.info}>
-              Your results are shown in the table and in the bar charts below.{" "}
+              Your results are shown in the table and in the bar charts below.
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               The Big 5 traits are Openness, Conscientiousness, Extraversion, Agreeableness, and
@@ -148,7 +145,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         </Grid>
         <Grid item xs={12} className={styles.interpretationTitle}>
           <Banner pageTitle="Interpretation of Results" />
-          </Grid>
+        </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
