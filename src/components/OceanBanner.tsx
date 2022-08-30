@@ -35,6 +35,7 @@ const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
       marginLeft: 30,
       fontWeight: 300,
       font: "Monaco",
+      fontSize: isMobile ? "35px" : "45px",
       // border: "1px solid red",
     },
     vertical: {
@@ -64,7 +65,7 @@ const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
     <Box className={styles.box}>
       <div className={styles.row}>
         <Divider orientation="vertical" flexItem className={styles.vertical} />
-        <Typography variant="h2" className={styles.title}>
+        <Typography className={styles.title}>
           {props.ocean}
         </Typography>
         {!isMobile && <Divider orientation="vertical" flexItem className={styles.vertical2} />}

@@ -242,6 +242,42 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             hexLight={theme.palette.error.light}
           />
         </Grid>
+        <Grid item xs={12}>
+          <OceanBanner
+            ocean={Ocean.Conscientiousness}
+            aspect1={Aspect.Industriousness}
+            aspect2={Aspect.Orderliness}
+            hexMain={theme.palette.warning.main}
+            hexLight={theme.palette.warning.light}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <OceanBanner
+            ocean={Ocean.Extraversion}
+            aspect1={Aspect.Enthusiasm}
+            aspect2={Aspect.Assertiveness}
+            hexMain={theme.palette.success.main}
+            hexLight={theme.palette.success.light}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <OceanBanner
+            ocean={Ocean.Extraversion}
+            aspect1={Aspect.Compassion}
+            aspect2={Aspect.Politeness}
+            hexMain={theme.palette.primary.main}
+            hexLight={theme.palette.primary.light}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <OceanBanner
+            ocean={Ocean.Neuroticism}
+            aspect1={Aspect.Withdrawal}
+            aspect2={Aspect.Volatility}
+            hexMain={theme.palette.secondary.main}
+            hexLight={theme.palette.secondary.light}
+          />
+        </Grid>
       </Grid>
     );
 };
