@@ -82,40 +82,48 @@ const content: any = {
   ],
   faqs: [
     {
-      title: "Which Big 5 trait is the best?",
+      title: "How was this test created?",
       part1:
-        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+        "This was test was formatted by using the work from Dr. Colling Deyoung and Dr. Jordan B Peterson and their research (see DeYoung, C.G., Quilty, L.C. & Peterson, J.B. Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93, 880-896.).",
       part2:
-        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+        "The goal of Personality+ was to offer a more streamlined personanlity test with results that could be more clearnly understood and implemented. The interpretations of the test have come from dilgent rearch, study, and clinical practice. If you are curious about diving into your own research, we would point you the Oxford Handbook of the Five Factor Model, Dr C.D. Young and Dr. J.B. Peterson's published reserach, or a trusted mental health therapis.",
     },
     {
-      title: "Can I change my personality?",
+      title: "Aren't their other free personality tests?",
       part1:
-        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+        "The Big Five Aspect Scale in its original paper/pencil format is in the public domain, and there are other free versions with reports available elsewhere. However, this test was created so that the results and reports generate after the test could be cost effective, clearer, more precise, more user friendly, and most importantly, useable. By useable, we mean self-reflections, connecting with mental health therapy, and implementing practical changes in your life.",
       part2:
-        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+        "Our research team has created reports that lay out both individual strengths and weaknesses comprehensively and carefully. Thus, you are not enrolling in this program for the questions, but for the information generated about your answers.",
     },
     {
-      title: "What is the price for a single session?",
+      title: "Why can I only take the test a single time?",
       part1:
-        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+        "A genuinely accurate personality test must be taken (and scored) in a standardized manner so that you can take the test like those of the comparison group as possible. Furthermore, if you take the test, and then look at your results, and then re-take it, your second results will be subject to biases introduced by your now-expanded knowledge of your personality. That means you will change your responses, likely distorting your answers.",
       part2:
-        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+        "",
     },
     {
-      title: "What is psychological counseling?",
+      title: "What can I do to improve my personality?",
       part1:
-        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+        "Personality+ is unique in that it offers multiple options to improve your personality. You can schedule a one time review of the test results or schedule weekly or monthly sessions with someone from Personality+",
       part2:
-        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+        "",
     },
     {
-      title: "How is my score calculated?",
+      title: "What if I want to see if my personality has changed?",
       part1:
-        "None of the Big 5 traits are inherently good or bad. Being high or low in any category comes with strengths and weaknesses.",
+        "Personality is quite stable. If you have done a lot of work to change a trait or an aspect, there is, however, the possibility of change and improvement. However, this is a process that will occur over months or years, not days or weeks. Thus, it is best not to take the test again soon. Do what you need or want to do to change your personality, and then try the test again in six months or a year.",
       part2:
-        "For example: being high in neurotocism is very helpful for self-preservation. However, it is harmful for making friends.",
+        "",
     },
+    {
+      title: "What if I disagree with the results, or feel that they do not accurately represent my personality?",
+      part1:
+        "First, remember that this is a self-report test, scored comparatively, using statistical processes. The manner in which you describe yourself has been compared to the manner in which many other people described themselves. If you received results that you do not regard as accurate (and this is more likely to be the case when the report describes more negative personality attributes) it is possible that you were too hard on yourself when you answered the questions. This is more probable if you are higher, rather than lower, in trait neuroticism (as people higher in neuroticism are more self-critical), or if you were in a bad mood when you took the test, or if you are depressed, or hungry or ill.",
+      part2:
+        "Second, remember that the traits and aspects have to be considered in combination, rather than singly. So, for example, you might be very or extremely high in Agreeableness. You therefore received feedback on the report stating that you have a hard time standing up for yourself, and are generally more concerned with the feelings and desires of other people. However, if you are also high in assertiveness (an aspect of Extraversion) and/or low in Neuroticism then you are more likely to say what you want and put your needs forward than an agreeable person low in the former and high in the latter. If you are low in Conscientiousness, you are less likely to be successful in school and in managerial and administrative jobs—but if you have a high IQ and low Neuroticism then your chances of success rise substantially. Furthermore, you could be low in Conscientiousness but high in Openness to Experience and be successful as a creative person or entrepreneur.",
+    },
+    
   ],
   about: {
     elliot: {
@@ -126,9 +134,9 @@ const content: any = {
     },
     patrick: {
       part1:
-        "Patrick Knicely is a man who received his masters in Psych from the University of Radford. He likes to dance and eat beans all the time.",
+        "Patrick Knicely has a B.A from Roaonke College and a M.S. from Radford University",
       part2:
-        "This screen is visible only in development. It will not appear if the app crashes in production. Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.",
+        "He is a clinical mental health threapist and clinical consultant for inpatient and ambulatory healthcare settings.",
     },
   },
 };
