@@ -63,7 +63,7 @@ const interpretations: any = [
         part5: "Women are higher in openness to creativity than men. "
       },
       low: {
-        part1: "You are low in opennesst o creativity, which means you are not drawn to beauty, art, or creative endeavors and may find those types of activities to be wastes of time.",
+        part1: "You are low in opennesst to creativity, which means you are not drawn to beauty, art, or creative endeavors and may find those types of activities to be wastes of time.",
         part2: "Those low in creativity are not driven to find a creative ability or express it; they will also not be negatively affected by this.  They are rarely affected by the aesthetic power of color and architecture. They are not collectors, and very rarely pursue it passionately. They are less imaginative, more rarely daydream, and reflect less often than average. If they enjoy music or other art forms, their taste tends toward the conventional and popular. They are less often musical or artistic themselves and do not become immersed in a book, or a movie, or in their own thoughts.",
         part3: "People low in creativity are stable and conventional in their life choices, and for this reason will do better at careers that are of singular focus with less complexity.",
         part4: "Note: The lower the creativity, the more practical or focused they may be (especially if high in conscientiousness). This means that they will have an easier time finding a career they can stay in and an identity they are comfortable with.",
