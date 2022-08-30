@@ -112,18 +112,13 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.info}>
-              Your results are shown in the table and in the bar charts below.
+              Your results are shown in the table and in the bar charts below.{" "}
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
-              The Big 5 traits are Openness, Conscientiousness, Extraversion, Agreeableness, and
-              Compassion (think "OCEAN"). Each of the Big 5 traits is composed of two subcategories
-              known as the 10 Aspects.
+              Remember that each personality trait and aspect and your relative position with respect to them has advantages and disadvantages. It is for that reason that variation exists in the human population: there is a niche for each personality configuration. Much of what constitutes success in life is therefore the consequence of finding the place in relationships, work and personal commitment that corresponds to your unique personality structure. Good luck with your expanded self-understanding!
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
-              Each score is shown as a percentile of the population. This means a score of 60% shows
-              that you are higher in this trait than 60% of people. The meaning of each trait can be
-              different from the trait name's common use, so please be sure to read the
-              interpretation section below.
+            <Typography variant="subtitle1" className={styles.info}>  
+              Note also that if you find that the descriptions harsher than you might consider appropriate this may mean that you were more self-critical than necessary when completing the questions. Remember, the results are based on your own self-report, compared to that of others. This can occur if you were feeling temporarily or chronically unhappy or anxious, or hungry, angry or judgmental when you completed the questions.
             </Typography>
           </Paper>
           <div className={styles.accordion}>
