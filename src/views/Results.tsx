@@ -2,6 +2,7 @@ import { Aspect, Ocean } from "../constants/schema";
 import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
+import Banner from "../components/Banner";
 import HeaderDrawer from "../components/HeaderDrawer";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
@@ -41,13 +42,15 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     },
     titlePaper: {
       backgroundColor: "#111840", // navy blue
+      minHeight: 200,
     },
     interpretationTitle: {
       marginTop: 80,
+      marginBottom: 80,
     },
-    pageShell: {
-      marginTop: 20,
-    },
+    container: {
+      padding:0
+    }
   }));
 
   const styles = useStyles();
@@ -108,13 +111,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   return (
     <div>
       <PageShell pageTitle="Results and Explanation" />
-      <Grid
-        container
-        spacing={6}
-        justify="center"
-        alignItems="flex-start"
-        className={styles.pageShell}
-      >
+      <Grid container spacing={6} justify="center" alignItems="flex-start" className={styles.container}>
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.info}>
@@ -149,16 +146,9 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
             <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.titlePaper} style={{ borderRadius: "10px" }}>
-            <Typography
-              variant="h3"
-              className={`${styles.subheading} ${styles.interpretationTitle}`}
-            >
-              Interpretation of Results
-            </Typography>
-          </Paper>
-        </Grid>
+        <Grid item xs={12} className={styles.interpretationTitle}>
+          <Banner pageTitle="Interpretation of Results" />
+          </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations

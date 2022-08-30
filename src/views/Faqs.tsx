@@ -10,10 +10,7 @@ export const useStyles = makeStyles((theme) => ({
   info: {
     marginTop: 30,
     fontSize: 20,
-  },
-  pageShell: {
-    marginTop: 60,
-  },
+  }
 }));
 
 interface FAQsProps {}
@@ -24,7 +21,7 @@ const FAQs: React.FC<FAQsProps> = (props: FAQsProps) => {
     <div>
       <PageShell pageTitle="Frequently Asked Questions" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} className={styles.pageShell}>
+        <Grid item xs={12} sm={11} lg={10}>
           <FaqsAccordion />
         </Grid>
       </Grid>

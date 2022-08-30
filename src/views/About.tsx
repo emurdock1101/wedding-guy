@@ -8,9 +8,6 @@ interface AboutProps {}
 
 const About: React.FC<AboutProps> = (props: AboutProps) => {
   const useStyles = makeStyles((theme) => ({
-    pageShell: {
-      marginTop: 60,
-    },
     aboutCard: {
       // margin: 20,
     },
@@ -35,7 +32,7 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
     <div>
       <PageShell pageTitle="Our Team" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} className={styles.pageShell}>
+        <Grid item xs={12} sm={11} lg={10}>
           <Grid container spacing={10} justify="center">
             <Grid item xs={10} sm={9} md={5} className={styles.aboutCard}>
               <AboutCard member="elliot" />

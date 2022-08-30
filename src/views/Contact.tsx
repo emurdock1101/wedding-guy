@@ -17,9 +17,6 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       marginRight: isMobile ? 30 : 60,
       color: theme.palette.info.main,
     },
-    pageShell: {
-      marginTop: 60,
-    },
     phoneLink: {
       marginTop: 40,
       display: "flex",
@@ -47,7 +44,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     paper: {
       padding: 40,
       color: theme.palette.info.main,
-      borderLeft: `6px solid ${theme.palette.primary.main}`,
+      borderLeft: `6px solid #111840`,
     },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
@@ -70,7 +67,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     <div>
       <PageShell pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} className={styles.pageShell}>
+        <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>

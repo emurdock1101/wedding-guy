@@ -60,7 +60,7 @@ const AppBar = styled(MuiAppBar, {
     }),
     marginRight: drawerWidth,
   }),
-  backgroundColor: "#111840",
+  backgroundColor: "#F8F7F3",
 }));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -91,12 +91,17 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   homeButton: {
-    border: "white 1px solid",
-    color: "white",
-    "&:hover": {
-      border: `${theme.palette.primary.main} 1px solid`,
-      color: theme.palette.primary.main,
-    },
+    border: "#111840 1px solid",
+    color: "#111840",
+    backgroundColor: "#F8F7F3",
+    // "&:hover": {
+    //   backgroundColor: "#F8F7F3",
+    //   border: `${theme.palette.primary.main} 1px solid`,
+    //   color: theme.palette.primary.main,
+    // },
+  },
+  menuIcon: {
+    color: "#111840",
   },
 }));
 
@@ -147,7 +152,11 @@ const HeaderDrawer = () => {
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <div className={styles.home}>
-            <Button className={styles.homeButton} variant="outlined" onClick={() => handleNav("/")}>
+            <Button
+              className={styles.homeButton}
+              variant="contained"
+              onClick={() => handleNav("/")}
+            >
               {" "}
               Personality +
             </Button>
@@ -159,7 +168,7 @@ const HeaderDrawer = () => {
             onClick={handleDrawerOpen}
             sx={{ ...(open && { display: "none" }) }}
           >
-            <MenuIcon />
+            <MenuIcon className={styles.menuIcon} />
           </IconButton>
         </Toolbar>
       </AppBar>

@@ -111,7 +111,7 @@ const content: any = {
   },
   aboutTheTest: {
     results:
-      "You will receive information about your position along each of the Big Five dimensions of Extraversion (positive emotion), Neurotocism (negative emotion), Agreeableness (care for others), Conscientiousness (order and responsibility) and Openness (interest in ideas and aesthetics). you will also receive a percentage and detailed paragraphs about how that might affect your emotions, behavior, thinking, and desires.",
+      "You will receive information about your position along each of the Big Five dimensions of Extraversion (positive emotion), Neurotocism (negative emotion), Agreeableness (care for others), Conscientiousness (order and responsibility) and Openness (interest in ideas and aesthetics). You will also receive a percentage and detailed paragraphs about how that might affect your emotions, behavior, thinking, and desires.",
     background:
       "These questions are based on open-sourced research. This includes such notable personality researchers as Dr. Collin, DeYoung, Dr. Paul Costa, Jr., Dr. Jordan Peterson, Dr. Joshua Wilt, and Dr. Joshua Revelle.",
   },
