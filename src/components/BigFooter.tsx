@@ -12,7 +12,7 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
       fontSize: isMobile ? 30 : 40,
     },
     box: {
-      borderTop: "1px solid #111840"
+      borderTop: `1px solid ${theme.palette.info.main}`,
     },
     row: {
       display: "block",
@@ -26,7 +26,7 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
       },
       marginRight: 20,
       marginLeft: 20,
-      color: "#111840",
+      color: theme.palette.info.main,
     },
     socialMedia: {
       textAlign: "center",
@@ -35,8 +35,8 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
     },
     copyright: {
       padding: 20,
-      color: "#111840",
-      textAlign: isMobile ? "center" : "right"
+      color: theme.palette.info.main,
+      textAlign: isMobile ? "center" : "right",
     },
   }));
 

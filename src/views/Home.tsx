@@ -125,7 +125,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       fontSize: isMedium ? "40px" : "50px",
       fontWeight: 400,
       font: "Monaco",
-      paddingLeft: isMedium ? 20 : 0,
+      paddingLeft: (isMedium || isSmall) ? 20 : 0,
     },
     big5Desc: {
       font: "Monaco",

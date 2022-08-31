@@ -8,7 +8,7 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const useStyles = makeStyles((theme) => ({
     box: {
-      borderTop: "1px solid #111840",
+      borderTop: "1px solid lightGrey",
     },
     row: {
       display: "flex",
