@@ -248,7 +248,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q35",
-    text: "Want everything to be “just right.",
+    text: 'Want everything to be “just right"',
     reverse: false,
     aspect: Aspect.Orderliness,
     ocean: Ocean.Conscientiousness,

@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Box, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import Divider from "@mui/material/Divider";
@@ -7,42 +7,43 @@ interface OceanBannerProps {
   ocean: string;
   aspect1: string;
   aspect2: string;
-  hexMain: string;
-  hexLight: string;
+  hex: string;
 }
 
 const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 960);
   const useStyles = makeStyles((theme) => ({
     box: {
-      height: 150,
+      alignItems: "center",
     },
     aspects: {
       width: "20%",
       fontSize: 24,
-      marginLeft: 30,
+      marginLeft: 20,
       marginRight: 10,
-      // border: "1px solid blue",
+    },
+    aspectsBelow: {
+      width: "50%",
+      fontSize: 24,
+      marginLeft: 10,
+      marginRight: 10,
     },
     row: {
       display: "flex",
-      marginTop: 10,
-      padding: 20,
+      paddingRight: 20,
+      paddingLeft: isMobile ? 20 : 0,
       alignItems: "center",
+      marginTop: 40,
     },
     title: {
       width: "50%",
-      marginLeft: 30,
+      marginLeft: 20,
       fontWeight: 300,
       font: "Monaco",
-      fontSize: isMobile ? "35px" : "45px",
-      // border: "1px solid red",
+      fontSize: isMobile ? "35px" : "40px",
     },
     vertical: {
-      backgroundColor: props.hexMain,
-    },
-    vertical2: {
-      backgroundColor: props.hexLight,
+      backgroundColor: props.hex
     },
   }));
 
@@ -50,7 +51,7 @@ const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
 
   // choose the screen size
   const handleResize = () => {
-    if (window.innerWidth < 750) {
+    if (window.innerWidth < 960) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
@@ -63,21 +64,26 @@ const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
 
   return (
     <Box className={styles.box}>
+      {/* <Divider className={styles.divider} /> */}
       <div className={styles.row}>
         <Divider orientation="vertical" flexItem className={styles.vertical} />
-        <Typography className={styles.title}>
-          {props.ocean}
-        </Typography>
-        {!isMobile && <Divider orientation="vertical" flexItem className={styles.vertical2} />}
+        <Typography className={styles.title}>{props.ocean}</Typography>
+        {!isMobile && <Divider orientation="vertical" flexItem className={styles.vertical} />}
         {!isMobile && <Typography className={styles.aspects}> {props.aspect1}</Typography>}
-        {!isMobile && <Divider orientation="vertical" flexItem className={styles.vertical2} />}
+        {!isMobile && <Divider orientation="vertical" flexItem className={styles.vertical} />}
         {!isMobile && <Typography className={styles.aspects}>{props.aspect2}</Typography>}
       </div>
 
-      {isMobile && <Divider orientation="vertical" flexItem className={styles.vertical2} />}
-      {isMobile && <Typography className={styles.aspects}> {props.aspect1}</Typography>}
-      {isMobile && <Divider orientation="vertical" flexItem className={styles.vertical2} />}
-      {isMobile && <Typography className={styles.aspects}>{props.aspect2}</Typography>}
+      {isMobile && (
+        <>
+          <div className={styles.row}>
+            <Divider orientation="vertical" flexItem className={styles.vertical} />
+            <Typography className={styles.aspectsBelow}> {props.aspect1}</Typography>
+            <Divider orientation="vertical" flexItem className={styles.vertical} />
+            <Typography className={styles.aspectsBelow}>{props.aspect2}</Typography>
+          </div>
+        </>
+      )}
     </Box>
   );
 };

@@ -2,6 +2,7 @@ import { Facebook, Instagram, Mail, Phone, Twitter } from "@material-ui/icons";
 import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
+import Footer from "../components/Footer";
 import PageShell from "../components/PageShell";
 
 interface ContactProps {}
@@ -46,6 +47,18 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       color: theme.palette.info.main,
       borderLeft: `6px solid #111840`,
     },
+    footer: {
+      bottom: 0,
+      position: "absolute",
+      width: "100%",
+    },
+    container: {
+      minHeight: "100vh" /* will cover the 100% of viewport */,
+      overflow: "hidden",
+      display: "block",
+      position: "relative",
+      paddingBottom: 120,
+    },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
 
@@ -64,7 +77,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
 
   const styles = useStyles();
   return (
-    <div>
+    <div className={styles.container}>
       <PageShell pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={11} lg={10}>
@@ -101,6 +114,9 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           </Paper>
         </Grid>
       </Grid>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 };

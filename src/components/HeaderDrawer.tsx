@@ -94,11 +94,6 @@ const useStyles = makeStyles((theme) => ({
     border: "#111840 1px solid",
     color: "#111840",
     backgroundColor: "#F8F7F3",
-    // "&:hover": {
-    //   backgroundColor: "#F8F7F3",
-    //   border: `${theme.palette.primary.main} 1px solid`,
-    //   color: theme.palette.primary.main,
-    // },
   },
   menuIcon: {
     color: "#111840",

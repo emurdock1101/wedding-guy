@@ -2,14 +2,13 @@ import { Aspect, Ocean } from "../constants/schema";
 import { Box, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
-import Banner from "../components/Banner";
+import BigFooter from "../components/BigFooter";
 import Divider from "@mui/material/Divider";
-import { DriveEta } from "@material-ui/icons";
+import Footer from "../components/Footer";
 import HeaderDrawer from "../components/HeaderDrawer";
 import HomeCard from "../components/HomeCard";
 import Loading from "../components/Loading";
 import OceanBanner from "../components/OceanBanner";
-import OceanCard from "../components/OceanCard";
 import content from "../constants/content";
 import prism from "../images/prism.jpeg";
 import spiral from "../images/spiral.jpeg";
@@ -101,6 +100,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       padding: 30,
       backgroundColor: "white",
       opacity: 0.92,
+      marginBottom: 100,
     },
     aboutTestTitle: {
       fontWeight: 900,
@@ -113,6 +113,36 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       paddingTop: 10,
       paddingBottom: 10,
       fontSize: 20,
+    },
+    big5: {
+      marginTop: 50,
+      marginBottom: 40,
+    },
+    oceanBanner: {
+      marginBottom: 40,
+    },
+    big5Title: {
+      fontSize: isMedium ? "40px" : "50px",
+      fontWeight: 400,
+      font: "Monaco",
+      paddingLeft: isMedium ? 20 : 0,
+    },
+    big5Desc: {
+      font: "Monaco",
+      marginBottom: 40,
+      paddingLeft: isMedium ? 20 : 0,
+    },
+    footer: {
+      bottom: 0,
+      position: "absolute",
+      width: "100%",
+    },
+    container: {
+      minHeight: "100vh" /* will cover the 100% of viewport */,
+      overflow: "hidden",
+      display: "block",
+      position: "relative",
+      paddingBottom: 700,
     },
   }));
 
@@ -147,138 +177,149 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
     return <Loading />;
   } else
     return (
-      <Grid container justify="center" alignItems="center">
-        <Grid item xs={12}>
-          <HeaderDrawer />
-        </Grid>
-        <Grid item xs={12}>
-          <div className={styles.titleOverlay}>
-            <Typography variant="h1" className={styles.mainTitle}>
-              Personality <span className={styles.plus}>+</span>
-            </Typography>
-            <Typography className={styles.secondTitle}>Personality assessment</Typography>
-            <Button variant="contained" onClick={startQuiz} className={styles.buyNowButton}>
-              BUY NOW
-            </Button>
-          </div>
-          <img src={prism} className={styles.prismImage} alt="personality-prism"></img>
-        </Grid>
-        <Grid item xs={10} sm={11} md={10} lg={8}>
-          <div className={styles.openingBlurb}>
-            <Typography className={styles.thirdTitle}>
-              Personality <span className={styles.plus}>+</span>
-            </Typography>
-            <Divider />
-            <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
-              Is an assessment based on the Five Factor Model of personality. Also known as the
-              Big-5 or OCEAN, it is an empirical model of personality within psychology that
-              displays your personality in five dimensions and ten aspects.
-            </Typography>
-          </div>
-          <Grid
-            container
-            spacing={8}
-            justify="center"
-            alignItems="center"
-            className={styles.oceanRow}
-          >
-            <Grid item xs={12} sm={11} md={4}>
-              <HomeCard
-                title="Why Take It?"
-                description="Everyone has a unique personality that is a combination of 5 dimensions. Discovering how your personality has been shaped can help you understand who you are."
-              />
-            </Grid>
-            <Grid item xs={12} sm={11} md={4}>
-              <HomeCard
-                title="Strengths"
-                description="Personality+ shows natural strengths within your personality. Are you a leader? A healer? An Artist? Learn how to discover and unlock your hidden potential."
-              />
-            </Grid>
-            <Grid item xs={12} sm={11} md={4}>
-              <HomeCard
-                title="Grow"
-                description="Personality+ shows natural areas of growth and improvement. Discover how to change and how your emotions, behavior, thinking, and desires work together."
-              />
-            </Grid>
+      <div className={styles.container}>
+        <Grid container justify="center" alignItems="center">
+          <Grid item xs={12}>
+            <HeaderDrawer />
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Box className={styles.spiralBox}>
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs={10}>
-                <div className={styles.aboutTheTest}>
-                  <Typography variant="h2" className={styles.aboutTestTitle}>
-                    About the test
-                  </Typography>
-                  <Typography variant="h6" className={styles.aboutDesc}>
-                    Length:
-                  </Typography>
-                  <Typography variant="subtitle1" className={styles.aboutDesc}>
-                    The test takes 15 - 30 minutes and consists of 100 questions.
-                  </Typography>
-                  <Typography variant="h6" className={styles.aboutDesc}>
-                    Results:
-                  </Typography>
-                  <Typography variant="subtitle1" className={styles.aboutDesc}>
-                    {content["aboutTheTest"]["results"]}
-                  </Typography>
-                  <Typography variant="h6" className={styles.aboutDesc}>
-                    Background:
-                  </Typography>
-                  <Typography variant="subtitle1" className={styles.aboutDesc}>
-                    {content["aboutTheTest"]["background"]}
-                  </Typography>
-                </div>
+          <Grid item xs={12}>
+            <div className={styles.titleOverlay}>
+              <Typography variant="h1" className={styles.mainTitle}>
+                Personality <span className={styles.plus}>+</span>
+              </Typography>
+              <Typography className={styles.secondTitle}>Personality assessment</Typography>
+              <Button variant="contained" onClick={startQuiz} className={styles.buyNowButton}>
+                BUY NOW
+              </Button>
+            </div>
+            <img src={prism} className={styles.prismImage} alt="personality-prism"></img>
+          </Grid>
+          <Grid item xs={10} sm={11} md={10} lg={8}>
+            <div className={styles.openingBlurb}>
+              <Typography className={styles.thirdTitle}>
+                Personality <span className={styles.plus}>+</span>
+              </Typography>
+              <Divider />
+              <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
+                Is an assessment based on the Five Factor Model of personality. Also known as the
+                Big-5 or OCEAN, it is an empirical model of personality within psychology that
+                displays your personality in five dimensions and ten aspects.
+              </Typography>
+            </div>
+            <Grid
+              container
+              spacing={8}
+              justify="center"
+              alignItems="center"
+              className={styles.oceanRow}
+            >
+              <Grid item xs={12} sm={11} md={4}>
+                <HomeCard
+                  title="Why Take It?"
+                  description="Everyone has a unique personality that is a combination of 5 dimensions. Discovering how your personality has been shaped can help you understand who you are."
+                />
+              </Grid>
+              <Grid item xs={12} sm={11} md={4}>
+                <HomeCard
+                  title="Strengths"
+                  description="Personality+ shows natural strengths within your personality. Are you a leader? A healer? An Artist? Learn how to discover and unlock your hidden potential."
+                />
+              </Grid>
+              <Grid item xs={12} sm={11} md={4}>
+                <HomeCard
+                  title="Grow"
+                  description="Personality+ shows natural areas of growth and improvement. Discover how to change and how your emotions, behavior, thinking, and desires work together."
+                />
               </Grid>
             </Grid>
-          </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box className={styles.spiralBox}>
+              <Grid container justify="center" alignItems="center">
+                <Grid item xs={10}>
+                  <div className={styles.aboutTheTest}>
+                    <Typography variant="h2" className={styles.aboutTestTitle}>
+                      About the test
+                    </Typography>
+                    <Typography variant="h6" className={styles.aboutDesc}>
+                      Length:
+                    </Typography>
+                    <Typography variant="subtitle1" className={styles.aboutDesc}>
+                      The test takes 15 - 30 minutes and consists of 100 questions.
+                    </Typography>
+                    <Typography variant="h6" className={styles.aboutDesc}>
+                      Results:
+                    </Typography>
+                    <Typography variant="subtitle1" className={styles.aboutDesc}>
+                      {content["aboutTheTest"]["results"]}
+                    </Typography>
+                    <Typography variant="h6" className={styles.aboutDesc}>
+                      Background:
+                    </Typography>
+                    <Typography variant="subtitle1" className={styles.aboutDesc}>
+                      {content["aboutTheTest"]["background"]}
+                    </Typography>
+                  </div>
+                </Grid>
+              </Grid>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={11}>
+            <div className={styles.big5}>
+              <Typography className={styles.big5Title}>Big 5 Traits and 10 Aspects</Typography>
+              <br></br>
+              <Typography variant={"subtitle1"} className={styles.big5Desc}>
+                Your report will give you a breakdown of 5 dimensions of your personality, which
+                further breakdown into 10 aspects - 2 subcategories for each of the 5 dimensions.
+                These categories and subcategories are listed below.
+              </Typography>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Openness}
+              aspect1={Aspect.AestheticOpenness}
+              aspect2={Aspect.Intellect}
+              hex={theme.palette.error.main}
+            />
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Conscientiousness}
+              aspect1={Aspect.Industriousness}
+              aspect2={Aspect.Orderliness}
+              hex={theme.palette.warning.main}
+            />
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Extraversion}
+              aspect1={Aspect.Enthusiasm}
+              aspect2={Aspect.Assertiveness}
+              hex={theme.palette.success.main}
+            />
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Agreeableness}
+              aspect1={Aspect.Compassion}
+              aspect2={Aspect.Politeness}
+              hex={theme.palette.primary.main}
+            />
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Neuroticism}
+              aspect1={Aspect.Withdrawal}
+              aspect2={Aspect.Volatility}
+              hex={theme.palette.secondary.main}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <OceanBanner
-            ocean={Ocean.Openness}
-            aspect1={Aspect.AestheticOpenness}
-            aspect2={Aspect.Intellect}
-            hexMain={theme.palette.error.main}
-            hexLight={theme.palette.error.light}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <OceanBanner
-            ocean={Ocean.Conscientiousness}
-            aspect1={Aspect.Industriousness}
-            aspect2={Aspect.Orderliness}
-            hexMain={theme.palette.warning.main}
-            hexLight={theme.palette.warning.light}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <OceanBanner
-            ocean={Ocean.Extraversion}
-            aspect1={Aspect.Enthusiasm}
-            aspect2={Aspect.Assertiveness}
-            hexMain={theme.palette.success.main}
-            hexLight={theme.palette.success.light}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <OceanBanner
-            ocean={Ocean.Extraversion}
-            aspect1={Aspect.Compassion}
-            aspect2={Aspect.Politeness}
-            hexMain={theme.palette.primary.main}
-            hexLight={theme.palette.primary.light}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <OceanBanner
-            ocean={Ocean.Neuroticism}
-            aspect1={Aspect.Withdrawal}
-            aspect2={Aspect.Volatility}
-            hexMain={theme.palette.secondary.main}
-            hexLight={theme.palette.secondary.light}
-          />
-        </Grid>
-      </Grid>
+        <div className={styles.footer}>
+          <BigFooter />
+        </div>
+      </div>
     );
 };
 
