@@ -84,21 +84,21 @@ const content: any = {
     {
       title: "How was this test created?",
       part1:
-        "This was test was formatted by using the work from Dr. Colling Deyoung and Dr. Jordan B Peterson and their research (see DeYoung, C.G., Quilty, L.C. & Peterson, J.B. Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93, 880-896.).",
+        "This test was formatted by using the work of Dr. Colling DeYoung and Dr. Jordan B Peterson (see DeYoung, C.G., Quilty, L.C. & Peterson, J.B. Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93, 880-896.).",
       part2:
-        "The goal of Personality+ was to offer a more streamlined personanlity test with results that could be more clearnly understood and implemented. The interpretations of the test have come from dilgent rearch, study, and clinical practice. If you are curious about diving into your own research, we would point you the Oxford Handbook of the Five Factor Model, Dr C.D. Young and Dr. J.B. Peterson's published reserach, or a trusted mental health therapis.",
+        "The goal of Personality+ was to offer a more streamlined personanlity test with results that could be more clearnly understood and implemented. The interpretations of the test have come from dilgent research, study, and clinical practice. If you are curious about diving into your own research, we would point you the Oxford Handbook of the Five Factor Model, Dr. C.G. DeYoung and Dr. J.B. Peterson's published reserach, or a trusted mental health therapist/researcher.",
     },
     {
       title: "Aren't their other free personality tests?",
       part1:
-        "The Big Five Aspect Scale in its original paper/pencil format is in the public domain, and there are other free versions with reports available elsewhere. However, this test was created so that the results and reports generate after the test could be cost effective, clearer, more precise, more user friendly, and most importantly, useable. By useable, we mean self-reflections, connecting with mental health therapy, and implementing practical changes in your life.",
+        "The Big Five Aspect Scale in its original paper/pencil format is in the public domain, and there are other free versions with reports available elsewhere. However, this test was created so that the results and reports generate after the test could be cost effective, clearer, more precise, more user friendly, and most importantly, useable. By useable, we mean providing the results in a way that can help you implement practical changes in your life, self-reflections, or desire to connect with a mental health therapist.",
       part2:
-        "Our research team has created reports that lay out both individual strengths and weaknesses comprehensively and carefully. Thus, you are not enrolling in this program for the questions, but for the information generated about your answers.",
+        "Our research team has created reports that lay out both individual strengths and weaknesses succinctly and practically. Our team has worked hard to compile the results from some of the world's best personality psychologist to help you discover a new you and chance to undertake a new advendture.",
     },
     {
       title: "Why can I only take the test a single time?",
       part1:
-        "A genuinely accurate personality test must be taken (and scored) in a standardized manner so that you can take the test like those of the comparison group as possible. Furthermore, if you take the test, and then look at your results, and then re-take it, your second results will be subject to biases introduced by your now-expanded knowledge of your personality. That means you will change your responses, likely distorting your answers.",
+        "An accurate personality test must be taken and scored in a standardized manner for accurate results. Furthermore, if you take the test, and then look at your results, and then re-take it, your second results could introduce biases by your now-expanded knowledge of your personality. That means you could alter your responses (consciously or unconsciously), which would change your results.",
       part2:
         "",
     },
@@ -134,16 +134,16 @@ const content: any = {
     },
     patrick: {
       part1:
-        "Patrick Knicely has a B.A from Roaonke College and a M.S. from Radford University",
+        "Patrick Knicely has a B.A from Roaonke College and a M.S. from Radford University. He is a clinical mental health threapist and clinical consultant for inpatient and ambulatory healthcare settings.",
       part2:
-        "He is a clinical mental health threapist and clinical consultant for inpatient and ambulatory healthcare settings.",
+        "his screen is visible only in development. It will not appear if the app crashes in production. Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.",
     },
   },
   aboutTheTest: {
     results:
-      "You will receive information about your position along each of the Big Five dimensions of Extraversion (positive emotion), Neurotocism (negative emotion), Agreeableness (care for others), Conscientiousness (order and responsibility) and Openness (interest in ideas and aesthetics). You will also receive a percentage and detailed paragraphs about how that might affect your emotions, behavior, thinking, and desires.",
+      "You will receive information about your unique personality as it relates to the dimensions of the Big Five: Extraversion (positive emotion), Neurotocism (negative emotion), Agreeableness (care for others), Conscientiousness (order and responsibility) and Openness (interest in ideas and aesthetics). You will also receive a percentage and detailed paragraphs about how that might affect your emotions, behavior, thinking, and desires.",
     background:
-      "These questions are based on open-sourced research. This includes such notable personality researchers as Dr. Collin, DeYoung, Dr. Paul Costa, Jr., Dr. Jordan Peterson, Dr. Joshua Wilt, and Dr. Joshua Revelle.",
+      "These questions are based on open-sourced research. This includes such notable personality researchers as Dr. Collin DeYoung, Dr. Paul Costa, Jr., Dr. Jordan Peterson, Dr. Joshua Wilt, and Dr. Joshua Revelle.",
   },
 };
 

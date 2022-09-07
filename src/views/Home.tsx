@@ -187,7 +187,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               <Typography variant="h1" className={styles.mainTitle}>
                 Personality <span className={styles.plus}>+</span>
               </Typography>
-              <Typography className={styles.secondTitle}>Personality assessment</Typography>
+              <Typography className={styles.secondTitle}>Discover a New You</Typography>
               <Button variant="contained" onClick={startQuiz} className={styles.buyNowButton}>
                 BUY NOW
               </Button>
@@ -201,9 +201,17 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Divider />
               <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
-                Is an assessment based on the Five Factor Model of personality. Also known as the
-                Big-5 or OCEAN, it is an empirical model of personality within psychology that
-                displays your personality in five dimensions and ten aspects.
+                Why do you think or act the way you do? What moves you to feel emotions or stirs your desires? Better yet, can you change those things? 
+                <br></br>
+                <br></br>
+                Who we are stems from our personality, and Personality+ is an assessment based on the Big Five 10 Aspect Model of personality. 
+                <br></br>
+                <br></br>
+                Also known as the Five Factor Model or OCEAN, it is an empirical model of personality within psychology that
+                reveals the core of your personality, your strengths, and areas you can grow. 
+                <br></br>
+                <br></br>
+                Discover a new you and start a new journey!
               </Typography>
             </div>
             <Grid
@@ -245,7 +253,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                       Length:
                     </Typography>
                     <Typography variant="subtitle1" className={styles.aboutDesc}>
-                      The test takes 15 - 30 minutes and consists of 100 questions.
+                      The test takes 10 - 20 minutes and consists of 100 questions.
                     </Typography>
                     <Typography variant="h6" className={styles.aboutDesc}>
                       Results:
@@ -269,8 +277,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               <Typography className={styles.big5Title}>Big 5 Traits and 10 Aspects</Typography>
               <br></br>
               <Typography variant={"subtitle1"} className={styles.big5Desc}>
-                Your report will give you a breakdown of 5 dimensions of your personality, which
-                further breakdown into 10 aspects - 2 subcategories for each of the 5 dimensions.
+                Your results will explain your unique personality as it relates to the Big-5 and
+                its 10 aspects, which are 2 subcategories for each of the 5 dimensions.
                 These categories and subcategories are listed below.
               </Typography>
             </div>
