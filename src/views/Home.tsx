@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import BigFooter from "../components/BigFooter";
 import Divider from "@mui/material/Divider";
-import Footer from "../components/Footer";
 import HeaderDrawer from "../components/HeaderDrawer";
 import HomeCard from "../components/HomeCard";
 import Loading from "../components/Loading";
@@ -171,7 +170,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   useEffect(() => {
     setLoading(false);
     window.addEventListener("resize", handleResize);
-  });
+  }, []);
 
   if (loading) {
     return <Loading />;
@@ -291,7 +290,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               ocean={Ocean.Extraversion}
               aspect1={Aspect.Enthusiasm}
               aspect2={Aspect.Assertiveness}
-              hex={theme.palette.success.main}
+              hex={theme.palette.error.main}
             />
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
@@ -299,7 +298,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               ocean={Ocean.Neuroticism}
               aspect1={Aspect.Withdrawal}
               aspect2={Aspect.Volatility}
-              hex={theme.palette.secondary.main}
+              hex={theme.palette.warning.main}
             />
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
@@ -307,7 +306,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               ocean={Ocean.Agreeableness}
               aspect1={Aspect.Compassion}
               aspect2={Aspect.Politeness}
-              hex={theme.palette.primary.main}
+              hex={theme.palette.success.main}
             />
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
@@ -315,7 +314,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               ocean={Ocean.Conscientiousness}
               aspect1={Aspect.Industriousness}
               aspect2={Aspect.Orderliness}
-              hex={theme.palette.warning.main}
+              hex={theme.palette.primary.main}
             />
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
@@ -323,7 +322,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               ocean={Ocean.Openness}
               aspect1={Aspect.AestheticOpenness}
               aspect2={Aspect.Interest}
-              hex={theme.palette.error.main}
+              hex={theme.palette.secondary.main}
             />
           </Grid>
         </Grid>

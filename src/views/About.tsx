@@ -1,5 +1,5 @@
 import { Grid, makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import AboutCard from "../components/AboutCard";
 import Footer from "../components/Footer";

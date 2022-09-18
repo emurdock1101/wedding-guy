@@ -102,13 +102,13 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               </Typography>
             </a>
             <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com" target="_blank">
+              <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://www.instagram.com" target="_blank">
+              <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://www.twitter.com" target="_blank">
+              <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
                 <Twitter className={styles.facebook} />
               </a>
             </div>

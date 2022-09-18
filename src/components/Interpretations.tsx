@@ -24,6 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     paddingLeft: "20px",
     paddingRight: "20px",
     paddingBottom: "20px",
+    color: theme.palette.info.main
   },
   percent: {
     paddingLeft: "15px",

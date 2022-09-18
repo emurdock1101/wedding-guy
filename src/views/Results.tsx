@@ -1,9 +1,8 @@
 import { Aspect, Ocean } from "../constants/schema";
-import { Button, Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import Banner from "../components/Banner";
-import HeaderDrawer from "../components/HeaderDrawer";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
 import PageShell from "../components/PageShell";
@@ -29,6 +28,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     info: {
       marginBottom: "20px",
       fontSize: 18,
+      color: theme.palette.info.main
     },
     explanation: {
       padding: "20px",
