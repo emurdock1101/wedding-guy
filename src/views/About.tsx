@@ -22,20 +22,10 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
       paddingBottom: 120,
     },
   }));
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
-
-  // choose the screen size
-  const handleResize = () => {
-    if (window.innerWidth < 750) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const styles = useStyles();
   return (

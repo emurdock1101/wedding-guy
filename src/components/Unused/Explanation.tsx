@@ -1,5 +1,5 @@
 import { Typography, makeStyles } from "@material-ui/core";
-
+import { Aspect, Ocean } from "../../constants/schema";
 export const useStyles = makeStyles((theme) => ({
   category: {
     marginBottom: "6.3vw",
@@ -34,7 +34,7 @@ const Explanation: React.FC<ExplanationProps> = (props: ExplanationProps) => {
   return (
     <div>
       <Typography variant="subtitle1" className={`${styles.category}  ${styles.c1}`}>
-        &#160;&#160;Openness (also referred to as "Openness to Experience") is composed of Openness
+        &#160;&#160; {Ocean.Openness} (also referred to as "Openness to Experience") is composed of Openness
         and Intellect.
       </Typography>
 

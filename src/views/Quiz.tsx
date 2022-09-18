@@ -2,7 +2,7 @@ import PreTest from "./PreTest";
 import QuestionPack from "../components/QuestionPack";
 import Results from "./Results";
 import Submit from "./Submit";
-import { questionData } from "../constants/questionData";
+import { questionData as qd} from "../constants/questionData";
 import { useState } from "react";
 
 const Quiz: React.FC = () => {
@@ -18,7 +18,9 @@ const Quiz: React.FC = () => {
     }
   };
 
-  const slices = 5; // number of pages
+  const questionData = qd.slice(0, 20);
+
+  const slices = 2; // number of pages
   const chunks = [];
   const chunkSize = Math.ceil(questionData.length / slices); // number of questions on each page
 

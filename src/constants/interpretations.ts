@@ -102,7 +102,7 @@ const interpretations: any = [
       },
     },
     aspect2: {
-      aspectName: Aspect.Intellect,
+      aspectName: Aspect.Interest,
       veryLow: {
         part1: "People very low in interest in ideas dislike to be overloaded with complex information. They are not curious or exploratory and do not like to tackle or solve problems. They are averse to engage or enjoy issue-oriented discussion or readings. They are less articulate and have difficulty in formulating and communicating their ideas (especially if low in extraversion). People very low in interest in ideas do not seek out or develop new or creative ideas, finding it difficult to adapt to new experiences and situations.",
         part2: "People very low in interest in ideas do not like complex occupations and are better suited for stable, straightforward, and more traditional occupations, where the rules for success are well-defined and tend not to change.",

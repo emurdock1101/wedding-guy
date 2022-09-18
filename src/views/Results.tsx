@@ -72,7 +72,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 99;
 
   const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 99;
-  const Intellect: number = percentiles.get(Aspect.Intellect.toString()) ?? 99;
+  const Interest: number = percentiles.get(Aspect.Interest.toString()) ?? 99;
   const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 99;
 
   // fake data
@@ -91,17 +91,17 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   // data for aspects chart
   const aspectSeries = [
     {
-      data: [AestheticOpenness, Industriousness, Enthusiasm, Compassion, Withdrawal],
+      data: [Enthusiasm, Withdrawal, Compassion, Industriousness, AestheticOpenness],
     },
     {
-      data: [Intellect, Orderliness, Assertiveness, Politeness, Volatility],
+      data: [Assertiveness, Volatility, Politeness, Orderliness, Interest],
     },
   ];
 
   // data for ocean chart
   const oceanSeries = [
     {
-      data: [Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism],
+      data: [Extraversion, Neuroticism, Agreeableness, Conscientiousness, Openness],
     },
   ];
 
@@ -115,10 +115,20 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               Your results are shown in the table and in the bar charts below.{" "}
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
-              Remember that each personality trait and aspect and your relative position with respect to them has advantages and disadvantages. It is for that reason that variation exists in the human population: there is a niche for each personality configuration. Much of what constitutes success in life is therefore the consequence of finding the place in relationships, work and personal commitment that corresponds to your unique personality structure. Good luck with your expanded self-understanding!
+              Remember that each personality trait and aspect and your relative position with
+              respect to them has advantages and disadvantages. It is for that reason that variation
+              exists in the human population: there is a niche for each personality configuration.
+              Much of what constitutes success in life is therefore the consequence of finding the
+              place in relationships, work and personal commitment that corresponds to your unique
+              personality structure. Good luck with your expanded self-understanding!
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>  
-              Note also that if you find that the descriptions harsher than you might consider appropriate this may mean that you were more self-critical than necessary when completing the questions. Remember, the results are based on your own self-report, compared to that of others. This can occur if you were feeling temporarily or chronically unhappy or anxious, or hungry, angry or judgmental when you completed the questions.
+            <Typography variant="subtitle1" className={styles.info}>
+              Note also that if you find that the descriptions harsher than you might consider
+              appropriate this may mean that you were more self-critical than necessary when
+              completing the questions. Remember, the results are based on your own self-report,
+              compared to that of others. This can occur if you were feeling temporarily or
+              chronically unhappy or anxious, or hungry, angry or judgmental when you completed the
+              questions.
             </Typography>
           </Paper>
           <div className={styles.accordion}>
@@ -144,14 +154,38 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
-              oceanName={Ocean.Openness}
-              oceanScore={Openness}
-              aspect1Name={Aspect.AestheticOpenness}
-              aspect1Score={AestheticOpenness}
-              aspect2Name={Aspect.Intellect}
-              aspect2Score={Intellect}
-              hex={theme.palette.error.main}
-              index={0}
+              oceanName={Ocean.Extraversion}
+              oceanScore={Extraversion}
+              aspect1Name={Aspect.Enthusiasm}
+              aspect1Score={Enthusiasm}
+              aspect2Name={Aspect.Assertiveness}
+              aspect2Score={Assertiveness}
+              hex={theme.palette.success.main}
+              index={2}
+            />
+          </Paper>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+            <Interpretations
+              oceanName={Ocean.Neuroticism}
+              oceanScore={Neuroticism}
+              aspect1Name={Aspect.Withdrawal}
+              aspect1Score={Withdrawal}
+              aspect2Name={Aspect.Volatility}
+              aspect2Score={Volatility}
+              hex={theme.palette.secondary.main}
+              index={4}
+            />
+          </Paper>
+          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+            <Interpretations
+              oceanName={Ocean.Agreeableness}
+              oceanScore={Agreeableness}
+              aspect1Name={Aspect.Compassion}
+              aspect1Score={Compassion}
+              aspect2Name={Aspect.Politeness}
+              aspect2Score={Politeness}
+              hex={theme.palette.primary.main}
+              index={3}
             />
           </Paper>
           <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
@@ -168,38 +202,14 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           </Paper>
           <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
             <Interpretations
-              oceanName={Ocean.Extraversion}
-              oceanScore={Extraversion}
-              aspect1Name={Aspect.Enthusiasm}
-              aspect1Score={Enthusiasm}
-              aspect2Name={Aspect.Assertiveness}
-              aspect2Score={Assertiveness}
-              hex={theme.palette.success.main}
-              index={2}
-            />
-          </Paper>
-          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
-            <Interpretations
-              oceanName={Ocean.Agreeableness}
-              oceanScore={Agreeableness}
-              aspect1Name={Aspect.Compassion}
-              aspect1Score={Compassion}
-              aspect2Name={Aspect.Politeness}
-              aspect2Score={Politeness}
-              hex={theme.palette.primary.main}
-              index={3}
-            />
-          </Paper>
-          <Paper elevation={2} style={{ borderRadius: "10px" }}>
-            <Interpretations
-              oceanName={Ocean.Neuroticism}
-              oceanScore={Neuroticism}
-              aspect1Name={Aspect.Withdrawal}
-              aspect1Score={Withdrawal}
-              aspect2Name={Aspect.Volatility}
-              aspect2Score={Volatility}
-              hex={theme.palette.secondary.main}
-              index={4}
+              oceanName={Ocean.Openness}
+              oceanScore={Openness}
+              aspect1Name={Aspect.AestheticOpenness}
+              aspect1Score={AestheticOpenness}
+              aspect2Name={Aspect.Interest}
+              aspect2Score={Interest}
+              hex={theme.palette.error.main}
+              index={0}
             />
           </Paper>
         </Grid>

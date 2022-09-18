@@ -4,11 +4,10 @@ import HeaderDrawer from "../components/HeaderDrawer";
 import ProgressBar from "../components/ProgressBar";
 import { Question } from "../constants/schema";
 import QuestionComp from "./QuestionComp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useStyles = makeStyles((theme) => ({
   pageNav: {
-    marginTop: 60,
     textAlign: "center",
   },
   homeLink: {
@@ -57,6 +56,10 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
     }
   };
 
+  useEffect(() => {
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div>
       <Grid container justify="center" alignItems="center" className={styles.container}>
@@ -72,11 +75,36 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
             }
           />
         </Grid>
+        <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
+          <Button
+            disabled={props.page === 1}
+            color="default"
+            variant="outlined"
+            onClick={props.prevStep}
+          >
+            PREV
+          </Button>
+        </Grid>
+        <Grid item xs={6} sm={4} md={2} className={styles.pageNav}>
+          <p>
+            Page {props.page} of {numberOfPages}
+          </p>
+        </Grid>
+        <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
+          <Button
+            disabled={answeredQuestions.length !== props.questions.length}
+            color="default"
+            variant="outlined"
+            onClick={props.nextStep}
+          >
+            NEXT
+          </Button>
+        </Grid>
 
         {props.questions.map((question) => {
           return (
             <Grid item xs={12} className={styles.row}>
-              <Paper elevation={2} className={styles.paper} style={{borderRadius:"10px"}}>
+              <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
                 <QuestionComp question={question} countAnswer={countAnswer} />
               </Paper>
             </Grid>

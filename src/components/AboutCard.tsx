@@ -1,9 +1,7 @@
 import * as React from "react";
-
-import { Button, makeStyles } from "@material-ui/core";
-import { Facebook, GitHub, Instagram, Language, Mail, Phone, Twitter } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core";
+import { Facebook, GitHub, Instagram, Language, Twitter } from "@material-ui/icons";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -106,17 +104,17 @@ const AboutCard = (props: AboutCardProps) => {
       <CardActions disableSpacing>
         {props.member === "elliot" && (
           <>
-            <a className={styles.link} href="https://www.github.com" target="_blank">
+            <a className={styles.link} href="https://www.github.com" target="_blank" rel="noreferrer">
               <IconButton aria-label="elliot's github">
                 <GitHub className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.instagram.com" target="_blank">
+            <a className={styles.link} href="https://www.instagram.com" target="_blank" rel="noreferrer">
               <IconButton aria-label="elliot's instragram">
                 <Instagram className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.google.com" target="_blank">
+            <a className={styles.link} href="https://www.google.com" target="_blank" rel="noreferrer">
               <IconButton aria-label="elliot's website">
                 <Language className={styles.icon} />
               </IconButton>
@@ -125,17 +123,17 @@ const AboutCard = (props: AboutCardProps) => {
         )}
         {props.member === "patrick" && (
           <>
-            <a className={styles.link} href="https://www.facebook.com" target="_blank">
+            <a className={styles.link} href="https://www.facebook.com" target="_blank" rel="noreferrer">
               <IconButton aria-label="patrick's facebook">
                 <Facebook className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.instagram.com" target="_blank">
+            <a className={styles.link} href="https://www.instagram.com" target="_blank" rel="noreferrer">
               <IconButton aria-label="patrick's instrgram">
                 <Instagram className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.twitter.com" target="_blank">
+            <a className={styles.link} href="https://www.twitter.com" target="_blank" rel="noreferrer">
               <IconButton aria-label="patrick's twitter">
                 <Twitter className={styles.icon} />
               </IconButton>

@@ -5,47 +5,17 @@ import { Big5Data } from "./schema";
 /**
  * Master Order
  *
- * 1. Open 2. Opn 3. Int
+ * 1. Ext 8. Ent. 9. Asr
  *
- * 4. Con 5. Ind 6. Ord
+ * 4. Neu 14. Wit. 15. Vol.
  *
- * 7. Ext 8. Ent. 9. Asr
+ * 7. Agr. 11. Com. 12. Pol.
  *
- * 10. Agr. 11. Com. 12. Pol.
+ * 10. Con 5. Ind 6. Ord
  *
- * 13. Neu 14. Wit. 15. Vol.
+ * 13. Open 2. Opn 3. Int
  */
 export const categoryData: Big5Data[] = [
-  {
-    category: Ocean.Openness,
-    categoryAbbr: "Opn.",
-    isOcean: true,
-  },
-  {
-    category: Aspect.AestheticOpenness,
-    categoryAbbr: "Aes.",
-    isOcean: false,
-  },
-  {
-    category: Aspect.Intellect,
-    categoryAbbr: "Int.",
-    isOcean: false,
-  },
-  {
-    category: Ocean.Conscientiousness,
-    categoryAbbr: "Con.",
-    isOcean: true,
-  },
-  {
-    category: Aspect.Industriousness,
-    categoryAbbr: "Ind.",
-    isOcean: false,
-  },
-  {
-    category: Aspect.Orderliness,
-    categoryAbbr: "Ord.",
-    isOcean: false,
-  },
   {
     category: Ocean.Extraversion,
     categoryAbbr: "Ext.",
@@ -59,6 +29,21 @@ export const categoryData: Big5Data[] = [
   {
     category: Aspect.Assertiveness,
     categoryAbbr: "Asr.",
+    isOcean: false,
+  },
+  {
+    category: Ocean.Neuroticism,
+    categoryAbbr: "Neu.",
+    isOcean: true,
+  },
+  {
+    category: Aspect.Withdrawal,
+    categoryAbbr: "Wit.",
+    isOcean: false,
+  },
+  {
+    category: Aspect.Volatility,
+    categoryAbbr: "Vol.",
     isOcean: false,
   },
   {
@@ -77,18 +62,33 @@ export const categoryData: Big5Data[] = [
     isOcean: false,
   },
   {
-    category: Ocean.Neuroticism,
-    categoryAbbr: "Neu.",
+    category: Ocean.Conscientiousness,
+    categoryAbbr: "Con.",
     isOcean: true,
   },
   {
-    category: Aspect.Withdrawal,
-    categoryAbbr: "Wit.",
+    category: Aspect.Industriousness,
+    categoryAbbr: "Ind.",
     isOcean: false,
   },
   {
-    category: Aspect.Volatility,
-    categoryAbbr: "Vol.",
+    category: Aspect.Orderliness,
+    categoryAbbr: "Ord.",
+    isOcean: false,
+  },
+  {
+    category: Ocean.Openness,
+    categoryAbbr: "Opn.",
+    isOcean: true,
+  },
+  {
+    category: Aspect.AestheticOpenness,
+    categoryAbbr: "Aes.",
+    isOcean: false,
+  },
+  {
+    category: Aspect.Interest,
+    categoryAbbr: "Int.",
     isOcean: false,
   },
 ];

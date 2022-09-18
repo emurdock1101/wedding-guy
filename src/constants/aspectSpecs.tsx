@@ -12,16 +12,16 @@ export const aspectOptions = {
   },
   xaxis: {
     categories: [
-      "O - Aes.",
-      "O - Int.",
-      "C - Ind.",
-      "C - Ord.",
       "E - Ent.",
       "E - Asr.",
-      "A - Com.",
-      "A - Pol.",
       "N - Wit.",
       "N - Vol.",
+      "A - Com.",
+      "A - Pol.",
+      "C - Ind.",
+      "C - Ord.",
+      "O - Aes.",
+      "O - Int.",
     ],
     title: {
       text: "Percentile",

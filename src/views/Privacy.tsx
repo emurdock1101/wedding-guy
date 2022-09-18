@@ -2,6 +2,7 @@ import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 
 import Footer from "../components/Footer";
 import PageShell from "../components/PageShell";
+import { useEffect } from "react";
 
 export const useStyles = makeStyles((theme) => ({
   info: {
@@ -34,11 +35,16 @@ interface PrivacyProps {}
 
 const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
   const styles = useStyles();
+
+  useEffect(() => {
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div className={styles.container}>
       <PageShell pageTitle="Privacy" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10}>
+        <Grid item xs={12} sm={11} lg={10} style={{padding: 15}}>
           <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.top}>
               Part of the information you share on our website is stored and used. We collect test

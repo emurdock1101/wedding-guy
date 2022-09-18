@@ -73,14 +73,15 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-  });
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const styles = useStyles();
   return (
     <div className={styles.container}>
       <PageShell pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10}>
+        <Grid item xs={12} sm={11} lg={10} style={{padding: 15}}>
           <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>

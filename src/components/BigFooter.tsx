@@ -64,19 +64,19 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
               Follow us on social media
             </Typography>
             <div className={styles.row}>
-              <a href="https://www.facebook.com" target="_blank">
+              <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://www.instagram.com" target="_blank">
+              <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://www.twitter.com" target="_blank">
+              <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
                 <Twitter className={styles.facebook} />
               </a>
             </div>
           </div>
           <Typography variant="subtitle1" className={styles.copyright}>
-            © 2022 Personality+ All rights reserved
+            © 2022 Personality+ All rights reserved.
           </Typography>
         </Box>
       </Grid>

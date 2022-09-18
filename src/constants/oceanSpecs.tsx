@@ -12,7 +12,7 @@ export const oceanOptions = {
     },
   },
   xaxis: {
-    categories: ["Opn.", "Con.", "Ext.", "Agr.", "Neu."],
+    categories: ["Ext.", "Neu.", "Agr.", "Con.", "Opn."],
     title: {
       text: "Percentile",
     },

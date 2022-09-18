@@ -1,5 +1,4 @@
 import { Box, Grid, Typography, makeStyles } from "@material-ui/core";
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 
 interface FooterProps {}
@@ -54,27 +53,8 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
     <Grid container justify="center" alignItems="flex-start">
       <Grid item xs={12}>
         <Box className={styles.box}>
-          {/* <div className={styles.row}>
-            <div className={styles.socialMedia}>
-              <a href="https://www.facebook.com" target="_blank">
-                <Facebook className={styles.facebook} />
-              </a>
-              <a href="https://www.instagram.com" target="_blank">
-                <Instagram className={styles.facebook} />
-              </a>
-              <a href="https://www.twitter.com" target="_blank">
-                <Twitter className={styles.facebook} />
-              </a>
-            </div>
-            {!isMobile && (
-              <Typography variant="subtitle1" className={styles.copyright}>
-                © 2022 Personality+ All rights reserved
-              </Typography>
-            )}
-          </div> */}
-
           <Typography variant="subtitle1" className={styles.copyright}>
-            © 2022 Personality+ All rights reserved
+            © 2022 Personality+ All rights reserved.
           </Typography>
         </Box>
       </Grid>

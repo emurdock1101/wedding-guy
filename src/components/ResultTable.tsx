@@ -10,7 +10,6 @@ import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { categoryData } from "../constants/categoryData";
-import { makeStyles } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
 import { theme as thm } from "../theme";
 

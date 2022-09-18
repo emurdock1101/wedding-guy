@@ -4,7 +4,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import content from "../constants/content";
-import { theme as thm } from "../theme";
 
 export default function FaqsAccordion() {
   return (

@@ -37,7 +37,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       color: theme.palette.common.white,
       marginTop: 30,
       marginBottom: 30,
-      fontSize: isMedium ? "60px" : "80px",
+      fontSize: isMedium ? "59px" : "80px",
       fontWeight: 600,
       font: "Monaco",
       minWidth: 380,
@@ -125,7 +125,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       fontSize: isMedium ? "40px" : "50px",
       fontWeight: 400,
       font: "Monaco",
-      paddingLeft: (isMedium || isSmall) ? 20 : 0,
+      paddingLeft: isMedium || isSmall ? 20 : 0,
     },
     big5Desc: {
       font: "Monaco",
@@ -149,8 +149,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const styles = useStyles();
   const navigate = useNavigate();
 
-  const startQuiz = () => {
-    navigate("/quiz");
+  const buyPage = () => {
+    navigate("/buy");
   };
 
   // choose the screen size
@@ -188,8 +188,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 Personality <span className={styles.plus}>+</span>
               </Typography>
               <Typography className={styles.secondTitle}>Discover a New You</Typography>
-              <Button variant="contained" onClick={startQuiz} className={styles.buyNowButton}>
-                BUY NOW
+              <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                BUY NOW $9.99
               </Button>
             </div>
             <img src={prism} className={styles.prismImage} alt="personality-prism"></img>
@@ -201,16 +201,19 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Divider />
               <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
-                Why do you think or act the way you do? What moves you to feel emotions or stirs your desires? Better yet, can you change those things? 
-                <br></br>
-                <br></br>
-                Who we are stems from our personality, and Personality+ is an assessment based on the Big Five 10 Aspect Model of personality. 
-                <br></br>
-                <br></br>
-                Also known as the Five Factor Model or OCEAN, it is an empirical model of personality within psychology that
-                reveals the core of your personality, your strengths, and areas you can grow. 
-                <br></br>
-                <br></br>
+                Why do you think or act the way you do? What moves you to feel emotions or stirs
+                your desires? Better yet, can you change those things?
+              </Typography>
+              <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
+                Who we are stems from our personality, and Personality+ is an assessment based on
+                the Big Five 10 Aspect Model of personality.
+              </Typography>
+              <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
+                Also known as the Five Factor Model or OCEAN, it is an empirical model of
+                personality within psychology that reveals the core of your personality, your
+                strengths, and areas you can grow.
+              </Typography>
+              <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
                 Discover a new you and start a new journey!
               </Typography>
             </div>
@@ -277,27 +280,11 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               <Typography className={styles.big5Title}>Big 5 Traits and 10 Aspects</Typography>
               <br></br>
               <Typography variant={"subtitle1"} className={styles.big5Desc}>
-                Your results will explain your unique personality as it relates to the Big-5 and
-                its 10 aspects, which are 2 subcategories for each of the 5 dimensions.
-                These categories and subcategories are listed below.
+                Your results will explain your unique personality as it relates to the Big-5 and its
+                10 aspects, which are 2 subcategories for each of the 5 dimensions. These categories
+                and subcategories are listed below.
               </Typography>
             </div>
-          </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
-            <OceanBanner
-              ocean={Ocean.Openness}
-              aspect1={Aspect.AestheticOpenness}
-              aspect2={Aspect.Intellect}
-              hex={theme.palette.error.main}
-            />
-          </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
-            <OceanBanner
-              ocean={Ocean.Conscientiousness}
-              aspect1={Aspect.Industriousness}
-              aspect2={Aspect.Orderliness}
-              hex={theme.palette.warning.main}
-            />
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
             <OceanBanner
@@ -305,6 +292,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               aspect1={Aspect.Enthusiasm}
               aspect2={Aspect.Assertiveness}
               hex={theme.palette.success.main}
+            />
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Neuroticism}
+              aspect1={Aspect.Withdrawal}
+              aspect2={Aspect.Volatility}
+              hex={theme.palette.secondary.main}
             />
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
@@ -317,10 +312,18 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           </Grid>
           <Grid item xs={12} sm={11} className={styles.oceanBanner}>
             <OceanBanner
-              ocean={Ocean.Neuroticism}
-              aspect1={Aspect.Withdrawal}
-              aspect2={Aspect.Volatility}
-              hex={theme.palette.secondary.main}
+              ocean={Ocean.Conscientiousness}
+              aspect1={Aspect.Industriousness}
+              aspect2={Aspect.Orderliness}
+              hex={theme.palette.warning.main}
+            />
+          </Grid>
+          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+            <OceanBanner
+              ocean={Ocean.Openness}
+              aspect1={Aspect.AestheticOpenness}
+              aspect2={Aspect.Interest}
+              hex={theme.palette.error.main}
             />
           </Grid>
         </Grid>

@@ -53,7 +53,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
         <Grid item xs={3} sm={2} className={styles.oceanScoreRow}>
           <Percent progress={props.oceanScore} hex={props.hex} size={90} />
         </Grid>
-        <Grid item xs={9} sm={10}>
+        <Grid item xs={12} sm={10}>
           <Typography variant="subtitle1">
             <strong>
               {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part1"]}
@@ -73,7 +73,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           </Typography>
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
-          <Typography variant="h6" className={styles.aspects}>
+          <Typography variant="h5" className={styles.aspects}>
             {props.aspect1Name}
           </Typography>
         </Grid>
@@ -82,9 +82,11 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
             <Percent progress={props.aspect1Score} hex={props.hex} size={60} />
           </div>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={12} sm={10}>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part1"]}
+            <strong>
+              {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part1"]}
+            </strong>
           </Typography>
           <br></br>
           <Typography variant="subtitle1" className={styles.aspects}>
@@ -100,7 +102,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           </Typography>
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
-          <Typography variant="h6" className={styles.aspects}>
+          <Typography variant="h5" className={styles.aspects}>
             {props.aspect2Name}
           </Typography>
         </Grid>
@@ -109,9 +111,11 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
             <Percent progress={props.aspect2Score} hex={props.hex} size={60} />
           </div>
         </Grid>
-        <Grid item xs={9} sm={10}>
+        <Grid item xs={12} sm={10}>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect1Score)]["part1"]}
+            <strong>
+              {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect1Score)]["part1"]}
+            </strong>
           </Typography>
           <br></br>
           <Typography variant="subtitle1" className={styles.aspects}>

@@ -5,14 +5,15 @@ off-white = #F8F7F3
 
 info - #1b1d21 - black - normal text
 
-error - #ED5362 - red - Openness
+error - #ED5362 - red - Extraversion
 
-warning - #9A338E - purple - Conscientiousness
-    
-success - #3A81CD - blue - Extraversion 
+warning - #9A338E - purple - Neuroticism
 
-primary - #00C9B7 - turquoise -- Agreeableness
+success - #3A81CD - blue - Agreeableness
 
-secondary - #344B47 - dark green - Neurotocism
+primary - #00C9B7 - turquoise -- Conscientiousness
+
+secondary - #344B47 - dark green - Openness
+
 
 

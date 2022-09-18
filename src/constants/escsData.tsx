@@ -20,7 +20,7 @@ export const escsMap: Map<string, EscsData> = new Map([
   ],
 
   [
-    Aspect.Intellect.toString(),
+    Aspect.Interest.toString(),
     {
       mean: 3.7,
       stdDev: 0.68,

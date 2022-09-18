@@ -23,7 +23,7 @@ const AspectsChart: React.FC<AspectsChart> = (props: AspectsChart) => {
       id: "basic-bar",
     },
     xaxis: {
-      categories: ["(O) - Openness", "(O) - Intellect", "(C) - Boredom", "(C) - Sillyness"],
+      categories: ["(O) - Openness", "(O) - Int", "(C) - Boredom", "(C) - Sillyness"],
       title: {
         text: "Percentile of the population",
       },

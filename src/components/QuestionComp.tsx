@@ -1,4 +1,4 @@
-import { Aspect, Ocean, Question } from "../constants/schema";
+import { Question } from "../constants/schema";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
@@ -40,7 +40,11 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
 
   return (
     <FormControl>
-      <FormLabel>{props.question.text}</FormLabel>
+      <FormLabel>
+        <p>
+          {props.question.text} <span style={{ color: "#ED5362" }}>{selected === 99 ? "*" : ""}</span>
+        </p>
+      </FormLabel>
       <RadioGroup row={!isMobile} value={selected}>
         <FormControlLabel
           value={radio1}

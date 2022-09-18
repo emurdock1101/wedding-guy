@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./views/About";
 import Contact from "./views/Contact";
 import FAQs from "./views/Faqs";
-import Fourohfour from "./views/Error";
+import ErrorPage from "./views/Error";
 import Home from "./views/Home";
 import Loading from "./components/Loading";
 import PageShell from "./components/PageShell";
@@ -14,6 +14,7 @@ import Privacy from "./views/Privacy";
 import Quiz from "./views/Quiz";
 import Results from "./views/Results";
 import Submit from "./views/Submit";
+import BuyTest from "./views/BuyTest";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme";
 
@@ -35,8 +36,9 @@ function App() {
           <Route path="/submit" element={<Submit prevStep={() => {}} nextStep={() => {}} />} />
           <Route path="/pretest" element={<PreTest nextStep={() => {}} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/404" element={<Fourohfour />} />
+          <Route path="/error" element={<ErrorPage />} />
           <Route path="/loading" element={<Loading />} />
+          <Route path="/buy" element={<BuyTest />} />
         </Routes>
       </ThemeProvider>
     </div>
