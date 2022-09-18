@@ -84,7 +84,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       marginTop: 60,
     },
     spiralBox: {
-      backgroundColor: "white",
       minHeight: 920,
       width: "100%",
       marginTop: 120,
@@ -98,7 +97,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       color: theme.palette.info.main,
       padding: 30,
       backgroundColor: "white",
-      opacity: 0.92,
+      opacity: 0.85,
       marginBottom: 100,
     },
     aboutTestTitle: {

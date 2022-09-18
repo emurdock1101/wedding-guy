@@ -19,6 +19,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as Logo } from "../images/logo.svg";
 
 const drawerWidth = 260;
 
@@ -91,9 +92,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   homeButton: {
-    border: "#111840 1px solid",
     color: "#111840",
     backgroundColor: "#F8F7F3",
+    width: 50,
+    height: 50,
   },
   menuIcon: {
     color: "#111840",
@@ -149,11 +151,10 @@ const HeaderDrawer = () => {
           <div className={styles.home}>
             <Button
               className={styles.homeButton}
-              variant="contained"
+              // variant="contained"
               onClick={() => handleNav("/")}
             >
-              {" "}
-              Personality +
+              {<Logo />}
             </Button>
           </div>
           <IconButton
