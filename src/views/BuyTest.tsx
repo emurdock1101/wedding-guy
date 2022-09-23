@@ -44,7 +44,7 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
               <Typography variant="h2">What's included for $9.99?</Typography>
               <br></br>
               <Typography variant="h6">
-                1. 100-question scientifically-backed, peer-reviewed assessment of behaviorial
+                1. 100-question scientifically-backed, peer-reviewed assessment of
                 personality.
               </Typography>
               <br></br>
@@ -53,8 +53,8 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
               </Typography>
               <br></br>
               <Typography variant="h6">
-                3. Discount offerings towards counseling services with Dr. Knicely, where you can
-                further learn about your behaviors and how to discover more about yourself.
+                3. Discount offerings towards coaching services with Personality+ staff, where you can
+                further learn about your behaviors and discover more about yourself.
               </Typography>
               <div className={styles.buttons}>
                 <Button

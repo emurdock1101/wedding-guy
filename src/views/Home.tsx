@@ -231,7 +231,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               <Grid item xs={12} sm={11} md={4}>
                 <HomeCard
                   title="Strengths"
-                  description="Personality+ shows natural strengths within your personality. Are you a leader? A healer? An Artist? Learn how to discover and unlock your hidden potential."
+                  description="Personality+ shows natural strengths within your personality. Are you a leader? A healer? An artist? Learn how to discover and unlock your hidden potential."
                 />
               </Grid>
               <Grid item xs={12} sm={11} md={4}>
