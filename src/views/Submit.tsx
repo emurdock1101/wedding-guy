@@ -30,7 +30,7 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
           <Grid container justify="center" alignItems="center">
             <Grid item xs={12} md={10} lg={8}>
               <Typography variant="h4">
-                You have completed the Big 5 10 Aspects personality assessment.
+                You have completed the Personality+ personality assessment.
               </Typography>
               <br></br>
               <Typography variant="h4">Click submit below to see your results.</Typography>

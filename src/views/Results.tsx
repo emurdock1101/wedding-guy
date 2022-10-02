@@ -120,7 +120,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               exists in the human population: there is a niche for each personality configuration.
               Much of what constitutes success in life is therefore the consequence of finding the
               place in relationships, work and personal commitment that corresponds to your unique
-              personality structure. Good luck with your expanded self-understanding!
+              personality structure. Good luck with your personality journey!
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               Note also that if you find that the descriptions harsher than you might consider

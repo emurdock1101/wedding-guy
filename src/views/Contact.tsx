@@ -85,8 +85,8 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>
-              Ask about the Personality+ Big 5 10 Aspects test or our data-driven psychological
-              counseling services.{" "}
+              Ask about the Personality+ test or our data-driven psychological
+              coaching services.{" "}
             </Typography>
             <a href="tel:15409999898" className={styles.phoneLink}>
               <Phone className={styles.phone} />
