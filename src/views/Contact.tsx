@@ -10,7 +10,7 @@ interface ContactProps {}
 const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
-      fontSize: isMobile ? 60 : 80,
+      fontSize: isMobile ? 40 : 60,
       border: "1x solid red",
       "&:hover": {
         color: theme.palette.primary.main,
@@ -95,20 +95,20 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
                 +1-(540)-999-8989
               </Typography>
             </a>
-            <a href="mailto:example@gmail.com" className={styles.phoneLink}>
+            <a href="mailto:discoverpersonalityplus@gmail.com" className={styles.phoneLink}>
               <Mail className={styles.phone} />
               <Typography variant="h5" className={styles.number}>
-                example@gmail.com
+                discoverpersonalityplus@gmail.com
               </Typography>
             </a>
             <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+              <a href="https://www.facebook.com/DiscoverPersonalityPlus/" target="_blank" rel="noreferrer">
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
+              <a href="https://instagram.com/discover_personalityplus" target="_blank" rel="noreferrer">
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
                 <Twitter className={styles.facebook} />
               </a>
             </div>

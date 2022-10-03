@@ -1,6 +1,6 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core";
-import { Facebook, GitHub, Instagram, Language, Twitter } from "@material-ui/icons";
+import { Facebook, GitHub, Instagram, Web, Twitter, LinkedIn } from "@material-ui/icons";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -104,36 +104,66 @@ const AboutCard = (props: AboutCardProps) => {
       <CardActions disableSpacing>
         {props.member === "elliot" && (
           <>
-            <a className={styles.link} href="https://www.github.com" target="_blank" rel="noreferrer">
+            <a
+              className={styles.link}
+              href="https://github.com/emurdock1101"
+              target="_blank"
+              rel="noreferrer"
+            >
               <IconButton aria-label="elliot's github">
                 <GitHub className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.instagram.com" target="_blank" rel="noreferrer">
-              <IconButton aria-label="elliot's instragram">
-                <Instagram className={styles.icon} />
+            <a
+              className={styles.link}
+              href="https://www.linkedin.com/in/elliot-murdock-675970161/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconButton aria-label="elliot's LinkedIn">
+                <LinkedIn className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.google.com" target="_blank" rel="noreferrer">
+            <a
+              className={styles.link}
+              href="https://www.elliotchanningmurdock.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <IconButton aria-label="elliot's website">
-                <Language className={styles.icon} />
+                <Web className={styles.icon} />
               </IconButton>
             </a>
           </>
         )}
         {props.member === "patrick" && (
           <>
-            <a className={styles.link} href="https://www.facebook.com" target="_blank" rel="noreferrer">
+            <a
+              className={styles.link}
+              href="https://www.facebook.com/DiscoverPersonalityPlus/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <IconButton aria-label="patrick's facebook">
                 <Facebook className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.instagram.com" target="_blank" rel="noreferrer">
-              <IconButton aria-label="patrick's instrgram">
+            <a
+              className={styles.link}
+              href="https://instagram.com/discover_personalityplus"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconButton aria-label="patrick's instagram">
                 <Instagram className={styles.icon} />
               </IconButton>
             </a>
-            <a className={styles.link} href="https://www.twitter.com" target="_blank" rel="noreferrer">
+            <a
+              className={styles.link}
+              href="https://twitter.com/PersonalityB5"
+              target="_blank"
+              rel="noreferrer"
+            >
               <IconButton aria-label="patrick's twitter">
                 <Twitter className={styles.icon} />
               </IconButton>

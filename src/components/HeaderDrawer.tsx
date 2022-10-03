@@ -235,7 +235,7 @@ const HeaderDrawer = () => {
         <Divider />
         <List>
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/DiscoverPersonalityPlus/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#1b1d21", textDecoration: "none" }}
@@ -250,7 +250,7 @@ const HeaderDrawer = () => {
             </ListItem>
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://instagram.com/discover_personalityplus"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#1b1d21", textDecoration: "none" }}
@@ -260,12 +260,12 @@ const HeaderDrawer = () => {
                 <ListItemIcon>
                   <Instagram />
                 </ListItemIcon>
-                <ListItemText primary={"Instragram"} />
+                <ListItemText primary={"Instagram"} />
               </ListItemButton>
             </ListItem>
           </a>
           <a
-            href="https://www.twitter.com"
+            href="https://twitter.com/PersonalityB5"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#1b1d21", textDecoration: "none" }}

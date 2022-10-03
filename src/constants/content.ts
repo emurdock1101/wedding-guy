@@ -57,8 +57,7 @@ const content: any = {
         "Example descriptors of unconscientiousness: relaxed, self-focused or indulgent, distractable, procrastinator (especially if high in neuroticism), does not like challenges, apply themselves sparingly, nonconforming, or unconventional, and guilt-free. Note: the lower the levels of conscientiousness, the easier it is to relax, deal with failure, or judgement; however, it may appear as laziness or a lack of motivation by people who are higher in conscientiousness or lower in agreeableness.",
       part4:
         "Professionally, those whose conscientiousness is the strongest trait will do well as managers, implementors, and administrators, while those low in consciousness may be more motived by other personality traits that are higher: safety and security if neurotic, social success and fun if extraverted, relationships if agreeable, or creativity or complexity if open. Note: for this reason, it is possible for two people to score the same on conscientiousness but manifest it in different ways depending other areas of their personality.",
-      part5: 
-        "Women are slightly more conscientious than men.",
+      part5: "Women are slightly more conscientious than men.",
       part6:
         "Conscientiousness has 2 aspects industriousness (proclivity to work hard or be goal oriented) and orderliness (the desire to establish & maintain boundaries)",
       color: "#00C9B7",
@@ -119,22 +118,22 @@ const content: any = {
         "First, remember that this is a self-report test, scored comparatively, using statistical processes. The manner in which you describe yourself has been compared to the manner in which many other people described themselves. If you received results that you do not regard as accurate (and this is more likely to be the case when the report describes more negative personality attributes) it is possible that you were too hard on yourself when you answered the questions. This is more probable if you are higher, rather than lower, in trait neuroticism (as people higher in neuroticism are more self-critical), or if you were in a bad mood when you took the test, or if you are depressed, or hungry or ill.",
       part2:
         "Second, remember that the traits and aspects have to be considered in combination, rather than singly. So, for example, you might be very or extremely high in Agreeableness. You therefore received feedback on the report stating that you have a hard time standing up for yourself, and are generally more concerned with the feelings and desires of other people. However, if you are also high in assertiveness (an aspect of Extraversion) and/or low in Neuroticism then you are more likely to say what you want and put your needs forward than an agreeable person low in the former and high in the latter. If you are low in Conscientiousness, you are less likely to be successful in school and in managerial and administrative jobs—but if you have a high IQ and low Neuroticism then your chances of success rise substantially. Furthermore, you could be low in Conscientiousness but high in Openness to Experience and be successful as a creative person or entrepreneur.",
-      part3: 
-         "Remember, your personality is part of your story and adventure. Learn who you are and discover the strenghts that lie within!",
+      part3:
+        "Remember, your personality is part of your story and adventure. Learn who you are and discover the strenghts that lie within!",
     },
   ],
   about: {
     elliot: {
       part1:
-        "Elliot Murdock is a software engineer who received his bachelors in Computer Science from the University of Virginia. He likes to dance and eat carrots.",
+        "Elliot Murdock is a software engineer with a B.A. in Computer Science from the University of Virginia. He creates websites for small businesses. In his free time, Elliot enjoys climbing, snowboarding, and traveling.",
       part2:
-        "This screen is visible only in development. It will not appear if the app crashes in production. Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.",
+        "Elliot specializes in React, Java, Typescript, and AWS infrastructure-as-code development. He has experience with front-end, back-end, automated testing, and DevOps. Feel free to check out more of his work in the links above.",
     },
     patrick: {
       part1:
         "Patrick Knicely has a B.A from Roaonke College and a M.S. from Radford University. He is a clinical mental health threapist and clinical consultant for inpatient and ambulatory healthcare settings.",
       part2:
-        "his screen is visible only in development. It will not appear if the app crashes in production. Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.",
+        "Patrick helps clients discover who they are by showing them their unique personality and how that personality affects their emotions, behavior, cognition, and motivations. This allows individuals to discover their natural strengths as well as areas of growth. By understanding a client’s personality, Patrick helps clients organize their past, present, and future with self-authoring, behavioral learning, and goal setting to help mitigate depression, anxiety, and trauma.",
     },
   },
   aboutTheTest: {
