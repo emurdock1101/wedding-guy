@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 import FaqsAccordion from "../components/FaqsAccordion";
 import Banner from "../components/Banner";

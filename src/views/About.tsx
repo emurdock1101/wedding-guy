@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { useEffect } from "react";
 
 import AboutCard from "../components/AboutCard";

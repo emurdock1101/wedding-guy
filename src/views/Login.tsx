@@ -1,5 +1,5 @@
 import { makeStyles, TextField, Button, Grid, Typography, Paper } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { useNavigate } from "react-router-dom";

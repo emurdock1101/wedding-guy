@@ -19,7 +19,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme";
 import { Amplify, Auth } from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
+// import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import Login from "./views/Login";
 import Footer from "./components/Footer";

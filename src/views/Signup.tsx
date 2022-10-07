@@ -48,7 +48,8 @@ const Signup = (props: SignupProps) => {
   const signUp = async (e: any) => {
     e.preventDefault();
     try {
-      const user = await Auth.signIn(username, password);
+      const user = await Auth.signUp(username, password);
+      console.log(user)
       props.onSignUp();
     } catch (error) {
       console.log("error signing in", error);
