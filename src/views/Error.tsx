@@ -1,25 +1,12 @@
 import { Grid, Typography, makeStyles, Button } from "@material-ui/core";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import PageShell from "../components/PageShell";
+import Banner from "../components/Banner";
 
 interface ErrorPageProps {}
 
 const ErrorPage: React.FC<ErrorPageProps> = (props: ErrorPageProps) => {
   const useStyles = makeStyles((theme) => ({
-    footer: {
-      bottom: 0,
-      position: "absolute",
-      width: "100%",
-    },
-    container: {
-      minHeight: "100vh" /* will cover the 100% of viewport */,
-      overflow: "hidden",
-      display: "block",
-      position: "relative",
-      paddingBottom: 120,
-    },
     buttonContainer: {
       marginTop: 60,
       marginBottom: 60,
@@ -43,8 +30,8 @@ const ErrorPage: React.FC<ErrorPageProps> = (props: ErrorPageProps) => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <PageShell pageTitle="404 - Page Not Found" />
+    <>
+      <Banner pageTitle="404 - Page Not Found" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={10} className={styles.info}>
           <Typography variant="h5">
@@ -66,10 +53,7 @@ const ErrorPage: React.FC<ErrorPageProps> = (props: ErrorPageProps) => {
           </Grid>
         </Grid>
       </Grid>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
-    </div>
+    </>
   );
 };
 

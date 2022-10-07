@@ -1,6 +1,5 @@
 import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
 
-import HeaderDrawer from "../components/HeaderDrawer";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -37,8 +36,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
 
   const styles = useStyles();
   return (
-    <div>
-      <HeaderDrawer />
+    <>
       <Grid container justify="center" alignItems="center" spacing={2} className={styles.info}>
         <Grid item xs={12}>
           <Grid container justify="center" alignItems="center">
@@ -126,7 +124,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 

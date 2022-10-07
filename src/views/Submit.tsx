@@ -1,7 +1,5 @@
 import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
 
-import HeaderDrawer from "../components/HeaderDrawer";
-
 export const useStyles = makeStyles((theme) => ({
   info: {
     padding: "15px",
@@ -23,8 +21,7 @@ interface SubmitProps {
 const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
   const styles = useStyles();
   return (
-    <div>
-      <HeaderDrawer />
+    <>
       <Grid container justify="center" alignItems="center" spacing={2} className={styles.info}>
         <Grid item xs={12}>
           <Grid container justify="center" alignItems="center">
@@ -51,7 +48,7 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 

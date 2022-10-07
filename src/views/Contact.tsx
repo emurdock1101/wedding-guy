@@ -2,8 +2,7 @@ import { Facebook, Instagram, Mail, Phone, Twitter } from "@material-ui/icons";
 import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
-import Footer from "../components/Footer";
-import PageShell from "../components/PageShell";
+import Banner from "../components/Banner";
 
 interface ContactProps {}
 
@@ -11,7 +10,6 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
       fontSize: isMobile ? 40 : 60,
-      border: "1x solid red",
       "&:hover": {
         color: theme.palette.primary.main,
       },
@@ -47,18 +45,6 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       color: theme.palette.info.main,
       borderLeft: `6px solid #111840`,
     },
-    footer: {
-      bottom: 0,
-      position: "absolute",
-      width: "100%",
-    },
-    container: {
-      minHeight: "100vh" /* will cover the 100% of viewport */,
-      overflow: "hidden",
-      display: "block",
-      position: "relative",
-      paddingBottom: 120,
-    },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
 
@@ -78,15 +64,14 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
 
   const styles = useStyles();
   return (
-    <div className={styles.container}>
-      <PageShell pageTitle="Contact Us" />
+    <>
+      <Banner pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} style={{padding: 15}}>
+        <Grid item xs={12} sm={11} lg={10} style={{ padding: 15 }}>
           <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="h4">How can we help?</Typography>
             <Typography variant="h6" className={styles.reachOut}>
-              Ask about the Personality+ test or our data-driven psychological
-              coaching services.{" "}
+              Ask about the Personality+ test or our data-driven psychological coaching services.{" "}
             </Typography>
             <a href="tel:15409999898" className={styles.phoneLink}>
               <Phone className={styles.phone} />
@@ -102,10 +87,18 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               </Typography>
             </a>
             <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com/DiscoverPersonalityPlus/" target="_blank" rel="noreferrer">
+              <a
+                href="https://www.facebook.com/DiscoverPersonalityPlus/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://instagram.com/discover_personalityplus" target="_blank" rel="noreferrer">
+              <a
+                href="https://instagram.com/discover_personalityplus"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Instagram className={styles.facebook} />
               </a>
               <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
@@ -115,10 +108,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           </Paper>
         </Grid>
       </Grid>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
-    </div>
+    </>
   );
 };
 

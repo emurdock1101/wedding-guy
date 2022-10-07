@@ -1,6 +1,5 @@
 import { Button, Grid, Paper, makeStyles } from "@material-ui/core";
 
-import HeaderDrawer from "../components/HeaderDrawer";
 import ProgressBar from "../components/ProgressBar";
 import { Question } from "../constants/schema";
 import QuestionComp from "./QuestionComp";
@@ -63,9 +62,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
   return (
     <div>
       <Grid container justify="center" alignItems="center" className={styles.container}>
-        <Grid item xs={12}>
-          <HeaderDrawer />
-        </Grid>
+        <Grid item xs={12}></Grid>
         <Grid item xs={12} className={styles.row}>
           <ProgressBar
             progress={

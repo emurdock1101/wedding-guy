@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export const useStyles = makeStyles((theme) => ({
   info: {
     padding: "15px",
-    marginTop: 30,
+    marginTop: 60,
   },
   buttons: {
     marginTop: 60,
@@ -35,45 +35,41 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
 
   const styles = useStyles();
   return (
-    <div>
-      <HeaderDrawer />
-      <Grid container justify="center" alignItems="center" spacing={2} className={styles.info}>
-        <Grid item xs={12}>
-          <Grid container justify="center" alignItems="center">
-            <Grid item xs={12} md={10} lg={8}>
-              <Typography variant="h2">What's included for $9.99?</Typography>
-              <br></br>
-              <Typography variant="h6">
-                1. 100-question scientifically-backed, peer-reviewed assessment of
-                personality.
-              </Typography>
-              <br></br>
-              <Typography variant="h6">
-                2. In-depth analysis of results, specific to your scores.
-              </Typography>
-              <br></br>
-              <Typography variant="h6">
-                3. Discount offerings towards coaching services with Personality+ staff, where you can
-                further learn about your behaviors and discover more about yourself.
-              </Typography>
-              <div className={styles.buttons}>
-                <Button
-                  color="default"
-                  variant="outlined"
-                  onClick={() => nav("/")}
-                  className={styles.buttonOne}
-                >
-                  BACK TO HOME
-                </Button>
-                <Button color="primary" variant="contained" onClick={() => nav("/quiz")}> 
-                  PURCHASE PERSONALITY+
-                </Button>
-              </div>
-            </Grid>
+    <Grid container justify="center" alignItems="center" spacing={2} className={styles.info}>
+      <Grid item xs={12}>
+        <Grid container justify="center" alignItems="center">
+          <Grid item xs={12} md={10} lg={7}>
+            <Typography variant="h2">What's included for $9.99?</Typography>
+            <br></br>
+            <Typography variant="h6">
+              1. 100-question scientifically-backed, peer-reviewed assessment of personality.
+            </Typography>
+            <br></br>
+            <Typography variant="h6">
+              2. In-depth analysis of results, specific to your scores.
+            </Typography>
+            <br></br>
+            <Typography variant="h6">
+              3. Discount offerings towards coaching services with Personality+ staff, where you can
+              further learn about your behaviors and discover more about yourself.
+            </Typography>
+            <div className={styles.buttons}>
+              <Button
+                color="default"
+                variant="outlined"
+                onClick={() => nav("/")}
+                className={styles.buttonOne}
+              >
+                BACK TO HOME
+              </Button>
+              <Button color="primary" variant="contained" onClick={() => nav("/signup")}>
+                PURCHASE PERSONALITY+
+              </Button>
+            </div>
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

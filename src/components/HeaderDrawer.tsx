@@ -20,6 +20,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../images/logo.svg";
+import { Auth } from "aws-amplify";
 
 const drawerWidth = 260;
 
@@ -97,15 +98,26 @@ const useStyles = makeStyles((theme) => ({
     width: 50,
     height: 50,
   },
+  signInButton: {
+    color: "#111840",
+    backgroundColor: "#F8F7F3",
+    width: 100,
+    height: 50,
+  },
   menuIcon: {
     color: "#111840",
   },
 }));
 
+interface HeaderDrawerProps {
+  loggedIn: boolean;
+  onLogOut: () => void;
+}
+
 /**
  * HeaderDrawer component
  */
-const HeaderDrawer = () => {
+const HeaderDrawer = (props: HeaderDrawerProps) => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
@@ -117,12 +129,27 @@ const HeaderDrawer = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  // On clicking log in, redirect to Login page
   const handleNav = (path: string) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
     navigate(path, { replace: true });
   };
+
+  // Log out will redirect to Home
+  const logOut = async (e: any) => {
+    e.preventDefault();
+    try {
+      await Auth.signOut();
+      props.onLogOut();
+      handleNav("/");
+    } catch (error) {
+      console.log("error signing in", error);
+    }
+  };
+
   const styles = useStyles();
 
   useEffect(() => {
@@ -157,6 +184,22 @@ const HeaderDrawer = () => {
               {<Logo />}
             </Button>
           </div>
+          {
+            // Log in if not already
+            !props.loggedIn && (
+              <Button className={styles.signInButton} onClick={() => handleNav("/login")}>
+                LOG IN
+              </Button>
+            )
+          }
+          {
+            // Logout if logged in already
+            props.loggedIn && (
+              <Button className={styles.signInButton} onClick={logOut}>
+                LOG OUT
+              </Button>
+            )
+          }
           <IconButton
             color="inherit"
             aria-label="open drawer"

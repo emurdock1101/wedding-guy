@@ -30,13 +30,8 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
     },
     socialMedia: {
       textAlign: "center",
-      paddingTop: 180,
-      paddingBottom: 160,
-    },
-    copyright: {
-      padding: 20,
-      color: theme.palette.info.main,
-      textAlign: isMobile ? "center" : "right",
+      paddingTop: 160,
+      paddingBottom: 100,
     },
   }));
 
@@ -75,9 +70,6 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
               </a>
             </div>
           </div>
-          <Typography variant="subtitle1" className={styles.copyright}>
-            © 2022 Personality+ All rights reserved.
-          </Typography>
         </Box>
       </Grid>
     </Grid>

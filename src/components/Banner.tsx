@@ -12,10 +12,13 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
       padding: 40,
       color: "white",
       fontSize: isMobile ? 50 : 60,
-      textAlign: isMobile ? "center" : "left"
+      textAlign: isMobile ? "center" : "left",
     },
     titlePaper: {
       backgroundColor: "#111840", // navy blue
+    },
+    container: {
+      marginBottom: 100,
     },
   }));
 
@@ -35,7 +38,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   });
 
   return (
-    <Grid container justify="center" alignItems="flex-start">
+    <Grid container justify="center" alignItems="flex-start" className={styles.container}>
       <Grid item xs={12}>
         <Paper elevation={2} className={styles.titlePaper} style={{ borderRadius: "0px" }}>
           <Grid container spacing={6} justify="center" alignItems="flex-start">

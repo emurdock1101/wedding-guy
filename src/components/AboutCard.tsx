@@ -30,9 +30,6 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 const useStyles = makeStyles((theme) => ({
-  pageShell: {
-    marginTop: 60,
-  },
   phoneLink: {
     marginTop: 40,
     display: "flex",

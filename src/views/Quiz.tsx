@@ -30,7 +30,7 @@ const Quiz: React.FC = () => {
 
   return (
     <div>
-      {step === 0 && <PreTest nextStep={nextStep} />}
+      {step === 0 && <PreTest nextStep={nextStep}/>}
       {chunks.map((chunk, index) => {
         return (
           step === index + 1 && (
@@ -44,7 +44,7 @@ const Quiz: React.FC = () => {
           )
         );
       })}
-      {step === chunks.length + 1 && <Submit prevStep={prevStep} nextStep={nextStep} />}
+      {step === chunks.length + 1 && <Submit prevStep={prevStep} nextStep={nextStep}/>}
       {step === chunks.length + 2 && <Results />}
     </div>
   );

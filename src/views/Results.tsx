@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
-import PageShell from "../components/PageShell";
 import ReactApexChart from "react-apexcharts";
 import ResultTable from "../components/ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
@@ -28,7 +27,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     info: {
       marginBottom: "20px",
       fontSize: 18,
-      color: theme.palette.info.main
+      color: theme.palette.info.main,
     },
     explanation: {
       padding: "20px",
@@ -107,7 +106,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   return (
     <div>
-      <PageShell pageTitle="Results and Explanation" />
+      <Banner pageTitle="Results and Explanation" />
       <Grid container spacing={6} justify="center" alignItems="flex-start">
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
