@@ -1,9 +1,11 @@
-import { makeStyles, TextField, Button, Grid, Typography, Paper } from "@material-ui/core";
+import { makeStyles, TextField, Button, Grid, Typography, Paper, Box } from "@material-ui/core";
 import { useState } from "react";
 import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+
 interface LoginProps {
   onLogIn: () => void;
 }
@@ -11,6 +13,8 @@ interface LoginProps {
 const Login = (props: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState("");
 
   const useStyles = makeStyles((theme) => ({
     plus: {
@@ -23,21 +27,45 @@ const Login = (props: LoginProps) => {
     input: {
       minWidth: "100%",
       marginBottom: 30,
-      paddingLeft: 30,
-      paddingRight: 30,
+      marginTop: 30,
+      paddingLeft: 20,
+      paddingRight: 20,
     },
     button: {
       minWidth: "20%",
-      margin: 30,
+      margin: 20,
     },
     thirdTitle: {
       fontSize: 25,
       fontWeight: 300,
       font: "Monaco",
-      margin: 30,
+      marginLeft: 20,
+      marginTop: 30,
+      marginBottom: 30
     },
     paper: {
-      padding: 30,
+      padding: 20,
+      marginBottom: 60
+    },
+    alert: {
+      marginBottom: 15,
+      border: "1px solid #EF5350",
+    },
+    box: {
+      height: 50,
+      marginBottom: 15,
+    },
+    forgot: {
+      fontSize: 16,
+      fontWeight: 300,
+      font: "Monaco",
+      marginTop: 20,
+      marginLeft: 20,
+      color: theme.palette.primary.main,
+      textDecoration: "none",
+      "&:hover": {
+        color: theme.palette.primary.dark,
+      },
     },
   }));
 
@@ -55,11 +83,25 @@ const Login = (props: LoginProps) => {
     e.preventDefault();
     try {
       const user = await Auth.signIn(username, password);
-      console.log(user)
+      console.log(user);
       props.onLogIn();
+      setAlert(true);
       handleNav("/");
-    } catch (error) {
-      alert(error);
+    } catch (error: any) {
+      if (!username || !username.length) {
+        setAlertContent("Username must be provided.");
+      } else if (!password || !password.length) {
+        setAlertContent("Password must be provided.");
+      } else if (error.code === "UserNotFoundException") {
+        setAlertContent(
+          "User is not found. Try again with the correct credentials, or sign up below to create an account."
+        );
+      } else if (error.code.length) {
+        setAlertContent(error.code);
+      } else if (error.log.length) {
+        setAlertContent(error.code);
+      }
+      setAlert(true);
     }
   };
 
@@ -68,27 +110,43 @@ const Login = (props: LoginProps) => {
       <Banner pageTitle="Log In" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={10} md={7}>
+          {alert ? (
+            <Alert
+              severity="error"
+              className={styles.alert}
+              onClose={() => {
+                setAlert(false);
+              }}
+            >
+              {alertContent}
+            </Alert>
+          ) : (
+            <>
+              <Box className={styles.box} />
+            </>
+          )}
           <Paper elevation={2} className={styles.paper}>
             <TextField
               type="text"
-              placeholder="username"
+              placeholder="email"
               onChange={(e) => setUsername(e.target.value)}
               className={styles.input}
             />
-            <br></br>
             <TextField
               type="password"
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
               className={styles.input}
             />
-            <br></br>
             <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
               LOG IN
             </Button>
+            <Link className={styles.forgot} to={"login/reset"}>
+              Forgot password?
+            </Link>
             <Typography className={styles.thirdTitle}>
               Don't have an account?{" "}
-              <Link className={styles.plus} to={"/signup"}>
+              <Link className={styles.plus} to={"/buy"}>
                 Sign Up
               </Link>
             </Typography>

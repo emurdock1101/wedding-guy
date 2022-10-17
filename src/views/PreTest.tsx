@@ -14,6 +14,14 @@ export const useStyles = makeStyles((theme) => ({
   buttonOne: {
     marginRight: 25,
   },
+  plus: {
+    color: theme.palette.primary.main,
+  },
+  bigTitle: {
+    fontWeight: 600,
+    font: "Monaco",
+    color: "#111840", //navy blue
+  },
 }));
 
 interface PreTestProps {
@@ -41,13 +49,20 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
         <Grid item xs={12}>
           <Grid container justify="center" alignItems="center">
             <Grid item xs={12} md={10} lg={8}>
+              <Typography variant="h1" className={styles.bigTitle}>
+                Personality<span className={styles.plus}>+</span>
+              </Typography>
+              <Typography variant="h6">Big 5 10 Aspects Personality Assessment</Typography>
+              <br></br>
+              <br></br>
+              <br></br>
               <Typography variant="h4">
-                What is the format of this test, and the rationale for that format?
+                What is the format of this test?
               </Typography>
               <br></br>
               <Typography variant="h6">
                 You will be presented with 100 phrases, such as: “I am sad much of the time”. You
-                will then be asked to indicate the degree to which you agree or disagree with the
+                will then be asked to choose one of five options that indicates how much you agree or disagree with the
                 phrase as it applies to you.
               </Typography>
               <br></br>

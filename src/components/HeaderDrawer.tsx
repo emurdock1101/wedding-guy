@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
   signInButton: {
     color: "#111840",
     backgroundColor: "#F8F7F3",
-    width: 100,
+    width: 110,
     height: 50,
   },
   menuIcon: {
@@ -184,6 +184,14 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
               {<Logo />}
             </Button>
           </div>
+          {
+            // Show results page if logged in
+            props.loggedIn && (
+              <Button className={styles.signInButton} onClick={() => handleNav("/results")}>
+                TEST RESULT
+              </Button>
+            )
+          }
           {
             // Log in if not already
             !props.loggedIn && (

@@ -14,6 +14,16 @@
     "categories": {
       "auth": {
         "big5amplifye0115051": {}
+      },
+      "function": {
+        "webhookLambdaStripe": {
+          "secretsPathAmplifyAppId": "d3fk1q0jjmkmz0",
+          "deploymentBucketName": "amplify-big5amplify-dev-210923-deployment",
+          "s3Key": "amplify-builds/webhookLambdaStripe-37476f4e465838724975-build.zip"
+        }
+      },
+      "api": {
+        "stripeRestApi": {}
       }
     }
   }

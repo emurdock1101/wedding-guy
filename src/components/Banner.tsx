@@ -18,7 +18,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
       backgroundColor: "#111840", // navy blue
     },
     container: {
-      marginBottom: 100,
+      marginBottom: 90,
     },
   }));
 

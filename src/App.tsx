@@ -24,7 +24,7 @@ import "@aws-amplify/ui-react/styles.css";
 import Login from "./views/Login";
 import Footer from "./components/Footer";
 import Signup from "./views/Signup";
-
+import Purchase from "./views/Purchase";
 Amplify.configure(awsconfig);
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
         <HeaderDrawer loggedIn={loggedIn} onLogOut={assessLoggedInState} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/test" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact" element={<Contact />} />
@@ -76,6 +76,7 @@ function App() {
           <Route path="/buy" element={<BuyTest />} />
           <Route path="/login" element={<Login onLogIn={assessLoggedInState} />} />
           <Route path="/signup" element={<Signup onSignUp={assessLoggedInState} />} />
+          <Route path="/purchased" element={<Purchase loggedIn={loggedIn} />} />
         </Routes>
         <div className={styles.footer}>
           <Footer />

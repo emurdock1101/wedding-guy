@@ -9,5 +9,20 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientIDWeb": "string",
             "AppClientID": "string"
         }
+    },
+    "function": {
+        "webhookLambdaStripe": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "stripeRestApi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
     }
 }
