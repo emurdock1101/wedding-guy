@@ -1,6 +1,6 @@
 @keyframes fadeInAnimation {
   0% {
-    opacity: 0.4;
+    opacity: 0.2;
   }
   100% {
     opacity: 1;
@@ -16,7 +16,7 @@ body {
   position: relative;
 }
 
-.amplify-button[data-variation='primary'] {
+.amplify-button[data-variation="primary"] {
   background: linear-gradient(
     to right,
     var(--amplify-colors-green-80),

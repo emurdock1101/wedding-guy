@@ -73,13 +73,6 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
             <Typography variant="h6" className={styles.reachOut}>
               Ask about the Personality+ test or our data-driven psychological coaching services.{" "}
             </Typography>
-            <a href="tel:15409999898" className={styles.phoneLink}>
-              <Phone className={styles.phone} />
-              <Typography variant="h5" className={styles.number}>
-                {" "}
-                +1-(540)-999-8989
-              </Typography>
-            </a>
             <a href="mailto:discoverpersonalityplus@gmail.com" className={styles.phoneLink}>
               <Mail className={styles.phone} />
               <Typography variant="h5" className={styles.number}>

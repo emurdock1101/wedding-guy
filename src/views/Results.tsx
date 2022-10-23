@@ -1,8 +1,9 @@
 import { Aspect, Ocean } from "../constants/schema";
-import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Grid, Paper, Typography, makeStyles, Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import Banner from "../components/Banner";
+import BookNow from "../components/BookNow";
 import Interpretations from "../components/Interpretations";
 import OceanAccordion from "../components/OceanAccordion";
 import ReactApexChart from "react-apexcharts";
@@ -31,10 +32,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     },
     explanation: {
       padding: "20px",
-      marginBottom: "50px", //this needs change if anything changes - should line up with table
-    },
-    accordion: {
-      marginBottom: "20px",
+      marginBottom: "10px", //this needs change if anything changes - should line up with table
     },
     interpretations: {
       marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
@@ -46,6 +44,26 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     interpretationTitle: {
       marginTop: 80,
       marginBottom: 80,
+    },
+    bookNowButton: {
+      marginTop: 28,
+      marginBottom: 28, // lines up with table results on xl screen
+      backgroundColor: theme.palette.primary.main,
+      "&:hover": {
+        backgroundColor: theme.palette.secondary.dark,
+      },
+      color: theme.palette.common.white,
+      width: "200px",
+      height: "40px",
+      borderRadius: "20px",
+    },
+    bookNowLink: {
+      textDecoration: "none",
+      color: theme.palette.common.white,
+    },
+    footer: {
+      marginTop: 40,
+      width: "100%",
     },
   }));
 
@@ -129,13 +147,27 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               chronically unhappy or anxious, or hungry, angry or judgmental when you completed the
               questions.
             </Typography>
+            <Typography variant="subtitle1" className={styles.info}>
+              <strong>
+                To learn more about our behavioral coaching services, click to schedule a FREE
+                chat with our coaching specialist.
+              </strong>
+            </Typography>
+            <a
+              href="https://calendly.com/discoverpersonalityplus"
+              className={styles.bookNowLink}
+            >
+              <Button variant="contained" className={styles.bookNowButton}>
+                BOOK A CALL NOW
+              </Button>
+            </a>
           </Paper>
-          <div className={styles.accordion}>
-            <OceanAccordion />
-          </div>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
           <ResultTable percentiles={percentiles} />
+        </Grid>
+        <Grid item xs={12} sm={11} lg={10}>
+          <OceanAccordion />
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} style={{ borderRadius: "10px" }}>
@@ -213,6 +245,9 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           </Paper>
         </Grid>
       </Grid>
+      <div className={styles.footer}>
+        <BookNow />
+      </div>
     </div>
   );
 };

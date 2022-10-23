@@ -1,6 +1,6 @@
 import "./App.css";
 import { makeStyles } from "@material-ui/core";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import HeaderDrawer from "./components/HeaderDrawer";
 import About from "./views/About";
 import Contact from "./views/Contact";
@@ -25,6 +25,9 @@ import Login from "./views/Login";
 import Footer from "./components/Footer";
 import Signup from "./views/Signup";
 import Purchase from "./views/Purchase";
+import CheckoutErrorPage from "./views/CheckoutError";
+import Forgot from "./views/Forgot";
+
 Amplify.configure(awsconfig);
 
 function App() {
@@ -43,6 +46,9 @@ function App() {
     },
   }));
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [completed, setCompleted] = React.useState(false);
+  const [results, setResults] = React.useState(undefined);
+
   const styles = useStyles();
   const assessLoggedInState = () => {
     Auth.currentAuthenticatedUser()
@@ -52,7 +58,20 @@ function App() {
         setLoggedIn(true);
       })
       .catch(() => {
-        console.log("not logged in");
+        console.log("logged out");
+        setLoggedIn(false);
+      });
+  };
+
+  const assessCompletedState = () => {
+    Auth.currentAuthenticatedUser()
+      .then((res) => {
+        console.log(res);
+        console.log("logged in");
+        setLoggedIn(true);
+      })
+      .catch(() => {
+        console.log("logged out");
         setLoggedIn(false);
       });
   };
@@ -60,23 +79,47 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.container}>
-        <HeaderDrawer loggedIn={loggedIn} onLogOut={assessLoggedInState} />
+        <HeaderDrawer loggedIn={loggedIn} completed={completed} onLogOut={assessLoggedInState} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/test" element={<Quiz />} />
-          <Route path="/results" element={<Results />} />
+          <Route path="/" element={<Home loggedIn={loggedIn} />} />
+          <Route
+            path="/test"
+            element={!loggedIn || completed ? <Navigate to="/results" replace /> : <Quiz />}
+          />
+          {/* <Route
+            path="/results"
+            element={!loggedIn || !completed ? <Navigate to="/" replace /> : <Results />}
+          /> */}
+          <Route
+            path="/results"
+            element={<Results />}
+          />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/faqs" element={<FAQs />} />
-          <Route path="/submit" element={<Submit prevStep={() => {}} nextStep={() => {}} />} />
-          <Route path="/pretest" element={<PreTest nextStep={() => {}} />} />
-          <Route path="/about" element={<About />} />
           <Route path="/error" element={<ErrorPage />} />
-          <Route path="/loading" element={<Loading />} />
-          <Route path="/buy" element={<BuyTest />} />
+          <Route path="/checkouterror" element={<CheckoutErrorPage />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route
+            path="/pretest"
+            element={
+              !loggedIn || completed ? <Navigate to="/" replace /> : <PreTest nextStep={() => {}} />
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/buy" element={completed ? <Navigate to="/" replace /> : <BuyTest />} />
           <Route path="/login" element={<Login onLogIn={assessLoggedInState} />} />
-          <Route path="/signup" element={<Signup onSignUp={assessLoggedInState} />} />
-          <Route path="/purchased" element={<Purchase loggedIn={loggedIn} />} />
+          <Route path="/signup" element={<Signup onLogIn={assessLoggedInState} />} />
+          <Route
+            path="/purchased"
+            element={!loggedIn ? <Navigate to="/" replace /> : <Purchase loggedIn={loggedIn} />}
+          />
+          <Route
+            path="/reset"
+            element={
+              loggedIn ? <Navigate to="/" replace /> : <Forgot onLogIn={assessLoggedInState} />
+            }
+          />
+          <Route path="*" element={<Navigate to="/error" replace />} />
         </Routes>
         <div className={styles.footer}>
           <Footer />
@@ -85,5 +128,6 @@ function App() {
     </ThemeProvider>
   );
 }
+//<Route path="/login" element={user ? <Navigate to="/" replace /> :  <Login />}  />
 
 export default App;

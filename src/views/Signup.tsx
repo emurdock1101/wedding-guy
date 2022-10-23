@@ -1,121 +1,157 @@
-import { makeStyles, TextField, Button, Grid, Typography } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import Banner from "../components/Banner";
+import { makeStyles, TextField, Button, Grid, Typography, Paper, Box } from "@material-ui/core";
+import { useState } from "react";
 import { Auth } from "aws-amplify";
-import { loadStripe } from "@stripe/stripe-js";
-interface SignupProps {
-  onSignUp: () => void;
+import Banner from "../components/Banner";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+
+interface LoginProps {
+  onLogIn: () => void;
 }
 
-const Signup = (props: SignupProps) => {
+const Login = (props: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
+  const [alert, setAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState("");
 
   const useStyles = makeStyles((theme) => ({
     plus: {
       color: theme.palette.primary.main,
+      textDecoration: "none",
+      "&:hover": {
+        color: theme.palette.primary.dark,
+      },
+    },
+    title: {
+      minWidth: "100%",
+      paddingLeft: 20,
+      color: theme.palette.info.light
     },
     input: {
-      minWidth: "80%",
-      marginBottom: 50,
-      marginLeft: 50,
+      minWidth: "100%",
+      marginBottom: 30,
+      marginTop: 30,
+      paddingLeft: 20,
+      paddingRight: 20,
     },
     button: {
       minWidth: "20%",
-      marginLeft: 50,
-      marginTop: 20,
-      marginBottom: 20,
-    },
-    footer: {
-      bottom: 0,
-      position: "absolute",
-      width: "100%",
-    },
-    form: {
-      padding: isMobile ? 10 : 30,
+      margin: 20,
     },
     thirdTitle: {
-      fontSize: 30,
+      fontSize: 25,
       fontWeight: 300,
       font: "Monaco",
-      marginBottom: 50,
-      marginTop: isMobile ? 100 : 0,
-      marginLeft: 50,
+      marginLeft: 20,
+      marginTop: 30,
+      marginBottom: 30,
+    },
+    paper: {
+      padding: 20,
+      marginBottom: 60,
+    },
+    alert: {
+      marginBottom: 15,
+      border: "1px solid #EF5350",
+    },
+    box: {
+      height: 50,
+      marginBottom: 15,
+    },
+    forgot: {
+      fontSize: 16,
+      fontWeight: 300,
+      font: "Monaco",
+      marginTop: 20,
+      marginLeft: 20,
+      color: theme.palette.primary.main,
+      textDecoration: "none",
+      "&:hover": {
+        color: theme.palette.primary.dark,
+      },
     },
   }));
 
   const styles = useStyles();
+  const navigate = useNavigate();
 
-  const signUp = async (e: any) => {
+  const handleNav = (path: string) => {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    }
+    navigate(path, { replace: true });
+  };
+
+  const logIn = async (e: any) => {
     e.preventDefault();
     try {
-      const stripe = await loadStripe(
-        "pk_test_51LrmACDw2D6ArEBHOcUvlHH9y27SAtsFVv2HDc7xeVoYi4vK2RvEsLh6CU5fAQYJELe71BMTOAJfgkTroQWaGLCd0077izhlOI"
-      );
-      if (stripe) {
-        const { error } = await stripe.redirectToCheckout({
-          lineItems: [
-            {
-              price: "price_1LrmCvDw2D6ArEBHyeAtvzHl",
-              quantity: 1,
-            },
-          ],
-          mode: "payment",
-          successUrl: "http://localhost:3000/purchased",
-          cancelUrl: "http://localhost:3000",
-        });
-      }
-      const user = await Auth.signUp(username, password);
+      const user = await Auth.signIn(username, password);
       console.log(user);
-      props.onSignUp();
-    } catch (error) {
-      console.log("error signing in", error);
+      props.onLogIn();
+      setAlert(true);
+      handleNav("/pretest");
+    } catch (error: any) {
+      if (!username || !username.length) {
+        setAlertContent("Username must be provided.");
+      } else if (!password || !password.length) {
+        setAlertContent("Password must be provided.");
+      } else if (error.code === "UserNotFoundException") {
+        setAlertContent(
+          "User is not found. Try again with the correct credentials, or sign up below to create an account."
+        );
+      } else if (error.code.length) {
+        setAlertContent(error.code);
+      } else if (error.log.length) {
+        setAlertContent(error.code);
+      }
+      setAlert(true);
     }
   };
-
-  // choose the screen size
-  const handleResize = () => {
-    if (window.innerWidth < 750) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
 
   return (
     <>
-      <Banner pageTitle="Sign up" />
+      <Banner pageTitle="Register" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={10} md={7} className={styles.form}>
-          <Typography className={styles.thirdTitle}>
-            For a small fee, we steal your information <span className={styles.plus}>:)</span>
-          </Typography>
-          <TextField
-            type="text"
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
-            className={styles.input}
-          />
-          <br></br>
-          <TextField
-            type="password"
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input}
-          />
-          <br></br>
-          <Button color="primary" variant="contained" onClick={signUp} className={styles.button}>
-            SIGN UP
-          </Button>
+        <Grid item xs={10} md={7}>
+          {alert ? (
+            <Alert
+              severity="error"
+              className={styles.alert}
+              onClose={() => {
+                setAlert(false);
+              }}
+            >
+              {alertContent}
+            </Alert>
+          ) : (
+            <>
+              <Box className={styles.box} />
+            </>
+          )}
+          <Paper elevation={2} className={styles.paper}>
+            <Typography variant="h5" className={styles.title}>Check your email for your auto-generated password.</Typography>
+            <TextField
+              type="text"
+              placeholder="email"
+              onChange={(e) => setUsername(e.target.value)}
+              className={styles.input}
+            />
+            <TextField
+              type="password"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              className={styles.input}
+            />
+            <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
+              SIGN UP
+            </Button>
+          </Paper>
         </Grid>
       </Grid>
     </>
   );
 };
 
-export default Signup;
+export default Login;

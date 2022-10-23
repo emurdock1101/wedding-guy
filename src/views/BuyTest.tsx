@@ -1,7 +1,7 @@
 import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useStyles = makeStyles((theme) => ({
   info: {
@@ -26,7 +26,6 @@ interface BuyTestProps {}
 
 const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
   const styles = useStyles();
-
   const navigate = useNavigate();
   const nav = (path: string) => {
     if (sessionStorage.length > 0) {
@@ -54,12 +53,13 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
             },
           ],
           mode: "payment",
-          successUrl: "http://localhost:3000/purchased",
-          cancelUrl: "http://localhost:3000",
+          successUrl: "http://localhost:3000/signup",
+          cancelUrl: "http://localhost:3000/",
         });
       }
     } catch (error) {
       console.log("error signing in", error);
+      nav("/checkouterror");
     }
   };
 
@@ -86,6 +86,12 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
             <Typography variant="h6">
               4. Discount offerings towards coaching services with Personality+ staff, where you can
               further learn about your behaviors and discover more about yourself.
+            </Typography>
+            <br></br>
+            <br></br>
+            <Typography variant="h6">
+              Note: if you have purchased a Personality+ account before, you will have to provide a
+              a different email to checkout.
             </Typography>
             <div className={styles.buttons}>
               <Button

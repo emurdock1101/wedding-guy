@@ -1,0 +1,13 @@
+{
+  "resourceName": "testResultStorage",
+  "policyUUID": "1ab68067",
+  "bucketName": "big5-amplify-test-results-bucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

@@ -63,13 +63,49 @@ app.use(function (req, res, next) {
 app.post("/webhook", async function (req, res) {
   const stripeKey = await getStripeKey();
   const stripe = require("stripe")(stripeKey);
-  const customer = await stripe.customers.retrieve(req.body.data.object);
-  const userEmail = customer.email;
-  const cognito = aws.CognitoIdentityServiceProvider();
+
+  let userEmail;
+  if (req.body.data.object.customer) {
+    userEmail = await stripe.customers.retrieve(req.body.data.object.customer).email;
+  } else {
+    userEmail = req.body.data.object.charges.data[0].billing_details.email;
+    console.log(req.body.data.object.charges.data[0]);
+  }
+
+  if (!userEmail) {
+    throw new Error("Can't find email of payor");
+  }
+
+  console.log(userEmail);
+
+  const cognito = new aws.CognitoIdentityServiceProvider();
+  const UserPoolId = process.env.AUTH_STRIPEDEMO1C66A4D4_USERPOOLID ?? "us-east-1_QlzfM0BUX";
+
+  // const userExists = false;
+
+  // try {
+  //   const existingUser = await cognito.getUser({
+  //     UserPoolId,
+  //     Username: userEmail,
+  //   });
+
+  //   if (existingUser) {
+  //     userExists = true;
+  //   }
+  // } catch (adminGetUserError) {
+  //   if (adminGetUserError.name && adminGetUserError.name === "UserNotFoundException") {
+  //     // The user does not exist
+  //   } else {
+  //     // It was another type of error
+  //     throw adminGetUserError;
+  //   }
+  // }
+
+  // if (userExists) {}
 
   cognito.adminCreateUser(
     {
-      UserPoolId: process.env.AUTH_BIG5AMPLIFYE0115051_USERPOOLID,
+      UserPoolId,
       Username: userEmail,
       DesiredDeliveryMediums: ["EMAIL"],
       UserAttributes: [
@@ -78,19 +114,21 @@ app.post("/webhook", async function (req, res) {
           Value: userEmail,
         },
       ],
+      ValidationData: [
+        {
+          Name: "email",
+          Value: userEmail,
+        },
+      ],
     },
-    function (error, data) {
-      if (error) {
-        console.log("adminCreateUser error:");
-        console.log(error);
-        alert(error)
-      } else {
+    function (err, data) {
+      if (err) console.log(err, err.stack); // an error occurred
+      else {
         console.log(data);
         res.sendStatus(200);
-      }
+      } // successful response
     }
   );
-
 });
 
 app.listen(3000, function () {

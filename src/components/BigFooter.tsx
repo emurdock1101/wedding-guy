@@ -8,7 +8,7 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const useStyles = makeStyles((theme) => ({
     followUs: {
-      color: "#111840",
+      color: theme.palette.info.main,
       fontSize: isMobile ? 30 : 40,
     },
     box: {
@@ -59,13 +59,13 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
               Follow us on social media
             </Typography>
             <div className={styles.row}>
-              <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+              <a href="https://www.facebook.com/DiscoverPersonalityPlus/" target="_blank" rel="noreferrer">
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
+              <a href="https://instagram.com/discover_personalityplus" target="_blank" rel="noreferrer">
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
                 <Twitter className={styles.facebook} />
               </a>
             </div>

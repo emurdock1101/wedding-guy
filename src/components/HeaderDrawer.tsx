@@ -111,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface HeaderDrawerProps {
   loggedIn: boolean;
+  completed: boolean;
   onLogOut: () => void;
 }
 
@@ -186,7 +187,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
           </div>
           {
             // Show results page if logged in
-            props.loggedIn && (
+            props.loggedIn && props.completed && (
               <Button className={styles.signInButton} onClick={() => handleNav("/results")}>
                 TEST RESULT
               </Button>

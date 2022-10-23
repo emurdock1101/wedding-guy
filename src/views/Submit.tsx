@@ -1,5 +1,7 @@
 import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
-
+import { Storage } from "@aws-amplify/storage";
+import { Auth } from "aws-amplify";
+import { getPercentiles } from "../util";
 export const useStyles = makeStyles((theme) => ({
   info: {
     padding: "15px",
@@ -15,10 +17,20 @@ export const useStyles = makeStyles((theme) => ({
 
 interface SubmitProps {
   prevStep: () => void;
-  nextStep: () => void;
 }
 
 const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
+  const percentiles: Map<string, number> = getPercentiles();
+
+  const processResults = async () => {
+    const email = await Auth.currentAuthenticatedUser();
+
+    console.log(JSON.stringify(email));
+    console.log(JSON.stringify([percentiles]));
+
+    // const { key } = await Storage.put(`private/${email}/results`, JSON.stringify(percentiles));
+  };
+
   const styles = useStyles();
   return (
     <>
@@ -40,7 +52,7 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
                 >
                   BACK TO TEST
                 </Button>
-                <Button color="primary" variant="contained" onClick={props.nextStep}>
+                <Button color="primary" variant="contained" onClick={processResults}>
                   SUBMIT
                 </Button>
               </div>

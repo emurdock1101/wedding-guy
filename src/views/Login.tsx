@@ -41,11 +41,11 @@ const Login = (props: LoginProps) => {
       font: "Monaco",
       marginLeft: 20,
       marginTop: 30,
-      marginBottom: 30
+      marginBottom: 30,
     },
     paper: {
       padding: 20,
-      marginBottom: 60
+      marginBottom: 60,
     },
     alert: {
       marginBottom: 15,
@@ -83,11 +83,11 @@ const Login = (props: LoginProps) => {
     e.preventDefault();
     try {
       const user = await Auth.signIn(username, password);
-      console.log(user);
       props.onLogIn();
       setAlert(true);
       handleNav("/");
     } catch (error: any) {
+      console.log(JSON.stringify(error));
       if (!username || !username.length) {
         setAlertContent("Username must be provided.");
       } else if (!password || !password.length) {
@@ -95,6 +95,10 @@ const Login = (props: LoginProps) => {
       } else if (error.code === "UserNotFoundException") {
         setAlertContent(
           "User is not found. Try again with the correct credentials, or sign up below to create an account."
+        );
+      } else if (error.code === "NotAuthorizedException") {
+        setAlertContent(
+          "Incorrect password. Try a different password with this email."
         );
       } else if (error.code.length) {
         setAlertContent(error.code);
@@ -141,7 +145,7 @@ const Login = (props: LoginProps) => {
             <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
               LOG IN
             </Button>
-            <Link className={styles.forgot} to={"login/reset"}>
+            <Link className={styles.forgot} to={"/reset"}>
               Forgot password?
             </Link>
             <Typography className={styles.thirdTitle}>
