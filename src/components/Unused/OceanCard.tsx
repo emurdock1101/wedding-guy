@@ -12,7 +12,7 @@ interface OceanCardProps {
 
 const OceanCard = (props: OceanCardProps) => {
   const useStyles = makeStyles((theme) => ({
-    card: {
+    paper: {
       color: theme.palette.info.main,
       borderRadius: 10,
       borderLeft: `6px solid ${theme.palette.primary.main}`,
@@ -37,7 +37,7 @@ const OceanCard = (props: OceanCardProps) => {
   }));
   const styles = useStyles();
   return (
-    <Paper className={styles.card}>
+    <Paper className={styles.paper}>
       <Typography variant="h5" className={styles.title}>
         {props.ocean}
       </Typography>

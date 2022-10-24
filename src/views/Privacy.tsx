@@ -46,12 +46,9 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
         <Grid item xs={12} sm={11} lg={10} style={{ padding: 15 }}>
           <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
             <Typography variant="subtitle1" className={styles.top}>
-              Part of the information you share on our website is stored and used. We collect test
-              results, gender, and time of test submission. Your browser info, IP address, and
+              Part of the information you share on our website is stored and used. We collect your email and test
+              results. Your credit card info, browser info, IP address, and
               fingerprint are not stored.
-            </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
-              Google Analytics measures traffic to the site and how users interact the site.
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               No personal data is sold or shared with anyone. Never have, never will.

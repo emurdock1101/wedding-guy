@@ -1,14 +1,11 @@
 import { cumulativeStdNormalProbability, zScore } from "simple-statistics";
-
 import { escsMap } from "./constants/escsData";
 import { questionData } from "./constants/questionData";
 
 /**
  * Returns a map of percentiles for each category key string.
- *
- * @returns
  */
-export const getPercentiles = (): Map<string, number> => {
+export const getPercentiles = (): Record<string, number> => {
   if (sessionStorage.length !== questionData.length) {
     // console.log(
     //   "Answer list isn't correct length. storageLength: " +
@@ -68,12 +65,11 @@ export const getPercentiles = (): Map<string, number> => {
  * Calculates percentiles from averages using z score logic. Returns string->number map of each categories' percentile.
  *
  * @param averages the map of averages for all 15 categories
- * @returns
  */
 export const getPercentilesFromAverages = (
   averages: Map<string, [number, number]>
-): Map<string, number> => {
-  const percentileMap: Map<string, number> = new Map();
+): Record<string, number> => {
+  const percentiles: Record<string, number> = {};
   let currMean: number | undefined;
   let currStdDev: number | undefined;
   let currFormattedPerc: number;
@@ -101,7 +97,8 @@ export const getPercentilesFromAverages = (
       // console.log("z score" + zScore(value[1], currMean, currStdDev));
       // console.log("formatted percentage: " + currFormattedPerc);
 
-      percentileMap.set(key, currFormattedPerc);
+      // format is like: {"Aesthetic Openness":3,"Openness":2,"Interest in Ideas":5}
+      percentiles[`${key}`] = currFormattedPerc;
     } else {
       throw new Error(
         "Mean or std dev from escs map not defined. value: " + value + ", key: " + key
@@ -109,14 +106,13 @@ export const getPercentilesFromAverages = (
     }
   });
 
-  return percentileMap;
+  return percentiles;
 };
 
 /**
  * Returns the right adjective to describe how high/low a score is.
  *
  * @param score a percentile
- * @returns
  */
 export const scoreAdjective = (score: number): string => {
   if (score >= 90) {

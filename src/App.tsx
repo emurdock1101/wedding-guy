@@ -99,10 +99,16 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/checkouterror" element={<CheckoutErrorPage />} />
           <Route path="/faqs" element={<FAQs />} />
-          <Route
+          {/* <Route
             path="/pretest"
             element={
               !loggedIn || completed ? <Navigate to="/" replace /> : <PreTest nextStep={() => {}} />
+            }
+          /> */}
+          <Route
+            path="/pretest"
+            element={
+              <PreTest nextStep={() => {}} />
             }
           />
           <Route path="/about" element={<About />} />

@@ -28,6 +28,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: 15,
+    borderRadius: 10,
   },
   link: {
     textDecoration: "none",
@@ -101,7 +102,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         {props.questions.map((question) => {
           return (
             <Grid item xs={12} className={styles.row}>
-              <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
+              <Paper elevation={2} className={styles.paper}>
                 <QuestionComp question={question} countAnswer={countAnswer} />
               </Paper>
             </Grid>

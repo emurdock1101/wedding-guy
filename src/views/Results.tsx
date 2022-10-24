@@ -1,7 +1,7 @@
 import { Aspect, Ocean } from "../constants/schema";
 import { Grid, Paper, Typography, makeStyles, Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
-
+import { Storage } from "@aws-amplify/storage";
 import Banner from "../components/Banner";
 import BookNow from "../components/BookNow";
 import Interpretations from "../components/Interpretations";
@@ -9,9 +9,9 @@ import OceanAccordion from "../components/OceanAccordion";
 import ReactApexChart from "react-apexcharts";
 import ResultTable from "../components/ResultTable";
 import { aspectOptions } from "../constants/aspectSpecs";
-import { getPercentiles } from "../util";
 import { oceanOptions } from "../constants/oceanSpecs";
 import { theme } from "../theme";
+import { Auth } from "aws-amplify";
 
 interface ResultsProps {}
 
@@ -33,9 +33,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     explanation: {
       padding: "20px",
       marginBottom: "10px", //this needs change if anything changes - should line up with table
+      borderRadius: 10,
     },
     interpretations: {
       marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
+      borderRadius: 10,
     },
     titlePaper: {
       backgroundColor: "#111840", // navy blue
@@ -78,32 +80,79 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     }
   };
 
+  // choose the screen size
+  const getResultsFromS3 = async () => {
+    const user = await Auth.currentAuthenticatedUser();
+    const email: string = user.attributes.email;
+    const subId: string = user.attributes.sub;
+
+    Storage.configure({
+      bucket: process.env.APP_bucket_name ?? "big5-amplify-test-results-bucket210923-dev",
+      level: "private",
+      region: process.env.APP_region ?? "us-east-1",
+    });
+
+    const url: string = await Storage.get(`${email}-${subId}/results-${email}`);
+
+    console.log(url);
+
+    const data: Record<string, number> = await fetch(url).then((response) => response.json());
+
+    // console.log()
+    // if (!response) {
+    //   console.log(response)
+    //   console.log('nothing')
+    // }
+    console.log(JSON.stringify(data));
+  };
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
 
-  const percentiles: Map<string, number> = getPercentiles();
+  // const percentiles: Record<string, number> = getResultsFromS3();
 
-  const Openness: number = percentiles.get(Ocean.Openness.toString()) ?? 99;
-  const AestheticOpenness: number = percentiles.get(Aspect.AestheticOpenness.toString()) ?? 99;
-  const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 99;
+  // const Openness: number = percentiles.get(Ocean.Openness.toString()) ?? 99;
+  // const AestheticOpenness: number = percentiles.get(Aspect.AestheticOpenness.toString()) ?? 99;
+  // const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 99;
 
-  const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 99;
-  const Interest: number = percentiles.get(Aspect.Interest.toString()) ?? 99;
-  const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 99;
+  // const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 99;
+  // const Interest: number = percentiles.get(Aspect.Interest.toString()) ?? 99;
+  // const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 99;
+
+  // // fake data
+  // const Extraversion: number = percentiles.get(Ocean.Extraversion.toString()) ?? 99;
+  // const Enthusiasm: number = percentiles.get(Aspect.Enthusiasm.toString()) ?? 99;
+  // const Assertiveness: number = percentiles.get(Aspect.Assertiveness.toString()) ?? 99;
+
+  // const Agreeableness: number = percentiles.get(Ocean.Agreeableness.toString()) ?? 99;
+  // const Compassion: number = percentiles.get(Aspect.Compassion.toString()) ?? 99;
+  // const Politeness: number = percentiles.get(Aspect.Politeness.toString()) ?? 99;
+
+  // const Neuroticism: number = percentiles.get(Ocean.Neuroticism.toString()) ?? 99;
+  // const Withdrawal: number = percentiles.get(Aspect.Withdrawal.toString()) ?? 99;
+  // const Volatility: number = percentiles.get(Aspect.Volatility.toString()) ?? 99;
+
+  const Openness: number = 99;
+  const AestheticOpenness: number = 99;
+  const Industriousness: number = 99;
+
+  const Conscientiousness: number = 99;
+  const Interest: number = 99;
+  const Orderliness: number = 99;
 
   // fake data
-  const Extraversion: number = percentiles.get(Ocean.Extraversion.toString()) ?? 99;
-  const Enthusiasm: number = percentiles.get(Aspect.Enthusiasm.toString()) ?? 99;
-  const Assertiveness: number = percentiles.get(Aspect.Assertiveness.toString()) ?? 99;
+  const Extraversion: number = 99;
+  const Enthusiasm: number = 99;
+  const Assertiveness: number = 99;
 
-  const Agreeableness: number = percentiles.get(Ocean.Agreeableness.toString()) ?? 99;
-  const Compassion: number = percentiles.get(Aspect.Compassion.toString()) ?? 99;
-  const Politeness: number = percentiles.get(Aspect.Politeness.toString()) ?? 99;
+  const Agreeableness: number = 99;
+  const Compassion: number = 99;
+  const Politeness: number = 99;
 
-  const Neuroticism: number = percentiles.get(Ocean.Neuroticism.toString()) ?? 99;
-  const Withdrawal: number = percentiles.get(Aspect.Withdrawal.toString()) ?? 99;
-  const Volatility: number = percentiles.get(Aspect.Volatility.toString()) ?? 99;
+  const Neuroticism: number = 99;
+  const Withdrawal: number = 99;
+  const Volatility: number = 99;
 
   // data for aspects chart
   const aspectSeries = [
@@ -125,9 +174,10 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   return (
     <div>
       <Banner pageTitle="Results and Explanation" />
+      <Button onClick={getResultsFromS3}> here </Button>
       <Grid container spacing={6} justify="center" alignItems="flex-start">
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2} className={styles.explanation} style={{ borderRadius: "10px" }}>
+          <Paper elevation={2} className={styles.explanation}>
             <Typography variant="subtitle1" className={styles.info}>
               Your results are shown in the table and in the bar charts below.{" "}
             </Typography>
@@ -149,14 +199,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               <strong>
-                To learn more about our behavioral coaching services, click to schedule a FREE
-                chat with our coaching specialist.
+                To learn more about our behavioral coaching services, click to schedule a FREE chat
+                with our coaching specialist.
               </strong>
             </Typography>
-            <a
-              href="https://calendly.com/discoverpersonalityplus"
-              className={styles.bookNowLink}
-            >
+            <a href="https://calendly.com/discoverpersonalityplus" className={styles.bookNowLink}>
               <Button variant="contained" className={styles.bookNowButton}>
                 BOOK A CALL NOW
               </Button>
@@ -164,7 +211,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <ResultTable percentiles={percentiles} />
+          {/* <ResultTable percentiles={percentiles} /> */}
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <OceanAccordion />
@@ -183,7 +230,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           <Banner pageTitle="Interpretation of Results" />
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
-          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+          <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
               oceanName={Ocean.Extraversion}
               oceanScore={Extraversion}
@@ -195,7 +242,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={2}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+          <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
               oceanName={Ocean.Neuroticism}
               oceanScore={Neuroticism}
@@ -207,7 +254,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={4}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+          <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
               oceanName={Ocean.Agreeableness}
               oceanScore={Agreeableness}
@@ -219,7 +266,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={3}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+          <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
               oceanName={Ocean.Conscientiousness}
               oceanScore={Conscientiousness}
@@ -231,7 +278,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               index={1}
             />
           </Paper>
-          <Paper elevation={2} className={styles.interpretations} style={{ borderRadius: "10px" }}>
+          <Paper elevation={2} className={styles.interpretations}>
             <Interpretations
               oceanName={Ocean.Openness}
               oceanScore={Openness}

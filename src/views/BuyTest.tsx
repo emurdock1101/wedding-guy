@@ -1,7 +1,8 @@
-import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
+import { Button, Grid, Typography, makeStyles, Paper } from "@material-ui/core";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Divider from "@mui/material/Divider";
 
 export const useStyles = makeStyles((theme) => ({
   info: {
@@ -17,8 +18,19 @@ export const useStyles = makeStyles((theme) => ({
     padding: 15,
   },
   included: {
-    fontWeight: 400,
+    fontWeight: 300,
     font: "Monaco",
+    marginBottom: 20,
+  },
+  paper: {
+    padding: 30,
+    borderRadius: 10,
+  },
+  listFirst: {
+    marginTop: 20,
+  },
+  price: {
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -53,8 +65,8 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
             },
           ],
           mode: "payment",
-          successUrl: "http://localhost:3000/signup",
-          cancelUrl: "http://localhost:3000/",
+          successUrl: (process.env.APP_domain ?? "http://localhost:3000/") + "/signup",
+          cancelUrl: process.env.APP_domain ?? "http://localhost:3000/",
         });
       }
     } catch (error) {
@@ -68,41 +80,43 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
       <Grid item xs={12}>
         <Grid container justify="center" alignItems="center">
           <Grid item xs={12} md={10} lg={7}>
-            <Typography variant="h2" className={styles.included}>
-              What's included for $9.99?
-            </Typography>
-            <br></br>
-            <Typography variant="h6">
-              1. One copy of a 100-question scientifically-backed, peer-reviewed assessment of
-              personality.
-            </Typography>
-            <br></br>
-            <Typography variant="h6">
-              2. In-depth analysis of results, specific to your scores.
-            </Typography>
-            <br></br>
-            <Typography variant="h6">3. Access to view your scores anytime.</Typography>
-            <br></br>
-            <Typography variant="h6">
-              4. Discount offerings towards coaching services with Personality+ staff, where you can
-              further learn about your behaviors and discover more about yourself.
-            </Typography>
-            <br></br>
-            <br></br>
-            <Typography variant="h6">
-              Note: if you have purchased a Personality+ account before, you will have to provide a
-              a different email to checkout.
-            </Typography>
-            <div className={styles.buttons}>
-              <Button
-                color="primary"
-                variant="contained"
-                onClick={signUp}
-                className={styles.button}
-              >
-                PURCHASE PERSONALITY+
-              </Button>
-            </div>
+            <Paper elevation={2} className={styles.paper}>
+              <Typography variant="h3" className={styles.included}>
+                What's included for <span className={styles.price}>$9.99?</span>
+              </Typography>
+              <Divider />
+              <Typography variant="subtitle1" className={styles.listFirst}>
+                1. One copy of a 100-question scientifically-backed, peer-reviewed assessment of
+                personality.
+              </Typography>
+              <br></br>
+              <Typography variant="subtitle1">
+                2. In-depth analysis of results, specific to your scores.
+              </Typography>
+              <br></br>
+              <Typography variant="subtitle1">3. Access to view your scores anytime.</Typography>
+              <br></br>
+              <Typography variant="subtitle1">
+                4. Discount offerings towards coaching services with Personality+ staff, where you
+                can further learn about your behaviors and discover more about yourself.
+              </Typography>
+              <br></br>
+              <br></br>
+              <Typography variant="subtitle1">
+                Note: if you have purchased a Personality+ account before, you will have to provide
+                a a different email to checkout.
+              </Typography>
+              <div className={styles.buttons}>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  onClick={signUp}
+                  className={styles.button}
+                >
+                  PURCHASE PERSONALITY+
+                </Button>
+              </div>
+            </Paper>
           </Grid>
         </Grid>
       </Grid>
