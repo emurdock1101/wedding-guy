@@ -41,7 +41,6 @@ function App() {
     },
     container: {
       minHeight: "100vh" /* will cover the 100% of viewport */,
-      overflow: "hidden",
       display: "block",
       position: "relative",
       paddingBottom: 120,

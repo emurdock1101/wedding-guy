@@ -10,7 +10,7 @@
 html,
 body {
   overflow-x: hidden;
-  overflow: auto;
+  overflow-y: hidden;
   height: 100%;
   font-family: "Archivo", sans-serif;
   position: relative;
