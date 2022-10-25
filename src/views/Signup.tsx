@@ -26,7 +26,7 @@ const Login = (props: LoginProps) => {
     title: {
       minWidth: "100%",
       paddingLeft: 20,
-      color: theme.palette.info.light
+      color: theme.palette.info.light,
     },
     input: {
       minWidth: "100%",
@@ -86,11 +86,12 @@ const Login = (props: LoginProps) => {
   const logIn = async (e: any) => {
     e.preventDefault();
     try {
-      await Auth.signIn(username, password);
+      const user = await Auth.signIn(username, password);
       props.onLogIn();
       setAlert(true);
-      handleNav("/pretest");
+      handleNav("/test");
     } catch (error: any) {
+      console.log(JSON.stringify(error));
       if (!username || !username.length) {
         setAlertContent("Username must be provided.");
       } else if (!password || !password.length) {
@@ -99,6 +100,8 @@ const Login = (props: LoginProps) => {
         setAlertContent(
           "User is not found. Try again with the correct credentials, or sign up below to create an account."
         );
+      } else if (error.code === "NotAuthorizedException") {
+        setAlertContent("Incorrect password. Try the password associated with this email.");
       } else if (error.code.length) {
         setAlertContent(error.code);
       } else if (error.log.length) {
@@ -129,7 +132,9 @@ const Login = (props: LoginProps) => {
             </>
           )}
           <Paper elevation={2} className={styles.paper}>
-            <Typography variant="h5" className={styles.title}>Check your email for your auto-generated password.</Typography>
+            <Typography variant="h5" className={styles.title}>
+              Register using the password sent to your checkout email.
+            </Typography>
             <TextField
               type="text"
               placeholder="email"

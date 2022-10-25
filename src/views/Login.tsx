@@ -13,7 +13,7 @@ interface LoginProps {
 const Login = (props: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [alert, setAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
 
   const useStyles = makeStyles((theme) => ({
@@ -82,10 +82,16 @@ const Login = (props: LoginProps) => {
   const logIn = async (e: any) => {
     e.preventDefault();
     try {
-      await Auth.signIn(username, password);
-      props.onLogIn();
-      setAlert(true);
-      handleNav("/");
+      const user = await Auth.signIn(username, password);
+
+      console.log(JSON.stringify(user));
+      if (user.challengeName === "NEW_PASSWORD_REQUIRED") {
+        alert("There is a problem with your current credentials. Please reset your password.");
+        handleNav("/reset");
+      } else {
+        props.onLogIn();
+        handleNav("/");
+      }
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!username || !username.length) {
@@ -97,15 +103,13 @@ const Login = (props: LoginProps) => {
           "User is not found. Try again with the correct credentials, or sign up below to create an account."
         );
       } else if (error.code === "NotAuthorizedException") {
-        setAlertContent(
-          "Incorrect password. Try a different password with this email."
-        );
+        setAlertContent("Incorrect password. Try the password associated with this email.");
       } else if (error.code.length) {
         setAlertContent(error.code);
       } else if (error.log.length) {
         setAlertContent(error.code);
       }
-      setAlert(true);
+      setShowAlert(true);
     }
   };
 
@@ -114,12 +118,12 @@ const Login = (props: LoginProps) => {
       <Banner pageTitle="Log In" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={10} md={7}>
-          {alert ? (
+          {showAlert ? (
             <Alert
               severity="error"
               className={styles.alert}
               onClose={() => {
-                setAlert(false);
+                setShowAlert(false);
               }}
             >
               {alertContent}

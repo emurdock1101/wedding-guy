@@ -51,8 +51,8 @@ function App() {
         console.log("logged in: " + JSON.stringify(res));
         setLoggedIn(true);
       })
-      .catch(() => {
-        console.log("logged out");
+      .catch((error) => {
+        console.log("logged out: " + JSON.stringify(error));
         setLoggedIn(false);
       });
   };

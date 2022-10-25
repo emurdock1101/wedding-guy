@@ -54,19 +54,20 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
     e.preventDefault();
     try {
       const stripe = await loadStripe(
-        "pk_test_51LrmACDw2D6ArEBHOcUvlHH9y27SAtsFVv2HDc7xeVoYi4vK2RvEsLh6CU5fAQYJELe71BMTOAJfgkTroQWaGLCd0077izhlOI"
+        process.env.APP_stripe_public_key ??
+          "pk_test_51LrmACDw2D6ArEBHOcUvlHH9y27SAtsFVv2HDc7xeVoYi4vK2RvEsLh6CU5fAQYJELe71BMTOAJfgkTroQWaGLCd0077izhlOI"
       );
       if (stripe) {
         await stripe.redirectToCheckout({
           lineItems: [
             {
-              price: "price_1LrmCvDw2D6ArEBHyeAtvzHl",
+              price: process.env.APP_strip_line_item_price ?? "price_1LrmCvDw2D6ArEBHyeAtvzHl",
               quantity: 1,
             },
           ],
           mode: "payment",
-          successUrl: (process.env.APP_domain ?? "http://localhost:3000/") + "/signup",
-          cancelUrl: process.env.APP_domain ?? "http://localhost:3000/",
+          successUrl: (process.env.APP_domain ?? "http://localhost:3000") + "/signup",
+          cancelUrl: process.env.APP_domain ?? "http://localhost:3000",
         });
       }
     } catch (error) {

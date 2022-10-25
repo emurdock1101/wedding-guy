@@ -3,6 +3,7 @@ import QuestionPack from "../components/QuestionPack";
 import Submit from "./Submit";
 import { questionData as qd } from "../constants/questionData";
 import { useState } from "react";
+import { shuffle } from "../util";
 
 interface QuizProps {
   onComplete: () => void;
@@ -22,12 +23,13 @@ const Quiz: React.FC<QuizProps> = (props: QuizProps) => {
   };
 
   // real dataset
-  // const questionData = qd;
+  const questionData = shuffle(qd);
+  const slices = 10; // number of pages
 
   // Smaller dataset for testing
-  const questionData = qd.slice(0, 20);
+  // const questionData = qd.slice(0, 20);
+  // const slices = 2; // number of pages
 
-  const slices = 2; // number of pages
   const chunks = [];
   const chunkSize = Math.ceil(questionData.length / slices); // number of questions on each page
 
