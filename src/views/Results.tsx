@@ -79,8 +79,6 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
     const data: Record<string, number> = await fetch(url).then((response) => response.json());
     setPercentiles(data);
-
-    console.log("data from S3: " + JSON.stringify(data));
   };
 
   useEffect(() => {

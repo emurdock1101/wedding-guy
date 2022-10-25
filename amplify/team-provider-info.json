@@ -19,7 +19,7 @@
         "webhookLambdaStripe": {
           "secretsPathAmplifyAppId": "d3fk1q0jjmkmz0",
           "deploymentBucketName": "amplify-big5amplify-dev-210923-deployment",
-          "s3Key": "amplify-builds/webhookLambdaStripe-416f5339694c46706231-build.zip"
+          "s3Key": "amplify-builds/webhookLambdaStripe-396663727a61682b4e59-build.zip"
         }
       },
       "api": {

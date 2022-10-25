@@ -4,6 +4,8 @@ import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 interface ForgotProps {
   onLogIn: () => void;
@@ -73,6 +75,10 @@ const Forgot = (props: ForgotProps) => {
       paddingLeft: 20,
       color: theme.palette.info.light,
     },
+    password: {
+      marginTop: 10,
+      marginBottom: 10,
+    },
   }));
 
   const styles = useStyles();
@@ -90,6 +96,7 @@ const Forgot = (props: ForgotProps) => {
     try {
       // Send confirmation code to user's email
       await Auth.forgotPassword(email);
+      setAlert(false);
       setCodeSent(true);
     } catch (error: any) {
       console.log(JSON.stringify(error));
@@ -129,9 +136,9 @@ const Forgot = (props: ForgotProps) => {
         setAlertContent("Confirmation code must be provided.");
       } else if (!password || !password.length) {
         setAlertContent("Password must be provided.");
-      } else if (error.code === "UserNotFoundException") {
+      } else if (error.code === "InvalidPasswordException") {
         setAlertContent(
-          "User is not found. Try again with your registered email, or sign up below to create an account."
+          "Invalid password. Make sure that you contain lowercase, uppercase, numerical, and special characters"
         );
       } else if (error.code.length) {
         setAlertContent(error.code);
@@ -185,9 +192,34 @@ const Forgot = (props: ForgotProps) => {
           )}
           {codeSent && (
             <Paper elevation={2} className={styles.paper}>
-              <Typography variant="h5" className={styles.title}>
-                Enter your reset code and your new password.
-              </Typography>
+              <Grid container justify="center" alignItems="center">
+                <Grid item xs={12} md={6} className={styles.password}>
+                  <Typography variant="h5" className={styles.title}>
+                    Enter your reset code and your new password.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={6} className={styles.password}>
+                  <Typography variant="subtitle1" className={styles.title}>
+                    Your password must contain:
+                  </Typography>
+                  <List
+                    sx={{
+                      listStyleType: "disc",
+                      pl: 6,
+                      "& .MuiListItem-root": {
+                        display: "list-item",
+                      },
+                    }}
+                    className={styles.title}
+                  >
+                    <ListItem>At least 1 lowercase letter</ListItem>
+                    <ListItem>At least 1 uppercase letter</ListItem>
+                    <ListItem>At least 1 number</ListItem>
+                    <ListItem>At least 1 special character</ListItem>
+                    <ListItem>At least 8 characters in length</ListItem>
+                  </List>
+                </Grid>
+              </Grid>
               <TextField
                 type="text"
                 placeholder="confirmation code"
@@ -202,7 +234,7 @@ const Forgot = (props: ForgotProps) => {
               />
 
               <Button color="primary" variant="contained" onClick={reset} className={styles.button}>
-                Change password{" "}
+                RESET PASSWORD
               </Button>
             </Paper>
           )}

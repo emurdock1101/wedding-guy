@@ -2,7 +2,6 @@ import { makeStyles, TextField, Button, Grid, Typography, Paper, Box } from "@ma
 import { useState } from "react";
 import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 
@@ -56,7 +55,7 @@ const Login = (props: LoginProps) => {
       marginBottom: 15,
     },
     forgot: {
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: 300,
       font: "Monaco",
       marginTop: 20,
@@ -70,28 +69,12 @@ const Login = (props: LoginProps) => {
   }));
 
   const styles = useStyles();
-  const navigate = useNavigate();
-
-  const handleNav = (path: string) => {
-    if (sessionStorage.length > 0) {
-      sessionStorage.clear();
-    }
-    navigate(path, { replace: true });
-  };
 
   const logIn = async (e: any) => {
     e.preventDefault();
     try {
-      const user = await Auth.signIn(username, password);
-
-      console.log(JSON.stringify(user));
-      if (user.challengeName === "NEW_PASSWORD_REQUIRED") {
-        alert("There is a problem with your current credentials. Please reset your password.");
-        handleNav("/reset");
-      } else {
-        props.onLogIn();
-        handleNav("/");
-      }
+      await Auth.signIn(username, password);
+      props.onLogIn();
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!username || !username.length) {
@@ -103,7 +86,7 @@ const Login = (props: LoginProps) => {
           "User is not found. Try again with the correct credentials, or sign up below to create an account."
         );
       } else if (error.code === "NotAuthorizedException") {
-        setAlertContent("Incorrect password. Try the password associated with this email.");
+        setAlertContent("Incorrect password or email.");
       } else if (error.code.length) {
         setAlertContent(error.code);
       } else if (error.log.length) {

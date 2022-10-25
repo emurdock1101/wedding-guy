@@ -39,7 +39,7 @@ interface BuyTestProps {}
 const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
   const styles = useStyles();
   const navigate = useNavigate();
-  const nav = (path: string) => {
+  const handleNav = (path: string) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
@@ -72,7 +72,7 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
       }
     } catch (error) {
       console.log(JSON.stringify(error));
-      nav("/checkouterror");
+      handleNav("/checkouterror");
     }
   };
 

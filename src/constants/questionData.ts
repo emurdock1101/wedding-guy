@@ -185,7 +185,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q26",
-    text: "CFind it difficult to get down to work",
+    text: "Find it difficult to get down to work",
     reverse: true,
     aspect: Aspect.Industriousness,
     ocean: Ocean.Conscientiousness,
@@ -206,7 +206,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q29",
-    text: "CAm easily distracted",
+    text: "Am easily distracted",
     reverse: true,
     aspect: Aspect.Industriousness,
     ocean: Ocean.Conscientiousness,
@@ -626,7 +626,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q89",
-    text: "NAm not embarrassed easily",
+    text: "Am not embarrassed easily",
     reverse: true,
     aspect: Aspect.Withdrawal,
     ocean: Ocean.Neuroticism,

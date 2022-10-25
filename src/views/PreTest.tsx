@@ -1,55 +1,70 @@
 import { Button, Grid, Typography, makeStyles, Paper } from "@material-ui/core";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-
-export const useStyles = makeStyles((theme) => ({
-  info: {
-    padding: "15px",
-    marginTop: 30,
-  },
-  buttons: {
-    marginTop: 60,
-  },
-  buttonOne: {
-    marginRight: 25,
-  },
-  plus: {
-    color: theme.palette.primary.main,
-  },
-  bigTitle: {
-    fontWeight: 600,
-    font: "Monaco",
-    color: "#111840", //navy blue
-  },
-  paper: {
-    borderRadius: 10,
-    padding: 30,
-  },
-  secondTitle: {
-    marginBottom: 40,
-  },
-  firstItem: {
-    marginTop: 40,
-  },
-}));
+import { useEffect, useState } from "react";
 
 interface PreTestProps {
   nextStep: () => void;
 }
 
 const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
+  const useStyles = makeStyles((theme) => ({
+    info: {
+      padding: "15px",
+      marginTop: 30,
+    },
+    buttons: {
+      marginTop: 30,
+    },
+    buttonOne: {
+      marginBottom: 40,
+      marginRight: 25,
+    },
+    buttonTwo: {
+      marginBottom: 40,
+    },
+    plus: {
+      color: theme.palette.primary.main,
+    },
+    bigTitle: {
+      fontWeight: 600,
+      font: "Monaco",
+      color: "#111840", //navy blue
+      fontSize: isMobile ? 55 : 90,
+    },
+    paper: {
+      borderRadius: 10,
+      padding: 20,
+    },
+    secondTitle: {
+      fontSize: isMobile ? 18 : 20,
+      marginBottom: 40,
+    },
+    firstItem: {
+      marginTop: 40,
+    },
+  }));
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const navigate = useNavigate();
 
-  const nav = (path: string) => {
+  const handleNav = (path: string) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
     navigate(path);
   };
 
+  // choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 750) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
   useEffect(() => {
-    sessionStorage.clear();
+    window.addEventListener("resize", handleResize);
   });
 
   const styles = useStyles();
@@ -137,15 +152,20 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
                 <br></br>
                 <div className={styles.buttons}>
                   <Button
-                    color="default"
-                    variant="outlined"
-                    onClick={() => nav("/")}
+                    color="primary"
+                    variant="contained"
+                    onClick={props.nextStep}
                     className={styles.buttonOne}
                   >
-                    BACK TO HOME
-                  </Button>
-                  <Button color="primary" variant="contained" onClick={props.nextStep}>
                     BEGIN ASSESSMENT
+                  </Button>
+                  <Button
+                    color="default"
+                    variant="outlined"
+                    onClick={() => handleNav("/")}
+                    className={styles.buttonTwo}
+                  >
+                    BACK TO HOME
                   </Button>
                 </div>
               </Paper>

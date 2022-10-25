@@ -110,7 +110,11 @@ app.post("/webhook", async function (req, res) {
       DesiredDeliveryMediums: ["EMAIL"],
       UserAttributes: [
         {
-          Name: "email",
+          Name: 'email_verified' /* required */,
+          Value: 'true',
+        },
+        {
+          Name: 'email' /* required */,
           Value: userEmail,
         },
       ],

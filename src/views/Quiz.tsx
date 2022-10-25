@@ -1,12 +1,12 @@
 import PreTest from "./PreTest";
 import QuestionPack from "../components/QuestionPack";
+import { Question } from "../constants/schema";
 import Submit from "./Submit";
-import { questionData as qd } from "../constants/questionData";
 import { useState } from "react";
-import { shuffle } from "../util";
 
 interface QuizProps {
   onComplete: () => void;
+  questionData: Question[];
 }
 
 const Quiz: React.FC<QuizProps> = (props: QuizProps) => {
@@ -22,19 +22,12 @@ const Quiz: React.FC<QuizProps> = (props: QuizProps) => {
     }
   };
 
-  // real dataset
-  const questionData = shuffle(qd);
   const slices = 10; // number of pages
-
-  // Smaller dataset for testing
-  // const questionData = qd.slice(0, 20);
-  // const slices = 2; // number of pages
-
   const chunks = [];
-  const chunkSize = Math.ceil(questionData.length / slices); // number of questions on each page
+  const chunkSize = Math.ceil(props.questionData.length / slices); // number of questions on each page
 
-  for (let i = 0; i < questionData.length; i += chunkSize) {
-    chunks.push(questionData.slice(i, i + chunkSize));
+  for (let i = 0; i < props.questionData.length; i += chunkSize) {
+    chunks.push(props.questionData.slice(i, i + chunkSize));
   }
 
   return (
@@ -44,7 +37,7 @@ const Quiz: React.FC<QuizProps> = (props: QuizProps) => {
         return (
           step === index + 1 && (
             <QuestionPack
-              totalQuestions={questionData.length}
+              totalQuestions={props.questionData.length}
               questions={chunk}
               prevStep={prevStep}
               nextStep={nextStep}

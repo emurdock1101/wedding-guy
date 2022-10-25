@@ -138,8 +138,15 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const styles = useStyles();
   const navigate = useNavigate();
 
+  const handleNav = (path: string) => {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    }
+    navigate(path);
+  };
+
   const buyPage = () => {
-    props.loggedIn ? navigate("/test") : navigate("/buy");
+    props.loggedIn ? handleNav("/test") : handleNav("/buy");
   };
 
   // choose the screen size
@@ -172,7 +179,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Typography className={styles.secondTitle}>Discover a New You</Typography>
               <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
-                DISCOVER NOW
+                {!props.loggedIn ? "DISCOVER NOW" : "TAKE ASSESSMENT"}
               </Button>
             </div>
             <img src={prism} className={styles.prismImage} alt="personality-prism"></img>

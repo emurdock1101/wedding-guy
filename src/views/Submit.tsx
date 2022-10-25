@@ -48,8 +48,6 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
       contentType: "application/json",
     });
 
-    console.log("data stored to S3: " + JSON.stringify(percentiles));
-
     props.onComplete();
     navigate("/results");
   };

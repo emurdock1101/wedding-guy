@@ -37,7 +37,7 @@ const Purchase: React.FC<PurchaseProps> = (props: PurchaseProps) => {
   const styles = useStyles();
 
   const navigate = useNavigate();
-  const nav = (path: string) => {
+  const handleNav = (path: string) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
@@ -76,7 +76,7 @@ const Purchase: React.FC<PurchaseProps> = (props: PurchaseProps) => {
                 <Button
                   color="primary"
                   variant="contained"
-                  onClick={() => nav("/test")}
+                  onClick={() => handleNav("/test")}
                   className={styles.begin}
                 >
                   BEGIN ASSESSMENT

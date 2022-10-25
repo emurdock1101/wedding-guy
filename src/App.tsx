@@ -22,10 +22,15 @@ import Footer from "./components/Footer";
 import Signup from "./views/Signup";
 import CheckoutErrorPage from "./views/CheckoutError";
 import Forgot from "./views/Forgot";
+import { questionData as qd } from "./constants/questionData";
+import { shuffle } from "./util";
+import { Storage } from "@aws-amplify/storage";
 
 Amplify.configure(awsconfig);
 
 function App() {
+  const questionData = shuffle(qd);
+
   const useStyles = makeStyles((theme) => ({
     footer: {
       bottom: 0,
@@ -45,16 +50,35 @@ function App() {
   const [completed, setCompleted] = useState(false);
 
   const styles = useStyles();
-  const assessLoggedInState = () => {
-    Auth.currentAuthenticatedUser()
-      .then((res) => {
-        console.log("logged in: " + JSON.stringify(res));
-        setLoggedIn(true);
-      })
-      .catch((error) => {
-        console.log("logged out: " + JSON.stringify(error));
-        setLoggedIn(false);
-      });
+  const assessLoggedInState = async () => {
+    try {
+      await Auth.currentAuthenticatedUser();
+      setLoggedIn(true);
+    } catch (error) {
+      setLoggedIn(false);
+    }
+  };
+
+  // choose the screen size
+  const getResultsFromS3 = async (): Promise<void> => {
+    const user = await Auth.currentAuthenticatedUser();
+    const email: string = user.attributes?.email ?? "";
+    const subId: string = user.attributes?.sub ?? "";
+
+    Storage.configure({
+      bucket: process.env.APP_bucket_name ?? "big5-amplify-test-results-bucket210923-dev",
+      level: "private",
+      region: process.env.APP_region ?? "us-east-1",
+    });
+    try {
+      const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
+      await fetch(url).then((response) => response.json());
+
+      setCompleted(true);
+    } catch (error) {
+      console.log("Bucket results: false")
+      // No bucket results, so not completed
+    }
   };
 
   const completeTest = () => {
@@ -64,6 +88,7 @@ function App() {
 
   useEffect(() => {
     assessLoggedInState();
+    getResultsFromS3();
   }, []);
 
   return (
@@ -76,7 +101,7 @@ function App() {
             path="/test"
             element={
               loggedIn && !completed ? (
-                <Quiz onComplete={completeTest} />
+                <Quiz onComplete={completeTest} questionData={questionData} />
               ) : (
                 <Navigate to="/results" replace />
               )

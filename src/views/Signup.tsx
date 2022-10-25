@@ -4,16 +4,21 @@ import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
-interface LoginProps {
+interface SignupProps {
   onLogIn: () => void;
 }
 
-const Login = (props: LoginProps) => {
-  const [username, setUsername] = useState("");
+const Signup = (props: SignupProps) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
+  const [user, setUser] = useState<any>(undefined);
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
 
   const useStyles = makeStyles((theme) => ({
     plus: {
@@ -71,6 +76,10 @@ const Login = (props: LoginProps) => {
         color: theme.palette.primary.dark,
       },
     },
+    password: {
+      marginTop: 10,
+      marginBottom: 10,
+    },
   }));
 
   const styles = useStyles();
@@ -83,16 +92,20 @@ const Login = (props: LoginProps) => {
     navigate(path, { replace: true });
   };
 
-  const logIn = async (e: any) => {
+  const signUp = async (e: any) => {
     e.preventDefault();
     try {
-      const user = await Auth.signIn(username, password);
-      props.onLogIn();
-      setAlert(true);
-      handleNav("/test");
+      const userCognito = await Auth.signIn(email, password);
+      setAlert(false);
+      setUser(userCognito);
+
+      if (user.challengeName !== "NEW_PASSWORD_REQUIRED") {
+        props.onLogIn();
+        handleNav("/test");
+      }
     } catch (error: any) {
       console.log(JSON.stringify(error));
-      if (!username || !username.length) {
+      if (!email || !email.length) {
         setAlertContent("Username must be provided.");
       } else if (!password || !password.length) {
         setAlertContent("Password must be provided.");
@@ -101,7 +114,44 @@ const Login = (props: LoginProps) => {
           "User is not found. Try again with the correct credentials, or sign up below to create an account."
         );
       } else if (error.code === "NotAuthorizedException") {
-        setAlertContent("Incorrect password. Try the password associated with this email.");
+        setAlertContent("Incorrect password or email.");
+      } else if (error.code.length) {
+        setAlertContent(error.code);
+      } else if (error.log.length) {
+        setAlertContent(error.code);
+      }
+      setAlert(true);
+    }
+  };
+
+  const register = async (e: any) => {
+    e.preventDefault();
+    try {
+      if (newPassword !== newPasswordConfirm) {
+        setAlertContent("Passwords do not match.");
+        setAlert(true);
+      } else {
+        await Auth.completeNewPassword(
+          user, // the Cognito User Object
+          newPassword // the new password
+        );
+
+        props.onLogIn();
+        handleNav("/test");
+      }
+    } catch (error: any) {
+      console.log(JSON.stringify(error));
+      if (
+        !newPassword ||
+        !newPassword.length ||
+        !newPasswordConfirm ||
+        !newPasswordConfirm.length
+      ) {
+        setAlertContent("Password must be provided.");
+      } else if (error.code === "InvalidPasswordException") {
+        setAlertContent(
+          "Invalid password. Make sure that you contain lowercase, uppercase, numerical, and special characters"
+        );
       } else if (error.code.length) {
         setAlertContent(error.code);
       } else if (error.log.length) {
@@ -131,30 +181,89 @@ const Login = (props: LoginProps) => {
               <Box className={styles.box} />
             </>
           )}
-          <Paper elevation={2} className={styles.paper}>
-            <Typography variant="h5" className={styles.title}>
-              Register using the password sent to your checkout email.
-            </Typography>
-            <TextField
-              type="text"
-              placeholder="email"
-              onChange={(e) => setUsername(e.target.value)}
-              className={styles.input}
-            />
-            <TextField
-              type="password"
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-              className={styles.input}
-            />
-            <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
-              SIGN UP
-            </Button>
-          </Paper>
+          {!user && (
+            <Paper elevation={2} className={styles.paper}>
+              <Typography variant="h5" className={styles.title}>
+                Check your email for your temporary password.
+              </Typography>
+              <TextField
+                type="text"
+                placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
+                className={styles.input}
+              />
+              <TextField
+                type="password"
+                placeholder="temporary password"
+                onChange={(e) => setPassword(e.target.value)}
+                className={styles.input}
+              />
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={signUp}
+                className={styles.button}
+              >
+                SIGN UP
+              </Button>
+            </Paper>
+          )}
+          {user && (
+            <Paper elevation={2} className={styles.paper}>
+              <Grid container justify="center" alignItems="center">
+                <Grid item xs={12} md={6} className={styles.password}>
+                  <Typography variant="h5" className={styles.title}>
+                    Create your account password.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={6} className={styles.password}>
+                  <Typography variant="subtitle1" className={styles.title}>
+                    Your password must contain:
+                  </Typography>
+                  <List
+                    sx={{
+                      listStyleType: "disc",
+                      pl: 6,
+                      "& .MuiListItem-root": {
+                        display: "list-item",
+                      },
+                    }}
+                    className={styles.title}
+                  >
+                    <ListItem>At least 1 lowercase letter</ListItem>
+                    <ListItem>At least 1 uppercase letter</ListItem>
+                    <ListItem>At least 1 number</ListItem>
+                    <ListItem>At least 1 special character</ListItem>
+                    <ListItem>At least 8 characters in length</ListItem>
+                  </List>
+                </Grid>
+              </Grid>
+              <TextField
+                type="password"
+                placeholder="new password"
+                onChange={(e) => setNewPassword(e.target.value)}
+                className={styles.input}
+              />
+              <TextField
+                type="password"
+                placeholder="confirm password"
+                onChange={(e) => setNewPasswordConfirm(e.target.value)}
+                className={styles.input}
+              />
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={register}
+                className={styles.button}
+              >
+                CREATE PASSWORD
+              </Button>
+            </Paper>
+          )}
         </Grid>
       </Grid>
     </>
   );
 };
 
-export default Login;
+export default Signup;
