@@ -14,12 +14,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   buttonOne: {
     marginRight: 25,
+    marginBottom: 30,
   },
-  text: {
-    fontSize: 30,
+  buttonTwo: {
+    marginBottom: 30,
   },
   paper: {
     padding: 30,
+    borderRadius: 10,
   },
 }));
 
@@ -59,24 +61,27 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
           <Grid container justify="center" alignItems="center">
             <Grid item xs={12} md={10} lg={8}>
               <Paper elevation={2} className={styles.paper}>
-                <Typography variant="h4" className={styles.text}>
-                  You have completed the assessment.
-                </Typography>
+                <Typography variant="h5">You have completed the assessment.</Typography>
                 <br></br>
-                <Typography variant="h4" className={styles.text}>
+                <Typography variant="subtitle1">
                   If you are satisfied with your answers, submit below to see your results.
                 </Typography>
                 <div className={styles.buttons}>
                   <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={processResults}
+                    className={styles.buttonOne}
+                  >
+                    SUBMIT
+                  </Button>
+                  <Button
                     color="default"
                     variant="outlined"
                     onClick={props.prevStep}
-                    className={styles.buttonOne}
+                    className={styles.buttonTwo}
                   >
                     BACK TO TEST
-                  </Button>
-                  <Button color="primary" variant="contained" onClick={processResults}>
-                    SUBMIT
                   </Button>
                 </div>
               </Paper>

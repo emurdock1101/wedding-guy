@@ -17,11 +17,11 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
       marginTop: 30,
     },
     buttonOne: {
-      marginBottom: 40,
+      marginBottom: 30,
       marginRight: 25,
     },
     buttonTwo: {
-      marginBottom: 40,
+      marginBottom: 30,
     },
     plus: {
       color: theme.palette.primary.main,
@@ -33,8 +33,8 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
       fontSize: isMobile ? 55 : 90,
     },
     paper: {
-      borderRadius: 10,
       padding: 20,
+      borderRadius: 10,
     },
     secondTitle: {
       fontSize: isMobile ? 18 : 20,
@@ -157,7 +157,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
                     onClick={props.nextStep}
                     className={styles.buttonOne}
                   >
-                    BEGIN ASSESSMENT
+                    BEGIN TEST
                   </Button>
                   <Button
                     color="default"

@@ -45,6 +45,7 @@ const Login = (props: LoginProps) => {
     paper: {
       padding: 20,
       marginBottom: 60,
+      borderRadius: 10
     },
     alert: {
       marginBottom: 15,

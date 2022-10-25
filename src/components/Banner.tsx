@@ -14,8 +14,9 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
       fontSize: isMobile ? 50 : 60,
       textAlign: isMobile ? "center" : "left",
     },
-    titlePaper: {
+    paper: {
       backgroundColor: "#111840", // navy blue
+      borderRadius: 0
     },
     container: {
       marginBottom: 90,
@@ -40,7 +41,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   return (
     <Grid container justify="center" alignItems="flex-start" className={styles.container}>
       <Grid item xs={12}>
-        <Paper elevation={2} className={styles.titlePaper} style={{ borderRadius: "0px" }}>
+        <Paper elevation={2} className={styles.paper}>
           <Grid container spacing={6} justify="center" alignItems="flex-start">
             <Grid item xs={12} sm={11} lg={10}>
               <Typography variant="h3" className={styles.subheading}>

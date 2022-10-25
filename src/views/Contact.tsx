@@ -9,15 +9,15 @@ interface ContactProps {}
 const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
-      fontSize: isMobile ? 40 : 60,
+      fontSize: isMobile ? 37 : 50,
       "&:hover": {
         color: theme.palette.primary.main,
       },
       marginRight: isMobile ? 30 : 60,
       color: theme.palette.info.main,
     },
-    phoneLink: {
-      marginTop: 40,
+    emailLink: {
+      marginTop: 20,
       display: "flex",
       "&:hover": {
         color: theme.palette.primary.main,
@@ -26,24 +26,25 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       justifyItems: "middle",
       width: 310,
     },
+    help: {
+      fontSize: isMobile ? 20 : 25
+    },
     reachOut: {
       marginTop: 20,
+      fontSize: isMobile ? 17 : 20
     },
-    phone: {
-      fontSize: 35,
-      marginRight: 20,
-    },
-    number: {
-      fontSize: 25,
+    email: {
+      fontSize: isMobile ? 17 : 20
     },
     socialLinks: {
       marginLeft: -10,
       marginTop: 60,
     },
     paper: {
-      padding: 40,
+      padding: 30,
       color: theme.palette.info.main,
       borderLeft: `6px solid #111840`,
+      borderRadius: 10
     },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
@@ -68,14 +69,13 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       <Banner pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={11} lg={10} style={{ padding: 15 }}>
-          <Paper elevation={2} className={styles.paper} style={{ borderRadius: "10px" }}>
-            <Typography variant="h4">How can we help?</Typography>
-            <Typography variant="h6" className={styles.reachOut}>
+          <Paper elevation={2} className={styles.paper}>
+            <Typography variant="h5" className={styles.help}>How can we help?</Typography>
+            <Typography variant="subtitle1" className={styles.reachOut}>
               Ask about the Personality+ test or our data-driven psychological coaching services.{" "}
             </Typography>
-            <a href="mailto:discoverpersonalityplus@gmail.com" className={styles.phoneLink}>
-              <Mail className={styles.phone} />
-              <Typography variant="h5" className={styles.number}>
+            <a href="mailto:discoverpersonalityplus@gmail.com" className={styles.emailLink}>
+              <Typography variant="h5" className={styles.email}>
                 discoverpersonalityplus@gmail.com
               </Typography>
             </a>
@@ -96,6 +96,9 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               </a>
               <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
                 <Twitter className={styles.facebook} />
+              </a>
+              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
+                <Mail className={styles.facebook} />
               </a>
             </div>
           </Paper>

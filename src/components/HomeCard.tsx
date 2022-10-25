@@ -7,7 +7,7 @@ interface HomeCardProps {
   description: string;
 }
 const useStyles = makeStyles((theme) => ({
-  card: {
+  paper: {
     minWidth: 275,
     padding: 30,
     color: theme.palette.info.main,
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
  const HomeCard = (props: HomeCardProps) =>{
   const styles = useStyles();
   return (
-    <Paper className={styles.card}>
+    <Paper className={styles.paper}>
       <Typography variant="h5" component="div">
         {props.title}
       </Typography>

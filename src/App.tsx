@@ -25,6 +25,8 @@ import Forgot from "./views/Forgot";
 import { questionData as qd } from "./constants/questionData";
 import { shuffle } from "./util";
 import { Storage } from "@aws-amplify/storage";
+import PreTest from "./views/PreTest";
+import Submit from "./views/Submit"
 
 Amplify.configure(awsconfig);
 
@@ -76,7 +78,7 @@ function App() {
 
       setCompleted(true);
     } catch (error) {
-      console.log("Bucket results: false")
+      console.log("Bucket results: false");
       // No bucket results, so not completed
     }
   };
@@ -137,6 +139,10 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/checkouterror" element={<CheckoutErrorPage />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
+
+            
+          <Route path="/pretest" element={<PreTest nextStep={() => {}} />} />
+          <Route path="/submit" element={<Submit  prevStep={() => {}} onComplete={() => {}}/>} />
         </Routes>
         <div className={styles.footer}>
           <Footer />
