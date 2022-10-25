@@ -16,15 +16,8 @@ import { Auth } from "aws-amplify";
 interface ResultsProps {}
 
 const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
+  const [percentiles, setPercentiles] = useState<Record<string, number> | null>(null);
   const useStyles = makeStyles((theme) => ({
-    subheading: {
-      textAlign: "center",
-      color: "white",
-      padding: "10px",
-      marginBottom: "10px",
-      fontSize: isMobile ? 60 : 80,
-    },
     info: {
       marginBottom: "20px",
       fontSize: 18,
@@ -72,87 +65,47 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const styles = useStyles();
 
   // choose the screen size
-  const handleResize = () => {
-    if (window.innerWidth < 750) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
-
-  // choose the screen size
-  const getResultsFromS3 = async () => {
+  const getResultsFromS3 = async (): Promise<void> => {
     const user = await Auth.currentAuthenticatedUser();
-    const email: string = user.attributes.email;
-    const subId: string = user.attributes.sub;
+    const email: string = user.attributes?.email ?? "";
+    const subId: string = user.attributes?.sub ?? "";
 
     Storage.configure({
       bucket: process.env.APP_bucket_name ?? "big5-amplify-test-results-bucket210923-dev",
       level: "private",
       region: process.env.APP_region ?? "us-east-1",
     });
-
-    const url: string = await Storage.get(`${email}-${subId}/results-${email}`);
-
-    console.log(url);
-
+    
+    const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
     const data: Record<string, number> = await fetch(url).then((response) => response.json());
+    setPercentiles(data);
 
-    // console.log()
-    // if (!response) {
-    //   console.log(response)
-    //   console.log('nothing')
-    // }
-    console.log(JSON.stringify(data));
+    console.log("data from S3: " + JSON.stringify(data));
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
+    getResultsFromS3();
+  }, []);
 
-  // const percentiles: Record<string, number> = getResultsFromS3();
+  const AestheticOpenness: number = percentiles?.[`${Aspect.AestheticOpenness.toString()}`] ?? 0;
+  const Openness: number = percentiles?.[`${Ocean.Openness.toString()}`] ?? 0;
+  const Industriousness: number = percentiles?.[`${Aspect.Industriousness.toString()}`] ?? 0;
 
-  // const Openness: number = percentiles.get(Ocean.Openness.toString()) ?? 99;
-  // const AestheticOpenness: number = percentiles.get(Aspect.AestheticOpenness.toString()) ?? 99;
-  // const Industriousness: number = percentiles.get(Aspect.Industriousness.toString()) ?? 99;
+  const Conscientiousness: number = percentiles?.[`${Ocean.Conscientiousness.toString()}`] ?? 0;
+  const Interest: number = percentiles?.[`${Aspect.Interest.toString()}`] ?? 0;
+  const Orderliness: number = percentiles?.[`${Aspect.Orderliness.toString()}`] ?? 0;
 
-  // const Conscientiousness: number = percentiles.get(Ocean.Conscientiousness.toString()) ?? 99;
-  // const Interest: number = percentiles.get(Aspect.Interest.toString()) ?? 99;
-  // const Orderliness: number = percentiles.get(Aspect.Orderliness.toString()) ?? 99;
+  const Extraversion: number = percentiles?.[`${Ocean.Extraversion.toString()}`] ?? 0;
+  const Enthusiasm: number = percentiles?.[`${Aspect.Enthusiasm.toString()}`] ?? 0;
+  const Assertiveness: number = percentiles?.[`${Aspect.Assertiveness.toString()}`] ?? 0;
 
-  // // fake data
-  // const Extraversion: number = percentiles.get(Ocean.Extraversion.toString()) ?? 99;
-  // const Enthusiasm: number = percentiles.get(Aspect.Enthusiasm.toString()) ?? 99;
-  // const Assertiveness: number = percentiles.get(Aspect.Assertiveness.toString()) ?? 99;
+  const Agreeableness: number = percentiles?.[`${Ocean.Agreeableness.toString()}`] ?? 0;
+  const Compassion: number = percentiles?.[`${Aspect.Compassion.toString()}`] ?? 0;
+  const Politeness: number = percentiles?.[`${Aspect.Politeness.toString()}`] ?? 0;
 
-  // const Agreeableness: number = percentiles.get(Ocean.Agreeableness.toString()) ?? 99;
-  // const Compassion: number = percentiles.get(Aspect.Compassion.toString()) ?? 99;
-  // const Politeness: number = percentiles.get(Aspect.Politeness.toString()) ?? 99;
-
-  // const Neuroticism: number = percentiles.get(Ocean.Neuroticism.toString()) ?? 99;
-  // const Withdrawal: number = percentiles.get(Aspect.Withdrawal.toString()) ?? 99;
-  // const Volatility: number = percentiles.get(Aspect.Volatility.toString()) ?? 99;
-
-  const Openness: number = 99;
-  const AestheticOpenness: number = 99;
-  const Industriousness: number = 99;
-
-  const Conscientiousness: number = 99;
-  const Interest: number = 99;
-  const Orderliness: number = 99;
-
-  // fake data
-  const Extraversion: number = 99;
-  const Enthusiasm: number = 99;
-  const Assertiveness: number = 99;
-
-  const Agreeableness: number = 99;
-  const Compassion: number = 99;
-  const Politeness: number = 99;
-
-  const Neuroticism: number = 99;
-  const Withdrawal: number = 99;
-  const Volatility: number = 99;
+  const Neuroticism: number = percentiles?.[`${Ocean.Neuroticism.toString()}`] ?? 0;
+  const Withdrawal: number = percentiles?.[`${Aspect.Withdrawal.toString()}`] ?? 0;
+  const Volatility: number = percentiles?.[`${Aspect.Volatility.toString()}`] ?? 0;
 
   // data for aspects chart
   const aspectSeries = [
@@ -174,7 +127,6 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   return (
     <div>
       <Banner pageTitle="Results and Explanation" />
-      <Button onClick={getResultsFromS3}> here </Button>
       <Grid container spacing={6} justify="center" alignItems="flex-start">
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation}>
@@ -211,7 +163,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          {/* <ResultTable percentiles={percentiles} /> */}
+          <ResultTable percentiles={percentiles ?? {}} />
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <OceanAccordion />

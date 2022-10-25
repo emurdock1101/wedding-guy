@@ -1,11 +1,14 @@
 import PreTest from "./PreTest";
 import QuestionPack from "../components/QuestionPack";
-import Results from "./Results";
 import Submit from "./Submit";
 import { questionData as qd } from "../constants/questionData";
 import { useState } from "react";
 
-const Quiz: React.FC = () => {
+interface QuizProps {
+  onComplete: () => void;
+}
+
+const Quiz: React.FC<QuizProps> = (props: QuizProps) => {
   const [step, setStep] = useState(0);
 
   const nextStep = () => {
@@ -18,6 +21,10 @@ const Quiz: React.FC = () => {
     }
   };
 
+  // real dataset
+  // const questionData = qd;
+
+  // Smaller dataset for testing
   const questionData = qd.slice(0, 20);
 
   const slices = 2; // number of pages
@@ -44,7 +51,7 @@ const Quiz: React.FC = () => {
           )
         );
       })}
-      {step === chunks.length + 1 && <Submit prevStep={prevStep} />}
+      {step === chunks.length + 1 && <Submit prevStep={prevStep} onComplete={props.onComplete} />}
     </div>
   );
 };

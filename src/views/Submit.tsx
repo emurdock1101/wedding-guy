@@ -25,9 +25,13 @@ export const useStyles = makeStyles((theme) => ({
 
 interface SubmitProps {
   prevStep: () => void;
+  onComplete: () => void;
 }
 
 const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
+  const navigate = useNavigate();
+  const styles = useStyles();
+
   const processResults = async () => {
     const user = await Auth.currentAuthenticatedUser();
     const email: string = user.attributes.email;
@@ -40,14 +44,16 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
       region: process.env.APP_region ?? "us-east-1",
     });
 
-    console.log(JSON.stringify(percentiles));
+    await Storage.put(`${email}-${subId}/${email}-results`, percentiles, {
+      contentType: "application/json",
+    });
 
-    const { key } = await Storage.put(`${email}-${subId}/results-${email}`, percentiles);
-    console.log("key: " + key);
+    console.log("data stored to S3: " + JSON.stringify(percentiles));
+
+    props.onComplete();
+    navigate("/results");
   };
 
-  const navigate = useNavigate();
-  const styles = useStyles();
   return (
     <>
       <Grid container justify="center" alignItems="center" spacing={2} className={styles.info}>
@@ -73,15 +79,6 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
                   </Button>
                   <Button color="primary" variant="contained" onClick={processResults}>
                     SUBMIT
-                  </Button>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    onClick={() => {
-                      navigate("/results");
-                    }}
-                  >
-                    VIEW RESULTS
                   </Button>
                 </div>
               </Paper>

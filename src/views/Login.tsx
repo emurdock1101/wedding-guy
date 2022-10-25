@@ -82,7 +82,7 @@ const Login = (props: LoginProps) => {
   const logIn = async (e: any) => {
     e.preventDefault();
     try {
-      const user = await Auth.signIn(username, password);
+      await Auth.signIn(username, password);
       props.onLogIn();
       setAlert(true);
       handleNav("/");

@@ -1,7 +1,7 @@
 import { Button, Grid, Typography, makeStyles, Paper } from "@material-ui/core";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Divider from "@mui/material/Divider";
 
 export const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
         "pk_test_51LrmACDw2D6ArEBHOcUvlHH9y27SAtsFVv2HDc7xeVoYi4vK2RvEsLh6CU5fAQYJELe71BMTOAJfgkTroQWaGLCd0077izhlOI"
       );
       if (stripe) {
-        const { error } = await stripe.redirectToCheckout({
+        await stripe.redirectToCheckout({
           lineItems: [
             {
               price: "price_1LrmCvDw2D6ArEBHyeAtvzHl",
@@ -70,7 +70,7 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
         });
       }
     } catch (error) {
-      console.log("error signing in", error);
+      console.log(JSON.stringify(error));
       nav("/checkouterror");
     }
   };

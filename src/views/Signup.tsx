@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 
 interface LoginProps {
@@ -87,8 +86,7 @@ const Login = (props: LoginProps) => {
   const logIn = async (e: any) => {
     e.preventDefault();
     try {
-      const user = await Auth.signIn(username, password);
-      console.log(user);
+      await Auth.signIn(username, password);
       props.onLogIn();
       setAlert(true);
       handleNav("/pretest");

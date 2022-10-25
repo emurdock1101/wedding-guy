@@ -37,7 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(percentiles: Map<string, number>): any[] {
+function createData(percentiles: Record<string, number>): any[] {
   const tableData: any[] = [];
 
   for (const data of categoryData) {
@@ -47,13 +47,13 @@ function createData(percentiles: Map<string, number>): any[] {
       tableData.push({
         category: data.category + " (" + data.categoryAbbr + ")",
         aspect: EMPTY,
-        percentile: percentiles.get(data.category) + "%",
+        percentile: percentiles[`${data.category}`] + "%",
       });
     } else {
       tableData.push({
         category: EMPTY,
         aspect: data.category + " (" + data.categoryAbbr + ")",
-        percentile: percentiles.get(data.category) + "%",
+        percentile: percentiles[`${data.category}`] + "%",
       });
     }
   }
@@ -62,7 +62,7 @@ function createData(percentiles: Map<string, number>): any[] {
 }
 
 interface ResultTableProps {
-  percentiles: Map<string, number>
+  percentiles: Record<string, number>;
 }
 
 const ResultTable: React.FC<ResultTableProps> = (props: ResultTableProps) => {

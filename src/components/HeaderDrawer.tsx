@@ -147,7 +147,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
       props.onLogOut();
       handleNav("/");
     } catch (error) {
-      console.log("error signing in", error);
+      console.log(JSON.stringify(error));
     }
   };
 

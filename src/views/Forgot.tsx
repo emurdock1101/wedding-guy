@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 
 interface ForgotProps {
@@ -90,7 +89,7 @@ const Forgot = (props: ForgotProps) => {
     e.preventDefault();
     try {
       // Send confirmation code to user's email
-      const success = await Auth.forgotPassword(email);
+      await Auth.forgotPassword(email);
       setCodeSent(true);
     } catch (error: any) {
       console.log(JSON.stringify(error));
@@ -116,12 +115,11 @@ const Forgot = (props: ForgotProps) => {
       const success = await Auth.forgotPasswordSubmit(email, code, password);
 
       if (success) {
-        const user = await Auth.signIn(email, password);
-        console.log(user);
+        await Auth.signIn(email, password);
         props.onLogIn();
         handleNav("/");
       } else {
-        console.log(success);
+        console.log("Password reset was not successful: " + success);
       }
     } catch (error: any) {
       console.log(JSON.stringify(error));

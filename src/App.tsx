@@ -7,24 +7,19 @@ import Contact from "./views/Contact";
 import FAQs from "./views/Faqs";
 import ErrorPage from "./views/Error";
 import Home from "./views/Home";
-import Loading from "./components/Loading";
-import PreTest from "./views/PreTest";
 import Privacy from "./views/Privacy";
 import Quiz from "./views/Quiz";
 import Results from "./views/Results";
-import Submit from "./views/Submit";
 import BuyTest from "./views/BuyTest";
-import * as React from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme";
 import { Amplify, Auth } from "aws-amplify";
 import awsconfig from "./aws-exports";
-// import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import Login from "./views/Login";
 import Footer from "./components/Footer";
 import Signup from "./views/Signup";
-import Purchase from "./views/Purchase";
 import CheckoutErrorPage from "./views/CheckoutError";
 import Forgot from "./views/Forgot";
 
@@ -45,16 +40,15 @@ function App() {
       paddingBottom: 120,
     },
   }));
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  const [completed, setCompleted] = React.useState(false);
-  const [results, setResults] = React.useState(undefined);
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   const styles = useStyles();
   const assessLoggedInState = () => {
     Auth.currentAuthenticatedUser()
       .then((res) => {
-        console.log(res);
-        console.log("logged in");
+        console.log("logged in: " + JSON.stringify(res));
         setLoggedIn(true);
       })
       .catch(() => {
@@ -63,68 +57,60 @@ function App() {
       });
   };
 
-  const assessCompletedState = () => {
-    Auth.currentAuthenticatedUser()
-      .then((res) => {
-        console.log(res);
-        console.log("logged in");
-        setLoggedIn(true);
-      })
-      .catch(() => {
-        console.log("logged out");
-        setLoggedIn(false);
-      });
+  const completeTest = () => {
+    console.log("test completed");
+    setCompleted(true);
   };
+
+  useEffect(() => {
+    assessLoggedInState();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.container}>
         <HeaderDrawer loggedIn={loggedIn} completed={completed} onLogOut={assessLoggedInState} />
         <Routes>
-          <Route path="/" element={<Home loggedIn={loggedIn} />} />
+          <Route path="/buy" element={!loggedIn ? <BuyTest /> : <Navigate to="/" replace />} />
           <Route
             path="/test"
-            element={!loggedIn || completed ? <Navigate to="/results" replace /> : <Quiz />}
-          />
-          {/* <Route
-            path="/results"
-            element={!loggedIn || !completed ? <Navigate to="/" replace /> : <Results />}
-          /> */}
-          <Route
-            path="/results"
-            element={<Results />}
-          />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/checkouterror" element={<CheckoutErrorPage />} />
-          <Route path="/faqs" element={<FAQs />} />
-          {/* <Route
-            path="/pretest"
             element={
-              !loggedIn || completed ? <Navigate to="/" replace /> : <PreTest nextStep={() => {}} />
-            }
-          /> */}
-          <Route
-            path="/pretest"
-            element={
-              <PreTest nextStep={() => {}} />
+              loggedIn && !completed ? (
+                <Quiz onComplete={completeTest} />
+              ) : (
+                <Navigate to="/results" replace />
+              )
             }
           />
-          <Route path="/about" element={<About />} />
-          <Route path="/buy" element={completed ? <Navigate to="/" replace /> : <BuyTest />} />
-          <Route path="/login" element={<Login onLogIn={assessLoggedInState} />} />
-          <Route path="/signup" element={<Signup onLogIn={assessLoggedInState} />} />
           <Route
-            path="/purchased"
-            element={!loggedIn ? <Navigate to="/" replace /> : <Purchase loggedIn={loggedIn} />}
+            path="/results"
+            element={loggedIn && completed ? <Results /> : <Navigate to="/" replace />}
           />
           <Route
             path="/reset"
             element={
-              loggedIn ? <Navigate to="/" replace /> : <Forgot onLogIn={assessLoggedInState} />
+              !loggedIn ? <Forgot onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
             }
           />
+          <Route
+            path="/login"
+            element={
+              !loggedIn ? <Login onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              !loggedIn ? <Signup onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
+            }
+          />
+          <Route path="/" element={<Home loggedIn={loggedIn} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/error" element={<ErrorPage />} />
+          <Route path="/checkouterror" element={<CheckoutErrorPage />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
         </Routes>
         <div className={styles.footer}>
@@ -134,6 +120,5 @@ function App() {
     </ThemeProvider>
   );
 }
-//<Route path="/login" element={user ? <Navigate to="/" replace /> :  <Login />}  />
 
 export default App;
