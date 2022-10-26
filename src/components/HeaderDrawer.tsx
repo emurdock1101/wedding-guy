@@ -189,7 +189,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
             // Show results page if logged in
             props.loggedIn && props.completed && (
               <Button className={styles.signInButton} onClick={() => handleNav("/results")}>
-                TEST RESULT
+                YOUR RESULTS
               </Button>
             )
           }

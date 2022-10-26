@@ -61,7 +61,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
         backgroundColor: theme.palette.secondary.dark,
       },
       color: theme.palette.common.white,
-      width: "320px",
+      width: "220px",
       height: "60px",
       borderRadius: "30px",
     },
@@ -179,7 +179,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Typography className={styles.secondTitle}>Discover a New You</Typography>
               <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
-                {!props.loggedIn ? "DISCOVER NOW" : "TAKE ASSESSMENT"}
+                {!props.loggedIn ? "BUY NOW" : "TAKE ASSESSMENT"}
               </Button>
             </div>
             <img src={prism} className={styles.prismImage} alt="personality-prism"></img>
