@@ -206,7 +206,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 your desires? Better yet, can you change those things?
               </Typography>
               <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
-                Who we are stems from our personality, and Personality+ is an assessment based on
+                Who we are stems from our personality, and Personality+ is an test based on
                 the Big Five 10 Aspect Model of personality.
               </Typography>
               <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
@@ -278,10 +278,10 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           </Grid>
           <Grid item xs={10} lg={8}>
             <div className={styles.big5}>
-              <Typography className={styles.big5Title}>Big 5 Traits and 10 Aspects</Typography>
+              <Typography className={styles.big5Title}>Big Five Traits and Aspects</Typography>
               <br></br>
               <Typography variant={"subtitle1"} className={styles.big5Desc}>
-                Your results will explain your unique personality as it relates to the Big-5 and its
+                Your results will explain your unique personality as it relates to the Big Five and its
                 10 aspects, which are 2 subcategories for each of the 5 dimensions. These categories
                 and subcategories are listed below.
               </Typography>

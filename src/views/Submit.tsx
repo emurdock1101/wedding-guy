@@ -61,7 +61,7 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
           <Grid container justify="center" alignItems="center">
             <Grid item xs={12} md={10} lg={8}>
               <Paper elevation={2} className={styles.paper}>
-                <Typography variant="h5">You have completed the assessment.</Typography>
+                <Typography variant="h5">You have completed the test.</Typography>
                 <br></br>
                 <Typography variant="subtitle1">
                   If you are satisfied with your answers, submit below to see your results.
