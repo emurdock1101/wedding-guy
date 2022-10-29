@@ -4,6 +4,7 @@ import { Auth } from "aws-amplify";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import { useNavigate } from "react-router-dom";
 
 interface LoginProps {
   onLogIn: () => void;
@@ -45,7 +46,7 @@ const Login = (props: LoginProps) => {
     paper: {
       padding: 20,
       marginBottom: 60,
-      borderRadius: 10
+      borderRadius: 10,
     },
     alert: {
       marginBottom: 15,
@@ -70,12 +71,22 @@ const Login = (props: LoginProps) => {
   }));
 
   const styles = useStyles();
+  const navigate = useNavigate();
+
+  // On clicking log in, redirect to Login page
+  const handleNav = (path: string) => {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    }
+    navigate(path, { replace: true });
+  };
 
   const logIn = async (e: any) => {
     e.preventDefault();
     try {
       await Auth.signIn(username, password);
       props.onLogIn();
+      handleNav("/");
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!username || !username.length) {

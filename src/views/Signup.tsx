@@ -138,7 +138,7 @@ const Signup = (props: SignupProps) => {
         );
 
         props.onLogIn();
-        handleNav("/test");
+        handleNav("/");
       }
     } catch (error: any) {
       console.log(JSON.stringify(error));

@@ -14,6 +14,7 @@ import Fade from "@mui/material/Fade";
 
 interface HomeProps {
   loggedIn: boolean;
+  completed: boolean;
 }
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
@@ -178,9 +179,21 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 Personality <span className={styles.plus}>+</span>
               </Typography>
               <Typography className={styles.secondTitle}>Discover a New You</Typography>
-              <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
-                {!props.loggedIn ? "BUY NOW" : "TAKE ASSESSMENT"}
-              </Button>
+              {!props.loggedIn && (
+                <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                  BUY NOW
+                </Button>
+              )}
+              {props.loggedIn && !props.completed && (
+                <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                  TAKE TEST
+                </Button>
+              )}
+              {props.loggedIn && props.completed && (
+                <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                  VIEW RESULTS
+                </Button>
+              )}
             </div>
             <img src={prism} className={styles.prismImage} alt="personality-prism"></img>
           </Grid>

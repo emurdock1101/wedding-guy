@@ -24,7 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     paddingLeft: "20px",
     paddingRight: "20px",
     paddingBottom: "20px",
-    color: theme.palette.info.main
+    color: theme.palette.info.main,
   },
   percent: {
     paddingLeft: "15px",
@@ -68,10 +68,48 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           <Typography variant="subtitle1">
             {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part3"]}
           </Typography>
-          <br></br>
-          <Typography variant="subtitle1">
-            {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part4"]}
-          </Typography>
+          {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
+            "part4"
+          ] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1">
+                {
+                  interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
+                    "part4"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
+          {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
+            "part5"
+          ] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1">
+                {
+                  interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
+                    "part5"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
+          {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
+            "part6"
+          ] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1">
+                {
+                  interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
+                    "part6"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
           <Typography variant="h5" className={styles.aspects}>
@@ -97,10 +135,42 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           <Typography variant="subtitle1" className={styles.aspects}>
             {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part3"]}
           </Typography>
-          <br></br>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part4"]}
-          </Typography>
+          {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part4"] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1" className={styles.aspects}>
+                {
+                  interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)][
+                    "part4"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
+          {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part5"] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1" className={styles.aspects}>
+                {
+                  interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)][
+                    "part5"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
+          {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part6"] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1" className={styles.aspects}>
+                {
+                  interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)][
+                    "part6"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
           <Typography variant="h5" className={styles.aspects}>
@@ -115,21 +185,53 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
         <Grid item xs={12} sm={10}>
           <Typography variant="subtitle1" className={styles.aspects}>
             <strong>
-              {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect1Score)]["part1"]}
+              {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part1"]}
             </strong>
           </Typography>
           <br></br>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect1Score)]["part2"]}
+            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part2"]}
           </Typography>
           <br></br>
           <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect1Score)]["part3"]}
+            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part3"]}
           </Typography>
-          <br></br>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect1Score)]["part4"]}
-          </Typography>
+          {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part4"] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1" className={styles.aspects}>
+                {
+                  interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)][
+                    "part4"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
+          {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part5"] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1" className={styles.aspects}>
+                {
+                  interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)][
+                    "part5"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
+          {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part6"] && (
+            <>
+              <br></br>
+              <Typography variant="subtitle1" className={styles.aspects}>
+                {
+                  interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)][
+                    "part6"
+                  ]
+                }
+              </Typography>
+            </>
+          )}
         </Grid>
       </Grid>
     </div>

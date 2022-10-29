@@ -195,7 +195,6 @@ const interpretations: any = [
         part3: "People average in conscientiousness may be organized, future-oriented, and reliable unless there is a reason specific reason that derails those attempts. They are aware of the importance of doing things “by the book”, but may be flexible if plans, ideas, or work change, and they are more open to other people’s ideas or opinions. They enjoy family and cultural traditions but or not necessarily duty bound by them.",
         part4: "Academically, they do well (particularly if they are also intelligent) but may need to be pushed or managed on occasion. They strike a balance in thinking that hard work should be rewarded and sometimes luck is important, too. They can be somewhat judgmental of others and unnerved by their own failures or mishaps depending on the situation.",
         part5: "Those average in conscientiousness tend to have normal feelings of guilt and shame around failure, loss of employments, or unfortunate events, even if it is not their fault.",
-        part6: "",
       },
       modHigh: {
         part1: "You are moderately high in conscientiousness, which means you are hardworking, focused on details, clean, and drawn to duty. You usually make and adhere to plans, to-do lists, or planners because you want an organized and orderly day.",
@@ -203,7 +202,6 @@ const interpretations: any = [
         part3: "People moderately high in conscientiousness are organized, future-oriented, and reliable. Because of this they are likely to be focused on details and do things exactly “by the book”. Because they do things strictly “by the book”, it may be difficult to solve novel problems, be flexible if plans suddenly change, or open to other people’s ideas or opinions. Family and cultural traditions are important to them.",
         part4: "Academically, they do well (particularly if they are also intelligent) and are good at taking responsibility or adhering to duty. They believe (especially if low in agreeableness) that those who work hard should be rewarded, and that those who don’t usually bring it on themselves. They can be somewhat judgmental of others and unnerved by their own failures or mishaps.",
         part5: "Those moderately high in conscientiousness tend to feel more guilt and shame. Because of this, they have a strong reaction to failure, loss of employments, or unfortunate events, even if it is not their fault (especially, if higher in neuroticism).",
-        part6: "",
       },
       high: {
         part1: "You are high in conscientiousness and are very hardworking, focused on details, clean, and drawn to duty. You have a strong proclivity to make and adhere to plans, to-do lists, and planners because you desire an organized and orderly day.",
@@ -516,43 +514,36 @@ const interpretations: any = [
         part1: "You are very low in compassion and can be considered unsympathetic, blunt, mean, or disinterested in problems of others.",
         part2: "Individuals very low in compassion almost never sympathize with other people and are disinterested in the problems of other people. Their focus in always on themselves, while ignoring the needs of other. They are willing to engage in conflict and competition, even at the expense of the feelings of others.",
         part3: "Remember, the lower other-oriented you are, the easier it will be to take time or give energy to your own needs. You may need training to help you connect with others or their problems. This will help you care for then needs of family, career-peers, and friendship. Very low compassionate people may be extremely neglectful or unaware of the needs of children, family members, or friends.",
-        part4: "",
       },
       low: {
         part1: "You are low in compassion and are likely to be unsympathetic, blunt, mean, and less interested in the problems of others.",
         part2: "Low compassionate people have a harder time sympathism or being interested in the problems of other people. Their focus in on them themselves rather than focusing on helping others avoid negative aspects of life. They are willing to engage in conflict and competition even at the expense of others.",
         part3: "Remember, the lower other-oriented you are, the easier it will be to take time or give energy to your own needs. You may need training to help you connect with others and their needs so that you can successfully care for then needs of family, career-peers, and friendship. Low compassionate people may neglect or be unaware of the needs of children, family members, or friends.",
-        part4: "",
       },
       modLow: {
         part1: "You are moderately low in compassion and are less likely to be sympathetic, caring, or a patient listener.",
         part2: "Individuals that are moderately low in compassion usually do not sympathize, inquire, or are interested in the problems of other people. Their focus is on them themselves and aspects of their life rather than helping others avoid negative aspects of life. They are willing to engage in conflict and competition, even at the expense of making others uncomfortable.",
         part3: "Remember, the lower other-oriented you are, the easier it will be to take time or give energy to your own needs. You may need training to help you connect with others and their needs so that you can successfully care for the needs of family, career-peers, and friends. Moderately low compassionate people may neglect or be unaware of the needs of children, family members, or friends.",
-        part4: "",
       },
       average: {
         part1: "You are average in compassion and are not overly sympathetic or compelled to intervene in the problems of others.",
         part2: "Individuals that are average in compassion can and will sympathize with others but are often willing to disengage if too much of their own interests are being subverted. They have a balanced view of their own interest in comparison to the interest of others, which means they have a better balance of the time or give energy they give to themselves as well as others.",
         part3: "Depending on other areas of their personality, they will express the intertest in others but usually not the first to do so. They try to balance their own interest to that of their family, career, and friendship. Those average in compassion manage not to ignore or overprotect their children, family members, or friends.",
-        part4: "",
       },
       modHigh: {
         part1: "You are moderately high in compassion and on average more sympathetic, a better listener, and more caring.",
         part2: "Moderately high compassionate people sympathize, inquire, and are interested in the problems of other people but also animals and the environment. They focus on helping others avoid negative aspects of life, but it may come at the individual’s expense.",
         part3: "Moderately high compassionate people will focus on the needs of other even above their own. Remember, the higher other-oriented you are, the harder it will be to take time or give energy to your own needs. You may need negotiation or assertiveness training so that your needs can be met in family, career, and friendship settings. Moderately high compassionate people may be protective of children, family members, or friends.",
-        part4: "",
       },
       high: {
         part1: "You are high in compassion and are more likely to be sympathetic, nice, a thoughtful listener, and caring.",
         part2: "Those that are high in compassion sympathize, inquire, and are interested in the problems of other people but also animals and the environment. They will focus on helping others avoid negative aspects of life, even at their own expense.",
         part3: "Individuals high in compassion will focus on the needs of other even above their own. Remember, the higher other-oriented you are, the harder it will be to take time or give energy to your own needs. You may need negotiation or assertiveness training so that your needs can be met in family, career, and friendship settings. High compassionate people may be overprotective of children, family members, or friends.",
-        part4: "",
       },
       veryHigh: {
         part1: "You are very high in compassion and can be described as very sympathetic, nice, a thoughtful listener, and extremely caring.",
         part2: "Those that are very high in compassion almost always sympathize, inquire, and are interested in the problems of other people, animals, and the environment. Not only are they conflict avoidant, but they will give precedent to helping others avoid negative aspects of life, even at their own expense.",
         part3: "Individuals very high in compassion will feel extremely compelled to focus on the needs of other far above their own. Remember, the higher other-oriented you are, the harder it will be to take time or give energy to your own needs. You may even ignore the instinct that you have your own needs that need to be met. You may need negotiation or assertiveness training so that your needs can be met in family, career, and friendship settings. Very high compassionate people are extremely overprotective of children, family members, or friends.",
-        part4: "",
       },
     },
     aspect2: {
@@ -567,13 +558,11 @@ const interpretations: any = [
         part1: "You are low in politeness and are less likely to respect authority, believe you are better than others, to engage in conflict or express your thought and views without regard to other people’s feelings.",
         part2: "People who are low feel that respect should be earned, and they are willing to push back when challenged. They can confront other people because they may weigh their own interests higher than others. This also leads to less resentment because they will not do or give what they do not want to.",
         part3: "Those low in politeness can be seen as competitive and less like to be taken advantage of.",
-        part4: "",
       },
       modLow: {
         part1: "You are moderately low in politeness and are less likely to respect authority, believe you are better than others, and engage in conflict or express your thoughts and views without regard to other people’s feelings.",
         part2: "People who are moderately low feel that respect should be earned, and they are willing to push back when challenged. They can confront other people because they weigh their own interests higher than that of others. This also leads to less resentment because they will not do or give what they do not want to.",
         part3: "Those moderately low in politeness can be seen as competitive and are less like to be taken advantage of.",
-        part4: "",
       },
       average: {
         part1: "You are average in politeness and are deferential to authority.",

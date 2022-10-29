@@ -26,8 +26,6 @@ import { questionData as qd } from "./constants/questionData";
 import { shuffle } from "./util";
 import { Storage } from "@aws-amplify/storage";
 import PreTest from "./views/PreTest";
-import Submit from "./views/Submit"
-
 Amplify.configure(awsconfig);
 
 function App() {
@@ -74,23 +72,25 @@ function App() {
     try {
       const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
       await fetch(url).then((response) => response.json());
-
       setCompleted(true);
     } catch (error) {
-      console.log("Bucket results: false");
-      // No bucket results, so not completed
+      setCompleted(false);
     }
   };
 
   const completeTest = () => {
-    console.log("test completed");
     setCompleted(true);
   };
 
+  // Check for login
   useEffect(() => {
     assessLoggedInState();
-    getResultsFromS3();
   }, []);
+
+  // Check for bucket item
+  useEffect(() => {
+    getResultsFromS3();
+  }, [loggedIn]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -104,14 +104,12 @@ function App() {
               loggedIn && !completed ? (
                 <Quiz onComplete={completeTest} questionData={questionData} />
               ) : (
-                <Navigate to="/results" replace />
+                <Navigate to="/" replace/>
               )
             }
           />
-          <Route
-            path="/results"
-            element={loggedIn && completed ? <Results /> : <Navigate to="/" replace />}
-          />
+          {/* <Route path="/results" element={completed ? <Results /> : <Navigate to="/" replace />} /> */}
+          <Route path="/results" element={<Results /> } />
           <Route
             path="/reset"
             element={
@@ -130,7 +128,7 @@ function App() {
               !loggedIn ? <Signup onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
             }
           />
-          <Route path="/" element={<Home loggedIn={loggedIn} />} />
+          <Route path="/" element={<Home loggedIn={loggedIn} completed={completed} />} />
           <Route path="/about" element={<About />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/contact" element={<Contact />} />
@@ -138,10 +136,6 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/checkouterror" element={<CheckoutErrorPage />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
-
-            
-          <Route path="/pretest" element={<PreTest nextStep={() => {}} />} />
-          <Route path="/submit" element={<Submit  prevStep={() => {}} onComplete={() => {}}/>} />
         </Routes>
         <div className={styles.footer}>
           <Footer />
