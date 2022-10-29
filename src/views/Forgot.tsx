@@ -35,7 +35,7 @@ const Forgot = (props: ForgotProps) => {
       paddingRight: 20,
     },
     button: {
-      minWidth: "20%",
+      minWidth: "30%",
       margin: 20,
     },
     thirdTitle: {

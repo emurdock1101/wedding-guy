@@ -26,16 +26,15 @@ const Login = (props: LoginProps) => {
     },
     input: {
       minWidth: "100%",
-      marginBottom: 30,
       marginTop: 30,
       paddingLeft: 20,
       paddingRight: 20,
     },
     button: {
-      minWidth: "20%",
+      minWidth: "30%",
       margin: 20,
     },
-    thirdTitle: {
+    noAccount: {
       fontSize: 25,
       fontWeight: 300,
       font: "Monaco",
@@ -57,10 +56,9 @@ const Login = (props: LoginProps) => {
       marginBottom: 15,
     },
     forgot: {
-      fontSize: 18,
+      fontSize: 15,
       fontWeight: 300,
       font: "Monaco",
-      marginTop: 20,
       marginLeft: 20,
       color: theme.palette.primary.main,
       textDecoration: "none",
@@ -141,14 +139,18 @@ const Login = (props: LoginProps) => {
               onChange={(e) => setPassword(e.target.value)}
               className={styles.input}
             />
-            <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
-              LOG IN
-            </Button>
+            <br></br>
+            <br></br>
             <Link className={styles.forgot} to={"/reset"}>
               Forgot password?
             </Link>
-            <Typography className={styles.thirdTitle}>
-              Don't have an account?{" "}
+            <br></br>
+            <br></br>
+            <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
+              LOG IN
+            </Button>
+            <Typography className={styles.noAccount}>
+              Don't have an account? {" "}
               <Link className={styles.plus} to={"/buy"}>
                 Sign Up
               </Link>

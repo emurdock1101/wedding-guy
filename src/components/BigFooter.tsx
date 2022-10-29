@@ -9,7 +9,7 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
   const useStyles = makeStyles((theme) => ({
     followUs: {
       color: theme.palette.info.main,
-      fontSize: isMobile ? 30 : 40,
+      fontSize: isMobile ? 29 : 40,
     },
     box: {
       borderTop: `1px solid ${theme.palette.info.main}`,
@@ -32,6 +32,8 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
       textAlign: "center",
       paddingTop: 160,
       paddingBottom: 100,
+      paddingLeft: 20,
+      paddingRight: 20,
     },
   }));
 

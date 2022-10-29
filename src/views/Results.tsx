@@ -38,7 +38,6 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     },
     interpretationTitle: {
       marginTop: 80,
-      marginBottom: 80,
     },
     bookNowButton: {
       marginTop: 28,

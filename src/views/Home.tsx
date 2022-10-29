@@ -36,18 +36,18 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       color: theme.palette.common.white,
       marginTop: 30,
       marginBottom: 30,
-      fontSize: isMedium ? "59px" : "80px",
+      fontSize: isMedium ? 55 : 80,
       fontWeight: 600,
       font: "Monaco",
       minWidth: 380,
-      padding: 10,
+      padding: 20,
     },
     secondTitle: {
       color: theme.palette.common.white,
-      fontSize: isMedium ? "40px" : "50px",
+      fontSize: isMedium ? 35 : 50,
       fontWeight: 300,
       font: "Monaco",
-      padding: 10,
+      padding: 20,
     },
     prismImage: {
       marginTop: isSmall ? -8 : 0,
@@ -81,7 +81,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       marginTop: 20,
     },
     oceanRow: {
-      marginTop: 60,
+      marginTop: 40,
     },
     spiralBox: {
       minHeight: 920,
@@ -123,12 +123,10 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       fontSize: isMedium ? "40px" : "50px",
       fontWeight: 400,
       font: "Monaco",
-      paddingLeft: isMedium || isSmall ? 20 : 0,
     },
     big5Desc: {
       font: "Monaco",
       marginBottom: 40,
-      paddingLeft: isMedium ? 20 : 0,
     },
     footer: {
       marginTop: 100,
@@ -197,7 +195,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             </div>
             <img src={prism} className={styles.prismImage} alt="personality-prism"></img>
           </Grid>
-          <Grid item xs={10} sm={11} md={10} lg={8}>
+          <Grid item xs={10} lg={8}>
             <div className={styles.openingBlurb}>
               <Typography className={styles.thirdTitle}>
                 Personality <span className={styles.plus}>+</span>
@@ -227,19 +225,19 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               alignItems="center"
               className={styles.oceanRow}
             >
-              <Grid item xs={12} sm={11} md={4}>
+              <Grid item xs={12} md={4} >
                 <HomeCard
                   title="Why Take It?"
                   description="Everyone has a unique personality that is a combination of 5 dimensions. Discovering how your personality has been shaped can help you understand who you are."
                 />
               </Grid>
-              <Grid item xs={12} sm={11} md={4}>
+              <Grid item xs={12} md={4}>
                 <HomeCard
                   title="Strengths"
                   description="Personality+ shows natural strengths within your personality. Are you a leader? A healer? An artist? Learn how to discover and unlock your hidden potential."
                 />
               </Grid>
-              <Grid item xs={12} sm={11} md={4}>
+              <Grid item xs={12} md={4}>
                 <HomeCard
                   title="Grow"
                   description="Personality+ shows natural areas of growth and improvement. Discover how to change and how your emotions, behavior, thinking, and desires work together."
@@ -278,7 +276,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Grid>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={11}>
+          <Grid item xs={10} lg={8}>
             <div className={styles.big5}>
               <Typography className={styles.big5Title}>Big 5 Traits and 10 Aspects</Typography>
               <br></br>
@@ -289,7 +287,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
             </div>
           </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+          <Grid item xs={10} lg={8} className={styles.oceanBanner}>
             <OceanBanner
               ocean={Ocean.Extraversion}
               aspect1={Aspect.Enthusiasm}
@@ -297,7 +295,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               hex={theme.palette.error.main}
             />
           </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+          <Grid item xs={10} lg={8} className={styles.oceanBanner}>
             <OceanBanner
               ocean={Ocean.Neuroticism}
               aspect1={Aspect.Withdrawal}
@@ -305,7 +303,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               hex={theme.palette.warning.main}
             />
           </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+          <Grid item xs={10} lg={8} className={styles.oceanBanner}>
             <OceanBanner
               ocean={Ocean.Agreeableness}
               aspect1={Aspect.Compassion}
@@ -313,7 +311,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               hex={theme.palette.success.main}
             />
           </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+          <Grid item xs={10} lg={8} className={styles.oceanBanner}>
             <OceanBanner
               ocean={Ocean.Conscientiousness}
               aspect1={Aspect.Industriousness}
@@ -321,7 +319,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               hex={theme.palette.primary.main}
             />
           </Grid>
-          <Grid item xs={12} sm={11} className={styles.oceanBanner}>
+          <Grid item xs={10} lg={8} className={styles.oceanBanner}>
             <OceanBanner
               ocean={Ocean.Openness}
               aspect1={Aspect.AestheticOpenness}

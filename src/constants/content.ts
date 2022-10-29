@@ -84,14 +84,14 @@ const content: any = {
       part1:
         "This test was formatted by using the work of Dr. Colling DeYoung and Dr. Jordan B Peterson (see DeYoung, C.G., Quilty, L.C. & Peterson, J.B. Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93, 880-896.).",
       part2:
-        "The goal of Personality+ was to offer a more streamlined personanlity test with results that could be more clearnly understood and implemented. The interpretations of the test have come from dilgent research, study, and clinical practice. If you are curious about diving into your own research, we would point you the Oxford Handbook of the Five Factor Model, Dr. C.G. DeYoung and Dr. J.B. Peterson's published reserach, or a trusted mental health therapist/researcher.",
+        "The goal of Personality+ is to offer a more streamlined personality test with results that can be clearly understood and implemented. The interpretations of the test have come from diligent research, study, and clinical practice. If you are curious about conducting your own research, we would point you the Oxford Handbook of the Five Factor Model, Dr. C.G. DeYoung and Dr. J.B. Peterson's published research, or a trusted mental health therapist/researcher.",
     },
     {
       title: "Aren't their other free personality tests?",
       part1:
         "The Big Five Aspect Scale in its original paper/pencil format is in the public domain, and there are other free versions with reports available elsewhere. However, this test was created so that the results and reports generate after the test could be cost effective, clearer, more precise, more user friendly, and most importantly, useable. By useable, we mean providing the results in a way that can help you implement practical changes in your life, allow for self-reflections, or better connect with a mental health therapist.",
       part2:
-        "Our research team has created reports that lay out both individual strengths and weaknesses succinctly and practically. Our team has worked hard to compile the results from some of the world's best personality psychologist to help you discover a new you and chance to undertake a new advendture.",
+        "Our research team has created reports that lay out both individual strengths and weaknesses succinctly and practically. Our team has worked hard to compile the results from some of the world's best personality psychologist to help you discover a new you and chance to undertake a new adventure.",
     },
     {
       title: "Why can I only take the test a single time?",
@@ -102,14 +102,14 @@ const content: any = {
     {
       title: "What can I do to improve my personality?",
       part1:
-        "Personality+ is unique in that it offers multiple options to improve your personality. You can schedule a one time review of the test results or schedule weekly or monthly sessions with someone from Personality+",
+        "Personality+ is unique in that it offers multiple options to improve your personality. You can schedule a one time review of the test results or schedule weekly or monthly sessions with someone from Personality+.",
       part2: "",
     },
     {
       title: "What if I want to see if my personality has changed?",
       part1:
         "Personality is quite stable. If you have done a lot of work to change a trait or an aspect, there is, however, the possibility of change and improvement. However, this is a process that will occur over months or years, not days or weeks. Thus, it is best not to take the test again soon. Do what you need or want to do to change your personality, and then try the test again in six months or a year.",
-      part2: "",
+      part2: "Reach out to us if you have taken the test over six months ago and would like to try again.",
     },
     {
       title:

@@ -54,13 +54,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: -10,
     marginTop: 60,
   },
-  aboutCard: {
-    margin: 60,
-  },
   part1: {
     color: theme.palette.info.main,
   },
-
   icon: {
     fontSize: 30,
     color: theme.palette.info.main,

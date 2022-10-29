@@ -9,7 +9,7 @@ interface HomeCardProps {
 const useStyles = makeStyles((theme) => ({
   paper: {
     minWidth: 275,
-    padding: 30,
+    padding: 20,
     color: theme.palette.info.main,
     borderRadius: 10,
     borderLeft: `6px solid ${theme.palette.primary.main}`,

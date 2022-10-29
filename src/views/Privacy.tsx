@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 20,
   },
   paper: {
-    padding: 30,
+    padding: 20,
     color: theme.palette.info.main,
     borderLeft: `6px solid #111840`,
     borderRadius: 10
@@ -23,11 +23,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   container: {
-    minHeight: "100vh" /* will cover the 100% of viewport */,
-    overflow: "hidden",
-    display: "block",
-    position: "relative",
-    paddingBottom: 120,
+    padding: 0
   },
 }));
 
@@ -43,8 +39,8 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
   return (
     <>
       <Banner pageTitle="Privacy" />
-      <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} style={{ padding: 15 }}>
+      <Grid container justify="center" alignItems="center" className={styles.container}>
+        <Grid item xs={10} sm={11} lg={10}>
           <Paper elevation={2} className={styles.paper}>
             <Typography variant="subtitle1" className={styles.top}>
               Part of the information you share on our website is stored and used. We collect your email and test

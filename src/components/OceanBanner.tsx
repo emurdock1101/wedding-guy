@@ -31,7 +31,6 @@ const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
     row: {
       display: "flex",
       paddingRight: 20,
-      paddingLeft: isMobile ? 20 : 0,
       alignItems: "center",
       marginTop: 40,
     },

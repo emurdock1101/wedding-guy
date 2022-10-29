@@ -35,13 +35,12 @@ const Signup = (props: SignupProps) => {
     },
     input: {
       minWidth: "100%",
-      marginBottom: 30,
       marginTop: 30,
       paddingLeft: 20,
       paddingRight: 20,
     },
     button: {
-      minWidth: "20%",
+      minWidth: "30%",
       margin: 20,
     },
     thirdTitle: {
@@ -55,7 +54,7 @@ const Signup = (props: SignupProps) => {
     paper: {
       padding: 20,
       marginBottom: 60,
-      borderRadius: 10
+      borderRadius: 10,
     },
     alert: {
       marginBottom: 15,
@@ -199,6 +198,8 @@ const Signup = (props: SignupProps) => {
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.input}
               />
+              <br></br>
+              <br></br>
               <Button
                 color="primary"
                 variant="contained"

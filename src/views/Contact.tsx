@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Mail, Phone, Twitter } from "@material-ui/icons";
+import { Facebook, Instagram, Mail, Twitter } from "@material-ui/icons";
 import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
@@ -41,7 +41,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       marginTop: 60,
     },
     paper: {
-      padding: 30,
+      padding: 20,
       color: theme.palette.info.main,
       borderLeft: `6px solid #111840`,
       borderRadius: 10
@@ -68,7 +68,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     <>
       <Banner pageTitle="Contact Us" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} style={{ padding: 15 }}>
+        <Grid item xs={10}>
           <Paper elevation={2} className={styles.paper}>
             <Typography variant="h5" className={styles.help}>How can we help?</Typography>
             <Typography variant="subtitle1" className={styles.reachOut}>
@@ -97,7 +97,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
                 <Twitter className={styles.facebook} />
               </a>
-              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
+              <a href="mailto:discoverpersonalityplus@gmail.com">
                 <Mail className={styles.facebook} />
               </a>
             </div>

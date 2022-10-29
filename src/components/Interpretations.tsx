@@ -14,11 +14,9 @@ export const useStyles = makeStyles((theme) => ({
     minHeight: "80px",
     display: "flex",
     alignItems: "center",
-    // border: "blue 1px solid",
   },
   aspects: {
     paddingLeft: "30px",
-    // border: "red 1px solid"
   },
   gridContainer: {
     paddingLeft: "20px",
@@ -55,61 +53,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           <Percent progress={props.oceanScore} hex={props.hex} size={90} />
         </Grid>
         <Grid item xs={12} sm={10}>
-          <Typography variant="subtitle1">
-            <strong>
-              {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part1"]}
-            </strong>
-          </Typography>
-          <br></br>
-          <Typography variant="subtitle1">
-            {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part2"]}
-          </Typography>
-          <br></br>
-          <Typography variant="subtitle1">
-            {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)]["part3"]}
-          </Typography>
-          {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
-            "part4"
-          ] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1">
-                {
-                  interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
-                    "part4"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
-          {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
-            "part5"
-          ] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1">
-                {
-                  interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
-                    "part5"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
-          {interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
-            "part6"
-          ] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1">
-                {
-                  interpretations[props.index]["category"][scoreAdjective(props.oceanScore)][
-                    "part6"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
+          <InterpretationList type="category" score={props.oceanScore} index={props.index} />
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
           <Typography variant="h5" className={styles.aspects}>
@@ -122,55 +66,7 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           </div>
         </Grid>
         <Grid item xs={12} sm={10}>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            <strong>
-              {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part1"]}
-            </strong>
-          </Typography>
-          <br></br>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part2"]}
-          </Typography>
-          <br></br>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part3"]}
-          </Typography>
-          {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part4"] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1" className={styles.aspects}>
-                {
-                  interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)][
-                    "part4"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
-          {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part5"] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1" className={styles.aspects}>
-                {
-                  interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)][
-                    "part5"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
-          {interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)]["part6"] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1" className={styles.aspects}>
-                {
-                  interpretations[props.index]["aspect1"][scoreAdjective(props.aspect1Score)][
-                    "part6"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
+          <InterpretationList type="aspect1" score={props.aspect1Score} index={props.index} />
         </Grid>
         <Grid item xs={9} sm={10} className={styles.aspectScoreRow}>
           <Typography variant="h5" className={styles.aspects}>
@@ -183,59 +79,60 @@ const Interpretations: React.FC<InterpretationsProps> = (props: InterpretationsP
           </div>
         </Grid>
         <Grid item xs={12} sm={10}>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            <strong>
-              {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part1"]}
-            </strong>
-          </Typography>
-          <br></br>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part2"]}
-          </Typography>
-          <br></br>
-          <Typography variant="subtitle1" className={styles.aspects}>
-            {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part3"]}
-          </Typography>
-          {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part4"] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1" className={styles.aspects}>
-                {
-                  interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)][
-                    "part4"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
-          {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part5"] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1" className={styles.aspects}>
-                {
-                  interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)][
-                    "part5"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
-          {interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)]["part6"] && (
-            <>
-              <br></br>
-              <Typography variant="subtitle1" className={styles.aspects}>
-                {
-                  interpretations[props.index]["aspect2"][scoreAdjective(props.aspect2Score)][
-                    "part6"
-                  ]
-                }
-              </Typography>
-            </>
-          )}
+          <InterpretationList type="aspect2" score={props.aspect2Score} index={props.index} />
         </Grid>
       </Grid>
     </div>
   );
 };
 
+interface InterpretationListProps {
+  score: number;
+  type: "category" | "aspect1" | "aspect2";
+  index: number;
+}
+
 export default Interpretations;
+
+export const InterpretationList: React.FC<InterpretationListProps> = (
+  props: InterpretationListProps
+) => {
+  const scoredSection: string =
+    interpretations[props.index][props.type][scoreAdjective(props.score)];
+
+  return (
+    <>
+      {Object.keys(scoredSection).map((part: any) => {
+        // add bold and don't include line break if part 1
+        if (part === "part1") {
+          return (
+            <>
+              <Typography
+                variant="subtitle1"
+                style={{ paddingLeft: props.type !== "category" ? 30 : 0 }}
+              >
+                <strong>
+                  {interpretations[props.index][props.type][scoreAdjective(props.score)][part]}
+                </strong>
+              </Typography>
+            </>
+          );
+        } else if (scoredSection[part]) {
+          return (
+            <>
+              <br></br>
+              <Typography
+                variant="subtitle1"
+                style={{ paddingLeft: props.type !== "category" ? 30 : 0 }}
+              >
+                {interpretations[props.index][props.type][scoreAdjective(props.score)][part]}
+              </Typography>
+            </>
+          );
+        } else {
+          return <></>;
+        }
+      })}
+    </>
+  );
+};

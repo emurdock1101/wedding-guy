@@ -33,7 +33,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
       fontSize: isMobile ? 55 : 90,
     },
     paper: {
-      padding: 20,
+      padding: 30,
       borderRadius: 10,
     },
     secondTitle: {

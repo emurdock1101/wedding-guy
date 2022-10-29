@@ -131,6 +131,15 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
     setOpen(false);
   };
 
+  // Close drawer on sidebar navigate
+  const handleSidebarNav = (path: string) => {
+    if (sessionStorage.length > 0) {
+      sessionStorage.clear();
+    }
+    handleDrawerClose();
+    navigate(path, { replace: true });
+  };
+
   // On clicking log in, redirect to Login page
   const handleNav = (path: string) => {
     if (sessionStorage.length > 0) {
@@ -245,7 +254,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
         <List>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleNav("/about")}>
+              <ListItemButton onClick={() => handleSidebarNav("/about")}>
                 <ListItemIcon>
                   <Group />
                 </ListItemIcon>
@@ -255,7 +264,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
           </div>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleNav("/faqs")}>
+              <ListItemButton onClick={() => handleSidebarNav("/faqs")}>
                 <ListItemIcon>
                   <HelpCenter />
                 </ListItemIcon>
@@ -265,7 +274,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
           </div>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleNav("/contact")}>
+              <ListItemButton onClick={() => handleSidebarNav("/contact")}>
                 <ListItemIcon>
                   <Phone />
                 </ListItemIcon>
@@ -275,7 +284,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
           </div>
           <div style={{ color: "#1b1d21", textDecoration: "none" }}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleNav("/privacy")}>
+              <ListItemButton onClick={() => handleSidebarNav("/privacy")}>
                 <ListItemIcon>
                   <PrivacyTip />
                 </ListItemIcon>

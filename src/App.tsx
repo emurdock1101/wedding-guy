@@ -25,7 +25,9 @@ import Forgot from "./views/Forgot";
 import { questionData as qd } from "./constants/questionData";
 import { shuffle } from "./util";
 import { Storage } from "@aws-amplify/storage";
+import Submit from "./views/Submit";
 import PreTest from "./views/PreTest";
+
 Amplify.configure(awsconfig);
 
 function App() {
@@ -98,7 +100,7 @@ function App() {
         <HeaderDrawer loggedIn={loggedIn} completed={completed} onLogOut={assessLoggedInState} />
         <Routes>
           <Route path="/buy" element={!loggedIn ? <BuyTest /> : <Navigate to="/" replace />} />
-          <Route
+          {/* <Route
             path="/test"
             element={
               loggedIn && !completed ? (
@@ -107,9 +109,13 @@ function App() {
                 <Navigate to="/" replace/>
               )
             }
+          /> */}
+          <Route
+            path="/test"
+            element={<Quiz onComplete={completeTest} questionData={questionData} />}
           />
           {/* <Route path="/results" element={completed ? <Results /> : <Navigate to="/" replace />} /> */}
-          <Route path="/results" element={<Results /> } />
+          <Route path="/results" element={<Results />} />
           <Route
             path="/reset"
             element={
@@ -136,6 +142,16 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/checkouterror" element={<CheckoutErrorPage />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
+
+
+          <Route
+            path="/pretest"
+            element={<PreTest nextStep={()=> {}}/>}
+          />
+          <Route
+            path="/submit"
+            element={<Submit onComplete={()=> {}} prevStep={()=> {}}/>}
+          />
         </Routes>
         <div className={styles.footer}>
           <Footer />
