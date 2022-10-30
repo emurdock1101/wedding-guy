@@ -15,7 +15,7 @@ const FAQs: React.FC<FAQsProps> = (props: FAQsProps) => {
     <>
       <Banner pageTitle="Frequently Asked Questions" />
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={11} lg={10} style={{ padding: 15 }}>
+        <Grid item xs={10}>
           <FaqsAccordion />
         </Grid>
       </Grid>

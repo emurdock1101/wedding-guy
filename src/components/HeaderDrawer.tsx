@@ -137,7 +137,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
       sessionStorage.clear();
     }
     handleDrawerClose();
-    navigate(path, { replace: true });
+    navigate(path);
   };
 
   // On clicking log in, redirect to Login page
@@ -145,7 +145,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
-    navigate(path, { replace: true });
+    navigate(path);
   };
 
   // Log out will redirect to Home
@@ -183,7 +183,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
   return (
     <Box sx={{ display: "flex" }} className={styles.container}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="absolute" open={open}>
         <Toolbar>
           <div className={styles.home}>
             <Button

@@ -44,7 +44,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       marginBottom: 28, // lines up with table results on xl screen
       backgroundColor: theme.palette.primary.main,
       "&:hover": {
-        backgroundColor: theme.palette.secondary.dark,
+        backgroundColor: theme.palette.info.main,
       },
       color: theme.palette.common.white,
       width: "200px",
@@ -59,9 +59,44 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       marginTop: 40,
       width: "100%",
     },
+    downloadButton: {
+      width: "100%",
+      color: "111840", //navy,
+      border: "1px solid #111840",
+      borderRadius: 10,
+      "&:hover": {
+        color: "#F8F7F3", //off-white
+        backgroundColor: "#111840", //navy blue
+      },
+    },
   }));
 
   const styles = useStyles();
+
+  // const downloadResults = async () => {
+  //   console.log("here")
+  //   const user = await Auth.currentAuthenticatedUser();
+  //   const email: string = user.attributes?.email ?? "";
+  //   const subId: string = user.attributes?.sub ?? "";
+  //   const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
+  //   console.log(url)
+  //   fetch(url)
+  //     .then((res) => {
+  //       return res.blob();
+  //     })
+  //     .then((blob) => {
+  //       const href = window.URL.createObjectURL(blob);
+  //       const link = document.createElement("a");
+  //       link.href = href;
+  //       link.setAttribute("download", "results.json"); //or any other extension
+  //       document.body.appendChild(link);
+  //       link.click();
+  //       document.body.removeChild(link);
+  //     })
+  //     .catch((err) => {
+  //       return Promise.reject({ Error: "Something Went Wrong", err });
+  //     });
+  // };
 
   // choose the screen size
   const getResultsFromS3 = async (): Promise<void> => {
@@ -74,7 +109,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       level: "private",
       region: process.env.APP_region ?? "us-east-1",
     });
-    
+
     const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
     const data: Record<string, number> = await fetch(url).then((response) => response.json());
     setPercentiles(data);
@@ -84,25 +119,25 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     getResultsFromS3();
   }, []);
 
-  const AestheticOpenness: number = percentiles?.[`${Aspect.AestheticOpenness.toString()}`] ?? 0;
-  const Openness: number = percentiles?.[`${Ocean.Openness.toString()}`] ?? 0;
-  const Industriousness: number = percentiles?.[`${Aspect.Industriousness.toString()}`] ?? 0;
+  const AestheticOpenness: number = percentiles?.[`${Aspect.AestheticOpenness.toString()}`] ?? 99;
+  const Openness: number = percentiles?.[`${Ocean.Openness.toString()}`] ?? 99;
+  const Industriousness: number = percentiles?.[`${Aspect.Industriousness.toString()}`] ?? 99;
 
-  const Conscientiousness: number = percentiles?.[`${Ocean.Conscientiousness.toString()}`] ?? 0;
-  const Interest: number = percentiles?.[`${Aspect.Interest.toString()}`] ?? 0;
-  const Orderliness: number = percentiles?.[`${Aspect.Orderliness.toString()}`] ?? 0;
+  const Conscientiousness: number = percentiles?.[`${Ocean.Conscientiousness.toString()}`] ?? 99;
+  const Interest: number = percentiles?.[`${Aspect.Interest.toString()}`] ?? 99;
+  const Orderliness: number = percentiles?.[`${Aspect.Orderliness.toString()}`] ?? 99;
 
-  const Extraversion: number = percentiles?.[`${Ocean.Extraversion.toString()}`] ?? 0;
-  const Enthusiasm: number = percentiles?.[`${Aspect.Enthusiasm.toString()}`] ?? 0;
-  const Assertiveness: number = percentiles?.[`${Aspect.Assertiveness.toString()}`] ?? 0;
+  const Extraversion: number = percentiles?.[`${Ocean.Extraversion.toString()}`] ?? 99;
+  const Enthusiasm: number = percentiles?.[`${Aspect.Enthusiasm.toString()}`] ?? 99;
+  const Assertiveness: number = percentiles?.[`${Aspect.Assertiveness.toString()}`] ?? 99;
 
-  const Agreeableness: number = percentiles?.[`${Ocean.Agreeableness.toString()}`] ?? 0;
-  const Compassion: number = percentiles?.[`${Aspect.Compassion.toString()}`] ?? 0;
-  const Politeness: number = percentiles?.[`${Aspect.Politeness.toString()}`] ?? 0;
+  const Agreeableness: number = percentiles?.[`${Ocean.Agreeableness.toString()}`] ?? 99;
+  const Compassion: number = percentiles?.[`${Aspect.Compassion.toString()}`] ?? 99;
+  const Politeness: number = percentiles?.[`${Aspect.Politeness.toString()}`] ?? 99;
 
-  const Neuroticism: number = percentiles?.[`${Ocean.Neuroticism.toString()}`] ?? 0;
-  const Withdrawal: number = percentiles?.[`${Aspect.Withdrawal.toString()}`] ?? 0;
-  const Volatility: number = percentiles?.[`${Aspect.Volatility.toString()}`] ?? 0;
+  const Neuroticism: number = percentiles?.[`${Ocean.Neuroticism.toString()}`] ?? 99;
+  const Withdrawal: number = percentiles?.[`${Aspect.Withdrawal.toString()}`] ?? 99;
+  const Volatility: number = percentiles?.[`${Aspect.Volatility.toString()}`] ?? 99;
 
   // data for aspects chart
   const aspectSeries = [
@@ -125,6 +160,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     <div>
       <Banner pageTitle="Results and Explanation" />
       <Grid container spacing={6} justify="center" alignItems="flex-start">
+        {/* <Grid item xs={12} sm={11} lg={10}>
+          <Button variant="outlined" className={styles.downloadButton} onClick={downloadResults}>
+            DOWNLOAD RESULTS
+          </Button>
+        </Grid> */}
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation}>
             <Typography variant="subtitle1" className={styles.info}>

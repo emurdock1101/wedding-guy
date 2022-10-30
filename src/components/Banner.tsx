@@ -9,10 +9,12 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const useStyles = makeStyles((theme) => ({
     subheading: {
-      padding: 40,
+      paddingTop: 40,
+      paddingBottom: 40,
       color: "white",
       fontSize: isMobile ? 50 : 60,
       textAlign: isMobile ? "center" : "left",
+      fontWeight: 300
     },
     paper: {
       backgroundColor: "#111840", // navy blue

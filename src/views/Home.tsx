@@ -164,11 +164,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   };
 
   useEffect(() => {
+    const img = new Image()
+    img.src = prism;
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     window.addEventListener("resize", handleResize);
   }, []);
 
   return (
-    <Fade in={true} timeout={3000}>
+    <Fade in={true} timeout={3500}>
       <div>
         <Grid container justify="center" alignItems="center">
           <Grid item xs={12}>

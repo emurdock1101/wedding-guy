@@ -28,9 +28,9 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
     },
     bookNowButton: {
       "&:hover": {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.info.main,
       },
-      backgroundColor: theme.palette.info.main,
+      backgroundColor: theme.palette.primary.main,
       color: "#F8F7F3", //off-white
       width: "250px",
       height: "50px",

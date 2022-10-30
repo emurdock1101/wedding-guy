@@ -27,24 +27,24 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       width: 310,
     },
     help: {
-      fontSize: isMobile ? 20 : 25
+      fontSize: isMobile ? 20 : 25,
     },
     reachOut: {
       marginTop: 20,
-      fontSize: isMobile ? 17 : 20
+      fontSize: isMobile ? 17 : 20,
     },
     email: {
-      fontSize: isMobile ? 17 : 20
+      fontSize: isMobile ? 17 : 20,
     },
     socialLinks: {
       marginLeft: -10,
       marginTop: 60,
     },
     paper: {
-      padding: 20,
+      padding: isMobile ? 20 : 30,
       color: theme.palette.info.main,
       borderLeft: `6px solid #111840`,
-      borderRadius: 10
+      borderRadius: 10,
     },
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
@@ -70,7 +70,9 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       <Grid container justify="center" alignItems="center">
         <Grid item xs={10}>
           <Paper elevation={2} className={styles.paper}>
-            <Typography variant="h5" className={styles.help}>How can we help?</Typography>
+            <Typography variant="h5" className={styles.help}>
+              How can we help?
+            </Typography>
             <Typography variant="subtitle1" className={styles.reachOut}>
               Ask about the Personality+ test or our data-driven psychological coaching services.{" "}
             </Typography>
