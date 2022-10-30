@@ -66,8 +66,8 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
             },
           ],
           mode: "payment",
-          successUrl: (process.env.APP_domain ?? "http://localhost:3000") + "/signup",
-          cancelUrl: process.env.APP_domain ?? "http://localhost:3000",
+          successUrl: (process.env.APP_domain ?? "https://www.discoverpersonalityplus.com/") + "/signup",
+          cancelUrl: process.env.APP_domain ?? "https://www.discoverpersonalityplus.com/",
         });
       }
     } catch (error) {
