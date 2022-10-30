@@ -79,7 +79,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
                   Personality<span className={styles.plus}>+</span>
                 </Typography>
                 <Typography variant="h6" className={styles.secondTitle}>
-                  Personality Test
+                  Test instructions
                 </Typography>
                 <Divider />
                 <Typography variant="h5" className={styles.firstItem}>
@@ -135,14 +135,14 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
                 <Typography variant="subtitle1">6. Make sure you are not rushed.</Typography>
                 <br></br>
                 <Typography variant="subtitle1">
-                  7. Locate to a quiet area with no other people around.
+                  7. Find a quiet area with no other people around.
                 </Typography>
                 <br></br>
                 <br></br>
                 <Typography variant="h5">While taking the test:</Typography>
                 <br></br>
                 <Typography variant="subtitle1">
-                  1. Don't spent too much time on any one question. If you are not sure of an
+                  1. Don't spend too much time on any one question. If you are not sure of an
                   answer, trust your instinct.
                 </Typography>
                 <br></br>

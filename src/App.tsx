@@ -67,9 +67,9 @@ function App() {
     const subId: string = user.attributes?.sub ?? "";
 
     Storage.configure({
-      bucket: process.env.APP_bucket_name ?? "big5-amplify-test-results-bucket210923-dev",
+      bucket: process.env.REACT_APP_BUCKET_NAME ?? "big5-amplify-test-results-bucket210923-dev",
       level: "private",
-      region: process.env.APP_region ?? "us-east-1",
+      region: "us-east-1",
     });
     try {
       const url: string = await Storage.get(`${email}-${subId}/${email}-results`);

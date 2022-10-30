@@ -54,20 +54,20 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
     e.preventDefault();
     try {
       const stripe = await loadStripe(
-        process.env.APP_stripe_public_key ??
-          "pk_test_51LrmACDw2D6ArEBHOcUvlHH9y27SAtsFVv2HDc7xeVoYi4vK2RvEsLh6CU5fAQYJELe71BMTOAJfgkTroQWaGLCd0077izhlOI"
+        process.env.REACT_APP_STRIPE_PUBLIC_KEY ??
+          "pk_live_51LygTjHNCPDYU7EX3IeedadIoG8dJbtDTE0XW4z8XIzePb6g0By53gVYMsFjLYkukl7ptM8cNSNlszH71lJG9Zbw00z24P0nKO"
       );
       if (stripe) {
         await stripe.redirectToCheckout({
           lineItems: [
             {
-              price: process.env.APP_strip_line_item_price ?? "price_1LrmCvDw2D6ArEBHyeAtvzHl",
+              price: process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE ?? "price_1LyhD0HNCPDYU7EXWLyrdY8d",
               quantity: 1,
             },
           ],
           mode: "payment",
-          successUrl: (process.env.APP_domain ?? "https://www.discoverpersonalityplus.com/") + "/signup",
-          cancelUrl: process.env.APP_domain ?? "https://www.discoverpersonalityplus.com/",
+          successUrl: (process.env.REACT_APP_DOMAIN ?? "https://www.discoverpersonalityplus.com/") + "/signup",
+          cancelUrl: process.env.REACT_APP_DOMAIN ?? "https://www.discoverpersonalityplus.com/",
         });
       }
     } catch (error) {
