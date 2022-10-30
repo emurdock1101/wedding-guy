@@ -57,6 +57,9 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
         process.env.REACT_APP_STRIPE_PUBLIC_KEY ??
           "pk_live_51LygTjHNCPDYU7EX3IeedadIoG8dJbtDTE0XW4z8XIzePb6g0By53gVYMsFjLYkukl7ptM8cNSNlszH71lJG9Zbw00z24P0nKO"
       );
+
+      console.log("here dat: " +  process.env.REACT_APP_TEST)
+
       if (stripe) {
         await stripe.redirectToCheckout({
           lineItems: [
