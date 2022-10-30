@@ -1,17 +1,16 @@
 import { Aspect, Ocean } from "../constants/schema";
 import { Box, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import BigFooter from "../components/BigFooter";
 import Divider from "@mui/material/Divider";
 import HomeCard from "../components/HomeCard";
 import OceanBanner from "../components/OceanBanner";
 import content from "../constants/content";
 import prism from "../images/prism.jpeg";
-import spiral from "../images/spiral.jpeg";
+import northern from "../images/northern.jpeg";
 import { theme } from "../theme";
 import { useNavigate } from "react-router-dom";
 import Fade from "@mui/material/Fade";
-import BookNow from "../components/BookNow"
+import BookNow from "../components/BookNow";
 
 interface HomeProps {
   loggedIn: boolean;
@@ -86,32 +85,31 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
     },
     spiralBox: {
       minHeight: 920,
-      width: "100%",
       marginTop: 120,
-      backgroundImage: `url(${spiral})`,
-      backgroundPosition: "center",
+      backgroundImage: `url(${northern})`,
       justifyContent: "center",
       alignItems: "center",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
     },
     aboutTheTest: {
       marginTop: 100,
-      color: theme.palette.info.main,
-      padding: 30,
-      backgroundColor: "white",
-      opacity: 0.85,
       marginBottom: 100,
+      color: theme.palette.common.white,
     },
     aboutTestTitle: {
-      fontWeight: 900,
+      fontWeight: 300,
       font: "Monaco",
       minWidth: 380,
-      fontSize: isMedium ? "40px" : "60px",
-      opacity: 1,
+      fontSize: isMedium ? 40 : 60,
+      marginBottom: 40,
     },
     aboutDesc: {
-      paddingTop: 10,
-      paddingBottom: 10,
+      fontWeight: 300,
       fontSize: 20,
+      marginTop: 20,
+      marginBottom: 20,
     },
     big5: {
       marginTop: 50,
@@ -132,6 +130,9 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
     footer: {
       marginTop: 100,
       width: "100%",
+    },
+    aboutSubheading: {
+      fontWeight: 300,
     },
   }));
 
@@ -163,6 +164,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   useEffect(() => {
     const img = new Image();
     img.src = prism;
+    const img2 = new Image();
+    img2.src = northern;
     document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     window.addEventListener("resize", handleResize);
   }, []);
@@ -259,25 +262,26 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           </Grid>
           <Grid item xs={12}>
             <Box className={styles.spiralBox}>
-              <Grid container justify="center" alignItems="center">
-                <Grid item xs={10}>
+              <Grid container>
+                <Grid item xs={1}></Grid>
+                <Grid item xs={10} sm={7} md={6}>
                   <div className={styles.aboutTheTest}>
-                    <Typography variant="h2" className={styles.aboutTestTitle}>
+                    <Typography variant="h3" className={styles.aboutTestTitle}>
                       About the test
                     </Typography>
-                    <Typography variant="h6" className={styles.aboutDesc}>
+                    <Typography variant="h5" className={styles.aboutSubheading}>
                       Length:
                     </Typography>
                     <Typography variant="subtitle1" className={styles.aboutDesc}>
                       The test takes 10 - 20 minutes and consists of 100 questions.
                     </Typography>
-                    <Typography variant="h6" className={styles.aboutDesc}>
+                    <Typography variant="h5" className={styles.aboutSubheading}>
                       Results:
                     </Typography>
                     <Typography variant="subtitle1" className={styles.aboutDesc}>
                       {content["aboutTheTest"]["results"]}
                     </Typography>
-                    <Typography variant="h6" className={styles.aboutDesc}>
+                    <Typography variant="h5" className={styles.aboutSubheading}>
                       Background:
                     </Typography>
                     <Typography variant="subtitle1" className={styles.aboutDesc}>
@@ -343,9 +347,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
         <div className={styles.footer}>
           <BookNow />
         </div>
-        {/* <div className={styles.footer}>
-          <BigFooter />
-        </div> */}
       </div>
     </Fade>
   );

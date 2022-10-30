@@ -9,7 +9,7 @@ interface ContactProps {}
 const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
-      fontSize: isMobile ? 37 : 50,
+      fontSize: isMobile ? 37 : 45,
       "&:hover": {
         color: theme.palette.primary.main,
       },

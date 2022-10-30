@@ -21,6 +21,7 @@ const OceanBanner: React.FC<OceanBannerProps> = (props: OceanBannerProps) => {
       fontSize: 24,
       marginLeft: 20,
       marginRight: 10,
+      fontWeight: 380,
     },
     aspectsBelow: {
       width: "50%",
