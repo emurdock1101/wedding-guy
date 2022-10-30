@@ -66,9 +66,8 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
             <Grid container justify="center" alignItems="flex-start">
               <Grid item xs={10}>
                 <Typography variant="h6" className={styles.discovery}>
-                  Schedule a FREE discovery session and learn more about how you can benefit from
-                  our behavioral coaching. We offer in-depth analysis of behavioral patterns and
-                  practical changes to ensure healthy relationships with family, friends, and peers.
+                  Schedule a FREE 15 mintue discovery call to learn more about how you can benefit from
+                  our behavioral coaching packages or how to review your Personality+ score.
                 </Typography>
               </Grid>
             </Grid>

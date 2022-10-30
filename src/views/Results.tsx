@@ -188,8 +188,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               <strong>
-                To learn more about our behavioral coaching services, click to schedule a FREE chat
-                with our coaching specialist.
+                To learn more about our behavioral coaching services, click to schedule a FREE 15 minute discovery call.
               </strong>
             </Typography>
             <a href="https://calendly.com/discoverpersonalityplus" className={styles.bookNowLink}>
