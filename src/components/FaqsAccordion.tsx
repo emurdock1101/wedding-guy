@@ -9,18 +9,31 @@ export default function FaqsAccordion() {
   return (
     <div>
       {content.faqs.map((question: any) => {
-        return (
-          <Accordion style={{ borderLeft: `6px solid #111840` }}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography sx={{ width: "80%", fontSize: 18 }}>{question.title}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{question.part1}</Typography>
-              <br></br>
-              <Typography>{question.part2}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        );
+        if (question.part2) {
+          return (
+            <Accordion style={{ borderLeft: `6px solid #111840` }}>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography sx={{ width: "80%", fontSize: 18 }}>{question.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{question.part1}</Typography>
+                <br></br>
+                <Typography>{question.part2}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        } else {
+          return (
+            <Accordion style={{ borderLeft: `6px solid #111840` }}>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography sx={{ width: "80%", fontSize: 18 }}>{question.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{question.part1}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        }
       })}
     </div>
   );

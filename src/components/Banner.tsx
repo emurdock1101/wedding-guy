@@ -11,6 +11,8 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
     subheading: {
       paddingTop: 40,
       paddingBottom: 40,
+      paddingLeft: 20,
+      paddingRight: 20,
       color: "white",
       fontSize: isMobile ? 50 : 60,
       textAlign: isMobile ? "center" : "left",

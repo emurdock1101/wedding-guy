@@ -79,7 +79,7 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
                   Personality<span className={styles.plus}>+</span>
                 </Typography>
                 <Typography variant="h6" className={styles.secondTitle}>
-                  Big Five 10 Aspects Personality Test
+                  Personality Test
                 </Typography>
                 <Divider />
                 <Typography variant="h5" className={styles.firstItem}>

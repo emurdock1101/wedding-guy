@@ -97,7 +97,6 @@ const content: any = {
       title: "Why can I only take the test a single time?",
       part1:
         "An accurate personality test must be taken and scored in a standardized manner for accurate results. Furthermore, if you take the test, and then look at your results, and then re-take it, your second results could introduce biases by your now-expanded knowledge of your personality. That means you could alter your responses (consciously or unconsciously), which would change your results.",
-      part2: "",
     },
     {
       title: "What can I do to improve my personality?",

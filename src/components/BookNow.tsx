@@ -1,5 +1,6 @@
 import { Grid, Typography, makeStyles, Box, Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 
 interface BookNowProps {}
 
@@ -8,10 +9,6 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
   const useStyles = makeStyles((theme) => ({
     expert: {
       fontSize: isMobile ? 30 : 40,
-      fontWeight: 500,
-    },
-    discovery: {
-
     },
     spacing: {
       textAlign: "center",
@@ -35,6 +32,20 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
       width: "250px",
       height: "50px",
       borderRadius: "30px",
+    },
+    socialMedia: {
+      marginTop: 60,
+      textAlign: "center",
+    },
+    facebook: {
+      fontSize: 60,
+      border: "1x solid red",
+      "&:hover": {
+        color: theme.palette.primary.main,
+      },
+      marginRight: 20,
+      marginLeft: 20,
+      color: theme.palette.info.main,
     },
   }));
 
@@ -65,22 +76,38 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
             <br></br>
             <Grid container justify="center" alignItems="flex-start">
               <Grid item xs={10}>
-                <Typography variant="h6" className={styles.discovery}>
-                  Schedule a FREE 15 mintue discovery call to learn more about how you can benefit from
-                  our behavioral coaching packages or how to review your Personality+ score.
+                <Typography variant="h6">
+                  Schedule a FREE 15 minute discovery call to learn more about how you can benefit
+                  from our behavioral coaching packages or how to review your Personality+ score.
                 </Typography>
               </Grid>
             </Grid>
             <br></br>
             <br></br>
-            <a
-              href="https://calendly.com/discoverpersonalityplus"
-              className={styles.bookNowLink}
-            >
+            <a href="https://calendly.com/discoverpersonalityplus" target="_blank" rel="noreferrer" className={styles.bookNowLink}>
               <Button variant="contained" className={styles.bookNowButton}>
                 BOOK A CALL NOW
               </Button>
             </a>
+            <div className={styles.socialMedia}>
+              <a
+                href="https://www.facebook.com/DiscoverPersonalityPlus/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Facebook className={styles.facebook} />
+              </a>
+              <a
+                href="https://instagram.com/discover_personalityplus"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Instagram className={styles.facebook} />
+              </a>
+              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
+                <Twitter className={styles.facebook} />
+              </a>
+            </div>
           </div>
         </Box>
       </Grid>

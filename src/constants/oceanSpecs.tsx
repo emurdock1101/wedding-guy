@@ -80,7 +80,7 @@ export const oceanOptions = {
     thm.palette.secondary.main,
   ],
   title: {
-    text: "Your Big 5 Trait Scores",
+    text: "Your Big Five Trait Scores",
     align: centerTitle,
     margin: 5,
     offsetX: 0,

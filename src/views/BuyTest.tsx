@@ -87,7 +87,7 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
               </Typography>
               <Divider />
               <Typography variant="subtitle1" className={styles.listFirst}>
-                1. One copy of a 100-question scientifically-backed, peer-reviewed assessment of
+                1. One copy of a 100-question, scientifically-backed, peer-reviewed assessment of
                 personality.
               </Typography>
               <br></br>

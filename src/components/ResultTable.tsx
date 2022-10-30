@@ -100,7 +100,7 @@ const ResultTable: React.FC<ResultTableProps> = (props: ResultTableProps) => {
       <Table aria-label="customized table">
         <StyledTableHead>
           <TableRow>
-            <StyledTableCell align="left">Big 5 Trait</StyledTableCell>
+            <StyledTableCell align="left">Big Five Trait</StyledTableCell>
             <StyledTableCell align="left">Aspect</StyledTableCell>
             <StyledTableCell align="left">Percentile</StyledTableCell>
           </TableRow>

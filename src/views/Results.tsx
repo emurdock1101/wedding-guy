@@ -191,7 +191,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
                 To learn more about our behavioral coaching services, click to schedule a FREE 15 minute discovery call.
               </strong>
             </Typography>
-            <a href="https://calendly.com/discoverpersonalityplus" className={styles.bookNowLink}>
+            <a href="https://calendly.com/discoverpersonalityplus" target="_blank" rel="noreferrer" className={styles.bookNowLink}>
               <Button variant="contained" className={styles.bookNowButton}>
                 BOOK A CALL NOW
               </Button>

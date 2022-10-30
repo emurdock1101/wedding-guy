@@ -11,6 +11,7 @@ import spiral from "../images/spiral.jpeg";
 import { theme } from "../theme";
 import { useNavigate } from "react-router-dom";
 import Fade from "@mui/material/Fade";
+import BookNow from "../components/BookNow"
 
 interface HomeProps {
   loggedIn: boolean;
@@ -144,10 +145,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
     navigate(path);
   };
 
-  const buyPage = () => {
-    props.loggedIn ? handleNav("/test") : handleNav("/buy");
-  };
-
   // choose the screen size
   const handleResize = () => {
     if (window.innerWidth < 600) {
@@ -164,7 +161,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   };
 
   useEffect(() => {
-    const img = new Image()
+    const img = new Image();
     img.src = prism;
     document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     window.addEventListener("resize", handleResize);
@@ -181,17 +178,29 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Typography className={styles.secondTitle}>Discover a New You</Typography>
               {!props.loggedIn && (
-                <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleNav("/buy")}
+                  className={styles.buyNowButton}
+                >
                   BUY NOW
                 </Button>
               )}
               {props.loggedIn && !props.completed && (
-                <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleNav("/test")}
+                  className={styles.buyNowButton}
+                >
                   TAKE TEST
                 </Button>
               )}
               {props.loggedIn && props.completed && (
-                <Button variant="contained" onClick={buyPage} className={styles.buyNowButton}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleNav("/results")}
+                  className={styles.buyNowButton}
+                >
                   VIEW RESULTS
                 </Button>
               )}
@@ -209,8 +218,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 your desires? Better yet, can you change those things?
               </Typography>
               <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
-                Who we are stems from our personality, and Personality+ is an test based on
-                the Big Five 10 Aspect Model of personality.
+                Who we are stems from our personality, and Personality+ is an test based on the Big
+                Five 10 Aspect Model of personality.
               </Typography>
               <Typography variant="subtitle1" className={styles.thirdTitleDescription}>
                 Also known as the Five Factor Model or OCEAN, it is an empirical model of
@@ -228,7 +237,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               alignItems="center"
               className={styles.oceanRow}
             >
-              <Grid item xs={12} md={4} >
+              <Grid item xs={12} md={4}>
                 <HomeCard
                   title="Why Take It?"
                   description="Everyone has a unique personality that is a combination of 5 dimensions. Discovering how your personality has been shaped can help you understand who you are."
@@ -284,9 +293,9 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               <Typography className={styles.big5Title}>Big Five Traits and Aspects</Typography>
               <br></br>
               <Typography variant={"subtitle1"} className={styles.big5Desc}>
-                Your results will explain your unique personality as it relates to the Big Five and its
-                10 aspects, which are 2 subcategories for each of the 5 dimensions. These categories
-                and subcategories are listed below.
+                Your results will explain your unique personality as it relates to the Big Five and
+                its 10 aspects, which are 2 subcategories for each of the 5 dimensions. These
+                categories and subcategories are listed below.
               </Typography>
             </div>
           </Grid>
@@ -332,8 +341,11 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           </Grid>
         </Grid>
         <div className={styles.footer}>
-          <BigFooter />
+          <BookNow />
         </div>
+        {/* <div className={styles.footer}>
+          <BigFooter />
+        </div> */}
       </div>
     </Fade>
   );
