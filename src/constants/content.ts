@@ -136,6 +136,7 @@ const content: any = {
     },
   },
   aboutTheTest: {
+    length: "The test takes 10 - 20 minutes and consists of 100 questions. It's recommended you take some time to prepare by getting a good sleep, eating well, and finding a relaxing environment to take the test.",
     results:
       "You will receive information about your unique personality as it relates to the dimensions of the Big Five: Extraversion (positive emotion), Neurotocism (negative emotion), Agreeableness (care for others), Conscientiousness (order and responsibility) and Openness (interest in ideas and aesthetics). You will also receive a percentage and detailed paragraphs about how that might affect your emotions, behavior, thinking, and desires.",
     background:

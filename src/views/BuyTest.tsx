@@ -53,12 +53,18 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
   const signUp = async (e: any) => {
     e.preventDefault();
     try {
+
+      console.log("REACT_APP_TEST: " +  process.env.REACT_APP_TEST)
+      console.log("REACT_APP_STRIPE_PUBLIC_KEY: " +  process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+      console.log("REACT_APP_STRIPE_LINE_ITEM_PRICE: " +  process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE)
+      console.log("REACT_APP_DOMAIN: " +  process.env.REACT_APP_DOMAIN)
+
       const stripe = await loadStripe(
         process.env.REACT_APP_STRIPE_PUBLIC_KEY ??
           "pk_live_51LygTjHNCPDYU7EX3IeedadIoG8dJbtDTE0XW4z8XIzePb6g0By53gVYMsFjLYkukl7ptM8cNSNlszH71lJG9Zbw00z24P0nKO"
       );
 
-      console.log("here dat: " +  process.env.REACT_APP_TEST)
+      
 
       if (stripe) {
         await stripe.redirectToCheckout({

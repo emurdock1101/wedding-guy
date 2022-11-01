@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import Divider from "@mui/material/Divider";
 import HomeCard from "../components/HomeCard";
 import OceanBanner from "../components/OceanBanner";
-import content from "../constants/content";
 import prism from "../images/prism.jpeg";
-import northern from "../images/northern.jpeg";
+import spiral from "../images/spiral.jpeg";
 import { theme } from "../theme";
 import { useNavigate } from "react-router-dom";
 import Fade from "@mui/material/Fade";
 import BookNow from "../components/BookNow";
+import AboutTheTest from "../components/AboutTheTest";
 
 interface HomeProps {
   loggedIn: boolean;
@@ -84,32 +84,16 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       marginTop: 40,
     },
     spiralBox: {
-      minHeight: 920,
+      minHeight: 800,
       marginTop: 120,
-      backgroundImage: `url(${northern})`,
-      justifyContent: "center",
-      alignItems: "center",
+      backgroundImage: `url(${spiral})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
-    },
-    aboutTheTest: {
-      marginTop: 100,
-      marginBottom: 100,
-      color: theme.palette.common.white,
-    },
-    aboutTestTitle: {
-      fontWeight: 300,
-      font: "Monaco",
-      minWidth: 380,
-      fontSize: isMedium ? 40 : 60,
-      marginBottom: 40,
-    },
-    aboutDesc: {
-      fontWeight: 300,
-      fontSize: 20,
-      marginTop: 20,
-      marginBottom: 20,
+      backgroundAttachment: "fixed",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     big5: {
       marginTop: 50,
@@ -162,10 +146,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   };
 
   useEffect(() => {
-    const img = new Image();
-    img.src = prism;
-    const img2 = new Image();
-    img2.src = northern;
     document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     window.addEventListener("resize", handleResize);
   }, []);
@@ -262,32 +242,9 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           </Grid>
           <Grid item xs={12}>
             <Box className={styles.spiralBox}>
-              <Grid container>
-                <Grid item xs={1}></Grid>
-                <Grid item xs={10} sm={7} md={6}>
-                  <div className={styles.aboutTheTest}>
-                    <Typography variant="h3" className={styles.aboutTestTitle}>
-                      About the test
-                    </Typography>
-                    <Typography variant="h5" className={styles.aboutSubheading}>
-                      Length:
-                    </Typography>
-                    <Typography variant="subtitle1" className={styles.aboutDesc}>
-                      The test takes 10 - 20 minutes and consists of 100 questions.
-                    </Typography>
-                    <Typography variant="h5" className={styles.aboutSubheading}>
-                      Results:
-                    </Typography>
-                    <Typography variant="subtitle1" className={styles.aboutDesc}>
-                      {content["aboutTheTest"]["results"]}
-                    </Typography>
-                    <Typography variant="h5" className={styles.aboutSubheading}>
-                      Background:
-                    </Typography>
-                    <Typography variant="subtitle1" className={styles.aboutDesc}>
-                      {content["aboutTheTest"]["background"]}
-                    </Typography>
-                  </div>
+              <Grid container justify="center" alignItems="center">
+                <Grid item xs={10} lg={6}>
+                  <AboutTheTest />
                 </Grid>
               </Grid>
             </Box>
