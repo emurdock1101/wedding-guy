@@ -15,7 +15,7 @@ const Forgot = (props: ForgotProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
-  const [alert, setAlert] = useState(false);
+  const [alert, showAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
   const [codeSent, setCodeSent] = useState(false);
 
@@ -49,7 +49,7 @@ const Forgot = (props: ForgotProps) => {
     paper: {
       padding: 20,
       marginBottom: 60,
-      borderRadius: 10
+      borderRadius: 10,
     },
     alert: {
       marginBottom: 15,
@@ -94,10 +94,10 @@ const Forgot = (props: ForgotProps) => {
 
   const sendCode = async (e: any) => {
     e.preventDefault();
+    showAlert(false);
     try {
       // Send confirmation code to user's email
       await Auth.forgotPassword(email);
-      setAlert(false);
       setCodeSent(true);
     } catch (error: any) {
       console.log(JSON.stringify(error));
@@ -112,12 +112,13 @@ const Forgot = (props: ForgotProps) => {
       } else if (error.log.length) {
         setAlertContent(error.code);
       }
-      setAlert(true);
+      showAlert(true);
     }
   };
 
   const reset = async (e: any) => {
     e.preventDefault();
+    showAlert(false);
     try {
       // Collect confirmation code and new password, then
       const success = await Auth.forgotPasswordSubmit(email, code, password);
@@ -127,7 +128,8 @@ const Forgot = (props: ForgotProps) => {
         props.onLogIn();
         handleNav("/");
       } else {
-        console.log("Password reset was not successful: " + success);
+        setAlertContent("Password reset was not successful.");
+        showAlert(true);
       }
     } catch (error: any) {
       console.log(JSON.stringify(error));
@@ -146,7 +148,7 @@ const Forgot = (props: ForgotProps) => {
       } else if (error.log.length) {
         setAlertContent(error.code);
       }
-      setAlert(true);
+      showAlert(true);
     }
   };
 
@@ -160,7 +162,7 @@ const Forgot = (props: ForgotProps) => {
               severity="error"
               className={styles.alert}
               onClose={() => {
-                setAlert(false);
+                showAlert(false);
               }}
             >
               {alertContent}

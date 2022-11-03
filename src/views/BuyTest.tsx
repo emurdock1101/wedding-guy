@@ -53,15 +53,9 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
   const signUp = async (e: any) => {
     e.preventDefault();
     try {
-
-      console.log("REACT_APP_TEST: " +  process.env.REACT_APP_TEST)
-      console.log("REACT_APP_STRIPE_PUBLIC_KEY: " +  process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-      console.log("REACT_APP_STRIPE_LINE_ITEM_PRICE: " +  process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE)
-      console.log("REACT_APP_DOMAIN: " +  process.env.REACT_APP_DOMAIN)
-
       const stripe = await loadStripe(
         process.env.REACT_APP_STRIPE_PUBLIC_KEY ??
-          "pk_live_51LygTjHNCPDYU7EX3IeedadIoG8dJbtDTE0XW4z8XIzePb6g0By53gVYMsFjLYkukl7ptM8cNSNlszH71lJG9Zbw00z24P0nKO"
+          "pk_test_51LygTjHNCPDYU7EXyaAk06YJkLcN7eqRANxBPUhiQ34zDrTQHd6ZJbDtpOd9h3DlQNjSIcpndMTugJ3bsfsWC7jp00fWZjUx4z"
       );
 
       
@@ -70,13 +64,13 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
         await stripe.redirectToCheckout({
           lineItems: [
             {
-              price: process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE ?? "price_1LyhD0HNCPDYU7EXWLyrdY8d",
+              price: process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE ?? "price_1LyiCWHNCPDYU7EXUEgmOjBP",
               quantity: 1,
             },
           ],
           mode: "payment",
-          successUrl: (process.env.REACT_APP_DOMAIN ?? "https://www.discoverpersonalityplus.com/") + "/signup",
-          cancelUrl: process.env.REACT_APP_DOMAIN ?? "https://www.discoverpersonalityplus.com/",
+          successUrl: (process.env.REACT_APP_DOMAIN ?? "http://localhost:3000") + "/signup",
+          cancelUrl: process.env.REACT_APP_DOMAIN ?? "http://localhost:3000",
         });
       }
     } catch (error) {

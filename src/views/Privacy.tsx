@@ -54,7 +54,7 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
           <Paper elevation={2} className={styles.paper}>
             <Typography variant="subtitle1" className={styles.top}>
               Part of the information you share on our website is stored and used. We collect your
-              email and test results. Your credit card info, browser info, IP address, and
+              email and test results. Your credit card info is collected by Stripe. Your browser info, IP address, and
               fingerprint are not stored.
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>

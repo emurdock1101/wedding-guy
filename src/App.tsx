@@ -87,6 +87,12 @@ function App() {
   // Check for login
   useEffect(() => {
     assessLoggedInState();
+    console.log("REACT_APP_TEST: " + process.env.REACT_APP_TEST);
+    console.log("REACT_APP_STRIPE_PUBLIC_KEY: " + process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+    console.log(
+      "REACT_APP_STRIPE_LINE_ITEM_PRICE: " + process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE
+    );
+    console.log("REACT_APP_DOMAIN: " + process.env.REACT_APP_DOMAIN);
   }, []);
 
   // Check for bucket item

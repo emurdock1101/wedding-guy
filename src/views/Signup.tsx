@@ -14,7 +14,7 @@ interface SignupProps {
 const Signup = (props: SignupProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [alert, setAlert] = useState(false);
+  const [alert, showAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
   const [user, setUser] = useState<any>(undefined);
   const [newPassword, setNewPassword] = useState("");
@@ -94,15 +94,10 @@ const Signup = (props: SignupProps) => {
 
   const signUp = async (e: any) => {
     e.preventDefault();
+    showAlert(false);
     try {
       const userCognito = await Auth.signIn(email, password);
-      setAlert(false);
       setUser(userCognito);
-
-      if (user.challengeName !== "NEW_PASSWORD_REQUIRED") {
-        props.onLogIn();
-        handleNav("/test");
-      }
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!email || !email.length) {
@@ -120,16 +115,17 @@ const Signup = (props: SignupProps) => {
       } else if (error.log.length) {
         setAlertContent(error.code);
       }
-      setAlert(true);
+      showAlert(true);
     }
   };
 
   const register = async (e: any) => {
     e.preventDefault();
+    showAlert(false);
     try {
       if (newPassword !== newPasswordConfirm) {
         setAlertContent("Passwords do not match.");
-        setAlert(true);
+        showAlert(true);
       } else {
         await Auth.completeNewPassword(
           user, // the Cognito User Object
@@ -157,7 +153,7 @@ const Signup = (props: SignupProps) => {
       } else if (error.log.length) {
         setAlertContent(error.code);
       }
-      setAlert(true);
+      showAlert(true);
     }
   };
 
@@ -171,7 +167,7 @@ const Signup = (props: SignupProps) => {
               severity="error"
               className={styles.alert}
               onClose={() => {
-                setAlert(false);
+                showAlert(false);
               }}
             >
               {alertContent}

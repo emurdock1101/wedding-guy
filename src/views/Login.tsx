@@ -13,7 +13,7 @@ interface LoginProps {
 const Login = (props: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  const [alert, showAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
 
   const useStyles = makeStyles((theme) => ({
@@ -81,6 +81,7 @@ const Login = (props: LoginProps) => {
 
   const logIn = async (e: any) => {
     e.preventDefault();
+    showAlert(false);
     try {
       await Auth.signIn(username, password);
       props.onLogIn();
@@ -102,7 +103,7 @@ const Login = (props: LoginProps) => {
       } else if (error.log.length) {
         setAlertContent(error.code);
       }
-      setShowAlert(true);
+      showAlert(true);
     }
   };
 
@@ -111,12 +112,12 @@ const Login = (props: LoginProps) => {
       <Banner pageTitle="Log In" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={10} md={7}>
-          {showAlert ? (
+          {alert ? (
             <Alert
               severity="error"
               className={styles.alert}
               onClose={() => {
-                setShowAlert(false);
+                showAlert(false);
               }}
             >
               {alertContent}
@@ -150,7 +151,7 @@ const Login = (props: LoginProps) => {
               LOG IN
             </Button>
             <Typography className={styles.noAccount}>
-              Don't have an account? {" "}
+              Don't have an account?{" "}
               <Link className={styles.plus} to={"/buy"}>
                 Sign Up
               </Link>
