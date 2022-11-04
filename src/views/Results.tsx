@@ -74,12 +74,10 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const styles = useStyles();
 
   // const downloadResults = async () => {
-  //   console.log("here")
   //   const user = await Auth.currentAuthenticatedUser();
   //   const email: string = user.attributes?.email ?? "";
   //   const subId: string = user.attributes?.sub ?? "";
   //   const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
-  //   console.log(url)
   //   fetch(url)
   //     .then((res) => {
   //       return res.blob();
@@ -188,10 +186,16 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
             </Typography>
             <Typography variant="subtitle1" className={styles.info}>
               <strong>
-                To learn more about our behavioral coaching services, click to schedule a FREE 15 minute discovery call.
+                To learn more about our behavioral coaching services, click to schedule a FREE 15
+                minute discovery call.
               </strong>
             </Typography>
-            <a href="https://calendly.com/discoverpersonalityplus" target="_blank" rel="noreferrer" className={styles.bookNowLink}>
+            <a
+              href="https://calendly.com/discoverpersonalityplus"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.bookNowLink}
+            >
               <Button variant="contained" className={styles.bookNowButton}>
                 BOOK A CALL NOW
               </Button>

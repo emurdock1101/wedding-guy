@@ -25,10 +25,13 @@ import Forgot from "./views/Forgot";
 import { questionData as qd } from "./constants/questionData";
 import { shuffle } from "./util";
 import { Storage } from "@aws-amplify/storage";
-// import Submit from "./views/Submit";
-// import PreTest from "./views/PreTest";
+import { createContext } from "react";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Submit from "./views/Submit";
 
 Amplify.configure(awsconfig);
+
+export const UserContext = createContext<any>({});
 
 function App() {
   const questionData = shuffle(qd);
@@ -49,22 +52,25 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [user, setUser] = useState({});
 
   const styles = useStyles();
   const assessLoggedInState = async () => {
     try {
       await Auth.currentAuthenticatedUser();
+      setUser({ ...user, loggedIn: "loggedIn" });
       setLoggedIn(true);
     } catch (error) {
+      setUser({ ...user, loggedIn: "NotLoggedIn" });
       setLoggedIn(false);
     }
   };
 
   // choose the screen size
   const getResultsFromS3 = async (): Promise<void> => {
-    const user = await Auth.currentAuthenticatedUser();
-    const email: string = user.attributes?.email ?? "";
-    const subId: string = user.attributes?.sub ?? "";
+    const cognitoUser = await Auth.currentAuthenticatedUser();
+    const email: string = cognitoUser.attributes?.email ?? "";
+    const subId: string = cognitoUser.attributes?.sub ?? "";
 
     Storage.configure({
       bucket: process.env.REACT_APP_BUCKET_NAME ?? "big5-amplify-test-results-bucket210923-dev",
@@ -75,24 +81,21 @@ function App() {
       const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
       await fetch(url).then((response) => response.json());
       setCompleted(true);
+      setUser({ ...user, completed: "completed" });
     } catch (error) {
       setCompleted(false);
+      setUser({ ...user, completed: "NotCompleted" });
     }
   };
 
   const completeTest = () => {
     setCompleted(true);
+    setUser({ ...user, completed: "completed" });
   };
 
-  // Check for login
+  // Check for user account
   useEffect(() => {
     assessLoggedInState();
-    console.log("REACT_APP_TEST: " + process.env.REACT_APP_TEST);
-    console.log("REACT_APP_STRIPE_PUBLIC_KEY: " + process.env.REACT_APP_STRIPE_PUBLIC_KEY);
-    console.log(
-      "REACT_APP_STRIPE_LINE_ITEM_PRICE: " + process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE
-    );
-    console.log("REACT_APP_DOMAIN: " + process.env.REACT_APP_DOMAIN);
   }, []);
 
   // Check for bucket item
@@ -105,36 +108,67 @@ function App() {
       <div className={styles.container}>
         <HeaderDrawer loggedIn={loggedIn} completed={completed} onLogOut={assessLoggedInState} />
         <Routes>
-          <Route path="/buy" element={!loggedIn ? <BuyTest /> : <Navigate to="/" replace />} />
+          <Route
+            path="/buy"
+            element={
+              <UserContext.Provider value={{ user, setUser }}>
+                <ProtectedRoute route={"loggedOut"} component={<BuyTest />} />
+              </UserContext.Provider>
+            }
+          />
           <Route
             path="/test"
             element={
-              loggedIn && !completed ? (
-                <Quiz onComplete={completeTest} questionData={questionData} />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              <UserContext.Provider value={{ user, setUser }}>
+                <ProtectedRoute
+                  route={"test"}
+                  component={<Quiz onComplete={completeTest} questionData={questionData} />}
+                />
+              </UserContext.Provider>
             }
           />
-          <Route path="/results" element={completed ? <Results /> : <Navigate to="/" replace />} />
+          <Route
+            path="/results"
+            element={
+              <UserContext.Provider value={{ user, setUser }}>
+                <ProtectedRoute route={"results"} component={<Results />} />
+              </UserContext.Provider>
+            }
+          />
           <Route
             path="/reset"
             element={
-              !loggedIn ? <Forgot onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
+              <UserContext.Provider value={{ user, setUser }}>
+                <ProtectedRoute
+                  route={"loggedOut"}
+                  component={<Forgot onLogIn={assessLoggedInState} />}
+                />
+              </UserContext.Provider>
             }
           />
           <Route
             path="/login"
             element={
-              !loggedIn ? <Login onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
+              <UserContext.Provider value={{ user, setUser }}>
+                <ProtectedRoute
+                  route={"loggedOut"}
+                  component={<Login onLogIn={assessLoggedInState} />}
+                />
+              </UserContext.Provider>
             }
           />
           <Route
             path="/signup"
             element={
-              !loggedIn ? <Signup onLogIn={assessLoggedInState} /> : <Navigate to="/" replace />
+              <UserContext.Provider value={{ user, setUser }}>
+                <ProtectedRoute
+                  route={"loggedOut"}
+                  component={<Signup onLogIn={assessLoggedInState} />}
+                />
+              </UserContext.Provider>
             }
           />
+          <Route path="/submit" element={<Submit onComplete={() => {}} prevStep={() => {}} />} />
           <Route path="/" element={<Home loggedIn={loggedIn} completed={completed} />} />
           <Route path="/about" element={<About />} />
           <Route path="/faqs" element={<FAQs />} />
@@ -143,19 +177,6 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/checkouterror" element={<CheckoutErrorPage />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
-          {/* <Route
-            path="/test"
-            element={<Quiz onComplete={completeTest} questionData={questionData} />}
-          /> */}
-          {/* <Route path="/results" element={<Results />} /> */}
-          {/* <Route
-            path="/pretest"
-            element={<PreTest nextStep={()=> {}}/>}
-          />
-          <Route
-            path="/submit"
-            element={<Submit onComplete={()=> {}} prevStep={()=> {}}/>}
-          /> */}
         </Routes>
         <div className={styles.footer}>
           <Footer />

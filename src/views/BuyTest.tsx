@@ -48,6 +48,7 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
 
   useEffect(() => {
     sessionStorage.clear();
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   });
 
   const signUp = async (e: any) => {

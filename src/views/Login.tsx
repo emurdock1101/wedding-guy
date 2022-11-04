@@ -10,7 +10,7 @@ interface LoginProps {
   onLogIn: () => void;
 }
 
-const Login = (props: LoginProps) => {
+const Login: React.FC<LoginProps> = (props: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [alert, showAlert] = useState(false);
@@ -76,7 +76,7 @@ const Login = (props: LoginProps) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
-    navigate(path, { replace: true });
+    navigate(path);
   };
 
   const logIn = async (e: any) => {
@@ -85,7 +85,7 @@ const Login = (props: LoginProps) => {
     try {
       await Auth.signIn(username, password);
       props.onLogIn();
-      handleNav("/");
+      handleNav("/results");
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!username || !username.length) {

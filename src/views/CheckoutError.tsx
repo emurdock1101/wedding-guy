@@ -34,7 +34,10 @@ const CheckoutErrorPage: React.FC<CheckoutErrorPageProps> = (props: CheckoutErro
       <Banner pageTitle="Checkout Error" />
       <Grid container justify="center" alignItems="center">
         <Grid item xs={10} className={styles.info}>
-          <Typography variant="h5">Something went wrong with processing your payment.</Typography>
+          <Typography variant="h5">
+            Something went wrong with processing your payment. If you have created an account with
+            us before using the same email, that could be the issue.
+          </Typography>
           <br></br>
           <br></br>
           <Typography variant="h5">

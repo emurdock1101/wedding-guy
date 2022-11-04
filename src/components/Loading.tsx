@@ -1,16 +1,8 @@
 import * as React from "react";
 
-import CircularProgress, { circularProgressClasses } from "@mui/material/CircularProgress";
-
+import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { makeStyles } from "@material-ui/core";
-import { styled } from "@mui/material/styles";
-
-const Loading = styled(CircularLoading)(({ theme }) => ({
-  [`& .${circularProgressClasses.circle}`]: {
-    backgroundColor: "#343434",
-  },
-}));
 
 const useStyles = makeStyles((theme) => ({
   loading: {
@@ -21,13 +13,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CircularLoading() {
+const Loading: React.FC = () => {
   const styles = useStyles();
   return (
     <Box sx={{ display: "flex" }} className={styles.loading}>
-      <CircularProgress size={300} color="primary" />
+      <CircularProgress size={200} color="primary" style={{ color: "#00C9B7" }} />
     </Box>
   );
-}
+};
 
 export default Loading;

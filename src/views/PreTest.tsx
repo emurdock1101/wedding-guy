@@ -64,7 +64,9 @@ const PreTest: React.FC<PreTestProps> = (props: PreTestProps) => {
   };
 
   useEffect(() => {
+    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     window.addEventListener("resize", handleResize);
+    sessionStorage.clear();
   });
 
   const styles = useStyles();
