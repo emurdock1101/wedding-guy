@@ -59,7 +59,7 @@ const content: any = {
         "Professionally, those whose conscientiousness is the strongest trait will do well as managers, implementors, and administrators, while those low in consciousness may be more motived by other personality traits that are higher: safety and security if neurotic, social success and fun if extraverted, relationships if agreeable, or creativity or complexity if open. Note: for this reason, it is possible for two people to score the same on conscientiousness but manifest it in different ways depending other areas of their personality.",
       part5: "Women are slightly more conscientious than men.",
       part6:
-        "Conscientiousness has 2 aspects industriousness (proclivity to work hard or be goal oriented) and orderliness (the desire to establish & maintain boundaries)",
+        "Conscientiousness has 2 aspects: industriousness (proclivity to work hard or be goal oriented) and orderliness (the desire to establish & maintain boundaries)",
       color: "#00C9B7",
     },
     {
@@ -73,7 +73,7 @@ const content: any = {
       part4:
         "This contrasts with people low in openness, who tend to be more conventional and conservative. They are less known for their curiosity or interest in novelty or change. They tend to be comparatively disinterested in learning, particularly for its own sake, and tend to stick with what they know.",
       part5:
-        "Trait openness to experience is made up of the aspects: interest in ideas and aesthetic openness.",
+        "Openness to experience is made up of 2 aspects: interest in ideas and aesthetic openness.",
       part6: "",
       color: "#344B47",
     },
@@ -87,7 +87,7 @@ const content: any = {
         "The goal of Personality+ is to offer a more streamlined personality test with results that can be clearly understood and implemented. The interpretations of the test have come from diligent research, study, and clinical practice. If you are curious about conducting your own research, we would point you the Oxford Handbook of the Five Factor Model, Dr. C.G. DeYoung and Dr. J.B. Peterson's published research, or a trusted mental health therapist/researcher.",
     },
     {
-      title: "Aren't their other free personality tests?",
+      title: "Aren't there other free personality tests?",
       part1:
         "The Big Five Aspect Scale in its original paper/pencil format is in the public domain, and there are other free versions with reports available elsewhere. However, this test was created so that the results and reports generate after the test could be cost effective, clearer, more precise, more user friendly, and most importantly, useable. By useable, we mean providing the results in a way that can help you implement practical changes in your life, allow for self-reflections, or better connect with a mental health therapist.",
       part2:
