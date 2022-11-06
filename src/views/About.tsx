@@ -18,10 +18,10 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
         <Grid item xs={12} sm={11} lg={10}>
           <Grid container spacing={10} justify="center">
             <Grid item xs={11} sm={10} md={5}>
-              <AboutCard member="elliot" />
+              <AboutCard member="patrick" />
             </Grid>
             <Grid item xs={11} sm={10} md={5}>
-              <AboutCard member="patrick" />
+              <AboutCard member="elliot" />
             </Grid>
           </Grid>
         </Grid>
