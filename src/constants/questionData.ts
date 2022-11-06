@@ -80,7 +80,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q11",
-    text: "Have difficulty understanding abstract ideas ",
+    text: "Have difficulty understanding abstract ideas",
     reverse: true,
     aspect: Aspect.Interest,
     ocean: Ocean.Openness,
@@ -486,7 +486,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q69",
-    text: "Take no time for others ",
+    text: "Take no time for others",
     reverse: true,
     aspect: Aspect.Compassion,
     ocean: Ocean.Agreeableness,
@@ -542,7 +542,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q77",
-    text: "Believe that I am better than others ",
+    text: "Believe that I am better than others",
     reverse: true,
     aspect: Aspect.Politeness,
     ocean: Ocean.Agreeableness,
