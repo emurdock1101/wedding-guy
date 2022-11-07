@@ -571,7 +571,7 @@ export const questionData: Question[] = [
   {
     uid: "q81",
     text: "Feel comfortable with myself",
-    reverse: false,
+    reverse: true,
     aspect: Aspect.Withdrawal,
     ocean: Ocean.Neuroticism,
   },
@@ -612,7 +612,7 @@ export const questionData: Question[] = [
   },
   {
     uid: "q87",
-    text: "Seldom feel unhappy",
+    text: "Rarely feel blue ",
     reverse: true,
     aspect: Aspect.Withdrawal,
     ocean: Ocean.Neuroticism,
