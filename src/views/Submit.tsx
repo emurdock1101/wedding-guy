@@ -41,7 +41,7 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
     const percentiles: Record<string, number> = getPercentiles();
 
     Storage.configure({
-      bucket: process.env.APP_bucket_name ?? "big5-amplify-test-results-bucket210923-dev",
+      bucket: process.env.APP_bucket_name,
       level: "private",
       region: "us-east-1",
     });

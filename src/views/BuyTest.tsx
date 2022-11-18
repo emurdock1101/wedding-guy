@@ -54,18 +54,13 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
   const signUp = async (e: any) => {
     e.preventDefault();
     try {
-      const stripe = await loadStripe(
-        process.env.REACT_APP_STRIPE_PUBLIC_KEY ??
-          "pk_test_51LygTjHNCPDYU7EXyaAk06YJkLcN7eqRANxBPUhiQ34zDrTQHd6ZJbDtpOd9h3DlQNjSIcpndMTugJ3bsfsWC7jp00fWZjUx4z"
-      );
-
-      
+      const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY ?? "");
 
       if (stripe) {
         await stripe.redirectToCheckout({
           lineItems: [
             {
-              price: process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE ?? "price_1LyiCWHNCPDYU7EXUEgmOjBP",
+              price: process.env.REACT_APP_STRIPE_LINE_ITEM_PRICE,
               quantity: 1,
             },
           ],

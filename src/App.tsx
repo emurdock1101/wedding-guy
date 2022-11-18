@@ -73,7 +73,7 @@ function App() {
     const subId: string = cognitoUser.attributes?.sub ?? "";
 
     Storage.configure({
-      bucket: process.env.REACT_APP_BUCKET_NAME ?? "big5-amplify-test-results-bucket210923-dev",
+      bucket: process.env.REACT_APP_BUCKET_NAME,
       level: "private",
       region: "us-east-1",
     });
