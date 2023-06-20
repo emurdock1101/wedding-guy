@@ -109,17 +109,16 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
 
   return (
     <>
-      <Banner pageTitle="Log In" />
-      <Grid container justify="center" alignItems="center">
+      <Banner pageTitle='Log In' />
+      <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={10} md={7}>
           {alert ? (
             <Alert
-              severity="error"
+              severity='error'
               className={styles.alert}
               onClose={() => {
                 showAlert(false);
-              }}
-            >
+              }}>
               {alertContent}
             </Alert>
           ) : (
@@ -129,30 +128,30 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
           )}
           <Paper elevation={2} className={styles.paper}>
             <TextField
-              type="text"
-              placeholder="email"
+              type='text'
+              placeholder='email'
               onChange={(e) => setUsername(e.target.value)}
               className={styles.input}
             />
             <TextField
-              type="password"
-              placeholder="password"
+              type='password'
+              placeholder='password'
               onChange={(e) => setPassword(e.target.value)}
               className={styles.input}
             />
             <br></br>
             <br></br>
-            <Link className={styles.forgot} to={"/reset"}>
+            <Link className={styles.forgot} to={'/reset'}>
               Forgot password?
             </Link>
             <br></br>
             <br></br>
-            <Button color="primary" variant="contained" onClick={logIn} className={styles.button}>
+            <Button color='primary' variant='contained' onClick={logIn} className={styles.button}>
               LOG IN
             </Button>
             <Typography className={styles.noAccount}>
-              Don't have an account?{" "}
-              <Link className={styles.plus} to={"/buy"}>
+              Don't have an account?{' '}
+              <Link className={styles.plus} to={'/buy'}>
                 Sign Up
               </Link>
             </Typography>

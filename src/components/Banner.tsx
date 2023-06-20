@@ -43,12 +43,12 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   });
 
   return (
-    <Grid container justify="center" alignItems="flex-start" className={styles.container}>
+    <Grid container justifyContent='center' alignItems='flex-start' className={styles.container}>
       <Grid item xs={12}>
         <Paper elevation={2} className={styles.paper}>
-          <Grid container spacing={6} justify="center" alignItems="flex-start">
+          <Grid container spacing={6} justifyContent='center' alignItems='flex-start'>
             <Grid item xs={12} sm={11} lg={10}>
-              <Typography variant="h3" className={styles.subheading}>
+              <Typography variant='h3' className={styles.subheading}>
                 {props.pageTitle}
               </Typography>
             </Grid>

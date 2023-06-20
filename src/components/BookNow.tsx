@@ -65,18 +65,18 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
   });
 
   return (
-    <Grid container justify="center" alignItems="flex-start">
+    <Grid container justifyContent='center' alignItems='flex-start'>
       <Grid item xs={12}>
         <Box className={styles.box}>
           <div className={styles.spacing}>
-            <Typography variant="h3" className={styles.expert}>
+            <Typography variant='h3' className={styles.expert}>
               Chat with an expert
             </Typography>
             <br></br>
             <br></br>
-            <Grid container justify="center" alignItems="flex-start">
+            <Grid container justifyContent='center' alignItems='flex-start'>
               <Grid item xs={10}>
-                <Typography variant="h6">
+                <Typography variant='h6'>
                   Schedule a FREE 15 minute discovery call to learn more about how you can benefit
                   from our behavioral coaching packages or how to review your Personality+ score.
                 </Typography>
@@ -84,27 +84,29 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
             </Grid>
             <br></br>
             <br></br>
-            <a href="https://calendly.com/discoverpersonalityplus" target="_blank" rel="noreferrer" className={styles.bookNowLink}>
-              <Button variant="contained" className={styles.bookNowButton}>
+            <a
+              href='https://calendly.com/discoverpersonalityplus'
+              target='_blank'
+              rel='noreferrer'
+              className={styles.bookNowLink}>
+              <Button variant='contained' className={styles.bookNowButton}>
                 BOOK A CALL NOW
               </Button>
             </a>
             <div className={styles.socialMedia}>
               <a
-                href="https://www.facebook.com/DiscoverPersonalityPlus/"
-                target="_blank"
-                rel="noreferrer"
-              >
+                href='https://www.facebook.com/DiscoverPersonalityPlus/'
+                target='_blank'
+                rel='noreferrer'>
                 <Facebook className={styles.facebook} />
               </a>
               <a
-                href="https://instagram.com/discover_personalityplus"
-                target="_blank"
-                rel="noreferrer"
-              >
+                href='https://instagram.com/discover_personalityplus'
+                target='_blank'
+                rel='noreferrer'>
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
+              <a href='https://twitter.com/PersonalityB5' target='_blank' rel='noreferrer'>
                 <Twitter className={styles.facebook} />
               </a>
             </div>

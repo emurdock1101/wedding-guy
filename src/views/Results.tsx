@@ -156,8 +156,8 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   return (
     <div>
-      <Banner pageTitle="Results and Explanation" />
-      <Grid container spacing={6} justify="center" alignItems="flex-start">
+      <Banner pageTitle='Results and Explanation' />
+      <Grid container spacing={6} justifyContent='center' alignItems='flex-start'>
         {/* <Grid item xs={12} sm={11} lg={10}>
           <Button variant="outlined" className={styles.downloadButton} onClick={downloadResults}>
             DOWNLOAD RESULTS
@@ -165,10 +165,10 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
         </Grid> */}
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation}>
-            <Typography variant="subtitle1" className={styles.info}>
-              Your results are shown in the table and in the bar charts below.{" "}
+            <Typography variant='subtitle1' className={styles.info}>
+              Your results are shown in the table and in the bar charts below.{' '}
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
+            <Typography variant='subtitle1' className={styles.info}>
               Remember that each personality trait and aspect and your relative position with
               respect to them has advantages and disadvantages. It is for that reason that variation
               exists in the human population: there is a niche for each personality configuration.
@@ -176,7 +176,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               place in relationships, work and personal commitment that corresponds to your unique
               personality structure. Good luck with your personality journey!
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
+            <Typography variant='subtitle1' className={styles.info}>
               Note also that if you find that the descriptions harsher than you might consider
               appropriate this may mean that you were more self-critical than necessary when
               completing the questions. Remember, the results are based on your own self-report,
@@ -184,19 +184,18 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               chronically unhappy or anxious, or hungry, angry or judgmental when you completed the
               questions.
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
+            <Typography variant='subtitle1' className={styles.info}>
               <strong>
                 To learn more about our behavioral coaching services, click to schedule a FREE 15
                 minute discovery call.
               </strong>
             </Typography>
             <a
-              href="https://calendly.com/discoverpersonalityplus"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.bookNowLink}
-            >
-              <Button variant="contained" className={styles.bookNowButton}>
+              href='https://calendly.com/discoverpersonalityplus'
+              target='_blank'
+              rel='noreferrer'
+              className={styles.bookNowLink}>
+              <Button variant='contained' className={styles.bookNowButton}>
                 BOOK A CALL NOW
               </Button>
             </a>
@@ -209,17 +208,17 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
           <OceanAccordion />
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2} style={{ borderRadius: "10px" }}>
-            <ReactApexChart options={oceanOptions} series={oceanSeries} type="bar" height={550} />
+          <Paper elevation={2} style={{borderRadius: '10px'}}>
+            <ReactApexChart options={oceanOptions} series={oceanSeries} type='bar' height={550} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={11} lg={5}>
-          <Paper elevation={2} style={{ borderRadius: "10px" }}>
-            <ReactApexChart options={aspectOptions} series={aspectSeries} type="bar" height={550} />
+          <Paper elevation={2} style={{borderRadius: '10px'}}>
+            <ReactApexChart options={aspectOptions} series={aspectSeries} type='bar' height={550} />
           </Paper>
         </Grid>
         <Grid item xs={12} className={styles.interpretationTitle}>
-          <Banner pageTitle="Interpretation of Results" />
+          <Banner pageTitle='Interpretation of Results' />
         </Grid>
         <Grid item xs={12} sm={11} lg={10}>
           <Paper elevation={2} className={styles.interpretations}>

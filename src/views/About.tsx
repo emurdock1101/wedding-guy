@@ -13,15 +13,15 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
 
   return (
     <div>
-      <Banner pageTitle="Our Team" />
-      <Grid container justify="center" alignItems="center">
+      <Banner pageTitle='Our Team' />
+      <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={12} sm={11} lg={10}>
-          <Grid container spacing={10} justify="center">
+          <Grid container spacing={10} justifyContent='center'>
             <Grid item xs={11} sm={10} md={5}>
-              <AboutCard member="patrick" />
+              <AboutCard member='patrick' />
             </Grid>
             <Grid item xs={11} sm={10} md={5}>
-              <AboutCard member="elliot" />
+              <AboutCard member='elliot' />
             </Grid>
           </Grid>
         </Grid>

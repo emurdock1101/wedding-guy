@@ -56,31 +56,34 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
 
   return (
     <>
-      <Grid container justify="center" alignItems="center" spacing={2} className={styles.info}>
+      <Grid
+        container
+        justifyContent='center'
+        alignItems='center'
+        spacing={2}
+        className={styles.info}>
         <Grid item xs={12}>
-          <Grid container justify="center" alignItems="center">
+          <Grid container justifyContent='center' alignItems='center'>
             <Grid item xs={12} md={10} lg={8}>
               <Paper elevation={2} className={styles.paper}>
-                <Typography variant="h5">You have completed the test.</Typography>
+                <Typography variant='h5'>You have completed the test.</Typography>
                 <br></br>
-                <Typography variant="subtitle1">
+                <Typography variant='subtitle1'>
                   If you are satisfied with your answers, submit below to see your results.
                 </Typography>
                 <div className={styles.buttons}>
                   <Button
-                    color="primary"
-                    variant="contained"
+                    color='primary'
+                    variant='contained'
                     onClick={processResults}
-                    className={styles.buttonOne}
-                  >
+                    className={styles.buttonOne}>
                     SUBMIT
                   </Button>
                   <Button
-                    color="default"
-                    variant="outlined"
+                    color='default'
+                    variant='outlined'
                     onClick={props.prevStep}
-                    className={styles.buttonTwo}
-                  >
+                    className={styles.buttonTwo}>
                     BACK TO TEST
                   </Button>
                 </div>

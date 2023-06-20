@@ -13,8 +13,8 @@ const FAQs: React.FC<FAQsProps> = (props: FAQsProps) => {
 
   return (
     <>
-      <Banner pageTitle="Frequently Asked Questions" />
-      <Grid container justify="center" alignItems="center">
+      <Banner pageTitle='Frequently Asked Questions' />
+      <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={10}>
           <FaqsAccordion />
         </Grid>

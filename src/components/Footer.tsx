@@ -50,10 +50,10 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
   });
 
   return (
-    <Grid container justify="center" alignItems="flex-start">
+    <Grid container justifyContent='center' alignItems='flex-start'>
       <Grid item xs={12}>
         <Box className={styles.box}>
-          <Typography variant="subtitle1" className={styles.copyright}>
+          <Typography variant='subtitle1' className={styles.copyright}>
             © 2022 Personality+ All rights reserved.
           </Typography>
         </Box>

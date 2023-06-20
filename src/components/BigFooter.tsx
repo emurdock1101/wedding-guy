@@ -53,21 +53,27 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
   });
 
   return (
-    <Grid container justify="center" alignItems="flex-start">
+    <Grid container justifyContent='center' alignItems='flex-start'>
       <Grid item xs={12}>
         <Box className={styles.box}>
           <div className={styles.socialMedia}>
-            <Typography variant="h3" className={styles.followUs}>
+            <Typography variant='h3' className={styles.followUs}>
               Follow us on social media
             </Typography>
             <div className={styles.row}>
-              <a href="https://www.facebook.com/DiscoverPersonalityPlus/" target="_blank" rel="noreferrer">
+              <a
+                href='https://www.facebook.com/DiscoverPersonalityPlus/'
+                target='_blank'
+                rel='noreferrer'>
                 <Facebook className={styles.facebook} />
               </a>
-              <a href="https://instagram.com/discover_personalityplus" target="_blank" rel="noreferrer">
+              <a
+                href='https://instagram.com/discover_personalityplus'
+                target='_blank'
+                rel='noreferrer'>
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
+              <a href='https://twitter.com/PersonalityB5' target='_blank' rel='noreferrer'>
                 <Twitter className={styles.facebook} />
               </a>
             </div>

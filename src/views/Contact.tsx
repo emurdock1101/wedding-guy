@@ -66,40 +66,38 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const styles = useStyles();
   return (
     <>
-      <Banner pageTitle="Contact Us" />
-      <Grid container justify="center" alignItems="center">
+      <Banner pageTitle='Contact Us' />
+      <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={10}>
           <Paper elevation={2} className={styles.paper}>
-            <Typography variant="h5" className={styles.help}>
+            <Typography variant='h5' className={styles.help}>
               How can we help?
             </Typography>
-            <Typography variant="subtitle1" className={styles.reachOut}>
-              Ask about the Personality+ test or our data-driven psychological coaching services.{" "}
+            <Typography variant='subtitle1' className={styles.reachOut}>
+              Ask about the Personality+ test or our data-driven psychological coaching services.{' '}
             </Typography>
-            <a href="mailto:discoverpersonalityplus@gmail.com" className={styles.emailLink}>
-              <Typography variant="h5" className={styles.email}>
+            <a href='mailto:discoverpersonalityplus@gmail.com' className={styles.emailLink}>
+              <Typography variant='h5' className={styles.email}>
                 discoverpersonalityplus@gmail.com
               </Typography>
             </a>
             <div className={styles.socialLinks}>
               <a
-                href="https://www.facebook.com/DiscoverPersonalityPlus/"
-                target="_blank"
-                rel="noreferrer"
-              >
+                href='https://www.facebook.com/DiscoverPersonalityPlus/'
+                target='_blank'
+                rel='noreferrer'>
                 <Facebook className={styles.facebook} />
               </a>
               <a
-                href="https://instagram.com/discover_personalityplus"
-                target="_blank"
-                rel="noreferrer"
-              >
+                href='https://instagram.com/discover_personalityplus'
+                target='_blank'
+                rel='noreferrer'>
                 <Instagram className={styles.facebook} />
               </a>
-              <a href="https://twitter.com/PersonalityB5" target="_blank" rel="noreferrer">
+              <a href='https://twitter.com/PersonalityB5' target='_blank' rel='noreferrer'>
                 <Twitter className={styles.facebook} />
               </a>
-              <a href="mailto:discoverpersonalityplus@gmail.com">
+              <a href='mailto:discoverpersonalityplus@gmail.com'>
                 <Mail className={styles.facebook} />
               </a>
             </div>

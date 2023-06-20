@@ -62,7 +62,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
 
   return (
     <div>
-      <Grid container justify="center" alignItems="center" className={styles.container}>
+      <Grid container justifyContent='center' alignItems='center' className={styles.container}>
         <Grid item xs={12}></Grid>
         <Grid item xs={12} className={styles.row}>
           <ProgressBar
@@ -76,10 +76,9 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
             disabled={props.page === 1}
-            color="default"
-            variant="outlined"
-            onClick={props.prevStep}
-          >
+            color='default'
+            variant='outlined'
+            onClick={props.prevStep}>
             PREV
           </Button>
         </Grid>
@@ -91,10 +90,9 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
             disabled={answeredQuestions.length !== props.questions.length}
-            color="default"
-            variant="outlined"
-            onClick={props.nextStep}
-          >
+            color='default'
+            variant='outlined'
+            onClick={props.nextStep}>
             NEXT
           </Button>
         </Grid>
@@ -111,10 +109,9 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
             disabled={props.page === 1}
-            color="default"
-            variant="outlined"
-            onClick={props.prevStep}
-          >
+            color='default'
+            variant='outlined'
+            onClick={props.prevStep}>
             PREV
           </Button>
         </Grid>
@@ -126,10 +123,9 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
             disabled={answeredQuestions.length !== props.questions.length}
-            color="default"
-            variant="outlined"
-            onClick={props.nextStep}
-          >
+            color='default'
+            variant='outlined'
+            onClick={props.nextStep}>
             NEXT
           </Button>
         </Grid>

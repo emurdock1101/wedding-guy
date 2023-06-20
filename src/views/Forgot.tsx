@@ -154,17 +154,16 @@ const Forgot = (props: ForgotProps) => {
 
   return (
     <>
-      <Banner pageTitle="Reset Password" />
-      <Grid container justify="center" alignItems="center">
+      <Banner pageTitle='Reset Password' />
+      <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={10} md={7}>
           {alert ? (
             <Alert
-              severity="error"
+              severity='error'
               className={styles.alert}
               onClose={() => {
                 showAlert(false);
-              }}
-            >
+              }}>
               {alertContent}
             </Alert>
           ) : (
@@ -174,47 +173,45 @@ const Forgot = (props: ForgotProps) => {
           )}
           {!codeSent && (
             <Paper elevation={2} className={styles.paper}>
-              <Typography variant="h5" className={styles.title}>
+              <Typography variant='h5' className={styles.title}>
                 Click to send a reset code to your email.
               </Typography>
               <TextField
-                type="text"
-                placeholder="email"
+                type='text'
+                placeholder='email'
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.input}
               />
               <Button
-                color="primary"
-                variant="contained"
+                color='primary'
+                variant='contained'
                 onClick={sendCode}
-                className={styles.button}
-              >
+                className={styles.button}>
                 Send reset code
               </Button>
             </Paper>
           )}
           {codeSent && (
             <Paper elevation={2} className={styles.paper}>
-              <Grid container justify="center" alignItems="center">
+              <Grid container justifyContent='center' alignItems='center'>
                 <Grid item xs={12} md={6} className={styles.password}>
-                  <Typography variant="h5" className={styles.title}>
+                  <Typography variant='h5' className={styles.title}>
                     Enter your reset code and your new password.
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} className={styles.password}>
-                  <Typography variant="subtitle1" className={styles.title}>
+                  <Typography variant='subtitle1' className={styles.title}>
                     Your password must contain:
                   </Typography>
                   <List
                     sx={{
-                      listStyleType: "disc",
+                      listStyleType: 'disc',
                       pl: 6,
-                      "& .MuiListItem-root": {
-                        display: "list-item",
+                      '& .MuiListItem-root': {
+                        display: 'list-item',
                       },
                     }}
-                    className={styles.title}
-                  >
+                    className={styles.title}>
                     <ListItem>At least 1 lowercase letter</ListItem>
                     <ListItem>At least 1 uppercase letter</ListItem>
                     <ListItem>At least 1 number</ListItem>
@@ -224,19 +221,19 @@ const Forgot = (props: ForgotProps) => {
                 </Grid>
               </Grid>
               <TextField
-                type="text"
-                placeholder="confirmation code"
+                type='text'
+                placeholder='confirmation code'
                 onChange={(e) => setCode(e.target.value)}
                 className={styles.input}
               />
               <TextField
-                type="password"
-                placeholder="new password"
+                type='password'
+                placeholder='new password'
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.input}
               />
 
-              <Button color="primary" variant="contained" onClick={reset} className={styles.button}>
+              <Button color='primary' variant='contained' onClick={reset} className={styles.button}>
                 RESET PASSWORD
               </Button>
             </Paper>
