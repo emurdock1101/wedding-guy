@@ -1,6 +1,4 @@
-import { Aspect, EscsData, Ocean } from "./schema";
-
-export const ESCS_SAMPLE_SIZE = 480;
+import {Aspect, EscsData, Ocean} from './schema';
 
 export const escsMap: Map<string, EscsData> = new Map([
   [
@@ -10,7 +8,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.53,
     },
   ],
-
   [
     Aspect.AestheticOpenness.toString(),
     {
@@ -18,7 +15,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.61,
     },
   ],
-
   [
     Aspect.Interest.toString(),
     {
@@ -41,7 +37,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.61,
     },
   ],
-
   [
     Aspect.Orderliness.toString(),
     {
@@ -57,7 +52,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.6,
     },
   ],
-
   [
     Aspect.Enthusiasm.toString(),
     {
@@ -65,7 +59,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.72,
     },
   ],
-
   [
     Aspect.Assertiveness.toString(),
     {
@@ -73,7 +66,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.7,
     },
   ],
-
   [
     Ocean.Agreeableness.toString(),
     {
@@ -81,7 +73,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.45,
     },
   ],
-
   [
     Aspect.Compassion.toString(),
     {
@@ -89,7 +80,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.54,
     },
   ],
-
   [
     Aspect.Politeness.toString(),
     {
@@ -97,7 +87,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.53,
     },
   ],
-
   [
     Ocean.Neuroticism.toString(),
     {
@@ -105,7 +94,6 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.63,
     },
   ],
-
   [
     Aspect.Withdrawal.toString(),
     {
@@ -113,12 +101,229 @@ export const escsMap: Map<string, EscsData> = new Map([
       stdDev: 0.71,
     },
   ],
-
   [
     Aspect.Volatility.toString(),
     {
       mean: 2.48,
       stdDev: 0.7,
+    },
+  ],
+]);
+
+export const maleDataMap: Map<string, EscsData> = new Map([
+  [
+    Ocean.Openness.toString(),
+    {
+      mean: 3.6,
+      stdDev: 0.51,
+    },
+  ],
+  [
+    Aspect.AestheticOpenness.toString(),
+    {
+      mean: 3.57,
+      stdDev: 0.61,
+    },
+  ],
+  [
+    Aspect.Interest.toString(),
+    {
+      mean: 3.62,
+      stdDev: 0.61,
+    },
+  ],
+  [
+    Ocean.Conscientiousness.toString(),
+    {
+      mean: 3.32,
+      stdDev: 0.54,
+    },
+  ],
+  [
+    Aspect.Industriousness.toString(),
+    {
+      mean: 3.25,
+      stdDev: 0.68,
+    },
+  ],
+  [
+    Aspect.Orderliness.toString(),
+    {
+      mean: 3.38,
+      stdDev: 0.61,
+    },
+  ],
+  [
+    Ocean.Extraversion.toString(),
+    {
+      mean: 3.37,
+      stdDev: 0.55,
+    },
+  ],
+  [
+    Aspect.Enthusiasm.toString(),
+    {
+      mean: 3.4,
+      stdDev: 0.66,
+    },
+  ],
+  [
+    Aspect.Assertiveness.toString(),
+    {
+      mean: 3.34,
+      stdDev: 0.64,
+    },
+  ],
+  [
+    Ocean.Agreeableness.toString(),
+    {
+      mean: 3.65,
+      stdDev: 0.5,
+    },
+  ],
+  [
+    Aspect.Compassion.toString(),
+    {
+      mean: 3.78,
+      stdDev: 0.6,
+    },
+  ],
+  [
+    Aspect.Politeness.toString(),
+    {
+      mean: 3.52,
+      stdDev: 0.61,
+    },
+  ],
+  [
+    Ocean.Neuroticism.toString(),
+    {
+      mean: 2.68,
+      stdDev: 0.65,
+    },
+  ],
+  [
+    Aspect.Withdrawal.toString(),
+    {
+      mean: 2.73,
+      stdDev: 0.69,
+    },
+  ],
+  [
+    Aspect.Volatility.toString(),
+    {
+      mean: 2.63,
+      stdDev: 0.75,
+    },
+  ],
+]);
+
+export const femaleDataMap: Map<string, EscsData> = new Map([
+  [
+    Ocean.Openness.toString(),
+    {
+      mean: 3.61,
+      stdDev: 0.52,
+    },
+  ],
+  [
+    Aspect.AestheticOpenness.toString(),
+    {
+      mean: 3.74,
+      stdDev: 0.6,
+    },
+  ],
+  [
+    Aspect.Interest.toString(),
+    {
+      mean: 3.48,
+      stdDev: 0.63,
+    },
+  ],
+  [
+    Ocean.Conscientiousness.toString(),
+    {
+      mean: 3.35,
+      stdDev: 0.58,
+    },
+  ],
+
+  [
+    Aspect.Industriousness.toString(),
+    {
+      mean: 3.21,
+      stdDev: 0.73,
+    },
+  ],
+  [
+    Aspect.Orderliness.toString(),
+    {
+      mean: 3.49,
+      stdDev: 0.63,
+    },
+  ],
+  [
+    Ocean.Extraversion.toString(),
+    {
+      mean: 3.42,
+      stdDev: 0.59,
+    },
+  ],
+  [
+    Aspect.Enthusiasm.toString(),
+    {
+      mean: 3.56,
+      stdDev: 0.68,
+    },
+  ],
+  [
+    Aspect.Assertiveness.toString(),
+    {
+      mean: 3.28,
+      stdDev: 0.68,
+    },
+  ],
+  [
+    Ocean.Agreeableness.toString(),
+    {
+      mean: 3.89,
+      stdDev: 0.5,
+    },
+  ],
+
+  [
+    Aspect.Compassion.toString(),
+    {
+      mean: 4.04,
+      stdDev: 0.56,
+    },
+  ],
+  [
+    Aspect.Politeness.toString(),
+    {
+      mean: 3.74,
+      stdDev: 0.61,
+    },
+  ],
+  [
+    Ocean.Neuroticism.toString(),
+    {
+      mean: 2.94,
+      stdDev: 0.67,
+    },
+  ],
+  [
+    Aspect.Withdrawal.toString(),
+    {
+      mean: 3.02,
+      stdDev: 0.71,
+    },
+  ],
+  [
+    Aspect.Volatility.toString(),
+    {
+      mean: 2.86,
+      stdDev: 0.77,
     },
   ],
 ]);

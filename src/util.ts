@@ -1,18 +1,18 @@
 import { cumulativeStdNormalProbability, zScore } from "simple-statistics";
-import { escsMap } from "./constants/escsData";
-import { questionData } from "./constants/questionData";
+import {maleDataMap, femaleDataMap} from './constants/escsData';
+import {questionData} from './constants/questionData';
 
 /**
  * Returns a map of percentiles for each category key string.
  */
 export const getPercentiles = (): Record<string, number> => {
-  if (sessionStorage.length !== questionData.length) {
-    // console.log(
-    //   "Answer list isn't correct length. storageLength: " +
-    //     sessionStorage.length +
-    //     ", questionDataLength: " +
-    //     questionData.length
-    // );
+  if (sessionStorage.length - 2 !== questionData.length) {
+    console.log(
+      "Answer list isn't correct length. storageLength: " +
+        sessionStorage.length +
+        ', questionDataLength: ' +
+        questionData.length,
+    );
   }
 
   const averages: Map<string, [number, number]> = new Map();
@@ -67,22 +67,25 @@ export const getPercentiles = (): Record<string, number> => {
  * @param averages the map of averages for all 15 categories
  */
 export const getPercentilesFromAverages = (
-  averages: Map<string, [number, number]>
+  averages: Map<string, [number, number]>,
 ): Record<string, number> => {
   const percentiles: Record<string, number> = {};
   let currMean: number | undefined;
   let currStdDev: number | undefined;
   let currFormattedPerc: number;
 
+  const isMale: boolean = sessionStorage.getItem('gender') === 'male';
+  const dataMap = isMale ? maleDataMap : femaleDataMap;
+
   averages.forEach((value: [number, number], key: string) => {
-    currMean = escsMap.get(key)?.mean;
-    currStdDev = escsMap.get(key)?.stdDev;
+    currMean = dataMap.get(key)?.mean;
+    currStdDev = dataMap.get(key)?.stdDev;
 
     if (currMean && currStdDev) {
       //console.log(cumulativeStdNormalProbability(zScore(value[1], currMean, currStdDev)));
 
       currFormattedPerc = Math.round(
-        cumulativeStdNormalProbability(zScore(value[1], currMean, currStdDev)) * 100
+        cumulativeStdNormalProbability(zScore(value[1], currMean, currStdDev)) * 100,
       );
 
       if (currFormattedPerc <= 0) currFormattedPerc = 1;
@@ -101,7 +104,7 @@ export const getPercentilesFromAverages = (
       percentiles[`${key}`] = currFormattedPerc;
     } else {
       throw new Error(
-        "Mean or std dev from escs map not defined. value: " + value + ", key: " + key
+        'Mean or std dev from data map not defined. value: ' + value + ', key: ' + key,
       );
     }
   });
