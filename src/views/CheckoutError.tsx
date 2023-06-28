@@ -31,23 +31,27 @@ const CheckoutErrorPage: React.FC<CheckoutErrorPageProps> = (props: CheckoutErro
 
   return (
     <>
-      <Banner pageTitle="Checkout Error" />
-      <Grid container justify="center" alignItems="center">
+      <Banner pageTitle='Checkout Error' />
+      <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={10} className={styles.info}>
-          <Typography variant="h5">
+          <Typography variant='h5'>
             Something went wrong with processing your payment. If you have created an account with
             us before using the same email, that could be the issue.
           </Typography>
           <br></br>
           <br></br>
-          <Typography variant="h5">
+          <Typography variant='h5'>
             Click below to return home or select the Contact us page from the sidebar.
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Grid container justify="center" alignItems="center" className={styles.buttonContainer}>
+          <Grid
+            container
+            justifyContent='center'
+            alignItems='center'
+            className={styles.buttonContainer}>
             <Grid item xs={4} sm={2} className={styles.buttonItem}>
-              <Button color="default" variant="contained" onClick={() => handleNav("/")}>
+              <Button color='default' variant='contained' onClick={() => handleNav('/')}>
                 Go to home
               </Button>
             </Grid>

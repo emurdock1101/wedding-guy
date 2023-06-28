@@ -48,19 +48,19 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
 
   return (
     <>
-      <Banner pageTitle="Privacy" />
-      <Grid container justify="center" alignItems="center" className={styles.container}>
+      <Banner pageTitle='Privacy' />
+      <Grid container justifyContent='center' alignItems='center' className={styles.container}>
         <Grid item xs={10}>
           <Paper elevation={2} className={styles.paper}>
-            <Typography variant="subtitle1" className={styles.top}>
+            <Typography variant='subtitle1' className={styles.top}>
               Part of the information you share on our website is stored and used. We collect your
-              email and test results. Your credit card info is collected by Stripe. Your browser info, IP address, and
-              fingerprint are not stored.
+              email and test results. Your credit card info is collected by Stripe. Your browser
+              info, IP address, and fingerprint are not stored.
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
+            <Typography variant='subtitle1' className={styles.info}>
               No personal data is sold or shared with anyone. Never have, never will.
             </Typography>
-            <Typography variant="subtitle1" className={styles.info}>
+            <Typography variant='subtitle1' className={styles.info}>
               If you have any questions about this privacy policy, please reach out on our contact
               page.
             </Typography>

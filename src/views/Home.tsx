@@ -1,16 +1,16 @@
-import {Aspect, Ocean} from "../constants/schema";
-import {Box, Button, Grid, Typography, makeStyles} from "@material-ui/core";
-import {useEffect, useState} from "react";
-import Divider from "@mui/material/Divider";
-import HomeCard from "../components/HomeCard";
-import OceanBanner from "../components/OceanBanner";
-import prism from "../images/prism.jpeg";
-import spiral from "../images/spiral.jpeg";
-import {theme} from "../theme";
-import {useNavigate} from "react-router-dom";
-import Fade from "@mui/material/Fade";
-import BookNow from "../components/BookNow";
-import AboutTheTest from "../components/AboutTheTest";
+import {Aspect, Ocean} from '../constants/schema';
+import {Box, Button, Grid, Typography, makeStyles} from '@material-ui/core';
+import {useEffect, useState} from 'react';
+import Divider from '@mui/material/Divider';
+import HomeCard from '../components/HomeCard';
+import OceanBanner from '../components/OceanBanner';
+import prism from '../images/prism.jpeg';
+import spiral from '../images/spiral.jpeg';
+import {theme} from '../theme';
+import {useNavigate} from 'react-router-dom';
+import Fade from '@mui/material/Fade';
+import BookNow from '../components/BookNow';
+import AboutTheTest from '../components/AboutTheTest';
 
 interface HomeProps {
   loggedIn: boolean;
@@ -23,14 +23,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 
   const useStyles = makeStyles((theme) => ({
     plus: {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
     titleOverlay: {
-      position: "absolute",
+      position: 'absolute',
       top: 400,
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      textAlign: "center"
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      textAlign: 'center',
     },
     mainTitle: {
       color: theme.palette.common.white,
@@ -38,86 +38,86 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       marginBottom: 30,
       fontSize: isMedium ? 55 : 80,
       fontWeight: 600,
-      font: "Monaco",
+      font: 'Monaco',
       minWidth: 380,
-      padding: 20
+      padding: 20,
     },
     secondTitle: {
       color: theme.palette.common.white,
       fontSize: isMedium ? 35 : 50,
       fontWeight: 300,
-      font: "Monaco",
-      padding: 20
+      font: 'Monaco',
+      padding: 20,
     },
     prismImage: {
       marginTop: isSmall ? -8 : 0,
       height: isMedium ? 800 : 910,
-      width: "100%",
-      objectFit: "cover"
+      width: '100%',
+      objectFit: 'cover',
     },
     buyNowButton: {
       marginTop: 200,
       backgroundColor: theme.palette.primary.main,
-      "&:hover": {
-        backgroundColor: theme.palette.secondary.dark
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.dark,
       },
       color: theme.palette.common.white,
-      width: "220px",
-      height: "60px",
-      borderRadius: "30px"
+      width: '220px',
+      height: '60px',
+      borderRadius: '30px',
     },
     thirdTitle: {
-      fontSize: isMedium ? "40px" : "50px",
+      fontSize: isMedium ? '40px' : '50px',
       fontWeight: 300,
-      font: "Monaco",
-      marginBottom: 20
+      font: 'Monaco',
+      marginBottom: 20,
     },
     openingBlurb: {
-      textAlign: "left",
+      textAlign: 'left',
       marginTop: 50,
-      color: theme.palette.info.main
+      color: theme.palette.info.main,
     },
     thirdTitleDescription: {
-      marginTop: 20
+      marginTop: 20,
     },
     oceanRow: {
-      marginTop: 40
+      marginTop: 40,
     },
     spiralBox: {
       minHeight: 800,
       marginTop: 120,
       backgroundImage: `url(${spiral})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      backgroundAttachment: "fixed",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     big5: {
       marginTop: 50,
-      marginBottom: 40
+      marginBottom: 40,
     },
     oceanBanner: {
-      marginBottom: 40
+      marginBottom: 40,
     },
     big5Title: {
-      fontSize: isMedium ? "40px" : "50px",
+      fontSize: isMedium ? '40px' : '50px',
       fontWeight: 400,
-      font: "Monaco"
+      font: 'Monaco',
     },
     big5Desc: {
-      font: "Monaco",
-      marginBottom: 40
+      font: 'Monaco',
+      marginBottom: 40,
     },
     footer: {
       marginTop: 100,
-      width: "100%"
+      width: '100%',
     },
     aboutSubheading: {
-      fontWeight: 300
-    }
+      fontWeight: 300,
+    },
   }));
 
   const styles = useStyles();
@@ -146,14 +146,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   };
 
   useEffect(() => {
-    document?.querySelector("body")?.scrollTo({top: 0, left: 0, behavior: "smooth"});
-    window.addEventListener("resize", handleResize);
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.addEventListener('resize', handleResize);
   }, []);
 
   return (
     <Fade in={true} timeout={3500}>
       <div>
-        <Grid container justify='center' alignItems='center'>
+        <Grid container justifyContent='center' alignItems='center'>
           <Grid item xs={12}>
             <div className={styles.titleOverlay}>
               <Typography variant='h1' className={styles.mainTitle}>
@@ -161,17 +161,26 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Typography className={styles.secondTitle}>Discover a New You.</Typography>
               {!props.loggedIn && (
-                <Button variant='contained' onClick={() => handleNav("/buy")} className={styles.buyNowButton}>
+                <Button
+                  variant='contained'
+                  onClick={() => handleNav('/buy')}
+                  className={styles.buyNowButton}>
                   BUY NOW
                 </Button>
               )}
               {props.loggedIn && !props.completed && (
-                <Button variant='contained' onClick={() => handleNav("/test")} className={styles.buyNowButton}>
+                <Button
+                  variant='contained'
+                  onClick={() => handleNav('/test')}
+                  className={styles.buyNowButton}>
                   TAKE TEST
                 </Button>
               )}
               {props.loggedIn && props.completed && (
-                <Button variant='contained' onClick={() => handleNav("/results")} className={styles.buyNowButton}>
+                <Button
+                  variant='contained'
+                  onClick={() => handleNav('/results')}
+                  className={styles.buyNowButton}>
                   VIEW RESULTS
                 </Button>
               )}
@@ -185,22 +194,28 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </Typography>
               <Divider />
               <Typography variant='subtitle1' className={styles.thirdTitleDescription}>
-                Why do you think or act the way you do? What moves you to feel emotions or stirs your desires? Better
-                yet, can you change those things?
+                Why do you think or act the way you do? What moves you to feel emotions or stirs
+                your desires? Better yet, can you change those things?
               </Typography>
               <Typography variant='subtitle1' className={styles.thirdTitleDescription}>
-                Who we are stems from our personality, and Personality+ is an test based on the Big Five 10 Aspect Model
-                of personality.
+                Who we are stems from our personality, and Personality+ is an test based on the Big
+                Five 10 Aspect Model of personality.
               </Typography>
               <Typography variant='subtitle1' className={styles.thirdTitleDescription}>
-                Also known as the Five Factor Model or OCEAN, it is an empirical model of personality within psychology
-                that reveals the core of your personality, your strengths, and areas you can grow.
+                Also known as the Five Factor Model or OCEAN, it is an empirical model of
+                personality within psychology that reveals the core of your personality, your
+                strengths, and areas you can grow.
               </Typography>
               <Typography variant='subtitle1' className={styles.thirdTitleDescription}>
                 Discover a new you and start a new journey!
               </Typography>
             </div>
-            <Grid container spacing={8} justify='center' alignItems='center' className={styles.oceanRow}>
+            <Grid
+              container
+              spacing={8}
+              justifyContent='center'
+              alignItems='center'
+              className={styles.oceanRow}>
               <Grid item xs={12} md={4}>
                 <HomeCard
                   title='Why Take It?'
@@ -223,7 +238,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           </Grid>
           <Grid item xs={12}>
             <Box className={styles.spiralBox}>
-              <Grid container justify='center' alignItems='center'>
+              <Grid container justifyContent='center' alignItems='center'>
                 <Grid item xs={10} lg={6}>
                   <AboutTheTest />
                 </Grid>
@@ -234,10 +249,10 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             <div className={styles.big5}>
               <Typography className={styles.big5Title}>Big Five Traits and Aspects</Typography>
               <br></br>
-              <Typography variant={"subtitle1"} className={styles.big5Desc}>
-                Your results will explain your unique personality as it relates to the Big Five and its 10 aspects,
-                which are 2 subcategories for each of the 5 dimensions. These categories and subcategories are listed
-                below.
+              <Typography variant={'subtitle1'} className={styles.big5Desc}>
+                Your results will explain your unique personality as it relates to the Big Five and
+                its 10 aspects, which are 2 subcategories for each of the 5 dimensions. These
+                categories and subcategories are listed below.
               </Typography>
             </div>
           </Grid>
