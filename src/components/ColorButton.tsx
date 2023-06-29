@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button, {ButtonProps} from '@mui/material/Button';
 
-import { styled } from "@mui/material/styles";
+import {styled} from '@mui/material/styles';
 
 interface ColoredButtonProps {
   backgroundHex?: string;
@@ -11,15 +11,15 @@ interface ColoredButtonProps {
 }
 
 const ColorButton: React.FC<ColoredButtonProps> = (props: ColoredButtonProps) => {
-  const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  const StyledButton = styled(Button)<ButtonProps>(({theme}) => ({
     color: props.textHex ?? theme.palette.common.white,
     backgroundColor: props.backgroundHex ?? theme.palette.primary.main,
-    "&:hover": {
+    '&:hover': {
       backgroundColor: props.backgroundHex ?? theme.palette.primary.dark,
     },
   }));
 
-  return <StyledButton variant="contained"/>;
+  return <StyledButton variant='contained' />;
 };
 
 export default ColorButton;

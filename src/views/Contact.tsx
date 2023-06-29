@@ -1,8 +1,8 @@
-import { Facebook, Instagram, Mail, Twitter } from "@material-ui/icons";
-import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import {Facebook, Instagram, Mail, Twitter} from '@material-ui/icons';
+import {Grid, Paper, Typography, makeStyles} from '@material-ui/core';
+import {useEffect, useState} from 'react';
 
-import Banner from "../components/Banner";
+import Banner from '../components/Banner';
 
 interface ContactProps {}
 
@@ -10,7 +10,7 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   const useStyles = makeStyles((theme) => ({
     facebook: {
       fontSize: isMobile ? 37 : 45,
-      "&:hover": {
+      '&:hover': {
         color: theme.palette.primary.main,
       },
       marginRight: isMobile ? 30 : 60,
@@ -18,12 +18,12 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
     },
     emailLink: {
       marginTop: 20,
-      display: "flex",
-      "&:hover": {
+      display: 'flex',
+      '&:hover': {
         color: theme.palette.primary.main,
       },
       color: theme.palette.info.main,
-      justifyItems: "middle",
+      justifyItems: 'middle',
       width: 310,
     },
     help: {
@@ -59,8 +59,8 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.addEventListener('resize', handleResize);
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, []);
 
   const styles = useStyles();

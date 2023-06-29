@@ -1,24 +1,24 @@
-import { Button, Grid, Paper, makeStyles } from "@material-ui/core";
+import {Button, Grid, Paper, makeStyles} from '@material-ui/core';
 
-import ProgressBar from "../components/ProgressBar";
-import { Question } from "../constants/schema";
-import QuestionComp from "./QuestionComp";
-import { useState, useEffect } from "react";
+import ProgressBar from '../components/ProgressBar';
+import {Question} from '../constants/schema';
+import QuestionComp from './QuestionComp';
+import {useState, useEffect} from 'react';
 
 export const useStyles = makeStyles((theme) => ({
   pageNav: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   homeLink: {
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 60,
   },
   linkText: {
     color: theme.palette.success.main,
-    "&:hover": {
+    '&:hover': {
       color: theme.palette.success.dark,
     },
-    textDecoration: "underline",
+    textDecoration: 'underline',
     fontSize: 18,
   },
   row: {
@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
   },
   link: {
-    textDecoration: "none",
+    textDecoration: 'none',
   },
   container: {
     padding: 15,
@@ -57,7 +57,7 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
   };
 
   useEffect(() => {
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, []);
 
   return (

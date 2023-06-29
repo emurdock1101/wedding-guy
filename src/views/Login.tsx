@@ -1,43 +1,43 @@
-import { makeStyles, TextField, Button, Grid, Typography, Paper, Box } from "@material-ui/core";
-import { useState } from "react";
-import { Auth } from "aws-amplify";
-import Banner from "../components/Banner";
-import { Link } from "react-router-dom";
-import Alert from "@mui/material/Alert";
-import { useNavigate } from "react-router-dom";
+import {makeStyles, TextField, Button, Grid, Typography, Paper, Box} from '@material-ui/core';
+import {useState} from 'react';
+import {Auth} from 'aws-amplify';
+import Banner from '../components/Banner';
+import {Link} from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import {useNavigate} from 'react-router-dom';
 
 interface LoginProps {
   onLogIn: () => void;
 }
 
 const Login: React.FC<LoginProps> = (props: LoginProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [alert, showAlert] = useState(false);
-  const [alertContent, setAlertContent] = useState("");
+  const [alertContent, setAlertContent] = useState('');
 
   const useStyles = makeStyles((theme) => ({
     plus: {
       color: theme.palette.primary.main,
-      textDecoration: "none",
-      "&:hover": {
+      textDecoration: 'none',
+      '&:hover': {
         color: theme.palette.primary.dark,
       },
     },
     input: {
-      minWidth: "100%",
+      minWidth: '100%',
       marginTop: 30,
       paddingLeft: 20,
       paddingRight: 20,
     },
     button: {
-      minWidth: "30%",
+      minWidth: '30%',
       margin: 20,
     },
     noAccount: {
       fontSize: 25,
       fontWeight: 300,
-      font: "Monaco",
+      font: 'Monaco',
       marginLeft: 20,
       marginTop: 30,
       marginBottom: 30,
@@ -49,7 +49,7 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
     },
     alert: {
       marginBottom: 15,
-      border: "1px solid #EF5350",
+      border: '1px solid #EF5350',
     },
     box: {
       height: 50,
@@ -58,11 +58,11 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
     forgot: {
       fontSize: 15,
       fontWeight: 300,
-      font: "Monaco",
+      font: 'Monaco',
       marginLeft: 20,
       color: theme.palette.primary.main,
-      textDecoration: "none",
-      "&:hover": {
+      textDecoration: 'none',
+      '&:hover': {
         color: theme.palette.primary.dark,
       },
     },
@@ -85,19 +85,19 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
     try {
       await Auth.signIn(username, password);
       props.onLogIn();
-      handleNav("/results");
+      handleNav('/results');
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!username || !username.length) {
-        setAlertContent("Username must be provided.");
+        setAlertContent('Username must be provided.');
       } else if (!password || !password.length) {
-        setAlertContent("Password must be provided.");
-      } else if (error.code === "UserNotFoundException") {
+        setAlertContent('Password must be provided.');
+      } else if (error.code === 'UserNotFoundException') {
         setAlertContent(
-          "User is not found. Try again with the correct credentials, or sign up below to create an account."
+          'User is not found. Try again with the correct credentials, or sign up below to create an account.',
         );
-      } else if (error.code === "NotAuthorizedException") {
-        setAlertContent("Incorrect password or email.");
+      } else if (error.code === 'NotAuthorizedException') {
+        setAlertContent('Incorrect password or email.');
       } else if (error.code.length) {
         setAlertContent(error.code);
       } else if (error.log.length) {

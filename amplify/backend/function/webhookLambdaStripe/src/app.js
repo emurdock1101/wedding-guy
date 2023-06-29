@@ -26,15 +26,15 @@ See the License for the specific language governing permissions and limitations 
 	REGION
 Amplify Params - DO NOT EDIT */
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
-const aws = require("aws-sdk");
+const express = require('express');
+const bodyParser = require('body-parser');
+const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+const aws = require('aws-sdk');
 
 const getStripeKey = async () => {
-  const { Parameters } = await new aws.SSM()
+  const {Parameters} = await new aws.SSM()
     .getParameters({
-      Names: ["stripe_key"].map((secretName) => process.env[secretName]),
+      Names: ['stripe_key'].map((secretName) => process.env[secretName]),
       WithDecryption: true,
     })
     .promise();
@@ -49,20 +49,20 @@ app.use(
     verify: function (req, res, buf) {
       req.rawBody = buf.toString();
     },
-  })
+  }),
 );
 app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
   next();
 });
 
-app.post("/webhook", async function (req, res) {
+app.post('/webhook', async function (req, res) {
   const stripeKey = await getStripeKey();
-  const stripe = require("stripe")(stripeKey);
+  const stripe = require('stripe')(stripeKey);
 
   let userEmail;
   if (req.body.data.object.customer) {
@@ -79,7 +79,7 @@ app.post("/webhook", async function (req, res) {
   console.log(userEmail);
 
   const cognito = new aws.CognitoIdentityServiceProvider();
-  const UserPoolId = process.env.AUTH_STRIPEDEMO1C66A4D4_USERPOOLID ?? "us-east-1_QlzfM0BUX";
+  const UserPoolId = process.env.AUTH_STRIPEDEMO1C66A4D4_USERPOOLID ?? 'us-east-1_QlzfM0BUX';
 
   // const userExists = false;
 
@@ -107,7 +107,7 @@ app.post("/webhook", async function (req, res) {
     {
       UserPoolId,
       Username: userEmail,
-      DesiredDeliveryMediums: ["EMAIL"],
+      DesiredDeliveryMediums: ['EMAIL'],
       UserAttributes: [
         {
           Name: 'email_verified' /* required */,
@@ -120,7 +120,7 @@ app.post("/webhook", async function (req, res) {
       ],
       ValidationData: [
         {
-          Name: "email",
+          Name: 'email',
           Value: userEmail,
         },
       ],
@@ -131,12 +131,12 @@ app.post("/webhook", async function (req, res) {
         console.log(data);
         res.sendStatus(200);
       } // successful response
-    }
+    },
   );
 });
 
 app.listen(3000, function () {
-  console.log("App started");
+  console.log('App started');
 });
 
 // Export the app object. When executing the application local this does nothing. However,

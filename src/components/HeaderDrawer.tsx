@@ -1,41 +1,41 @@
-import { Button, makeStyles } from "@material-ui/core";
-import { Facebook, Group, Instagram, Phone, Twitter } from "@material-ui/icons";
-import { HelpCenter, PrivacyTip } from "@mui/icons-material";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import React, { useEffect, useRef } from "react";
+import {Button, makeStyles} from '@material-ui/core';
+import {Facebook, Group, Instagram, Phone, Twitter} from '@material-ui/icons';
+import {HelpCenter, PrivacyTip} from '@mui/icons-material';
+import MuiAppBar, {AppBarProps as MuiAppBarProps} from '@mui/material/AppBar';
+import React, {useEffect, useRef} from 'react';
 
-import Box from "@mui/material/Box";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import { styled } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
-import { ReactComponent as Logo } from "../images/logo.svg";
-import { Auth } from "aws-amplify";
+import Box from '@mui/material/Box';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import {styled} from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom';
+import {ReactComponent as Logo} from '../images/logo.svg';
+import {Auth} from 'aws-amplify';
 
 const drawerWidth = 260;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
+const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})<{
   open?: boolean;
-}>(({ theme, open }) => ({
+}>(({theme, open}) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
-  transition: theme.transitions.create("margin", {
+  transition: theme.transitions.create('margin', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   marginRight: -drawerWidth,
   ...(open && {
-    transition: theme.transitions.create("margin", {
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -48,30 +48,30 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({theme, open}) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["margin", "width"], {
+    transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginRight: drawerWidth,
   }),
-  backgroundColor: "#F8F7F3",
+  backgroundColor: '#F8F7F3',
 }));
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
+const DrawerHeader = styled('div')(({theme}) => ({
+  display: 'flex',
+  alignItems: 'center',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: "flex-start",
+  justifyContent: 'flex-start',
 }));
 
 const useStyles = makeStyles((theme) => ({
@@ -80,32 +80,32 @@ const useStyles = makeStyles((theme) => ({
   },
   linkText: {
     color: theme.palette.success.main,
-    "&:hover": {
+    '&:hover': {
       color: theme.palette.success.dark,
     },
-    textDecoration: "underline",
+    textDecoration: 'underline',
     fontSize: 18,
   },
   link: {
-    textDecoration: "none",
+    textDecoration: 'none',
   },
   home: {
     flexGrow: 1,
   },
   homeButton: {
-    color: "#111840",
-    backgroundColor: "#F8F7F3",
+    color: '#111840',
+    backgroundColor: '#F8F7F3',
     width: 50,
     height: 50,
   },
   signInButton: {
-    color: "#111840",
-    backgroundColor: "#F8F7F3",
+    color: '#111840',
+    backgroundColor: '#F8F7F3',
     width: 110,
     height: 50,
   },
   menuIcon: {
-    color: "#111840",
+    color: '#111840',
   },
 }));
 
@@ -154,7 +154,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
     try {
       await Auth.signOut();
       props.onLogOut();
-      handleNav("/");
+      handleNav('/');
     } catch (error) {
       console.log(JSON.stringify(error));
     }
@@ -172,32 +172,31 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
       }
     };
 
-    document.addEventListener("mousedown", checkIfClickedOutside);
+    document.addEventListener('mousedown', checkIfClickedOutside);
 
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("mousedown", checkIfClickedOutside);
+      document.removeEventListener('mousedown', checkIfClickedOutside);
     };
   }, [open]);
 
   return (
-    <Box sx={{ display: "flex" }} className={styles.container}>
+    <Box sx={{display: 'flex'}} className={styles.container}>
       <CssBaseline />
-      <AppBar position="absolute" open={open}>
+      <AppBar position='absolute' open={open}>
         <Toolbar>
           <div className={styles.home}>
             <Button
               className={styles.homeButton}
               // variant="contained"
-              onClick={() => handleNav("/")}
-            >
+              onClick={() => handleNav('/')}>
               {<Logo />}
             </Button>
           </div>
           {
             // Show results page if logged in
             props.loggedIn && props.completed && (
-              <Button className={styles.signInButton} onClick={() => handleNav("/results")}>
+              <Button className={styles.signInButton} onClick={() => handleNav('/results')}>
                 RESULTS
               </Button>
             )
@@ -205,7 +204,7 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
           {
             // Log in if not already
             !props.loggedIn && (
-              <Button className={styles.signInButton} onClick={() => handleNav("/login")}>
+              <Button className={styles.signInButton} onClick={() => handleNav('/login')}>
                 LOG IN
               </Button>
             )
@@ -219,12 +218,11 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
             )
           }
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
+            color='inherit'
+            aria-label='open drawer'
+            edge='end'
             onClick={handleDrawerOpen}
-            sx={{ ...(open && { display: "none" }) }}
-          >
+            sx={{...(open && {display: 'none'})}}>
             <MenuIcon className={styles.menuIcon} />
           </IconButton>
         </Toolbar>
@@ -236,15 +234,14 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: drawerWidth,
           },
         }}
-        variant="persistent"
-        anchor="right"
+        variant='persistent'
+        anchor='right'
         open={open}
-        ref={ref}
-      >
+        ref={ref}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             <ChevronRightIcon />
@@ -252,43 +249,43 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
         </DrawerHeader>
         <Divider />
         <List>
-          <div style={{ color: "#1b1d21", textDecoration: "none" }}>
+          <div style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleSidebarNav("/about")}>
+              <ListItemButton onClick={() => handleSidebarNav('/about')}>
                 <ListItemIcon>
                   <Group />
                 </ListItemIcon>
-                <ListItemText primary={"Our team"} />
+                <ListItemText primary={'Our team'} />
               </ListItemButton>
             </ListItem>
           </div>
-          <div style={{ color: "#1b1d21", textDecoration: "none" }}>
+          <div style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleSidebarNav("/faqs")}>
+              <ListItemButton onClick={() => handleSidebarNav('/faqs')}>
                 <ListItemIcon>
                   <HelpCenter />
                 </ListItemIcon>
-                <ListItemText primary={"FAQs"} />
+                <ListItemText primary={'FAQs'} />
               </ListItemButton>
             </ListItem>
           </div>
-          <div style={{ color: "#1b1d21", textDecoration: "none" }}>
+          <div style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleSidebarNav("/contact")}>
+              <ListItemButton onClick={() => handleSidebarNav('/contact')}>
                 <ListItemIcon>
                   <Phone />
                 </ListItemIcon>
-                <ListItemText primary={"Contact us"} />
+                <ListItemText primary={'Contact us'} />
               </ListItemButton>
             </ListItem>
           </div>
-          <div style={{ color: "#1b1d21", textDecoration: "none" }}>
+          <div style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleSidebarNav("/privacy")}>
+              <ListItemButton onClick={() => handleSidebarNav('/privacy')}>
                 <ListItemIcon>
                   <PrivacyTip />
                 </ListItemIcon>
-                <ListItemText primary={"Privacy"} />
+                <ListItemText primary={'Privacy'} />
               </ListItemButton>
             </ListItem>
           </div>
@@ -296,47 +293,44 @@ const HeaderDrawer = (props: HeaderDrawerProps) => {
         <Divider />
         <List>
           <a
-            href="https://www.facebook.com/DiscoverPersonalityPlus/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#1b1d21", textDecoration: "none" }}
-          >
+            href='https://www.facebook.com/DiscoverPersonalityPlus/'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <Facebook />
                 </ListItemIcon>
-                <ListItemText primary={"Facebook"} />
+                <ListItemText primary={'Facebook'} />
               </ListItemButton>
             </ListItem>
           </a>
           <a
-            href="https://instagram.com/discover_personalityplus"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#1b1d21", textDecoration: "none" }}
-          >
+            href='https://instagram.com/discover_personalityplus'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <Instagram />
                 </ListItemIcon>
-                <ListItemText primary={"Instagram"} />
+                <ListItemText primary={'Instagram'} />
               </ListItemButton>
             </ListItem>
           </a>
           <a
-            href="https://twitter.com/PersonalityB5"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#1b1d21", textDecoration: "none" }}
-          >
+            href='https://twitter.com/PersonalityB5'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{color: '#1b1d21', textDecoration: 'none'}}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <Twitter />
                 </ListItemIcon>
-                <ListItemText primary={"Twitter"}></ListItemText>
+                <ListItemText primary={'Twitter'}></ListItemText>
               </ListItemButton>
             </ListItem>
           </a>

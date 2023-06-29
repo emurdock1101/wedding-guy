@@ -1,8 +1,8 @@
-import PreTest from "./PreTest";
-import QuestionPack from "../components/QuestionPack";
-import { Question } from "../constants/schema";
-import Submit from "./Submit";
-import { useState } from "react";
+import PreTest from './PreTest';
+import QuestionPack from '../components/QuestionPack';
+import {Question} from '../constants/schema';
+import Submit from './Submit';
+import {useState} from 'react';
 
 interface QuizProps {
   onComplete: () => void;

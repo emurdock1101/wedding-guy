@@ -1,17 +1,17 @@
-import { Aspect, Ocean } from "../constants/schema";
-import { Grid, Paper, Typography, makeStyles, Button } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import { Storage } from "@aws-amplify/storage";
-import Banner from "../components/Banner";
-import BookNow from "../components/BookNow";
-import Interpretations from "../components/Interpretations";
-import OceanAccordion from "../components/OceanAccordion";
-import ReactApexChart from "react-apexcharts";
-import ResultTable from "../components/ResultTable";
-import { aspectOptions } from "../constants/aspectSpecs";
-import { oceanOptions } from "../constants/oceanSpecs";
-import { theme } from "../theme";
-import { Auth } from "aws-amplify";
+import {Aspect, Ocean} from '../constants/schema';
+import {Grid, Paper, Typography, makeStyles, Button} from '@material-ui/core';
+import {useEffect, useState} from 'react';
+import {Storage} from '@aws-amplify/storage';
+import Banner from '../components/Banner';
+import BookNow from '../components/BookNow';
+import Interpretations from '../components/Interpretations';
+import OceanAccordion from '../components/OceanAccordion';
+import ReactApexChart from 'react-apexcharts';
+import ResultTable from '../components/ResultTable';
+import {aspectOptions} from '../constants/aspectSpecs';
+import {oceanOptions} from '../constants/oceanSpecs';
+import {theme} from '../theme';
+import {Auth} from 'aws-amplify';
 
 interface ResultsProps {}
 
@@ -19,21 +19,21 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const [percentiles, setPercentiles] = useState<Record<string, number> | null>(null);
   const useStyles = makeStyles((theme) => ({
     info: {
-      marginBottom: "20px",
+      marginBottom: '20px',
       fontSize: 18,
       color: theme.palette.info.main,
     },
     explanation: {
-      padding: "20px",
-      marginBottom: "10px", //this needs change if anything changes - should line up with table
+      padding: '20px',
+      marginBottom: '10px', //this needs change if anything changes - should line up with table
       borderRadius: 10,
     },
     interpretations: {
-      marginBottom: "45px", //Not sure why this isn't the same pixel ratio as others
+      marginBottom: '45px', //Not sure why this isn't the same pixel ratio as others
       borderRadius: 10,
     },
     titlePaper: {
-      backgroundColor: "#111840", // navy blue
+      backgroundColor: '#111840', // navy blue
       minHeight: 200,
     },
     interpretationTitle: {
@@ -43,30 +43,30 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
       marginTop: 28,
       marginBottom: 28, // lines up with table results on xl screen
       backgroundColor: theme.palette.primary.main,
-      "&:hover": {
+      '&:hover': {
         backgroundColor: theme.palette.info.main,
       },
       color: theme.palette.common.white,
-      width: "200px",
-      height: "40px",
-      borderRadius: "20px",
+      width: '200px',
+      height: '40px',
+      borderRadius: '20px',
     },
     bookNowLink: {
-      textDecoration: "none",
+      textDecoration: 'none',
       color: theme.palette.common.white,
     },
     footer: {
       marginTop: 40,
-      width: "100%",
+      width: '100%',
     },
     downloadButton: {
-      width: "100%",
-      color: "111840", //navy,
-      border: "1px solid #111840",
+      width: '100%',
+      color: '111840', //navy,
+      border: '1px solid #111840',
       borderRadius: 10,
-      "&:hover": {
-        color: "#F8F7F3", //off-white
-        backgroundColor: "#111840", //navy blue
+      '&:hover': {
+        color: '#F8F7F3', //off-white
+        backgroundColor: '#111840', //navy blue
       },
     },
   }));
@@ -99,13 +99,13 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   // choose the screen size
   const getResultsFromS3 = async (): Promise<void> => {
     const user = await Auth.currentAuthenticatedUser();
-    const email: string = user.attributes?.email ?? "";
-    const subId: string = user.attributes?.sub ?? "";
+    const email: string = user.attributes?.email ?? '';
+    const subId: string = user.attributes?.sub ?? '';
 
     Storage.configure({
       bucket: process.env.REACT_APP_BUCKET_NAME,
-      level: "private",
-      region: "us-east-1",
+      level: 'private',
+      region: 'us-east-1',
     });
 
     const url: string = await Storage.get(`${email}-${subId}/${email}-results`);

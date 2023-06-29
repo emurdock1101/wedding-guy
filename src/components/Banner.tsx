@@ -1,5 +1,5 @@
-import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import {Grid, Paper, Typography, makeStyles} from '@material-ui/core';
+import {useEffect, useState} from 'react';
 
 interface BannerProps {
   pageTitle: string;
@@ -13,14 +13,14 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
       paddingBottom: 40,
       paddingLeft: 20,
       paddingRight: 20,
-      color: "white",
+      color: 'white',
       fontSize: isMobile ? 50 : 60,
-      textAlign: isMobile ? "center" : "left",
-      fontWeight: 300
+      textAlign: isMobile ? 'center' : 'left',
+      fontWeight: 300,
     },
     paper: {
-      backgroundColor: "#111840", // navy blue
-      borderRadius: 0
+      backgroundColor: '#111840', // navy blue
+      borderRadius: 0,
     },
     container: {
       marginBottom: 90,
@@ -39,7 +39,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
   });
 
   return (

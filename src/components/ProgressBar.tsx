@@ -1,32 +1,35 @@
-import * as React from "react";
+import * as React from 'react';
 
-import LinearProgress, { LinearProgressProps, linearProgressClasses } from "@mui/material/LinearProgress";
+import LinearProgress, {
+  LinearProgressProps,
+  linearProgressClasses,
+} from '@mui/material/LinearProgress';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { styled } from '@mui/material/styles';
-import { theme as thm } from "../theme";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import {styled} from '@mui/material/styles';
+import {theme as thm} from '../theme';
 
-const BorderLinearProgress = styled(LinearProgressWithLabel)(({ theme }) => ({
+const BorderLinearProgress = styled(LinearProgressWithLabel)(({theme}) => ({
   height: 12,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "#757575"
+    backgroundColor: '#757575',
   },
   [`& .${linearProgressClasses.bar}`]: {
     backgroundColor: thm.palette.primary.main,
   },
 }));
 
-function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
+function LinearProgressWithLabel(props: LinearProgressProps & {value: number}) {
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} color="primary"/>
+    <Box sx={{display: 'flex', alignItems: 'center'}}>
+      <Box sx={{width: '100%', mr: 1}}>
+        <LinearProgress variant='determinate' {...props} color='primary' />
       </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value
+      <Box sx={{minWidth: 35}}>
+        <Typography variant='body2' color='text.secondary'>{`${Math.round(
+          props.value,
         )}%`}</Typography>
       </Box>
     </Box>

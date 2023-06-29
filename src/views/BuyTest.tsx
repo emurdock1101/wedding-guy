@@ -1,12 +1,12 @@
-import { Button, Grid, Typography, makeStyles, Paper } from "@material-ui/core";
-import { loadStripe } from "@stripe/stripe-js";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import Divider from "@mui/material/Divider";
+import {Button, Grid, Typography, makeStyles, Paper} from '@material-ui/core';
+import {loadStripe} from '@stripe/stripe-js';
+import {useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
+import Divider from '@mui/material/Divider';
 
 export const useStyles = makeStyles((theme) => ({
   info: {
-    padding: "15px",
+    padding: '15px',
     marginTop: 60,
   },
   buttons: {
@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   included: {
     fontWeight: 300,
-    font: "Monaco",
+    font: 'Monaco',
     marginBottom: 20,
   },
   paper: {
@@ -48,13 +48,13 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
 
   useEffect(() => {
     sessionStorage.clear();
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   });
 
   const signUp = async (e: any) => {
     e.preventDefault();
     try {
-      const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY ?? "");
+      const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY ?? '');
 
       if (stripe) {
         await stripe.redirectToCheckout({
@@ -64,14 +64,14 @@ const BuyTest: React.FC<BuyTestProps> = (props: BuyTestProps) => {
               quantity: 1,
             },
           ],
-          mode: "payment",
-          successUrl: (process.env.REACT_APP_DOMAIN ?? "http://localhost:3000") + "/signup",
-          cancelUrl: process.env.REACT_APP_DOMAIN ?? "http://localhost:3000",
+          mode: 'payment',
+          successUrl: (process.env.REACT_APP_DOMAIN ?? 'http://localhost:3000') + '/signup',
+          cancelUrl: process.env.REACT_APP_DOMAIN ?? 'http://localhost:3000',
         });
       }
     } catch (error) {
       console.log(JSON.stringify(error));
-      handleNav("/checkouterror");
+      handleNav('/checkouterror');
     }
   };
 

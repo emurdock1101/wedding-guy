@@ -1,6 +1,6 @@
-import { Box, Grid, Typography, makeStyles } from "@material-ui/core";
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
-import { useEffect, useState } from "react";
+import {Box, Grid, Typography, makeStyles} from '@material-ui/core';
+import {Facebook, Instagram, Twitter} from '@material-ui/icons';
+import {useEffect, useState} from 'react';
 
 interface BigFooterProps {}
 
@@ -15,13 +15,13 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
       borderTop: `1px solid ${theme.palette.info.main}`,
     },
     row: {
-      display: "block",
+      display: 'block',
       marginTop: 40,
     },
     facebook: {
       fontSize: isMobile ? 60 : 80,
-      border: "1x solid red",
-      "&:hover": {
+      border: '1x solid red',
+      '&:hover': {
         color: theme.palette.primary.main,
       },
       marginRight: 20,
@@ -29,7 +29,7 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
       color: theme.palette.info.main,
     },
     socialMedia: {
-      textAlign: "center",
+      textAlign: 'center',
       paddingTop: 160,
       paddingBottom: 100,
       paddingLeft: 20,
@@ -49,7 +49,7 @@ const BigFooter: React.FC<BigFooterProps> = (props: BigFooterProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
   });
 
   return (

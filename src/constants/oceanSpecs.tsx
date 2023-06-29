@@ -1,39 +1,39 @@
-import { theme as thm } from "../theme";
+import {theme as thm} from '../theme';
 
-type MyEnum = "center";
-const centerTitle: MyEnum = "center";
+type MyEnum = 'center';
+const centerTitle: MyEnum = 'center';
 
 // options for ocean chart
 export const oceanOptions = {
   chart: {
-    id: "basic-bar",
+    id: 'basic-bar',
     toolbar: {
       show: false,
     },
   },
   xaxis: {
-    categories: ["Ext.", "Neu.", "Agr.", "Con.", "Opn."],
+    categories: ['Ext.', 'Neu.', 'Agr.', 'Con.', 'Opn.'],
     title: {
-      text: "Percentile",
+      text: 'Percentile',
     },
     labels: {
       formatter: function (val: string) {
-        return val + "%";
+        return val + '%';
       },
     },
   },
   yaxis: {
-    type: "numeric",
+    type: 'numeric',
     min: 0,
     max: 100,
     formatter: function (value: number) {
-      return value + "%";
+      return value + '%';
     },
   },
   stroke: {
     show: true,
     width: 3,
-    colors: ["#fff"],
+    colors: ['#fff'],
   },
   tooltip: {
     enabled: false,
@@ -41,7 +41,7 @@ export const oceanOptions = {
     intersect: false,
     y: {
       formatter: function (value: number) {
-        return value + "%";
+        return value + '%';
       },
     },
     distributed: true,
@@ -50,11 +50,11 @@ export const oceanOptions = {
     enabled: true,
     offsetX: -10,
     style: {
-      fontSize: "12px",
-      colors: ["#fff"],
+      fontSize: '12px',
+      colors: ['#fff'],
     },
     formatter: function (value: number) {
-      return value + "%";
+      return value + '%';
     },
     distributed: true,
   },
@@ -63,10 +63,10 @@ export const oceanOptions = {
       horizontal: true,
       borderRadius: 5,
       dataLabels: {
-        position: "top",
+        position: 'top',
       },
       distributed: true,
-      barHeight: "100%",
+      barHeight: '100%',
     },
   },
   legend: {
@@ -80,23 +80,23 @@ export const oceanOptions = {
     thm.palette.secondary.main,
   ],
   title: {
-    text: "Your Big Five Trait Scores",
+    text: 'Your Big Five Trait Scores',
     align: centerTitle,
     margin: 5,
     offsetX: 0,
     offsetY: 0,
     floating: false,
     style: {
-      fontSize: "14px",
-      fontWeight: "bold",
+      fontSize: '14px',
+      fontWeight: 'bold',
       fontFamily: undefined,
-      color: "#263238",
+      color: '#263238',
     },
   },
   states: {
     active: {
       filter: {
-        type: "none",
+        type: 'none',
       },
     },
   },

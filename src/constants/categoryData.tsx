@@ -1,6 +1,6 @@
-import { Aspect, Ocean } from "./schema";
+import {Aspect, Ocean} from './schema';
 
-import { Big5Data } from "./schema";
+import {Big5Data} from './schema';
 
 /**
  * Master Order
@@ -18,77 +18,77 @@ import { Big5Data } from "./schema";
 export const categoryData: Big5Data[] = [
   {
     category: Ocean.Extraversion,
-    categoryAbbr: "Ext.",
+    categoryAbbr: 'Ext.',
     isOcean: true,
   },
   {
     category: Aspect.Enthusiasm,
-    categoryAbbr: "Ent.",
+    categoryAbbr: 'Ent.',
     isOcean: false,
   },
   {
     category: Aspect.Assertiveness,
-    categoryAbbr: "Asr.",
+    categoryAbbr: 'Asr.',
     isOcean: false,
   },
   {
     category: Ocean.Neuroticism,
-    categoryAbbr: "Neu.",
+    categoryAbbr: 'Neu.',
     isOcean: true,
   },
   {
     category: Aspect.Withdrawal,
-    categoryAbbr: "Wit.",
+    categoryAbbr: 'Wit.',
     isOcean: false,
   },
   {
     category: Aspect.Volatility,
-    categoryAbbr: "Vol.",
+    categoryAbbr: 'Vol.',
     isOcean: false,
   },
   {
     category: Ocean.Agreeableness,
-    categoryAbbr: "Agr.",
+    categoryAbbr: 'Agr.',
     isOcean: true,
   },
   {
     category: Aspect.Compassion,
-    categoryAbbr: "Com.",
+    categoryAbbr: 'Com.',
     isOcean: false,
   },
   {
     category: Aspect.Politeness,
-    categoryAbbr: "Pol.",
+    categoryAbbr: 'Pol.',
     isOcean: false,
   },
   {
     category: Ocean.Conscientiousness,
-    categoryAbbr: "Con.",
+    categoryAbbr: 'Con.',
     isOcean: true,
   },
   {
     category: Aspect.Industriousness,
-    categoryAbbr: "Ind.",
+    categoryAbbr: 'Ind.',
     isOcean: false,
   },
   {
     category: Aspect.Orderliness,
-    categoryAbbr: "Ord.",
+    categoryAbbr: 'Ord.',
     isOcean: false,
   },
   {
     category: Ocean.Openness,
-    categoryAbbr: "Opn.",
+    categoryAbbr: 'Opn.',
     isOcean: true,
   },
   {
     category: Aspect.AestheticOpenness,
-    categoryAbbr: "Aes.",
+    categoryAbbr: 'Aes.',
     isOcean: false,
   },
   {
     category: Aspect.Interest,
-    categoryAbbr: "Int.",
+    categoryAbbr: 'Int.',
     isOcean: false,
   },
 ];
