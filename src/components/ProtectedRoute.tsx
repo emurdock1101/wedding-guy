@@ -1,46 +1,46 @@
-import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import {useContext} from 'react';
+import {Navigate} from 'react-router-dom';
 
-import { UserContext } from "../App";
-import Loading from "./Loading";
+import {UserContext} from '../App';
+import Loading from './Loading';
 
 interface ProtectedRouteProps {
-  route: "results" | "test" | "loggedOut";
+  route: 'results' | 'test' | 'loggedOut';
   component: JSX.Element;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = (props: ProtectedRouteProps) => {
-  const { user } = useContext(UserContext);
+  const {user} = useContext(UserContext);
 
-  if (props.route === "results") {
+  if (props.route === 'results') {
     if (user.loggedIn === undefined || user.completed === undefined) {
       return <Loading />;
     } else {
-      return user.loggedIn === "loggedIn" && user.completed === "completed" ? (
+      return user.loggedIn === 'loggedIn' && user.completed === 'completed' ? (
         props.component
       ) : (
-        <Navigate to={"/"} replace />
+        <Navigate to={'/'} replace />
       );
     }
-  } else if (props.route === "test") {
+  } else if (props.route === 'test') {
     if (user.loggedIn === undefined || user.completed === undefined) {
       return <Loading />;
     } else {
-      return user.loggedIn === "loggedIn" && user.completed !== "completed" ? (
+      return user.loggedIn === 'loggedIn' && user.completed !== 'completed' ? (
         props.component
       ) : (
-        <Navigate to={"/"} replace />
+        <Navigate to={'/'} replace />
       );
     }
-  } else if (props.route === "loggedOut") {
+  } else if (props.route === 'loggedOut') {
     if (user.loggedIn === undefined) {
       return <Loading />;
     } else {
-      return user.loggedIn !== "loggedIn" ? props.component : <Navigate to={"/"} replace />;
+      return user.loggedIn !== 'loggedIn' ? props.component : <Navigate to={'/'} replace />;
     }
   }
 
-  return <Navigate to={"/"} replace />;
+  return <Navigate to={'/'} replace />;
 };
 
 export default ProtectedRoute;

@@ -1,12 +1,12 @@
-import { Button, Grid, Typography, makeStyles, Paper } from "@material-ui/core";
-import { Storage } from "@aws-amplify/storage";
-import { Auth } from "aws-amplify";
-import { getPercentiles } from "../util";
-import { useNavigate } from "react-router-dom";
+import {Button, Grid, Typography, makeStyles, Paper} from '@material-ui/core';
+import {Storage} from '@aws-amplify/storage';
+import {Auth} from 'aws-amplify';
+import {getPercentiles} from '../util';
+import {useNavigate} from 'react-router-dom';
 
 export const useStyles = makeStyles((theme) => ({
   info: {
-    padding: "15px",
+    padding: '15px',
     marginTop: 90,
   },
   buttons: {
@@ -42,16 +42,16 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
 
     Storage.configure({
       bucket: process.env.APP_bucket_name,
-      level: "private",
-      region: "us-east-1",
+      level: 'private',
+      region: 'us-east-1',
     });
 
     await Storage.put(`${email}-${subId}/${email}-results`, percentiles, {
-      contentType: "application/json",
+      contentType: 'application/json',
     });
 
     props.onComplete();
-    navigate("/results");
+    navigate('/results');
   };
 
   return (

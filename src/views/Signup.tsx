@@ -1,52 +1,52 @@
-import { makeStyles, TextField, Button, Grid, Typography, Paper, Box } from "@material-ui/core";
-import { useState } from "react";
-import { Auth } from "aws-amplify";
-import Banner from "../components/Banner";
-import { useNavigate } from "react-router-dom";
-import Alert from "@mui/material/Alert";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
+import {makeStyles, TextField, Button, Grid, Typography, Paper, Box} from '@material-ui/core';
+import {useState} from 'react';
+import {Auth} from 'aws-amplify';
+import Banner from '../components/Banner';
+import {useNavigate} from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
 interface SignupProps {
   onLogIn: () => void;
 }
 
 const Signup = (props: SignupProps) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [alert, showAlert] = useState(false);
-  const [alertContent, setAlertContent] = useState("");
+  const [alertContent, setAlertContent] = useState('');
   const [user, setUser] = useState<any>(undefined);
-  const [newPassword, setNewPassword] = useState("");
-  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
+  const [newPassword, setNewPassword] = useState('');
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
 
   const useStyles = makeStyles((theme) => ({
     plus: {
       color: theme.palette.primary.main,
-      textDecoration: "none",
-      "&:hover": {
+      textDecoration: 'none',
+      '&:hover': {
         color: theme.palette.primary.dark,
       },
     },
     title: {
-      minWidth: "100%",
+      minWidth: '100%',
       paddingLeft: 20,
       color: theme.palette.info.light,
     },
     input: {
-      minWidth: "100%",
+      minWidth: '100%',
       marginTop: 30,
       paddingLeft: 20,
       paddingRight: 20,
     },
     button: {
-      minWidth: "30%",
+      minWidth: '30%',
       margin: 20,
     },
     thirdTitle: {
       fontSize: 25,
       fontWeight: 300,
-      font: "Monaco",
+      font: 'Monaco',
       marginLeft: 20,
       marginTop: 30,
       marginBottom: 30,
@@ -58,7 +58,7 @@ const Signup = (props: SignupProps) => {
     },
     alert: {
       marginBottom: 15,
-      border: "1px solid #EF5350",
+      border: '1px solid #EF5350',
     },
     box: {
       height: 50,
@@ -67,12 +67,12 @@ const Signup = (props: SignupProps) => {
     forgot: {
       fontSize: 16,
       fontWeight: 300,
-      font: "Monaco",
+      font: 'Monaco',
       marginTop: 20,
       marginLeft: 20,
       color: theme.palette.primary.main,
-      textDecoration: "none",
-      "&:hover": {
+      textDecoration: 'none',
+      '&:hover': {
         color: theme.palette.primary.dark,
       },
     },
@@ -89,7 +89,7 @@ const Signup = (props: SignupProps) => {
     if (sessionStorage.length > 0) {
       sessionStorage.clear();
     }
-    navigate(path, { replace: true });
+    navigate(path, {replace: true});
   };
 
   const signUp = async (e: any) => {
@@ -101,15 +101,15 @@ const Signup = (props: SignupProps) => {
     } catch (error: any) {
       console.log(JSON.stringify(error));
       if (!email || !email.length) {
-        setAlertContent("Username must be provided.");
+        setAlertContent('Username must be provided.');
       } else if (!password || !password.length) {
-        setAlertContent("Password must be provided.");
-      } else if (error.code === "UserNotFoundException") {
+        setAlertContent('Password must be provided.');
+      } else if (error.code === 'UserNotFoundException') {
         setAlertContent(
-          "User is not found. Try again with the correct credentials, or sign up below to create an account."
+          'User is not found. Try again with the correct credentials, or sign up below to create an account.',
         );
-      } else if (error.code === "NotAuthorizedException") {
-        setAlertContent("Incorrect password or email.");
+      } else if (error.code === 'NotAuthorizedException') {
+        setAlertContent('Incorrect password or email.');
       } else if (error.code.length) {
         setAlertContent(error.code);
       } else if (error.log.length) {
@@ -124,16 +124,16 @@ const Signup = (props: SignupProps) => {
     showAlert(false);
     try {
       if (newPassword !== newPasswordConfirm) {
-        setAlertContent("Passwords do not match.");
+        setAlertContent('Passwords do not match.');
         showAlert(true);
       } else {
         await Auth.completeNewPassword(
           user, // the Cognito User Object
-          newPassword // the new password
+          newPassword, // the new password
         );
 
         props.onLogIn();
-        handleNav("/test");
+        handleNav('/test');
       }
     } catch (error: any) {
       console.log(JSON.stringify(error));
@@ -143,10 +143,10 @@ const Signup = (props: SignupProps) => {
         !newPasswordConfirm ||
         !newPasswordConfirm.length
       ) {
-        setAlertContent("Password must be provided.");
-      } else if (error.code === "InvalidPasswordException") {
+        setAlertContent('Password must be provided.');
+      } else if (error.code === 'InvalidPasswordException') {
         setAlertContent(
-          "Invalid password. Make sure that you contain lowercase, uppercase, numerical, and special characters"
+          'Invalid password. Make sure that you contain lowercase, uppercase, numerical, and special characters',
         );
       } else if (error.code.length) {
         setAlertContent(error.code);

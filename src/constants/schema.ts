@@ -1,22 +1,22 @@
 export enum Aspect {
-  Withdrawal = "Withdrawal",
-  Volatility = "Volatility",
-  Politeness = "Politeness",
-  Compassion = "Compassion",
-  Industriousness = "Industriousness",
-  Orderliness = "Orderliness",
-  Enthusiasm = "Enthusiasm",
-  Assertiveness = "Assertiveness",
-  AestheticOpenness = "Aesthetic Openness",
-  Interest = "Interest in Ideas",
+  Withdrawal = 'Withdrawal',
+  Volatility = 'Volatility',
+  Politeness = 'Politeness',
+  Compassion = 'Compassion',
+  Industriousness = 'Industriousness',
+  Orderliness = 'Orderliness',
+  Enthusiasm = 'Enthusiasm',
+  Assertiveness = 'Assertiveness',
+  AestheticOpenness = 'Aesthetic Openness',
+  Interest = 'Interest in Ideas',
 }
 
 export enum Ocean {
-  Openness = "Openness",
-  Conscientiousness = "Conscientiousness",
-  Extraversion = "Extraversion",
-  Agreeableness = "Agreeableness",
-  Neuroticism = "Neuroticism",
+  Openness = 'Openness',
+  Conscientiousness = 'Conscientiousness',
+  Extraversion = 'Extraversion',
+  Agreeableness = 'Agreeableness',
+  Neuroticism = 'Neuroticism',
 }
 
 export type Big5Data = {

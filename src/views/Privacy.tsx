@@ -1,7 +1,7 @@
-import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import {Grid, Paper, Typography, makeStyles} from '@material-ui/core';
 
-import Banner from "../components/Banner";
-import { useEffect, useState } from "react";
+import Banner from '../components/Banner';
+import {useEffect, useState} from 'react';
 
 interface PrivacyProps {}
 
@@ -23,8 +23,8 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
     },
     footer: {
       bottom: 0,
-      position: "absolute",
-      width: "100%",
+      position: 'absolute',
+      width: '100%',
     },
     container: {
       padding: 0,
@@ -42,8 +42,8 @@ const Privacy: React.FC<PrivacyProps> = (props: PrivacyProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.addEventListener('resize', handleResize);
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, []);
 
   return (

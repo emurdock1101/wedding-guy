@@ -1,5 +1,5 @@
-import { Box, Grid, Typography, makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import {Box, Grid, Typography, makeStyles} from '@material-ui/core';
+import {useEffect, useState} from 'react';
 
 interface FooterProps {}
 
@@ -7,30 +7,30 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const useStyles = makeStyles((theme) => ({
     box: {
-      borderTop: "1px solid lightGrey",
+      borderTop: '1px solid lightGrey',
     },
     row: {
-      display: "flex",
+      display: 'flex',
       paddingTop: 30,
       paddingBottom: 30,
     },
     facebook: {
       fontSize: 32,
-      "&:hover": {
+      '&:hover': {
         color: theme.palette.primary.main,
       },
       marginRight: 20,
       marginLeft: 20,
-      color: "#111840",
+      color: '#111840',
     },
     copyright: {
-      color: "#111840",
-      textAlign: isMobile ? "center" : "right",
-      padding: 20
+      color: '#111840',
+      textAlign: isMobile ? 'center' : 'right',
+      padding: 20,
     },
     socialMedia: {
-      width: isMobile ? "100%" : "80%",
-      textAlign: isMobile ? "center" : "left",
+      width: isMobile ? '100%' : '80%',
+      textAlign: isMobile ? 'center' : 'left',
     },
   }));
 
@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
   });
 
   return (

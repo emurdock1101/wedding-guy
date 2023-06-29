@@ -1,7 +1,7 @@
-import { Grid, Typography, makeStyles, Button } from "@material-ui/core";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Banner from "../components/Banner";
+import {Grid, Typography, makeStyles, Button} from '@material-ui/core';
+import {useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
+import Banner from '../components/Banner';
 
 interface ErrorPageProps {}
 
@@ -12,21 +12,21 @@ const ErrorPage: React.FC<ErrorPageProps> = (props: ErrorPageProps) => {
       marginBottom: 60,
     },
     buttonItem: {
-      textAlign: "center",
+      textAlign: 'center',
     },
     info: {
-      textAlign: "center",
+      textAlign: 'center',
     },
   }));
   const styles = useStyles();
 
   const navigate = useNavigate();
   const handleNav = (path: string) => {
-    navigate(path, { replace: true });
+    navigate(path, {replace: true});
   };
 
   useEffect(() => {
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, []);
 
   return (

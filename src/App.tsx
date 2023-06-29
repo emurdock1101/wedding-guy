@@ -1,33 +1,33 @@
-import "./App.css";
-import { makeStyles } from "@material-ui/core";
-import { Route, Routes, Navigate } from "react-router-dom";
-import HeaderDrawer from "./components/HeaderDrawer";
-import About from "./views/About";
-import Contact from "./views/Contact";
-import FAQs from "./views/Faqs";
-import ErrorPage from "./views/Error";
-import Home from "./views/Home";
-import Privacy from "./views/Privacy";
-import Quiz from "./views/Quiz";
-import Results from "./views/Results";
-import BuyTest from "./views/BuyTest";
-import { useEffect, useState } from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { theme } from "./theme";
-import { Amplify, Auth } from "aws-amplify";
-import awsconfig from "./aws-exports";
-import "@aws-amplify/ui-react/styles.css";
-import Login from "./views/Login";
-import Footer from "./components/Footer";
-import Signup from "./views/Signup";
-import CheckoutErrorPage from "./views/CheckoutError";
-import Forgot from "./views/Forgot";
-import { questionData as qd } from "./constants/questionData";
-import { shuffle } from "./util";
-import { Storage } from "@aws-amplify/storage";
-import { createContext } from "react";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Submit from "./views/Submit";
+import './App.css';
+import {makeStyles} from '@material-ui/core';
+import {Route, Routes, Navigate} from 'react-router-dom';
+import HeaderDrawer from './components/HeaderDrawer';
+import About from './views/About';
+import Contact from './views/Contact';
+import FAQs from './views/Faqs';
+import ErrorPage from './views/Error';
+import Home from './views/Home';
+import Privacy from './views/Privacy';
+import Quiz from './views/Quiz';
+import Results from './views/Results';
+import BuyTest from './views/BuyTest';
+import {useEffect, useState} from 'react';
+import {ThemeProvider} from '@material-ui/core/styles';
+import {theme} from './theme';
+import {Amplify, Auth} from 'aws-amplify';
+import awsconfig from './aws-exports';
+import '@aws-amplify/ui-react/styles.css';
+import Login from './views/Login';
+import Footer from './components/Footer';
+import Signup from './views/Signup';
+import CheckoutErrorPage from './views/CheckoutError';
+import Forgot from './views/Forgot';
+import {questionData as qd} from './constants/questionData';
+import {shuffle} from './util';
+import {Storage} from '@aws-amplify/storage';
+import {createContext} from 'react';
+import ProtectedRoute from './components/ProtectedRoute';
+import Submit from './views/Submit';
 
 Amplify.configure(awsconfig);
 
@@ -39,13 +39,13 @@ function App() {
   const useStyles = makeStyles((theme) => ({
     footer: {
       bottom: 0,
-      position: "absolute",
-      width: "100%",
+      position: 'absolute',
+      width: '100%',
     },
     container: {
-      minHeight: "100vh" /* will cover the 100% of viewport */,
-      display: "block",
-      position: "relative",
+      minHeight: '100vh' /* will cover the 100% of viewport */,
+      display: 'block',
+      position: 'relative',
       paddingBottom: 120,
     },
   }));
@@ -58,10 +58,10 @@ function App() {
   const assessLoggedInState = async () => {
     try {
       await Auth.currentAuthenticatedUser();
-      setUser({ ...user, loggedIn: "loggedIn" });
+      setUser({...user, loggedIn: 'loggedIn'});
       setLoggedIn(true);
     } catch (error) {
-      setUser({ ...user, loggedIn: "NotLoggedIn" });
+      setUser({...user, loggedIn: 'NotLoggedIn'});
       setLoggedIn(false);
     }
   };
@@ -69,28 +69,28 @@ function App() {
   // choose the screen size
   const getResultsFromS3 = async (): Promise<void> => {
     const cognitoUser = await Auth.currentAuthenticatedUser();
-    const email: string = cognitoUser.attributes?.email ?? "";
-    const subId: string = cognitoUser.attributes?.sub ?? "";
+    const email: string = cognitoUser.attributes?.email ?? '';
+    const subId: string = cognitoUser.attributes?.sub ?? '';
 
     Storage.configure({
       bucket: process.env.REACT_APP_BUCKET_NAME,
-      level: "private",
-      region: "us-east-1",
+      level: 'private',
+      region: 'us-east-1',
     });
     try {
       const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
       await fetch(url).then((response) => response.json());
       setCompleted(true);
-      setUser({ ...user, completed: "completed" });
+      setUser({...user, completed: 'completed'});
     } catch (error) {
       setCompleted(false);
-      setUser({ ...user, completed: "NotCompleted" });
+      setUser({...user, completed: 'NotCompleted'});
     }
   };
 
   const completeTest = () => {
     setCompleted(true);
-    setUser({ ...user, completed: "completed" });
+    setUser({...user, completed: 'completed'});
   };
 
   // Check for user account
@@ -109,74 +109,74 @@ function App() {
         <HeaderDrawer loggedIn={loggedIn} completed={completed} onLogOut={assessLoggedInState} />
         <Routes>
           <Route
-            path="/buy"
+            path='/buy'
             element={
-              <UserContext.Provider value={{ user, setUser }}>
-                <ProtectedRoute route={"loggedOut"} component={<BuyTest />} />
+              <UserContext.Provider value={{user, setUser}}>
+                <ProtectedRoute route={'loggedOut'} component={<BuyTest />} />
               </UserContext.Provider>
             }
           />
           <Route
-            path="/test"
+            path='/test'
             element={
-              <UserContext.Provider value={{ user, setUser }}>
+              <UserContext.Provider value={{user, setUser}}>
                 <ProtectedRoute
-                  route={"test"}
+                  route={'test'}
                   component={<Quiz onComplete={completeTest} questionData={questionData} />}
                 />
               </UserContext.Provider>
             }
           />
           <Route
-            path="/results"
+            path='/results'
             element={
-              <UserContext.Provider value={{ user, setUser }}>
-                <ProtectedRoute route={"results"} component={<Results />} />
+              <UserContext.Provider value={{user, setUser}}>
+                <ProtectedRoute route={'results'} component={<Results />} />
               </UserContext.Provider>
             }
           />
           <Route
-            path="/reset"
+            path='/reset'
             element={
-              <UserContext.Provider value={{ user, setUser }}>
+              <UserContext.Provider value={{user, setUser}}>
                 <ProtectedRoute
-                  route={"loggedOut"}
+                  route={'loggedOut'}
                   component={<Forgot onLogIn={assessLoggedInState} />}
                 />
               </UserContext.Provider>
             }
           />
           <Route
-            path="/login"
+            path='/login'
             element={
-              <UserContext.Provider value={{ user, setUser }}>
+              <UserContext.Provider value={{user, setUser}}>
                 <ProtectedRoute
-                  route={"loggedOut"}
+                  route={'loggedOut'}
                   component={<Login onLogIn={assessLoggedInState} />}
                 />
               </UserContext.Provider>
             }
           />
           <Route
-            path="/signup"
+            path='/signup'
             element={
-              <UserContext.Provider value={{ user, setUser }}>
+              <UserContext.Provider value={{user, setUser}}>
                 <ProtectedRoute
-                  route={"loggedOut"}
+                  route={'loggedOut'}
                   component={<Signup onLogIn={assessLoggedInState} />}
                 />
               </UserContext.Provider>
             }
           />
-          <Route path="/submit" element={<Submit onComplete={() => {}} prevStep={() => {}} />} />
-          <Route path="/" element={<Home loggedIn={loggedIn} completed={completed} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/faqs" element={<FAQs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/checkouterror" element={<CheckoutErrorPage />} />
-          <Route path="*" element={<Navigate to="/error" replace />} />
+          <Route path='/submit' element={<Submit onComplete={() => {}} prevStep={() => {}} />} />
+          <Route path='/' element={<Home loggedIn={loggedIn} completed={completed} />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/faqs' element={<FAQs />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/privacy' element={<Privacy />} />
+          <Route path='/error' element={<ErrorPage />} />
+          <Route path='/checkouterror' element={<CheckoutErrorPage />} />
+          <Route path='*' element={<Navigate to='/error' replace />} />
         </Routes>
         <div className={styles.footer}>
           <Footer />

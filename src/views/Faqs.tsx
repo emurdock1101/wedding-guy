@@ -1,14 +1,14 @@
-import { Grid } from "@material-ui/core";
+import {Grid} from '@material-ui/core';
 
-import FaqsAccordion from "../components/FaqsAccordion";
-import Banner from "../components/Banner";
-import { useEffect } from "react";
+import FaqsAccordion from '../components/FaqsAccordion';
+import Banner from '../components/Banner';
+import {useEffect} from 'react';
 
 interface FAQsProps {}
 
 const FAQs: React.FC<FAQsProps> = (props: FAQsProps) => {
   useEffect(() => {
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, []);
 
   return (

@@ -146,7 +146,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   };
 
   useEffect(() => {
-    document?.querySelector("body")?.scrollTo({ top: 0, left: 0});
+    document?.querySelector('body')?.scrollTo({top: 0, left: 0});
     window.addEventListener('resize', handleResize);
   }, []);
 

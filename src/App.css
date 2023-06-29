@@ -11,11 +11,11 @@ html,
 body {
   overflow-x: hidden;
   height: 100%;
-  font-family: "Archivo", sans-serif;
+  font-family: 'Archivo', sans-serif;
   position: relative;
 }
 
-.amplify-button[data-variation="primary"] {
+.amplify-button[data-variation='primary'] {
   background: linear-gradient(
     to right,
     var(--amplify-colors-green-80),

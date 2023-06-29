@@ -1,6 +1,6 @@
-import { Question } from "../constants/schema";
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import {Question} from '../constants/schema';
+import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from '@material-ui/core';
+import {useEffect, useState} from 'react';
 
 interface QuestionProps {
   question: Question;
@@ -31,8 +31,8 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
   const radio5: number = props.question.reverse ? 1 : 5;
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    sessionStorage.setItem(JSON.stringify(props.question), "" + selected);
+    window.addEventListener('resize', handleResize);
+    sessionStorage.setItem(JSON.stringify(props.question), '' + selected);
     if (selected !== 99) {
       props.countAnswer(props.question.uid);
     }
@@ -42,7 +42,7 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
     <FormControl>
       <FormLabel>
         <p>
-          {props.question.text} <span style={{ color: "#ED5362" }}>{selected === 99 ? "*" : ""}</span>
+          {props.question.text} <span style={{color: '#ED5362'}}>{selected === 99 ? '*' : ''}</span>
         </p>
       </FormLabel>
       <RadioGroup row={!isMobile} value={selected}>
@@ -50,56 +50,56 @@ const QuestionComp: React.FC<QuestionProps> = (props: QuestionProps) => {
           value={radio1}
           control={
             <Radio
-              color="primary"
+              color='primary'
               checked={selected === radio1}
               onClick={() => setSelected(radio1)}
             />
           }
-          label="Strongly Disagree"
+          label='Strongly Disagree'
         />
         <FormControlLabel
           value={radio2}
           control={
             <Radio
-              color="primary"
+              color='primary'
               checked={selected === radio2}
               onClick={() => setSelected(radio2)}
             />
           }
-          label="Disagree"
+          label='Disagree'
         />
         <FormControlLabel
           value={radio3}
           control={
             <Radio
-              color="primary"
+              color='primary'
               checked={selected === radio3}
               onClick={() => setSelected(radio3)}
             />
           }
-          label="Neutral"
+          label='Neutral'
         />
         <FormControlLabel
           value={radio4}
           control={
             <Radio
-              color="primary"
+              color='primary'
               checked={selected === radio4}
               onClick={() => setSelected(radio4)}
             />
           }
-          label="Agree"
+          label='Agree'
         />
         <FormControlLabel
           value={radio5}
           control={
             <Radio
-              color="primary"
+              color='primary'
               checked={selected === radio5}
               onClick={() => setSelected(radio5)}
             />
           }
-          label="Strongly Agree"
+          label='Strongly Agree'
         />
       </RadioGroup>
     </FormControl>

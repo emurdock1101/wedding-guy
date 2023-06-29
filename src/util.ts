@@ -1,4 +1,4 @@
-import { cumulativeStdNormalProbability, zScore } from "simple-statistics";
+import {cumulativeStdNormalProbability, zScore} from 'simple-statistics';
 import {maleDataMap, femaleDataMap} from './constants/escsData';
 import {questionData} from './constants/questionData';
 
@@ -119,22 +119,22 @@ export const getPercentilesFromAverages = (
  */
 export const scoreAdjective = (score: number): string => {
   if (score >= 90) {
-    return "veryHigh";
+    return 'veryHigh';
   } else if (score >= 75 && score < 90) {
-    return "high";
+    return 'high';
   } else if (score >= 60 && score < 75) {
-    return "modHigh";
+    return 'modHigh';
   } else if (score >= 40 && score < 60) {
-    return "average";
+    return 'average';
   } else if (score >= 25 && score < 40) {
-    return "modLow";
+    return 'modLow';
   } else if (score >= 10 && score < 25) {
-    return "low";
+    return 'low';
   } else if (score < 10) {
-    return "veryLow";
+    return 'veryLow';
   }
 
-  return "error";
+  return 'error';
 };
 
 /**

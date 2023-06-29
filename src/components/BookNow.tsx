@@ -1,6 +1,6 @@
-import { Grid, Typography, makeStyles, Box, Button } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
+import {Grid, Typography, makeStyles, Box, Button} from '@material-ui/core';
+import {useEffect, useState} from 'react';
+import {Facebook, Instagram, Twitter} from '@material-ui/icons';
 
 interface BookNowProps {}
 
@@ -11,7 +11,7 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
       fontSize: isMobile ? 30 : 40,
     },
     spacing: {
-      textAlign: "center",
+      textAlign: 'center',
       paddingTop: 160,
       paddingBottom: 100,
     },
@@ -20,27 +20,27 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
       color: theme.palette.info.main,
     },
     bookNowLink: {
-      textDecoration: "none",
-      color: "#F8F7F3", //off-white
+      textDecoration: 'none',
+      color: '#F8F7F3', //off-white
     },
     bookNowButton: {
-      "&:hover": {
+      '&:hover': {
         backgroundColor: theme.palette.info.main,
       },
       backgroundColor: theme.palette.primary.main,
-      color: "#F8F7F3", //off-white
-      width: "250px",
-      height: "50px",
-      borderRadius: "30px",
+      color: '#F8F7F3', //off-white
+      width: '250px',
+      height: '50px',
+      borderRadius: '30px',
     },
     socialMedia: {
       marginTop: 60,
-      textAlign: "center",
+      textAlign: 'center',
     },
     facebook: {
       fontSize: 60,
-      border: "1x solid red",
-      "&:hover": {
+      border: '1x solid red',
+      '&:hover': {
         color: theme.palette.primary.main,
       },
       marginRight: 20,
@@ -61,7 +61,7 @@ const BookNow: React.FC<BookNowProps> = (props: BookNowProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
   });
 
   return (
