@@ -177,7 +177,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               personality structure. Good luck with your personality journey!
             </Typography>
             <Typography variant='subtitle1' className={styles.info}>
-              Note also that if you find that the descriptions harsher than you might consider
+              Note that if you find that the descriptions harsher than you might consider
               appropriate this may mean that you were more self-critical than necessary when
               completing the questions. Remember, the results are based on your own self-report,
               compared to that of others. This can occur if you were feeling temporarily or

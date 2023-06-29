@@ -1,5 +1,5 @@
 import {Facebook, Instagram, Mail, Twitter} from '@material-ui/icons';
-import {Grid, Paper, Typography, makeStyles} from '@material-ui/core';
+import {Grid, Paper, Typography, Button, makeStyles} from '@material-ui/core';
 import {useEffect, useState} from 'react';
 
 import Banner from '../components/Banner';
@@ -16,24 +16,11 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       marginRight: isMobile ? 30 : 60,
       color: theme.palette.info.main,
     },
-    emailLink: {
-      marginTop: 20,
-      display: 'flex',
-      '&:hover': {
-        color: theme.palette.primary.main,
-      },
-      color: theme.palette.info.main,
-      justifyItems: 'middle',
-      width: 310,
-    },
     help: {
       fontSize: isMobile ? 20 : 25,
+      marginBottom: 30
     },
     reachOut: {
-      marginTop: 20,
-      fontSize: isMobile ? 17 : 20,
-    },
-    email: {
       fontSize: isMobile ? 17 : 20,
     },
     socialLinks: {
@@ -46,6 +33,24 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
       borderLeft: `6px solid #111840`,
       borderRadius: 10,
     },
+    bookNowButton: {
+      '&:hover': {
+        backgroundColor: theme.palette.info.main,
+      },
+      backgroundColor: theme.palette.primary.main,
+      color: '#F8F7F3', //off-white
+      width: '250px',
+      height: '50px',
+      borderRadius: '30px',
+      marginTop: 30
+    },
+    bookNowLink: {
+      textDecoration: 'none',
+      color: '#F8F7F3', //off-white
+    },
+    email: {
+      fontWeight: 600
+    }
   }));
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
 
@@ -74,12 +79,20 @@ const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               How can we help?
             </Typography>
             <Typography variant='subtitle1' className={styles.reachOut}>
-              Ask about the Personality+ test or our data-driven psychological coaching services.{' '}
+              Ask about the Personality+ test or our data-driven psychological coaching services: <span className={styles.email}>discoverpersonalityplus@gmail.com</span>
             </Typography>
-            <a href='mailto:discoverpersonalityplus@gmail.com' className={styles.emailLink}>
-              <Typography variant='h5' className={styles.email}>
-                discoverpersonalityplus@gmail.com
-              </Typography>
+            <Typography variant='subtitle1' className={styles.reachOut}>
+              Schedule a FREE 15 minute discovery call to learn more about how you can benefit from
+              our behavioral coaching packages or how to review your Personality+ score.
+            </Typography>
+            <a
+              href='https://calendly.com/discoverpersonalityplus'
+              target='_blank'
+              rel='noreferrer'
+              className={styles.bookNowLink}>
+              <Button variant='contained' className={styles.bookNowButton}>
+                BOOK A CALL NOW
+              </Button>
             </a>
             <div className={styles.socialLinks}>
               <a
