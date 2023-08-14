@@ -13,7 +13,7 @@ import {oceanOptions} from '../constants/oceanSpecs';
 import {theme} from '../theme';
 import {Auth} from 'aws-amplify';
 import React from 'react';
-import {getMarkdownString} from '../util';
+import {generatePdfDoc} from '../util';
 
 interface ResultsProps {}
 
@@ -25,7 +25,6 @@ interface S3Results {
 
 const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const [percentiles, setPercentiles] = useState<Record<string, number> | null>(null);
-  const [name, setName] = useState('name');
   const [gender, setGender] = useState('gender');
 
   const useStyles = makeStyles((theme) => ({
@@ -84,24 +83,12 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   const styles = useStyles();
 
-  // const downloadResults = async () => {
-  //   const user = await Auth.currentAuthenticatedUser();
-  //   const email: string = user.attributes?.email ?? '';
-  //   const markdownString = getMarkdownString(name, gender, percentiles);
-  //   const blob = new Blob([markdownString], {type: 'application/json'});
+  const downloadResults = async () => {
+    const user = await Auth.currentAuthenticatedUser();
+    const email: string = user.attributes?.email ?? '';
 
-  //   try {
-  //     const href = window.URL.createObjectURL(blob);
-  //     const link = document.createElement('a');
-  //     link.href = href;
-  //     link.setAttribute('download', `${email}-big5-results.md`);
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //   } catch (err) {
-  //     return Promise.reject({Error: 'Error when downloading file:', err});
-  //   }
-  // };
+    generatePdfDoc(email, percentiles);
+  };
 
   const getResultsFromS3 = async (): Promise<void> => {
     const user = await Auth.currentAuthenticatedUser();
@@ -115,7 +102,6 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
     const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
     const dataWithUserInfo: S3Results = await fetch(url).then((response) => response.json());
-    setName(dataWithUserInfo.name);
     setGender(dataWithUserInfo.gender);
     setPercentiles(dataWithUserInfo.percentiles);
   };
@@ -124,25 +110,25 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     getResultsFromS3();
   }, []);
 
-  const AestheticOpenness: number = percentiles?.[`${Aspect.AestheticOpenness.toString()}`] ?? 99;
-  const Openness: number = percentiles?.[`${Ocean.Openness.toString()}`] ?? 99;
-  const Industriousness: number = percentiles?.[`${Aspect.Industriousness.toString()}`] ?? 99;
-
-  const Conscientiousness: number = percentiles?.[`${Ocean.Conscientiousness.toString()}`] ?? 99;
-  const Interest: number = percentiles?.[`${Aspect.Interest.toString()}`] ?? 99;
-  const Orderliness: number = percentiles?.[`${Aspect.Orderliness.toString()}`] ?? 99;
-
   const Extraversion: number = percentiles?.[`${Ocean.Extraversion.toString()}`] ?? 99;
   const Enthusiasm: number = percentiles?.[`${Aspect.Enthusiasm.toString()}`] ?? 99;
   const Assertiveness: number = percentiles?.[`${Aspect.Assertiveness.toString()}`] ?? 99;
+
+  const Neuroticism: number = percentiles?.[`${Ocean.Neuroticism.toString()}`] ?? 99;
+  const Withdrawal: number = percentiles?.[`${Aspect.Withdrawal.toString()}`] ?? 99;
+  const Volatility: number = percentiles?.[`${Aspect.Volatility.toString()}`] ?? 99;
 
   const Agreeableness: number = percentiles?.[`${Ocean.Agreeableness.toString()}`] ?? 99;
   const Compassion: number = percentiles?.[`${Aspect.Compassion.toString()}`] ?? 99;
   const Politeness: number = percentiles?.[`${Aspect.Politeness.toString()}`] ?? 99;
 
-  const Neuroticism: number = percentiles?.[`${Ocean.Neuroticism.toString()}`] ?? 99;
-  const Withdrawal: number = percentiles?.[`${Aspect.Withdrawal.toString()}`] ?? 99;
-  const Volatility: number = percentiles?.[`${Aspect.Volatility.toString()}`] ?? 99;
+  const Conscientiousness: number = percentiles?.[`${Ocean.Conscientiousness.toString()}`] ?? 99;
+  const Industriousness: number = percentiles?.[`${Aspect.Industriousness.toString()}`] ?? 99;
+  const Orderliness: number = percentiles?.[`${Aspect.Orderliness.toString()}`] ?? 99;
+
+  const Openness: number = percentiles?.[`${Ocean.Openness.toString()}`] ?? 99;
+  const AestheticOpenness: number = percentiles?.[`${Aspect.AestheticOpenness.toString()}`] ?? 99;
+  const Interest: number = percentiles?.[`${Aspect.Interest.toString()}`] ?? 99;
 
   // data for aspects chart
   const aspectSeries = [
@@ -167,11 +153,11 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     <div>
       <Banner pageTitle='Results and Explanation' />
       <Grid container spacing={6} justifyContent='center' alignItems='flex-start'>
-        {/* <Grid item xs={12} sm={11} lg={10}>
+        <Grid item xs={12} sm={11} lg={10}>
           <Button variant='outlined' className={styles.downloadButton} onClick={downloadResults}>
             DOWNLOAD RESULTS
           </Button>
-        </Grid> */}
+        </Grid>
         <Grid item xs={12} sm={11} lg={5}>
           <Paper elevation={2} className={styles.explanation}>
             <Typography variant='subtitle1' className={styles.info}>
@@ -238,7 +224,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect1Score={Enthusiasm}
               aspect2Name={Aspect.Assertiveness}
               aspect2Score={Assertiveness}
-              hex={theme.palette.success.main}
+              hex={theme.palette.error.main}
               index={2}
             />
           </Paper>
@@ -250,7 +236,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect1Score={Withdrawal}
               aspect2Name={Aspect.Volatility}
               aspect2Score={Volatility}
-              hex={theme.palette.secondary.main}
+              hex={theme.palette.warning.main}
               index={4}
             />
           </Paper>
@@ -262,7 +248,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect1Score={Compassion}
               aspect2Name={Aspect.Politeness}
               aspect2Score={Politeness}
-              hex={theme.palette.primary.main}
+              hex={theme.palette.success.main}
               index={3}
             />
           </Paper>
@@ -274,7 +260,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect1Score={Industriousness}
               aspect2Name={Aspect.Orderliness}
               aspect2Score={Orderliness}
-              hex={theme.palette.warning.main}
+              hex={theme.palette.primary.main}
               index={1}
             />
           </Paper>
@@ -286,7 +272,7 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               aspect1Score={AestheticOpenness}
               aspect2Name={Aspect.Interest}
               aspect2Score={Interest}
-              hex={theme.palette.error.main}
+              hex={theme.palette.secondary.main}
               index={0}
             />
           </Paper>
