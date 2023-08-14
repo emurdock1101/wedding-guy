@@ -28,6 +28,7 @@ import {Storage} from '@aws-amplify/storage';
 import {createContext} from 'react';
 import ProtectedRoute from './components/ProtectedRoute';
 import Submit from './views/Submit';
+import React from 'react';
 
 Amplify.configure(awsconfig);
 
@@ -74,7 +75,6 @@ function App() {
 
     Storage.configure({
       bucket: process.env.REACT_APP_BUCKET_NAME,
-      level: 'private',
       region: 'us-east-1',
     });
     try {
@@ -168,7 +168,15 @@ function App() {
               </UserContext.Provider>
             }
           />
-          <Route path='/submit' element={<Submit onComplete={() => {}} prevStep={() => {}} />} />
+          <Route
+            path='/submit'
+            element={
+              <ProtectedRoute
+                route={'loggedOut'}
+                component={<Submit onComplete={() => {}} prevStep={() => {}} />}
+              />
+            }
+          />
           <Route path='/' element={<Home loggedIn={loggedIn} completed={completed} />} />
           <Route path='/about' element={<About />} />
           <Route path='/faqs' element={<FAQs />} />

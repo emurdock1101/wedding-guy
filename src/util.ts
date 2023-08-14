@@ -8,8 +8,8 @@ import {questionData} from './constants/questionData';
 export const getPercentiles = (): Record<string, number> => {
   if (sessionStorage.length - 2 !== questionData.length) {
     console.log(
-      "Answer list isn't correct length. storageLength: " +
-        sessionStorage.length +
+      "Answer list isn't correct length. storageLength - 2: " +
+        (sessionStorage.length - 2) +
         ', questionDataLength: ' +
         questionData.length,
     );
@@ -157,4 +157,24 @@ export const shuffle = <T>(array: T[]): T[] => {
   }
 
   return array;
+};
+
+export const getMarkdownString = (
+  name: string,
+  gender: string,
+  percentiles: Record<string, number> | null,
+): string => {
+  const markdownContent = `
+    # Styled Markdown File
+    
+    This is a **styled** Markdown file using React and styled-components.
+    
+    ## Section 1
+    
+    - ${name}
+    - ${gender}
+      - ${JSON.stringify(percentiles)}
+    `;
+
+  return markdownContent;
 };

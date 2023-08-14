@@ -3,6 +3,7 @@ import QuestionPack from '../components/QuestionPack';
 import {Question} from '../constants/schema';
 import Submit from './Submit';
 import {useState} from 'react';
+import React from 'react';
 
 interface QuizProps {
   onComplete: () => void;
@@ -23,7 +24,7 @@ const Quiz: React.FC<QuizProps> = (props: QuizProps) => {
   };
 
   const slices = 10; // number of pages
-  const chunks = [];
+  const chunks: Question[][] = [];
   const chunkSize = Math.ceil(props.questionData.length / slices); // number of questions on each page
 
   for (let i = 0; i < props.questionData.length; i += chunkSize) {

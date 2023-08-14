@@ -12,11 +12,22 @@ import {aspectOptions} from '../constants/aspectSpecs';
 import {oceanOptions} from '../constants/oceanSpecs';
 import {theme} from '../theme';
 import {Auth} from 'aws-amplify';
+import React from 'react';
+import {getMarkdownString} from '../util';
 
 interface ResultsProps {}
 
+interface S3Results {
+  name: string;
+  gender: string;
+  percentiles: Record<string, number>;
+}
+
 const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
   const [percentiles, setPercentiles] = useState<Record<string, number> | null>(null);
+  const [name, setName] = useState('name');
+  const [gender, setGender] = useState('gender');
+
   const useStyles = makeStyles((theme) => ({
     info: {
       marginBottom: '20px',
@@ -75,42 +86,38 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
 
   // const downloadResults = async () => {
   //   const user = await Auth.currentAuthenticatedUser();
-  //   const email: string = user.attributes?.email ?? "";
-  //   const subId: string = user.attributes?.sub ?? "";
-  //   const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
-  //   fetch(url)
-  //     .then((res) => {
-  //       return res.blob();
-  //     })
-  //     .then((blob) => {
-  //       const href = window.URL.createObjectURL(blob);
-  //       const link = document.createElement("a");
-  //       link.href = href;
-  //       link.setAttribute("download", "results.json"); //or any other extension
-  //       document.body.appendChild(link);
-  //       link.click();
-  //       document.body.removeChild(link);
-  //     })
-  //     .catch((err) => {
-  //       return Promise.reject({ Error: "Something Went Wrong", err });
-  //     });
+  //   const email: string = user.attributes?.email ?? '';
+  //   const markdownString = getMarkdownString(name, gender, percentiles);
+  //   const blob = new Blob([markdownString], {type: 'application/json'});
+
+  //   try {
+  //     const href = window.URL.createObjectURL(blob);
+  //     const link = document.createElement('a');
+  //     link.href = href;
+  //     link.setAttribute('download', `${email}-big5-results.md`);
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //   } catch (err) {
+  //     return Promise.reject({Error: 'Error when downloading file:', err});
+  //   }
   // };
 
-  // choose the screen size
   const getResultsFromS3 = async (): Promise<void> => {
     const user = await Auth.currentAuthenticatedUser();
-    const email: string = user.attributes?.email ?? '';
-    const subId: string = user.attributes?.sub ?? '';
+    const email: string = user.attributes?.email ?? 'email_unknown';
+    const subId: string = user.attributes?.sub ?? 'subId_unknown';
 
     Storage.configure({
       bucket: process.env.REACT_APP_BUCKET_NAME,
-      level: 'private',
       region: 'us-east-1',
     });
 
     const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
-    const data: Record<string, number> = await fetch(url).then((response) => response.json());
-    setPercentiles(data);
+    const dataWithUserInfo: S3Results = await fetch(url).then((response) => response.json());
+    setName(dataWithUserInfo.name);
+    setGender(dataWithUserInfo.gender);
+    setPercentiles(dataWithUserInfo.percentiles);
   };
 
   useEffect(() => {
@@ -154,12 +161,14 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
     },
   ];
 
+  const genderedResults = gender === 'male' ? 'males' : 'females';
+
   return (
     <div>
       <Banner pageTitle='Results and Explanation' />
       <Grid container spacing={6} justifyContent='center' alignItems='flex-start'>
         {/* <Grid item xs={12} sm={11} lg={10}>
-          <Button variant="outlined" className={styles.downloadButton} onClick={downloadResults}>
+          <Button variant='outlined' className={styles.downloadButton} onClick={downloadResults}>
             DOWNLOAD RESULTS
           </Button>
         </Grid> */}
@@ -180,9 +189,9 @@ const Results: React.FC<ResultsProps> = (props: ResultsProps) => {
               Note that if you find that the descriptions harsher than you might consider
               appropriate this may mean that you were more self-critical than necessary when
               completing the questions. Remember, the results are based on your own self-report,
-              compared to that of others. This can occur if you were feeling temporarily or
-              chronically unhappy or anxious, or hungry, angry or judgmental when you completed the
-              questions.
+              compared to that of other {genderedResults}. This can occur if you were feeling
+              temporarily or chronically unhappy or anxious, or hungry, angry or judgmental when you
+              completed the questions.
             </Typography>
             <Typography variant='subtitle1' className={styles.info}>
               <strong>

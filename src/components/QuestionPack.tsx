@@ -4,6 +4,7 @@ import ProgressBar from '../components/ProgressBar';
 import {Question} from '../constants/schema';
 import QuestionComp from './QuestionComp';
 import {useState, useEffect} from 'react';
+import React from 'react';
 
 export const useStyles = makeStyles((theme) => ({
   pageNav: {
@@ -89,7 +90,8 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         </Grid>
         <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
-            disabled={answeredQuestions.length !== props.questions.length}
+            // disabled={answeredQuestions.length !== props.questions.length}
+            disabled={false}
             color='default'
             variant='outlined'
             onClick={props.nextStep}>
@@ -122,7 +124,8 @@ const QuestionPack: React.FC<QuestionPackProps> = (props: QuestionPackProps) => 
         </Grid>
         <Grid item xs={3} sm={2} md={1} className={styles.pageNav}>
           <Button
-            disabled={answeredQuestions.length !== props.questions.length}
+            //disabled={answeredQuestions.length !== props.questions.length}
+            disabled={false}
             color='default'
             variant='outlined'
             onClick={props.nextStep}>

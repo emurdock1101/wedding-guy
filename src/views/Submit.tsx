@@ -3,6 +3,7 @@ import {Storage} from '@aws-amplify/storage';
 import {Auth} from 'aws-amplify';
 import {getPercentiles} from '../util';
 import {useNavigate} from 'react-router-dom';
+import React from 'react';
 
 export const useStyles = makeStyles((theme) => ({
   info: {
@@ -39,14 +40,21 @@ const Submit: React.FC<SubmitProps> = (props: SubmitProps) => {
     const email: string = user.attributes.email;
     const subId: string = user.attributes.sub;
     const percentiles: Record<string, number> = getPercentiles();
+    const name: string = sessionStorage.getItem('name') ?? 'name_unknown';
+    const gender: string = sessionStorage.getItem('gender') ?? 'gender_unknown';
+
+    const testResultsObj = {
+      name, 
+      gender,
+      percentiles
+    }
 
     Storage.configure({
-      bucket: process.env.APP_bucket_name,
-      level: 'private',
+      bucket: process.env.REACT_APP_BUCKET_NAME,
       region: 'us-east-1',
     });
 
-    await Storage.put(`${email}-${subId}/${email}-results`, percentiles, {
+    await Storage.put(`${email}-${subId}/${email}-results`, testResultsObj, {
       contentType: 'application/json',
     });
 
