@@ -29,15 +29,15 @@ const interpretations: any = [
       },
       modLow: {
         part1:
-          'You are moderately high in openness and are likely to be characterized by others as smart, creative, exploratory, intelligent, and visionary.',
+          'You are moderately low in openness, which means you are less interested in novelty, art, literature, abstract thinking, philosophy, and aesthetics.',
         part2:
-          'People moderately high in openness are known for their intellect and curiosity.  They enjoy reading about many subjects, which is accompanied by a larger than normal vocabulary. They can think, learn, generate ideas, and speak quickly.  They can see old things in novel ways, which gives them the ability to see problems in different ways as well unthought of solutions.',
+          'Those moderately low in openness are not interested in the complexity of intellectual problems or challenges and prefer to stay away complexity. They like routine and usually have singular interests, which means they are not very interested in exploring different cultural events or types of movies, concerts, plays, or art shows, although they may do such things on occasion. They tend to be comfortable with what they know or were brought up in, and find satisfaction in doing things the traditional way.',
         part3:
-          'Those moderately high in openness become uneasy in situations or jobs that focus on routine or are predictable. They are uncomfortable when placed in categories, pecking orders, set structures, which means they will struggle more at entry-level, repetitive, rote positions. If they are in such as position, they will attempt to generate new ways to do things, which are usually not welcome at entry level positions or positions that need to be static or routine.  They are known to shake things up (especially if disagreeable and assertive) and be rebellious (particularly if average or below in conscientiousness).',
+          'People moderately low in openness tend to read and write less often than average; however, if they do, it is “mainstream material”. They have a narrower range of interests and a more conventional vocabulary. They can think abstractly and learn, when necessary, but may sometimes have difficulty getting their thoughts across to others (particularly if they average or low in extraversion).',
         part4:
-          'Individuals moderately high in openness are drawn by the entrepreneurial spirit, which means have an interest in new ventures for any reason: profit, curiosity, personal transformation, etc.',
+          'Individuals moderately low in openness thrive in situations or occupations that are more routine and predictable. They can be better suited for entry-level, repetitive, rote positions because they don’t need to generate new ways of doing things. They are less inclined to want to try new things or shake things up. This also means they are less entrepreneurial and more appreciative of conventional employment (particularly if average or high in conscientiousness).',
         part5:
-          'Note: The higher the openness the greater the interest in things. Because of this, settling or finding a single path in life, specialization, or identity is very difficult. This can clash with their neuroticism or conscientiousness. If also high in neuroticism, they will habitually undermine their own convictions and beliefs, feeling more lost and anxious. If they are low in conscientiousness, they will be “under-achievers” because despite the ability to be smart, learn quickly, or be creative, they do not act on their ideas.',
+          'Note: the lower the openness, the narrower and more focused a person’s interests. This means they can settle on a single path in life, specialize in a skill, and create a singular identity. Because of this they, they less frequently undermine their own convictions or beliefs by excessive questioning. In contrast, they may appear stuck in the past to those that are higher in openness.',
       },
       average: {
         part1:

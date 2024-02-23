@@ -28,7 +28,6 @@ import {Storage} from '@aws-amplify/storage';
 import {createContext} from 'react';
 import ProtectedRoute from './components/ProtectedRoute';
 import Submit from './views/Submit';
-import React from 'react';
 
 Amplify.configure(awsconfig);
 
