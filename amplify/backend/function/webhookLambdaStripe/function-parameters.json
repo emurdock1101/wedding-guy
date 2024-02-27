@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "auth": {
-      "big5amplifye0115051": ["create", "read", "update", "delete"]
-    }
-  },
-  "lambdaLayers": [],
-  "secretNames": ["stripe_key"]
-}
