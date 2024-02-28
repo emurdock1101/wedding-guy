@@ -5,7 +5,6 @@ import Home from './views/Home';
 import ErrorPage from './views/Error';
 import {ThemeProvider} from '@material-ui/core/styles';
 import {theme} from './theme';
-import '@aws-amplify/ui-react/styles.css';
 import Footer from './components/Footer';
 function App() {
   const useStyles = makeStyles((theme) => ({
