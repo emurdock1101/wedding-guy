@@ -1,40 +1,35 @@
-import {Box, Grid, Typography, makeStyles} from '@material-ui/core';
+import {Box, makeStyles} from '@material-ui/core';
 import {useEffect, useState} from 'react';
-
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = (props: FooterProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
   const useStyles = makeStyles((theme) => ({
     box: {
-      borderTop: '1px solid lightGrey',
+      backgroundColor: theme.palette.secondary.main,
+      border: '.5px solid lightgrey',
+      textAlign: 'center',
+      width: '100%',
     },
-    row: {
+    footerList: {
       display: 'flex',
-      paddingTop: 30,
-      paddingBottom: 30,
+      listStyle: 'none',
+      justifyContent: 'center',
+      paddingLeft: 0,
     },
-    facebook: {
-      fontSize: 32,
-      '&:hover': {
-        color: theme.palette.primary.main,
-      },
-      marginRight: 20,
-      marginLeft: 20,
-      color: '#111840',
+    listItem: {
+      marginRight: isMobile ? '.5rem' : '1rem',
+      textDecoration: 'none',
     },
     copyright: {
-      color: '#111840',
-      textAlign: isMobile ? 'center' : 'right',
-      padding: 20,
+      color: 'black',
     },
-    socialMedia: {
-      width: isMobile ? '100%' : '80%',
-      textAlign: isMobile ? 'center' : 'left',
-    },
+    link: {
+      textDecoration: 'none',
+    }
   }));
 
-  const styles = useStyles();
+  const classes = useStyles();
 
   // choose the screen size
   const handleResize = () => {
@@ -50,15 +45,41 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
   });
 
   return (
-    <Grid container justifyContent='center' alignItems='flex-start'>
-      <Grid item xs={12}>
-        <Box className={styles.box}>
-          <Typography variant='subtitle1' className={styles.copyright}>
-            © 2022 Personality+ All rights reserved.
-          </Typography>
-        </Box>
-      </Grid>
-    </Grid>
+    <Box className={classes.box}>
+      <ul className={classes.footerList}>
+        <li className={classes.listItem}>© 2024 craigslist</li>
+        <li className={classes.listItem}>
+          <a href='https://www.craigslist.org/about/help/' className={classes.link}>
+            help
+          </a>
+        </li>
+        <li className={classes.listItem}>
+          <a href='https://www.craigslist.org/about/help/safety' className={classes.link}>
+            safety
+          </a>
+        </li>
+        <li className={classes.listItem}>
+          <a href='https://www.craigslist.org/about/privacy.policy' className={classes.link}>
+            privacy
+          </a>
+        </li>
+        <li className={classes.listItem}>
+          <a href='https://www.craigslist.org/about/terms.of.use' className={classes.link}>
+            terms
+          </a>
+        </li>
+        <li className={classes.listItem}>
+          <a href='https://www.craigslist.org/about/' className={classes.link}>
+            about
+          </a>
+        </li>
+        <li className={classes.listItem}>
+          <a href='https://www.craigslist.org/about/craigslist_app' className={classes.link}>
+            app
+          </a>
+        </li>
+      </ul>
+    </Box>
   );
 };
 

@@ -1,191 +1,38 @@
 import './App.css';
 import {makeStyles} from '@material-ui/core';
 import {Route, Routes, Navigate} from 'react-router-dom';
-import HeaderDrawer from './components/HeaderDrawer';
-import About from './views/About';
-import Contact from './views/Contact';
-import FAQs from './views/Faqs';
-import ErrorPage from './views/Error';
 import Home from './views/Home';
-import Privacy from './views/Privacy';
-import Quiz from './views/Quiz';
-import Results from './views/Results';
-import BuyTest from './views/BuyTest';
-import {useEffect, useState} from 'react';
+import ErrorPage from './views/Error';
 import {ThemeProvider} from '@material-ui/core/styles';
 import {theme} from './theme';
-import {Amplify, Auth} from 'aws-amplify';
-import awsconfig from './aws-exports';
 import '@aws-amplify/ui-react/styles.css';
-import Login from './views/Login';
 import Footer from './components/Footer';
-import Signup from './views/Signup';
-import CheckoutErrorPage from './views/CheckoutError';
-import Forgot from './views/Forgot';
-import {questionData as qd} from './constants/questionData';
-import {shuffle} from './util';
-import {Storage} from '@aws-amplify/storage';
-import {createContext} from 'react';
-import ProtectedRoute from './components/ProtectedRoute';
-import Submit from './views/Submit';
-
-Amplify.configure(awsconfig);
-
-export const UserContext = createContext<any>({});
-
 function App() {
-  const questionData = shuffle(qd);
-
   const useStyles = makeStyles((theme) => ({
+    container: {
+      minHeight: '100vh',
+      overflow: 'hidden',
+      display: 'block',
+      position: 'relative',
+      paddingBottom: 50,
+    },
     footer: {
       bottom: 0,
       position: 'absolute',
       width: '100%',
     },
-    container: {
-      minHeight: '100vh' /* will cover the 100% of viewport */,
-      display: 'block',
-      position: 'relative',
-      paddingBottom: 120,
-    },
   }));
-
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [completed, setCompleted] = useState(false);
-  const [user, setUser] = useState({});
-
-  const styles = useStyles();
-  const assessLoggedInState = async () => {
-    try {
-      await Auth.currentAuthenticatedUser();
-      setUser({...user, loggedIn: 'loggedIn'});
-      setLoggedIn(true);
-    } catch (error) {
-      setUser({...user, loggedIn: 'NotLoggedIn'});
-      setLoggedIn(false);
-    }
-  };
-
-  // choose the screen size
-  const getResultsFromS3 = async (): Promise<void> => {
-    const cognitoUser = await Auth.currentAuthenticatedUser();
-    const email: string = cognitoUser.attributes?.email ?? '';
-    const subId: string = cognitoUser.attributes?.sub ?? '';
-
-    Storage.configure({
-      bucket: process.env.REACT_APP_BUCKET_NAME,
-      region: 'us-east-1',
-    });
-    try {
-      const url: string = await Storage.get(`${email}-${subId}/${email}-results`);
-      await fetch(url).then((response) => response.json());
-      setCompleted(true);
-      setUser({...user, completed: 'completed'});
-    } catch (error) {
-      setCompleted(false);
-      setUser({...user, completed: 'NotCompleted'});
-    }
-  };
-
-  const completeTest = () => {
-    setCompleted(true);
-    setUser({...user, completed: 'completed'});
-  };
-
-  // Check for user account
-  useEffect(() => {
-    assessLoggedInState();
-  }, []);
-
-  // Check for bucket item
-  useEffect(() => {
-    getResultsFromS3();
-  }, [loggedIn]);
+  const classes = useStyles();
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={styles.container}>
-        <HeaderDrawer loggedIn={loggedIn} completed={completed} onLogOut={assessLoggedInState} />
+      <div className={classes.container}>
         <Routes>
-          <Route
-            path='/buy'
-            element={
-              <UserContext.Provider value={{user, setUser}}>
-                <ProtectedRoute route={'loggedOut'} component={<BuyTest />} />
-              </UserContext.Provider>
-            }
-          />
-          <Route
-            path='/test'
-            element={
-              <UserContext.Provider value={{user, setUser}}>
-                <ProtectedRoute
-                  route={'test'}
-                  component={<Quiz onComplete={completeTest} questionData={questionData} />}
-                />
-              </UserContext.Provider>
-            }
-          />
-          <Route
-            path='/results'
-            element={
-              <UserContext.Provider value={{user, setUser}}>
-                <ProtectedRoute route={'results'} component={<Results />} />
-              </UserContext.Provider>
-            }
-          />
-          <Route
-            path='/reset'
-            element={
-              <UserContext.Provider value={{user, setUser}}>
-                <ProtectedRoute
-                  route={'loggedOut'}
-                  component={<Forgot onLogIn={assessLoggedInState} />}
-                />
-              </UserContext.Provider>
-            }
-          />
-          <Route
-            path='/login'
-            element={
-              <UserContext.Provider value={{user, setUser}}>
-                <ProtectedRoute
-                  route={'loggedOut'}
-                  component={<Login onLogIn={assessLoggedInState} />}
-                />
-              </UserContext.Provider>
-            }
-          />
-          <Route
-            path='/signup'
-            element={
-              <UserContext.Provider value={{user, setUser}}>
-                <ProtectedRoute
-                  route={'loggedOut'}
-                  component={<Signup onLogIn={assessLoggedInState} />}
-                />
-              </UserContext.Provider>
-            }
-          />
-          <Route
-            path='/submit'
-            element={
-              <ProtectedRoute
-                route={'loggedOut'}
-                component={<Submit onComplete={() => {}} prevStep={() => {}} />}
-              />
-            }
-          />
-          <Route path='/' element={<Home loggedIn={loggedIn} completed={completed} />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/faqs' element={<FAQs />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/privacy' element={<Privacy />} />
+          <Route path='/' element={<Home />} />
           <Route path='/error' element={<ErrorPage />} />
-          <Route path='/checkouterror' element={<CheckoutErrorPage />} />
           <Route path='*' element={<Navigate to='/error' replace />} />
         </Routes>
-        <div className={styles.footer}>
+        <div className={classes.footer}>
           <Footer />
         </div>
       </div>
