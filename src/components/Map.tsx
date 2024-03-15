@@ -10,7 +10,8 @@ const Map: React.FC<{}> = () => {
         style={{border: '0'}}
         allowFullScreen={true}
         loading='lazy'
-        referrerPolicy='no-referrer-when-downgrade'></iframe>
+        referrerPolicy='no-referrer-when-downgrade'
+        title='iframeforwedding'></iframe>
     </Paper>
   );
 };

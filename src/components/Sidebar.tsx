@@ -9,8 +9,15 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     fontFamily: 'Times New Roman',
-    padding: 5
-  }
+    padding: 5,
+  },
+  link: {
+    textDecoration: 'none',
+    '&:hover': {
+      color: theme.palette.success.main,
+      textDecoration: 'underline',
+    },
+  },
 }));
 
 const Sidebar = () => {
@@ -18,27 +25,28 @@ const Sidebar = () => {
   return (
     <Box className={classes.box}>
       <h2 className={classes.header}>J&E Wedding</h2>
-      <p>Jennie Bottas</p>
-      <p>and</p>
-      <p>Elliot Murdock</p>
+      <a href='https://www.facebook.com/jennie.bottas' className={classes.link}>
+        <p>Jennie Bottas</p>
+      </a>
+      <p>&</p>
+      <a href='https://www.facebook.com/elliot.murdock' className={classes.link}>
+        <p>Elliot Murdock</p>
+      </a>
       <br></br>
-      <p>August 10, 2024</p>
+      <a href='https://www.astrosofa.com/horoscope/aspects/2024/8/10' className={classes.link}>
+        <p>August 10, 2024</p>
+      </a>
       <br></br>
-      <p>352 Beautiful Run Rd, Madison, VA 22727</p>
-      <a href='https://www.craigslist.org/about/help/'>
-        <h1> hey</h1>
+      <a href='https://www.thefarmhouseatbeautifulrun.com/' className={classes.link}>
+        <p>The Farmhouse at Beautiful Run</p>
       </a>
-      <a href='https://www.craigslist.org/about/help/'>
-        <h1> hey</h1>
+      <br></br>
+      <a href='https://maps.app.goo.gl/7vQBv61TP4PGjaYc7'>
+        <p>352 Beautiful Run Rd, Madison, VA 22727</p>
       </a>
-      <a href='https://www.craigslist.org/about/help/'>
-        <h1> hey</h1>
-      </a>
-      <a href='https://www.craigslist.org/about/help/'>
-        <h1> hey</h1>
-      </a>
-      <a href='https://www.craigslist.org/about/help/'>
-        <h1> hey</h1>
+      <br></br>
+      <a href='https://maps.app.goo.gl/7vQBv61TP4PGjaYc7'>
+        <p>src code for this site</p>
       </a>
     </Box>
   );

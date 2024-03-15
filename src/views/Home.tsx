@@ -2,6 +2,7 @@ import {Box, Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import LinkBox from '../components/LinkBox';
 import Sidebar from '../components/Sidebar';
+import * as content from '../constants/content';
 
 const Home: React.FC<{}> = () => {
   const useStyles = makeStyles((theme) => ({
@@ -60,42 +61,13 @@ const Home: React.FC<{}> = () => {
                 </Box>
               </Grid>
               <Grid item xs={7}>
-                <LinkBox
-                  title='moo'
-                  links={[
-                    {
-                      message: 'hey',
-                      url: '/error',
-                    },
-                    {
-                      message: 'hey',
-                      url: 'https://www.craigslist.org/about/craigslist_app',
-                    },
-                    {
-                      message: 'hey',
-                      url: 'https://www.craigslist.org/about/craigslist_app',
-                    },
-                  ]}
-                />
+                <LinkBox {...content.faqs} />
               </Grid>
               <Grid item xs={5}>
-                <LinkBox
-                  title='moo'
-                  links={[
-                    {
-                      message: 'hey',
-                      url: 'https://www.craigslist.org/about/craigslist_app',
-                    },
-                    {
-                      message: 'hey',
-                      url: 'https://www.craigslist.org/about/craigslist_app',
-                    },
-                    {
-                      message: 'hey',
-                      url: 'https://www.craigslist.org/about/craigslist_app',
-                    },
-                  ]}
-                />
+                <LinkBox {...content.accomodations} />
+              </Grid>
+              <Grid item xs={5}>
+                <LinkBox {...content.accomodations} />
               </Grid>
             </Grid>
           </Grid>

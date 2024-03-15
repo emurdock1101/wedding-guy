@@ -1,30 +1,26 @@
-import {Grid, Paper, Typography, makeStyles} from '@material-ui/core';
+import {Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import Map from '../components/Map';
-import {useEffect, useState} from 'react';
+import Header from '../components/Header';
+import {DetailedPage} from '../constants/types';
 
-interface DetailsProps {
-  title: string;
-  img: string;
-  description: string;
-}
-
-const Details: React.FC<DetailsProps> = (props: DetailsProps) => {
+const Details = (props: DetailedPage) => {
   const useStyles = makeStyles((theme) => ({
     container: {
       paddingLeft: 30,
       paddingRight: 30,
       border: '0px solid red',
+      paddingBottom: 50,
     },
     title: {
       ...theme.typography.h5,
       margin: 0,
-
       border: '0px solid red',
+      fontSize: 24,
     },
     image: {
       marginTop: 0,
-      width: '100%',
+      width: '50%',
       objectFit: 'cover',
     },
     gridContainer: {
@@ -32,12 +28,17 @@ const Details: React.FC<DetailsProps> = (props: DetailsProps) => {
     },
     description: {
       padding: 0,
-      margin: 0
+      margin: 0,
     },
     disclaimer: {
       paddingBottom: 30,
-      fontSize: 12
-    }
+      fontSize: 12,
+    },
+    itemTitle: {
+      fontSize: 16,
+      padding: 0,
+      margin: 0,
+    },
   }));
   const classes = useStyles();
 
@@ -52,36 +53,47 @@ const Details: React.FC<DetailsProps> = (props: DetailsProps) => {
   const daysAgo = getDaysAgo();
 
   return (
-    <div className={classes.container}>
-      <Grid
-        container
-        justifyContent='center'
-        alignItems='center'
-        className={classes.gridContainer}
-        spacing={5}>
-        <Grid item xs={10} className={classes.gridContainer}>
-          <p>posted {daysAgo} days ago</p>
-          <h6 className={classes.title}> {props.title}</h6>
+    <React.Fragment>
+      <Header title={props.title} url={props.url} />
+      <div className={classes.container}>
+        <Grid
+          container
+          justifyContent='center'
+          alignItems='center'
+          className={classes.gridContainer}
+          spacing={5}>
+          <Grid item xs={10} className={classes.gridContainer}>
+            <p>posted {daysAgo} days ago</p>
+            <h6 className={classes.title}> {props.title}</h6>
+          </Grid>
+          <Grid item xs={5} className={classes.gridContainer}>
+            <img src={props.img} className={classes.image} alt='detailedImage'></img>
+          </Grid>
+          <Grid item xs={5}>
+            <Map />
+          </Grid>
+          {props.items.map((item, index) => {
+            return (
+              <Grid item xs={10} key={item.itemTitle}>
+                <h6 className={classes.itemTitle} id={item.itemTitle}>
+                  {item.itemTitle}
+                </h6>
+                <br></br>
+                <p className={classes.description}> {item.itemDescription}</p>
+              </Grid>
+            );
+          })}
+          <Grid item xs={10}>
+            <p className={classes.disclaimer}>
+              <a href='https://www.craigslist.org/about/scams'>Avoid scams, deal locally</a>
+              <em>
+                &emsp;Beware wiring (e.g. Western Union), cashier checks, money orders, shipping.
+              </em>
+            </p>
+          </Grid>
         </Grid>
-        <Grid item xs={5} className={classes.gridContainer}>
-          <img src={props.img} className={classes.image} alt='image'></img>
-        </Grid>
-        <Grid item xs={5}>
-          <Map />
-        </Grid>
-        <Grid item xs={10}>
-          <p className={classes.description}> {props.description}</p>
-        </Grid>
-        <Grid item xs={10}>
-          <p className={classes.disclaimer}>
-            <a href='https://www.craigslist.org/about/scams'>Avoid scams, deal locally</a>
-            <em>
-              &emsp;Beware wiring (e.g. Western Union), cashier checks, money orders, shipping.
-            </em>
-          </p>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </React.Fragment>
   );
 };
 

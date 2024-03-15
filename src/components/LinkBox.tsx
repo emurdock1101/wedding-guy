@@ -1,21 +1,22 @@
 import * as React from 'react';
-import {makeStyles, Box} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core';
+import {DetailedPage} from '../constants/types';
 
 const useStyles = makeStyles((theme) => ({
-  box: {
+  topLink: {
+    ...theme.typography,
     backgroundColor: theme.palette.secondary.main,
     textAlign: 'center',
-    '&:hover': {
-      backgroundColor: 'white',
-    },
-  },
-  topLink: {
-    ...theme.typography.body1,
+    borderTop: '1px solid lightgrey',
+    borderBottom: '1px solid lightgrey',
+    height: 24,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     textDecoration: 'none',
     '&:hover': {
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: 'white',
       textDecoration: 'underline',
-      color: theme.palette.success.main,
     },
   },
   list: {
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   listItem: {
+    paddingTop: 5,
     borderBottom: `2px solid ${theme.palette.info.main}`,
     '&:hover': {
       backgroundColor: theme.palette.secondary.main,
@@ -38,31 +40,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface LinkBoxProps {
-  title: string;
-  links: {
-    message: string;
-    url: string;
-  }[];
-}
-
-const LinkBox = (props: LinkBoxProps) => {
+const LinkBox = (props: DetailedPage) => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Box className={classes.box}>
-        <a href='https://www.craigslist.org/about/help/' className={classes.topLink}>
-          <h1> {props.title}</h1>
-        </a>
-      </Box>
+      <a href={props.url} className={classes.topLink}>
+        <h1>{props.title}</h1>
+      </a>
+
       <ul className={classes.list}>
-        {props.links.map((link) => {
+        {props.items.map((item) => {
           return (
-            <li className={classes.listItem}>
-              <a href={link.url} className={classes.link}>
-                {link.message}
-              </a>
-            </li>
+            <a href={item.itemUrl} className={classes.link}>
+              <li className={classes.listItem}>{item.itemTitle}</li>
+            </a>
           );
         })}
       </ul>
