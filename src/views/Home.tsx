@@ -29,10 +29,8 @@ const Home: React.FC<{}> = () => {
     },
     contentContainer: {
       marginTop: 20,
-      // border: '1px solid green',
     },
     linksContainer: {
-      // border: '1px solid red',
     },
   }));
 
@@ -60,14 +58,20 @@ const Home: React.FC<{}> = () => {
                   </a>
                 </Box>
               </Grid>
-              <Grid item xs={7}>
+              <Grid item xs={5}>
                 <LinkBox {...content.faqs} />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={7}>
                 <LinkBox {...content.accomodations} />
               </Grid>
-              <Grid item xs={5}>
-                <LinkBox {...content.accomodations} />
+              <Grid item xs={6}>
+                <LinkBox {...content.registry} />
+              </Grid>
+              <Grid item xs={6}>
+                <LinkBox {...content.ourstory} />
+              </Grid>
+              <Grid item xs={4}>
+                <LinkBox {...content.rsvp} />
               </Grid>
             </Grid>
           </Grid>

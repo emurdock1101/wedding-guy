@@ -4,7 +4,8 @@ import {DetailedPage} from '../constants/types';
 
 const useStyles = makeStyles((theme) => ({
   topLink: {
-    ...theme.typography,
+    fontFamily: 'sans-serif',
+    fontSize: 8,
     backgroundColor: theme.palette.secondary.main,
     textAlign: 'center',
     borderTop: '1px solid lightgrey',

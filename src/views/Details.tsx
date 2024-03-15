@@ -16,11 +16,12 @@ const Details = (props: DetailedPage) => {
       ...theme.typography.h5,
       margin: 0,
       border: '0px solid red',
-      fontSize: 24,
+      fontSize: 30,
+      fontWeight: 600,
     },
     image: {
       marginTop: 0,
-      width: '50%',
+      width: '80%',
       objectFit: 'cover',
     },
     gridContainer: {
@@ -70,12 +71,15 @@ const Details = (props: DetailedPage) => {
             <img src={props.img} className={classes.image} alt='detailedImage'></img>
           </Grid>
           <Grid item xs={5}>
-            <Map />
+            {props.img2 && (
+              <img src={props.img2} className={classes.image} alt='detailedImage'></img>
+            )}
+            {!props.img2 && <Map />}
           </Grid>
           {props.items.map((item, index) => {
             return (
               <Grid item xs={10} key={item.itemTitle}>
-                <h6 className={classes.itemTitle} id={item.itemTitle}>
+                <h6 className={classes.itemTitle} id={item.itemId}>
                   {item.itemTitle}
                 </h6>
                 <br></br>

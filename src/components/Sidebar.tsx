@@ -1,4 +1,5 @@
 import {makeStyles, Box} from '@material-ui/core';
+import {ReactComponent as Logo} from '../images/craigsvg.svg';
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -18,13 +19,18 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'underline',
     },
   },
+  logo: {
+    width: 50,
+    height: 50,
+  },
 }));
 
 const Sidebar = () => {
   const classes = useStyles();
   return (
     <Box className={classes.box}>
-      <h2 className={classes.header}>J&E Wedding</h2>
+      <Logo className={classes.logo} />
+      <h2 className={classes.header}> J&E Wedding</h2>
       <a href='https://www.facebook.com/jennie.bottas' className={classes.link}>
         <p>Jennie Bottas</p>
       </a>

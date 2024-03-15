@@ -1,10 +1,15 @@
-import './App.css';
+// MUI
 import {makeStyles} from '@material-ui/core';
-import {Route, Routes, Navigate} from 'react-router-dom';
+import {ThemeProvider} from '@material-ui/core/styles';
+
+// views
 import Home from './views/Home';
 import Details from './views/Details';
 import ErrorPage from './views/Error';
-import {ThemeProvider} from '@material-ui/core/styles';
+import Gallery from './views/Gallery';
+// other
+import './App.css';
+import {Route, Routes, Navigate} from 'react-router-dom';
 import {theme} from './theme';
 import Footer from './components/Footer';
 import * as content from './constants/content';
@@ -32,7 +37,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/accomodations' element={<Details {...content.accomodations} />} />
-          <Route path='/faqs' element={<Details {...content.accomodations} />} />
+          <Route path='/faqs' element={<Details {...content.faqs} />} />
+          <Route path='/ourstory' element={<Details {...content.ourstory} />} />
+          <Route path='/gallery' element={<Gallery {...content.ourstory}/>} />
           <Route path='/error' element={<ErrorPage />} />
           <Route path='*' element={<Navigate to='/error' replace />} />
         </Routes>

@@ -11,7 +11,7 @@ const ErrorPage: React.FC<{}> = () => {
             {`
        _____________
       (  return to  )
-      (  craigslist )
+      ( J&E Wedding )
       (  homepage?  )
        -------------
              O
