@@ -25,7 +25,8 @@ const Gallery = (props: DetailedPage) => {
       objectFit: 'cover',
     },
     gridContainer: {
-      border: '1px solid red',
+      // marginTop: 20,
+      // border: '1px solid red',
     },
     description: {
       padding: 0,

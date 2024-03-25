@@ -39,7 +39,7 @@ function App() {
           <Route path='/accomodations' element={<Details {...content.accomodations} />} />
           <Route path='/faqs' element={<Details {...content.faqs} />} />
           <Route path='/ourstory' element={<Details {...content.ourstory} />} />
-          <Route path='/gallery' element={<Gallery {...content.ourstory}/>} />
+          <Route path='/gallery' element={<Gallery {...content.gallery}/>} />
           <Route path='/error' element={<ErrorPage />} />
           <Route path='*' element={<Navigate to='/error' replace />} />
         </Routes>

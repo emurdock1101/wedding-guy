@@ -151,7 +151,7 @@ export const rsvp: DetailedPage = {
   url: 'https://www.google.com/forms/about/',
   items: rsvpItems,
 };
-//#endregion registry
+//#endregion rsvp
 
 //#region ourstory
 const ourstoryItems: DetailedPageItem[] = [
@@ -196,3 +196,21 @@ export const ourstory: DetailedPage = {
   items: ourstoryItems,
 };
 //#endregion ourstory
+
+//#region gallery
+const galleryItems: DetailedPageItem[] = [
+  {
+    itemTitle: 'view photos from our life',
+    itemDescription: '',
+    itemUrl: '/gallery',
+    itemId: 'gallery',
+  },
+];
+
+export const gallery: DetailedPage = {
+  title: 'gallery',
+  img: 'img',
+  url: '/gallery',
+  items: galleryItems,
+};
+//#endregion gallery

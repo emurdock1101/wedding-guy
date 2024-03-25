@@ -73,6 +73,9 @@ const Home: React.FC<{}> = () => {
               <Grid item xs={4}>
                 <LinkBox {...content.rsvp} />
               </Grid>
+              <Grid item xs={4}>
+                <LinkBox {...content.gallery} />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
