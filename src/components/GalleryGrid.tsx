@@ -1,7 +1,6 @@
 import {makeStyles} from '@material-ui/core';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import {galleryData} from '../constants/gallery-content';
 
 const GalleryGrid = () => {
