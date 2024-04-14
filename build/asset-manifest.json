@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.120fd6ac.css",
+    "main.js": "/static/js/main.de37c3a0.js",
+    "static/media/fancy.jpeg": "/static/media/fancy.45cdab0d6f39bedd36e7.jpeg",
+    "static/media/falls.png": "/static/media/falls.9c5a92503e424ce55042.png",
+    "static/media/sunset.png": "/static/media/sunset.9f00ad12d868d27a4b2e.png",
+    "static/media/renfest.png": "/static/media/renfest.266bc19fb5488d172c41.png",
+    "static/media/washington.png": "/static/media/washington.097383b88d4e127e8293.png",
+    "static/media/shoe.png": "/static/media/shoe.3c46cdc1e9b7ebc60868.png",
+    "static/media/engaged.jpeg": "/static/media/engaged.4b4999ac287e3df6ecd5.jpeg",
+    "static/media/date.jpeg": "/static/media/date.9756bb28f12f81331ea1.jpeg",
+    "static/media/faqs.png": "/static/media/faqs.a13f3fb227a69e6024f3.png",
+    "static/media/craigsvg.svg": "/static/media/craigsvg.69bd48e7ad4cd62f85fa0c5a457eacde.svg",
+    "index.html": "/index.html",
+    "main.120fd6ac.css.map": "/static/css/main.120fd6ac.css.map",
+    "main.de37c3a0.js.map": "/static/js/main.de37c3a0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.120fd6ac.css",
+    "static/js/main.de37c3a0.js"
+  ]
+}
