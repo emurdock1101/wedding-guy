@@ -33,7 +33,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
           npm run deploy-aws
 
-    - name: Upload to S3
+      - name: Upload to S3
         uses: emurdock1101/s3-sync-action@master
         with:
           args: --acl public-read
