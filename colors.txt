@@ -1,9 +1,0 @@
-navy = #111840
-off-white = #F8F7F3
-info - #1b1d21 - black - normal text
-
-error - #ED5362 - red - Extraversion
-warning - #9A338E - purple - Neuroticism
-success - #3A81CD - blue - Agreeableness
-primary - #00C9B7 - turquoise - Conscientiousness
-secondary - #344B47 - dark green - Openness

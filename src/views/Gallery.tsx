@@ -9,13 +9,11 @@ const Gallery = (props: DetailedPage) => {
     container: {
       paddingLeft: 30,
       paddingRight: 30,
-      border: '0px solid red',
       paddingBottom: 50,
     },
     title: {
       ...theme.typography.h5,
       margin: 0,
-      border: '0px solid red',
       fontSize: 30,
       fontWeight: 600,
     },
@@ -23,10 +21,6 @@ const Gallery = (props: DetailedPage) => {
       marginTop: 0,
       width: '80%',
       objectFit: 'cover',
-    },
-    gridContainer: {
-      // marginTop: 20,
-      // border: '1px solid red',
     },
     description: {
       padding: 0,
@@ -53,7 +47,7 @@ const Gallery = (props: DetailedPage) => {
           justifyContent='center'
           alignItems='center'
           spacing={5}>
-          <Grid item xs={10} className={classes.gridContainer}>
+          <Grid item xs={10}>
             <GalleryGrid />
           </Grid>
         </Grid>

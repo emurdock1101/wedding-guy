@@ -7,15 +7,13 @@ import {DetailedPage} from '../constants/types';
 const Details = (props: DetailedPage) => {
   const useStyles = makeStyles((theme) => ({
     container: {
-      paddingLeft: 30,
-      paddingRight: 30,
-      border: '0px solid red',
-      paddingBottom: 50,
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingBottom: 20
     },
     title: {
       ...theme.typography.h5,
       margin: 0,
-      border: '0px solid red',
       fontSize: 30,
       fontWeight: 600,
     },
@@ -24,15 +22,11 @@ const Details = (props: DetailedPage) => {
       width: '80%',
       objectFit: 'cover',
     },
-    gridContainer: {
-      border: '0px solid red',
-    },
     description: {
       padding: 0,
       margin: 0,
     },
     disclaimer: {
-      paddingBottom: 30,
       fontSize: 12,
     },
     itemTitle: {
@@ -57,20 +51,15 @@ const Details = (props: DetailedPage) => {
     <React.Fragment>
       <Header title={props.title} url={props.url} />
       <div className={classes.container}>
-        <Grid
-          container
-          justifyContent='center'
-          alignItems='center'
-          className={classes.gridContainer}
-          spacing={5}>
-          <Grid item xs={10} className={classes.gridContainer}>
+        <Grid container justifyContent='center' alignItems='center' spacing={2}>
+          <Grid item xs={10} md={10}>
             <p>posted {daysAgo} days ago</p>
             <h6 className={classes.title}> {props.title}</h6>
           </Grid>
-          <Grid item xs={5} className={classes.gridContainer}>
+          <Grid item xs={10} md={5}>
             <img src={props.img} className={classes.image} alt='detailedImage'></img>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={10} md={5}>
             {props.img2 && (
               <img src={props.img2} className={classes.image} alt='detailedImage'></img>
             )}

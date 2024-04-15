@@ -73,11 +73,6 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
             about
           </a>
         </li>
-        <li className={classes.listItem}>
-          <a href='https://www.craigslist.org/about/craigslist_app' className={classes.link}>
-            app
-          </a>
-        </li>
       </ul>
     </Box>
   );

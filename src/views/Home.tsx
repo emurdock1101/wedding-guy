@@ -12,7 +12,6 @@ const Home: React.FC<{}> = () => {
       backgroundColor: theme.palette.secondary.main,
       height: 30,
       textAlign: 'center',
-      width: '100%',
       alignItems: 'center',
       padding: 20,
       margin: 0,
@@ -27,27 +26,22 @@ const Home: React.FC<{}> = () => {
         textDecoration: 'underline',
       },
     },
-    contentContainer: {
-      marginTop: 20,
-    },
-    linksContainer: {
-    },
   }));
 
   const classes = useStyles();
 
   return (
     <Grid container justifyContent='center'>
-      <Grid item xs={8}>
-        <Grid container className={classes.contentContainer} spacing={2}>
-          <Grid item xs={2}>
+      <Grid item sm={12} md={8}>
+        <Grid container spacing={2}>
+          <Grid item xs={4} md={2}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Sidebar />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={8} md={10}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Box className={classes.headerBox}>
@@ -58,22 +52,22 @@ const Home: React.FC<{}> = () => {
                   </a>
                 </Box>
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} md={6}>
                 <LinkBox {...content.faqs} />
               </Grid>
-              <Grid item xs={7}>
+              <Grid item xs={12} md={6}>
                 <LinkBox {...content.accomodations} />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <LinkBox {...content.registry} />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <LinkBox {...content.ourstory} />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={6}>
                 <LinkBox {...content.rsvp} />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={6}>
                 <LinkBox {...content.gallery} />
               </Grid>
             </Grid>

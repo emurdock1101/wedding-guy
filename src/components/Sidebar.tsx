@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: '1px solid lightgrey',
     borderRight: '1px solid lightgrey',
     textAlign: 'center',
+    paddingBottom: 10,
   },
   header: {
     fontFamily: 'Times New Roman',
@@ -29,7 +30,9 @@ const Sidebar = () => {
   const classes = useStyles();
   return (
     <Box className={classes.box}>
-      <Logo className={classes.logo} />
+      <a href='https://www.craigslist.org'>
+        <Logo className={classes.logo} />
+      </a>
       <h2 className={classes.header}> J&E Wedding</h2>
       <a href='https://www.facebook.com/jennie.bottas' className={classes.link}>
         <p>Jennie Bottas</p>
@@ -51,7 +54,7 @@ const Sidebar = () => {
         <p>352 Beautiful Run Rd, Madison, VA 22727</p>
       </a>
       <br></br>
-      <a href='https://maps.app.goo.gl/7vQBv61TP4PGjaYc7'>
+      <a href='https://github.com/emurdock1101/wedding-guy'>
         <p>src code for this site</p>
       </a>
     </Box>

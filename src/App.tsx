@@ -18,10 +18,9 @@ function App() {
   const useStyles = makeStyles((theme) => ({
     container: {
       minHeight: '100vh',
-      overflow: 'hidden',
       display: 'block',
       position: 'relative',
-      paddingBottom: 0,
+      paddingBottom: 50,
     },
     footer: {
       bottom: 0,
