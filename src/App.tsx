@@ -14,20 +14,21 @@ import {theme} from './theme';
 import Footer from './components/Footer';
 import * as content from './constants/content';
 
-function App() {
-  const useStyles = makeStyles((theme) => ({
-    container: {
-      minHeight: '100vh',
-      display: 'block',
-      position: 'relative',
-      paddingBottom: 50,
-    },
-    footer: {
-      bottom: 0,
-      position: 'absolute',
-      width: '100%',
-    },
-  }));
+const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: '100vh',
+    display: 'block',
+    position: 'relative',
+    paddingBottom: 50,
+  },
+  footer: {
+    bottom: 0,
+    position: 'absolute',
+    width: '100%',
+  },
+}));
+
+const App = () => {
   const classes = useStyles();
 
   return (
@@ -38,7 +39,7 @@ function App() {
           <Route path='/accomodations' element={<Details {...content.accomodations} />} />
           <Route path='/faqs' element={<Details {...content.faqs} />} />
           <Route path='/ourstory' element={<Details {...content.ourstory} />} />
-          <Route path='/gallery' element={<Gallery {...content.gallery}/>} />
+          <Route path='/gallery' element={<Gallery {...content.gallery} />} />
           <Route path='/error' element={<ErrorPage />} />
           <Route path='*' element={<Navigate to='/error' replace />} />
         </Routes>
@@ -48,6 +49,6 @@ function App() {
       </div>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

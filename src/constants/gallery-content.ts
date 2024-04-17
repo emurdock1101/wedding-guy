@@ -3,111 +3,113 @@ import shoe from '../images/gallery/shoe.png';
 import falls from '../images/gallery/falls.png';
 import sunset from '../images/gallery/sunset.png';
 import renfest from '../images/gallery/renfest.png';
+import swamp from '../images/gallery/swamp.png';
+import concert from '../images/gallery/concert.png';
+import eagle from '../images/gallery/eagle.png';
+import irwin from '../images/gallery/irwin.png';
+import seabird from '../images/gallery/seabird.png';
+import arlington from '../images/gallery/arlington.png';
+import flowers from '../images/gallery/flowers.png';
+import ring from '../images/gallery/ring.png';
+import farm from '../images/gallery/farm.png';
+import eno from '../images/gallery/eno.png';
+import eclipse from '../images/gallery/eclipse.png';
 
 export const galleryData = [
   {
     img: washington,
-    title: 'First Weekend',
-    description: 'Washington Monument',
-    url: 'https://en.wikipedia.org/wiki/Washington_Monument',
-  },
-  {
-    img: sunset,
-    title: 'Skyline Drive',
-    description: 'Washington Monument',
+    title: 'Washington Monument',
+    description: 'Our first weekend together',
     url: 'https://en.wikipedia.org/wiki/Washington_Monument',
   },
   {
     img: shoe,
     title: 'Shoe at Courthouse Hyatt',
-    description: 'Washington Monument',
+    description: `This is near Elliot's house`,
+    url: 'https://schuppcompanies.com/hyatt-place-courthouse-arlington-achieves-public-art-in-courthouse-2/',
+  },
+  {
+    img: sunset,
+    title: 'Skyline Drive',
+    description: 'Tequila sunrises at sunset',
     url: 'https://en.wikipedia.org/wiki/Washington_Monument',
+  },
+  {
+    img: swamp,
+    title: 'Cypress Gardens',
+    description: 'The place from The Notebook',
+    url: 'https://www.southernliving.com/travel/south-carolina/notebook-movie-tour-charleston-sc',
+  },
+  {
+    img: irwin,
+    title: 'Before Brooklyn Bagels',
+    description: 'A true staple of Courthouse in Arlington',
+    url: 'https://www.brooklynbagelva.com/',
   },
   {
     img: falls,
     title: 'Great Falls',
-    description: 'Washington Monument',
-    url: 'https://en.wikipedia.org/wiki/Washington_Monument',
+    description: 'Hiking near the water',
+    url: 'https://www.nps.gov/grfa/index.htm',
   },
   {
     img: renfest,
     title: 'Rennaissance Festival',
-    description: 'Washington Monument',
+    description: 'Lot of weirdos here',
     url: 'https://en.wikipedia.org/wiki/Rennaissance',
   },
   {
-    img: washington,
-    title: 'Breakfast',
-    description: 'Washington Monument',
-    url: 'https://en.wikipedia.org/wiki/Washington_Monument',
+    img: seabird,
+    title: 'Acadia National Park',
+    description: 'Making sure the birds are well fed',
+    url: 'https://www.nps.gov/acad/index.htm',
   },
   {
-    img: washington,
-    title: 'Breakfast',
-    description: 'Washington Monument https://en. wfewfwef wefwefwefw',
-    url: 'https://en.wikipedia.org/wiki/Washington_Monument',
+    img: arlington,
+    title: 'Kennedy Center',
+    description: 'Saw a play that went really badly',
+    url: 'https://www.kennedy-center.org/',
   },
   {
-    img: washington,
-    title: 'Breakfast',
-    description: 'Washington Monument',
-    url: 'https://en.wikipedia.org/wiki/Washington_Monument',
+    img: concert,
+    title: 'Chris Renzema Concert',
+    description: 'It was some music',
+    url: 'https://www.chrisrenzema.com/',
   },
   {
-    img: washington,
-    title: 'Breakfast',
-    description: 'Washington Monument',
-    url: 'https://en.wikipedia.org/wiki/Washington_Monument',
+    img: eagle,
+    title: 'Dollywood',
+    description: 'Best dang amusement park this side of the Mississippi',
+    url: 'https://www.dollywood.com/',
+  },
+  {
+    img: flowers,
+    title: 'Great Smokey Mountains',
+    description: 'Adventured through a flower field',
+    url: 'https://www.nps.gov/grsm/index.htm',
+  },
+  {
+    img: ring,
+    title: 'Shenandoah National Park',
+    description: 'Got engaged in a big meadow',
+    url: 'https://www.nps.gov/shen/index.htm',
+  },
+  {
+    img: farm,
+    title: 'Amissville',
+    description: 'Uncle Eric and Aunt Corinna live here',
+    url: 'https://en.wikipedia.org/wiki/Amissville,_Virginia',
+  },
+  {
+    img: eno,
+    title: 'Burke Lake Park',
+    description: 'Enoing at goblin hour',
+    url: 'https://www.fairfaxcounty.gov/parks/burkelake',
+  },
+  {
+    img: eclipse,
+    title: 'Cleveland, OH',
+    description: 'We were in the path of totality',
+    url: 'https://www.thisiscleveland.com/2024-solar-eclipse',
   },
 ];
-
-// export const galleryData = [
-//   {
-//     img: washington,
-//     title: 'Breakfast',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-//     title: 'Burger',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-//     title: 'Camera',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-//     title: 'Coffee',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-//     title: 'Hats',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-//     title: 'Honey',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-//     title: 'Basketball',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-//     title: 'Fern',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-//     title: 'Mushrooms',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-//     title: 'Tomato basil',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-//     title: 'Sea star',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-//     title: 'Bike',
-//   },
-// ];

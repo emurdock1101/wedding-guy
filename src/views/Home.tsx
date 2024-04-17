@@ -4,30 +4,30 @@ import LinkBox from '../components/LinkBox';
 import Sidebar from '../components/Sidebar';
 import * as content from '../constants/content';
 
-const Home: React.FC<{}> = () => {
-  const useStyles = makeStyles((theme) => ({
-    headerBox: {
-      borderTop: '1px solid lightGrey',
-      borderBottom: '1px solid lightGrey',
-      backgroundColor: theme.palette.secondary.main,
-      height: 30,
-      textAlign: 'center',
-      alignItems: 'center',
-      padding: 20,
-      margin: 0,
-      display: 'flex',
+const useStyles = makeStyles((theme) => ({
+  headerBox: {
+    borderTop: '1px solid lightGrey',
+    borderBottom: '1px solid lightGrey',
+    backgroundColor: theme.palette.secondary.main,
+    height: 30,
+    textAlign: 'center',
+    alignItems: 'center',
+    padding: 20,
+    margin: 0,
+    display: 'flex',
+  },
+  headerLink: {
+    textDecoration: 'none',
+    fontSize: 24,
+    fontFamily: 'Times New Roman, serif',
+    color: '#222222',
+    '&:hover': {
+      textDecoration: 'underline',
     },
-    headerLink: {
-      textDecoration: 'none',
-      fontSize: 24,
-      fontFamily: 'Times New Roman, serif',
-      color: '#222222',
-      '&:hover': {
-        textDecoration: 'underline',
-      },
-    },
-  }));
+  },
+}));
 
+const Home: React.FC<{}> = () => {
   const classes = useStyles();
 
   return (

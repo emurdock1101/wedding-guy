@@ -5,28 +5,28 @@ interface HeaderProps {
   url: string;
 }
 
-const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
-  const useStyles = makeStyles((theme) => ({
-    breadcrumbs: {
-      backgroundColor: theme.palette.secondary.main,
-      borderTop: '.5px solid lightgrey',
-      minHeight: 40,
-      paddingLeft: 10,
-      alignContent: 'center',
-      display: 'flex',
-    },
-    link: {
-      textDecoration: 'none',
-      fontSize: 16,
-    },
-    cl: {
-      backgroundColor: 'white',
-      textDecoration: 'none',
-      fontSize: 16,
-      borderRadius: '10px',
-    },
-  }));
+const useStyles = makeStyles((theme) => ({
+  breadcrumbs: {
+    backgroundColor: theme.palette.secondary.main,
+    borderTop: '.5px solid lightgrey',
+    minHeight: 40,
+    paddingLeft: 10,
+    alignContent: 'center',
+    display: 'flex',
+  },
+  link: {
+    textDecoration: 'none',
+    fontSize: 16,
+  },
+  cl: {
+    backgroundColor: 'white',
+    textDecoration: 'none',
+    fontSize: 16,
+    borderRadius: '10px',
+  },
+}));
 
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const classes = useStyles();
 
   return (

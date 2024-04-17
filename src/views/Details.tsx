@@ -4,37 +4,38 @@ import Map from '../components/Map';
 import Header from '../components/Header';
 import {DetailedPage} from '../constants/types';
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+  },
+  title: {
+    ...theme.typography.h5,
+    margin: 0,
+    fontSize: 30,
+    fontWeight: 600,
+  },
+  image: {
+    marginTop: 0,
+    width: '80%',
+    objectFit: 'cover',
+  },
+  description: {
+    padding: 0,
+    margin: 0,
+  },
+  disclaimer: {
+    fontSize: 12,
+  },
+  itemTitle: {
+    fontSize: 16,
+    padding: 0,
+    margin: 0,
+  },
+}));
+
 const Details = (props: DetailedPage) => {
-  const useStyles = makeStyles((theme) => ({
-    container: {
-      paddingLeft: 20,
-      paddingRight: 20,
-      paddingBottom: 20
-    },
-    title: {
-      ...theme.typography.h5,
-      margin: 0,
-      fontSize: 30,
-      fontWeight: 600,
-    },
-    image: {
-      marginTop: 0,
-      width: '80%',
-      objectFit: 'cover',
-    },
-    description: {
-      padding: 0,
-      margin: 0,
-    },
-    disclaimer: {
-      fontSize: 12,
-    },
-    itemTitle: {
-      fontSize: 16,
-      padding: 0,
-      margin: 0,
-    },
-  }));
   const classes = useStyles();
 
   const getDaysAgo = () => {
