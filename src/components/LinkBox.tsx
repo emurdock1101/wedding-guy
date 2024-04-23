@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {makeStyles} from '@material-ui/core';
-import {DetailedPage} from '../constants/types';
+import {DetailedPage} from '../content/types';
 
 const useStyles = makeStyles((theme) => ({
   topLink: {

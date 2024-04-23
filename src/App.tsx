@@ -12,7 +12,10 @@ import './App.css';
 import {Route, Routes, Navigate} from 'react-router-dom';
 import {theme} from './theme';
 import Footer from './components/Footer';
-import * as content from './constants/content';
+import {accomodations} from './content/accomodations';
+import {faqs} from './content/faqs';
+import {ourstory} from './content/ourstory';
+import {gallery} from './content/gallery';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -36,10 +39,10 @@ const App = () => {
       <div className={classes.container}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/accomodations' element={<Details {...content.accomodations} />} />
-          <Route path='/faqs' element={<Details {...content.faqs} />} />
-          <Route path='/ourstory' element={<Details {...content.ourstory} />} />
-          <Route path='/gallery' element={<Gallery {...content.gallery} />} />
+          <Route path='/accomodations' element={<Details {...accomodations} />} />
+          <Route path='/faqs' element={<Details {...faqs} />} />
+          <Route path='/ourstory' element={<Details {...ourstory} />} />
+          <Route path='/gallery' element={<Gallery {...gallery} />} />
           <Route path='/error' element={<ErrorPage />} />
           <Route path='*' element={<Navigate to='/error' replace />} />
         </Routes>

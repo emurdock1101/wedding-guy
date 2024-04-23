@@ -1,6 +1,6 @@
 export type DetailedPageItem = {
   itemTitle: string;
-  itemDescription: string;
+  itemDescriptions: JSX.Element[];
   itemUrl: string;
   itemId: string;
 };

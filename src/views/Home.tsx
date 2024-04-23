@@ -2,7 +2,12 @@ import {Box, Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import LinkBox from '../components/LinkBox';
 import Sidebar from '../components/Sidebar';
-import * as content from '../constants/content';
+import {accomodations} from '../content/accomodations';
+import {registry} from '../content/registry';
+import {faqs} from '../content/faqs';
+import {rsvp} from '../content/rsvp';
+import {ourstory} from '../content/ourstory';
+import {gallery} from '../content/gallery';
 
 const useStyles = makeStyles((theme) => ({
   headerBox: {
@@ -53,22 +58,23 @@ const Home: React.FC<{}> = () => {
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
-                <LinkBox {...content.faqs} />
+                <LinkBox {...faqs} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <LinkBox {...content.accomodations} />
+                <LinkBox {...ourstory} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <LinkBox {...content.registry} />
+                <LinkBox {...accomodations} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <LinkBox {...content.ourstory} />
+                <LinkBox {...registry} />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <LinkBox {...rsvp} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <LinkBox {...content.rsvp} />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <LinkBox {...content.gallery} />
+                <LinkBox {...gallery} />
               </Grid>
             </Grid>
           </Grid>

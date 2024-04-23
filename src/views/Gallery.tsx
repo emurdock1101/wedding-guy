@@ -2,7 +2,7 @@ import {Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import GalleryGrid from '../components/GalleryGrid';
 import Header from '../components/Header';
-import {DetailedPage} from '../constants/types';
+import {DetailedPage} from '../content/types';
 
 const useStyles = makeStyles((theme) => ({
   container: {

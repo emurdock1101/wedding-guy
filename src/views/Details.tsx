@@ -2,7 +2,7 @@ import {Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import Map from '../components/Map';
 import Header from '../components/Header';
-import {DetailedPage} from '../constants/types';
+import {DetailedPage} from '../content/types';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -66,14 +66,15 @@ const Details = (props: DetailedPage) => {
             )}
             {!props.img2 && <Map />}
           </Grid>
-          {props.items.map((item, index) => {
+          {props.items.map((item) => {
             return (
               <Grid item xs={10} key={item.itemTitle}>
                 <h6 className={classes.itemTitle} id={item.itemId}>
                   {item.itemTitle}
                 </h6>
-                <br></br>
-                <p className={classes.description}> {item.itemDescription}</p>
+                {item.itemDescriptions.map((description) => {
+                  return <div className={classes.description}>{description}</div>;
+                })}
               </Grid>
             );
           })}
