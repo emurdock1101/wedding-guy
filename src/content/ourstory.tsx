@@ -1,5 +1,5 @@
-import engaged from '../images/engaged.jpeg';
 import date from '../images/date.jpeg';
+import piggy from '../images/piggy.png';
 import {DetailedPage, DetailedPageItem} from './types';
 
 const ourstoryItems: DetailedPageItem[] = [
@@ -53,11 +53,7 @@ const ourstoryItems: DetailedPageItem[] = [
   },
   {
     itemTitle: 'Turning the tide',
-    itemDescriptions: [
-      <p>
-        Elliot won Jennie back using logic and reason.
-      </p>,
-    ],
+    itemDescriptions: [<p>Elliot won Jennie back using logic and reason.</p>],
     itemUrl: '/ourstory#turningthetide',
     itemId: 'turningthetide',
   },
@@ -79,9 +75,9 @@ const ourstoryItems: DetailedPageItem[] = [
     itemDescriptions: [
       <p>
         Elliot proposed to Jennie at the top of a mountain in the Shenandoah National Park. He had
-        known within the first six weeks of dating that Jennie was the one for him. With the
-        help of his boys, he successfully plotted a failed hiking attempt to turn into a beautiful
-        meadow proposal. Nailed it.
+        known within the first six weeks of dating that Jennie was the one for him. With the help of
+        his boys, he successfully plotted a failed hiking attempt to turn into a beautiful meadow
+        proposal. Nailed it.
       </p>,
     ],
     itemUrl: '/ourstory#proposal',
@@ -99,8 +95,8 @@ const ourstoryItems: DetailedPageItem[] = [
 
 export const ourstory: DetailedPage = {
   title: 'our story',
-  img: engaged,
-  img2: date,
+  img: date,
+  img2: piggy,
   url: '/ourstory',
   items: ourstoryItems,
 };
