@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     display: 'block',
     position: 'relative',
-    paddingBottom: 50,
+    paddingBottom: 70,
   },
   footer: {
     bottom: 0,

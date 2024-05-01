@@ -4,37 +4,40 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import {galleryData} from '../content/gallery-content';
 import {useEffect, useState} from 'react';
+const useStyles = makeStyles((theme) => ({
+  imageList: {
+    overflow: 'hidden',
+  },
+  titleLink: {
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+  description: {
+    wordBreak: 'break-word',
+  },
+  subtitle: {
+    marginBottom: 5,
+    fontSize: 14,
+  },
+}));
+
+const calcNumOfCols = () => {
+  if (window.innerWidth < 750) {
+    return 1;
+  } else if (window.innerWidth < 1000) {
+    return 2;
+  }
+  return 4;
+};
 
 const GalleryGrid = () => {
-  const [numberOfColumns, setNumberOfColumns] = useState(4);
-  const useStyles = makeStyles((theme) => ({
-    imageList: {
-      overflow: 'hidden',
-    },
-    titleLink: {
-      textDecoration: 'none',
-      '&:hover': {
-        textDecoration: 'underline',
-      },
-    },
-    description: {
-      wordBreak: 'break-word',
-    },
-    subtitle: {
-      marginBottom: 5,
-      fontSize: 14,
-    },
-  }));
+  const [numberOfColumns, setNumberOfColumns] = useState(calcNumOfCols());
   const classes = useStyles();
 
   const handleResize = () => {
-    if (window.innerWidth < 750) {
-      console.log('window.innerWidth < 750', JSON.stringify(window.innerWidth < 750), '\n');
-
-      setNumberOfColumns(2);
-    } else if (window.innerWidth < 1000) {
-      setNumberOfColumns(3);
-    } else setNumberOfColumns(4);
+    setNumberOfColumns(calcNumOfCols());
   };
 
   useEffect(() => {
