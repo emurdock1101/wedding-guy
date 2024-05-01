@@ -8,9 +8,8 @@ const accodomationsItems: DetailedPageItem[] = [
       <p>
         We have reserved a block of rooms at the{' '}
         <a href='https://roundhillinn.com/'>Round Hill Inn</a> in Orange, VA. The hotel is about 20
-        minutes from the venue. The block is under the name Jennie and Elliot Wedding. The rate is
-        $150/night. The block will be held until June 9, 2024. To book a room, please call the hotel
-        at (540) 672-6690 and mention the block.
+        minutes from the venue. The block is under the name Jennie and Elliot Wedding. To book a
+        room, please call the hotel at (540) 672-6690 and mention the block.
       </p>,
     ],
     itemUrl: '/accomodations#hotel',
@@ -47,6 +46,9 @@ const accodomationsItems: DetailedPageItem[] = [
     itemTitle: 'Activities in the area',
     itemDescriptions: [
       <ul>
+        <li>
+          <a href='https://www.bbvwine.com/'>Barboursville Vineyards</a>
+        </li>
         <li>
           <a href='https://www.monticello.org/'>Monticello</a>
         </li>

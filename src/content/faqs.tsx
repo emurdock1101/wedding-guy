@@ -70,7 +70,7 @@ const faqsItems: DetailedPageItem[] = [
     itemDescriptions: [
       <p>
         If you are able, please try to carpool with other guests that have the same call time. Note:
-        the wedding is in Madison, Va therefore Uber/Lyft drivers will not be plentiful.
+        the wedding is in Madison, VA and Uber/Lyft drivers will not be plentiful.
       </p>,
       <p>There will be a shuttle for guests staying in the Hotel Block we have reserved.</p>,
     ],

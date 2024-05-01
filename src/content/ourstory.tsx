@@ -55,10 +55,7 @@ const ourstoryItems: DetailedPageItem[] = [
     itemTitle: 'Turning the tide',
     itemDescriptions: [
       <p>
-        Elliot won Jennie back using logic and reason.{' '}
-        <s>
-          It wasn't his first time escaping the friend zone, and it certainly won't be his last.
-        </s>
+        Elliot won Jennie back using logic and reason.
       </p>,
     ],
     itemUrl: '/ourstory#turningthetide',
@@ -82,7 +79,7 @@ const ourstoryItems: DetailedPageItem[] = [
     itemDescriptions: [
       <p>
         Elliot proposed to Jennie at the top of a mountain in the Shenandoah National Park. He had
-        known within the first six weeks of dating that this was the correct woman for him. With the
+        known within the first six weeks of dating that Jennie was the one for him. With the
         help of his boys, he successfully plotted a failed hiking attempt to turn into a beautiful
         meadow proposal. Nailed it.
       </p>,
