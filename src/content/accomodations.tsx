@@ -33,7 +33,13 @@ const accodomationsItems: DetailedPageItem[] = [
         Again, please make sure to coordinate with others to fill rooms completely.
       </p>,
       <ul>
-        <li>To book: Call <a href='tel:5406726691'>(540) 672-3121</a> and mention the block name</li>
+        <li>
+          To book: Visit this link{' '}
+          <a href='https://www.choicehotels.com/reservations/groups/jo84p4?checkInDate=2024-08-09&checkOutDate=2024-08-11&ratePlanCode=BRVVJA'>
+            Elliot's and Jennie's Wedding
+          </a>
+          , or call <a href='tel:5406726691'>(540) 672-3121</a> and mention the block name
+        </li>
         <li>Block name: Jennie and Elliot Wedding</li>
         <li>Distance: 15 minutes from the venue</li>
         <li>Deadline: Block will be held until July 9th, 2024</li>
