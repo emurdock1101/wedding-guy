@@ -36,8 +36,8 @@ const accodomationsItems: DetailedPageItem[] = [
         <li>To book: Call <a href='tel:5406726691'>(540) 672-3121</a> and mention the block name</li>
         <li>Block name: Jennie and Elliot Wedding</li>
         <li>Distance: 15 minutes from the venue</li>
-        <li>Deadline: Block will be held until July 27th, 2024</li>
-        <li>Rooms: 5 - Double queen rooms, 5 - King rooms</li>
+        <li>Deadline: Block will be held until July 9th, 2024</li>
+        <li>Rooms: 5 - Double queen rooms, 5 - King suites</li>
       </ul>,
     ],
     itemUrl: '/accomodations#comfortinn',
