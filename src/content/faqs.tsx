@@ -95,7 +95,7 @@ const faqsItems: DetailedPageItem[] = [
     itemTitle: `What is the RSVP deadline?`,
     itemDescriptions: [
       <p>
-        Please fill out our <a href='https://www.google.com/forms/about/'>RSVP form</a> no later
+        Please fill out our <a href='https://docs.google.com/forms/d/1L3qqvdgZWBq8l9BcqG_K32oAnSjjWFOZW2G_nG-LYeU/viewform?edit_requested=true'>RSVP form</a> no later
         than June 9, 2024.
       </p>,
     ],
