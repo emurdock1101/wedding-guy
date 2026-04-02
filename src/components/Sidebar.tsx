@@ -8,6 +8,8 @@ const useStyles = makeStyles((theme) => ({
     borderRight: '1px solid lightgrey',
     textAlign: 'center',
     paddingBottom: 10,
+    overflow: 'hidden',
+    wordBreak: 'break-word',
   },
   header: {
     fontFamily: 'Times New Roman',
